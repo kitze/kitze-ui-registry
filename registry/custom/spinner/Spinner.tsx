@@ -6,7 +6,7 @@ import {
   LucideLoaderPinwheel,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ReactFC } from "../../types";
+import { ReactFC } from "@/lib/types";
 
 const variants = {
   default: LucideLoader,
@@ -44,13 +44,14 @@ export interface SpinnerProps {
 export const Spinner: ReactFC<SpinnerProps> = ({
   variant = "default",
   size = "md",
-  className,
+  className = "",
 }) => {
-  const SpinnerIcon = variants[variant];
+  const SpinnerIcon = variants[variant] || variants.default;
+  const foundSize = sizes[size] || sizes.md;
 
   return (
     <SpinnerIcon
-      className={cn("animate-spin text-foreground/50", sizes[size], className)}
+      className={cn("animate-spin text-foreground/50", foundSize, className)}
     />
   );
 };

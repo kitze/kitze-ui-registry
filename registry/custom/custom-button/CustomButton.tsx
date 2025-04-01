@@ -97,7 +97,7 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
 
   const buttonContent = loading ? (
     <>
-      <Spinner size={spinnerSizeMap[size]} className="shrink-0 text-current" />
+      <Spinner size={size} className="shrink-0 text-current" />
       {!isIconOnly && <span className="truncate">{children}</span>}
     </>
   ) : (

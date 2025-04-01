@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { ReactFC } from "../../types";
-import { Spinner, SpinnerProps } from "./Spinner";
+import { ReactFC } from "@/lib/types";
+import { Spinner, SpinnerProps } from "@/registry/custom/spinner/Spinner";
 import { cn } from "@/lib/utils";
 
 export interface FillHeightSpinnerProps extends SpinnerProps {

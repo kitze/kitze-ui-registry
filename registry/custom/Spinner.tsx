@@ -4,8 +4,8 @@ import {
   LucideLoaderPinwheel,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ReactFC } from "../../lib/types";
-import { Suspensed } from "./Suspensed";
+import { ReactFC } from "@/lib/types";
+import { Suspensed } from "@/registry/custom/suspensed/Suspensed";
 
 const variants = {
   default: LucideLoader,
