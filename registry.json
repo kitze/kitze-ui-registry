@@ -4,18 +4,6 @@
   "homepage": "https://ui.kitze.io",
   "items": [
     {
-      "name": "suspensed",
-      "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
-      "files": [
-        {
-          "path": "registry/custom/suspensed/Suspensed.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "spinner",
       "type": "registry:component",
       "title": "Spinner",
@@ -26,21 +14,6 @@
       "files": [
         {
           "path": "registry/custom/spinner/Spinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-tooltip",
-      "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "registryDependencies": [
-        "tooltip"
-      ],
-      "files": [
-        {
-          "path": "registry/custom/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -61,6 +34,21 @@
       ]
     },
     {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/custom/simple-tooltip/SimpleTooltip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "fill-height-spinner",
       "type": "registry:component",
       "title": "Fill Height Spinner",
@@ -71,6 +59,18 @@
       "files": [
         {
           "path": "registry/custom/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "suspensed",
+      "type": "registry:component",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
+      "files": [
+        {
+          "path": "registry/custom/suspensed/Suspensed.tsx",
           "type": "registry:component"
         }
       ]

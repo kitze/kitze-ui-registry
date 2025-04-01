@@ -1,13 +1,7 @@
 import * as React from "react";
 
 export type CustomButtonSize = "xs" | "sm" | "md" | "lg";
-export type CustomButtonVariant =
-  | "default"
-  | "destructive"
-  | "outline"
-  | "secondary"
-  | "ghost"
-  | "link";
+export type CustomButtonVariant = "default" | "outline" | "ghost" | "link";
 
 export interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

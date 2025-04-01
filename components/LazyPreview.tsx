@@ -16,7 +16,6 @@ export function LazyPreview({ name }: LazyPreviewProps) {
       dynamic(
         () =>
           import(`@/registry/custom/${name}/preview`).then((mod) => {
-            console.log(mod);
             return mod.Preview || mod.default;
           }),
         {

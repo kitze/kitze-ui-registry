@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "suspensed" | "spinner" | "simple-tooltip" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip";
+export type ComponentName = "suspensed" | "simple-tooltip" | "spinner" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip";
 
 export interface ComponentMeta {
   name: ComponentName;
@@ -13,15 +13,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Suspensed",
     description: "A wrapper component for React Suspense with force option"
   },
-  "spinner": {
-    name: "spinner",
-    title: "Spinner",
-    description: "A customizable loading spinner component with different variants and sizes"
-  },
   "simple-tooltip": {
     name: "simple-tooltip",
     title: "Simple Tooltip",
     description: "A simplified tooltip component built on top of Radix UI tooltip"
+  },
+  "spinner": {
+    name: "spinner",
+    title: "Spinner",
+    description: "A customizable loading spinner component with different variants and sizes"
   },
   "full-page-spinner": {
     name: "full-page-spinner",

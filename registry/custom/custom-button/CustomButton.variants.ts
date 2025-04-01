@@ -1,19 +1,18 @@
 import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-all cursor-pointer active:scale-95 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        default:
+          "bg-[var(--button-bg)] text-[var(--button-text)] hover:opacity-90",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-[var(--button-bg)/20]/20 text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/5",
+        ghost:
+          "text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)/20]",
+        link: "text-[var(--button-bg)] underline-offset-4 hover:underline",
       },
       size: {
         xs: "h-7 px-2 text-xs",
@@ -29,18 +28,17 @@ export const buttonVariants = cva(
         true: "",
         false: "",
       },
-      color: {
-        destructive: "",
-        primary: "",
-        secondary: "",
-      },
     },
     defaultVariants: {
       variant: "default",
       size: "md",
       shape: "default",
       isIconButton: false,
-      color: "secondary",
     },
   }
 );
+
+// Add a custom type for button variants that includes color as any string
+export type ButtonVariantsProps = VariantProps<typeof buttonVariants> & {
+  class?: string;
+};

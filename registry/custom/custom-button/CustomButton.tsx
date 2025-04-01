@@ -12,11 +12,16 @@ import {
   defaultIconSizes,
 } from "./CustomButton.config";
 
+type ColorValue = {
+  bg: string;
+  text: string;
+};
+
 type ColorMap = {
-  destructive: string;
-  primary: string;
-  secondary: string;
-  [key: string]: string;
+  destructive: ColorValue;
+  primary: ColorValue;
+  secondary: ColorValue;
+  [key: string]: ColorValue;
 };
 
 export const CustomButton: ReactFC<CustomButtonProps> = ({
@@ -24,7 +29,7 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
   variant = "default",
   size = "md",
   circle,
-  color = "secondary",
+  color = "foreground",
   style,
   icon: Icon,
   iconSize,
@@ -49,11 +54,24 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
   } = useLinkableComponent({ href, external, ...props });
 
   const colorMap: ColorMap = {
-    destructive: "var(--color-red-500)",
-    primary: "var(--color-primary)",
-    secondary: "var(--color-secondary)",
+    destructive: {
+      bg: "var(--color-destructive)",
+      text: "var(--color-destructive-foreground)",
+    },
+    primary: {
+      bg: "var(--color-primary)",
+      text: "var(--color-primary-foreground)",
+    },
+    secondary: {
+      bg: "var(--color-secondary)",
+      text: "var(--color-secondary-foreground)",
+    },
   };
-  const buttonColor = colorMap[color] ?? `var(--color-${color})`;
+
+  const buttonColors = colorMap[color] ?? {
+    bg: `var(--color-${color})`,
+    text: "var(--color-white)",
+  };
 
   //if size is not found in sizeStyles, throw an error
   if (!sizeStyles[size]) {
@@ -92,29 +110,36 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
     </>
   );
 
-  const button = (
-    <Component
-      className={buttonVariants({
-        variant,
-        size,
-        shape: circle ? "circle" : "default",
-        isIconButton: isIconOnly,
-        color,
-        class: cn(className, !circle && !isIconOnly && padding, gap),
-      })}
-      style={{ "--button-color": buttonColor, ...style } as React.CSSProperties}
-      href={linkHref}
-      {...(Component === "button" ? { disabled: disabled || loading } : {})}
-      {...linkProps}
-      {...props}
-    >
-      {buttonContent}
-    </Component>
-  );
+  // Setup attributes based on the component type
+  const buttonAttributes: any = {
+    className: buttonVariants({
+      variant,
+      size,
+      shape: circle ? "circle" : "default",
+      isIconButton: isIconOnly,
+      class: cn(className, !circle && !isIconOnly && padding, gap),
+    }),
+    style: {
+      "--button-bg": buttonColors.bg,
+      "--button-text": buttonColors.text,
+      ...style,
+    } as React.CSSProperties,
+    ...linkProps,
+    ...props,
+  };
+
+  // Add specific attributes based on component type
+  if (Component === "button") {
+    buttonAttributes.disabled = disabled || loading;
+  } else if (href) {
+    buttonAttributes.href = href;
+  }
+
+  const button = <Component {...buttonAttributes}>{buttonContent}</Component>;
 
   return tooltip ? (
     <ConditionalTooltip
-      content={tooltip}
+      content={String(tooltip)}
       condition={true}
       classNames={{ tooltip: classNames.tooltip }}
     >

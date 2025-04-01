@@ -10,16 +10,9 @@ export default function CustomButtonPreview() {
         component={CustomButton}
         variants={{
           prop: "variant",
-          values: [
-            "default",
-            "destructive",
-            "outline",
-            "secondary",
-            "ghost",
-            "link",
-          ],
+          values: ["default", "outline", "ghost", "link"],
         }}
-        className="flex flex-wrap gap-4 [&>*]:w-auto [&>*]:min-w-[120px]"
+        className="flex flex-wrap gap-4 *:w-auto *:min-w-[120px]"
       />
 
       <ComponentPropVariant
@@ -28,14 +21,14 @@ export default function CustomButtonPreview() {
           prop: "size",
           values: ["xs", "sm", "md", "lg"],
         }}
-        className="flex flex-wrap gap-4 [&>*]:w-auto [&>*]:min-w-[120px]"
+        className="flex flex-wrap gap-4 *:w-auto *:min-w-[120px]"
         children={(value) => {
           const sizeText = typeof value === "string" ? value : "";
           return sizeText.charAt(0).toUpperCase() + sizeText.slice(1);
         }}
       />
 
-      <div className="flex flex-wrap gap-4 [&>*]:w-auto [&>*]:min-w-[120px]">
+      <div className="flex flex-wrap gap-4 *:w-auto *:min-w-[120px]">
         <CustomButton icon={Mail}>Mail</CustomButton>
         <CustomButton leftIcon={Mail}>With Left Icon</CustomButton>
         <CustomButton rightIcon={ArrowRight}>With Right Icon</CustomButton>
@@ -44,7 +37,7 @@ export default function CustomButtonPreview() {
         </CustomButton>
       </div>
 
-      <div className="flex flex-wrap gap-4 [&>*]:w-auto">
+      <div className="flex flex-wrap gap-4 *:w-auto">
         <CustomButton icon={Plus} circle />
         <CustomButton icon={Mail} />
         <CustomButton loading>Loading</CustomButton>
@@ -55,9 +48,27 @@ export default function CustomButtonPreview() {
         component={CustomButton}
         variants={{
           prop: "color",
-          values: ["primary", "secondary", "destructive", "yellow-500"],
+          values: ["primary", "secondary", "destructive"],
         }}
-        className="flex flex-wrap gap-4 [&>*]:w-auto [&>*]:min-w-[120px]"
+        className="flex flex-wrap gap-4 *:w-auto *:min-w-[120px]"
+      />
+
+      <ComponentPropVariant
+        component={CustomButton}
+        variants={{
+          prop: "color",
+          values: [
+            "yellow-500",
+            "blue-300",
+            "pink-500",
+            "green-500",
+            "purple-500",
+          ],
+        }}
+        componentProps={{
+          variant: "default",
+        }}
+        className="flex flex-wrap gap-4 *:w-auto *:min-w-[120px]"
       />
     </div>
   );
