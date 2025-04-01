@@ -8,8 +8,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "conditional-tooltip",
-    "spinner"
+    "https://ui.kitze.io/r/conditional-tooltip.json",
+    "https://ui.kitze.io/r/spinner.json"
   ],
   "files": [
     {

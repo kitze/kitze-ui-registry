@@ -5,7 +5,7 @@
   "title": "Full Page Spinner",
   "description": "A spinner component that takes full page size and centers itself in the viewport",
   "registryDependencies": [
-    "spinner"
+    "https://ui.kitze.io/r/spinner.json"
   ],
   "files": [
     {

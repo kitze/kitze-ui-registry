@@ -36,10 +36,46 @@ function ensureDirectoryExists(dirPath: string) {
   }
 }
 
+// Function to get our component names from registry config files
+async function getOurComponentNames(): Promise<string[]> {
+  try {
+    const configFiles = await glob("registry/**/config.json");
+    return configFiles.map((configFile) => {
+      const configContent = fs.readFileSync(configFile, "utf-8");
+      const config = JSON.parse(configContent);
+      return config.name;
+    });
+  } catch (error) {
+    console.error("❌ Error reading registry config files:", error);
+    return [];
+  }
+}
+
+// Function to process registry dependencies
+function processRegistryDependencies(
+  dependencies: string[] | undefined,
+  ourComponents: string[]
+): string[] | undefined {
+  if (!dependencies) return undefined;
+
+  return dependencies.map((dep) => {
+    // If it's a URL, keep it as is
+    if (dep.startsWith("http")) return dep;
+    // If it's one of our components, generate the registry URL
+    if (ourComponents.includes(dep)) {
+      const url = process.env.NEXT_PUBLIC_BASE_URL || "https://ui.kitze.io";
+      return `${url}/r/${dep}.json`;
+    }
+    // If it's a shadcn/ui component, keep the name
+    return dep;
+  });
+}
+
 // Function to generate individual component JSON files
 async function generateComponentFiles(configs: ComponentConfig[]) {
   try {
     ensureDirectoryExists("public/r");
+    const ourComponents = await getOurComponentNames();
 
     for (const config of configs) {
       const componentConfig = {
@@ -49,7 +85,10 @@ async function generateComponentFiles(configs: ComponentConfig[]) {
         title: config.title,
         description: config.description,
         dependencies: config.dependencies,
-        registryDependencies: config.registryDependencies,
+        registryDependencies: processRegistryDependencies(
+          config.registryDependencies,
+          ourComponents
+        ),
         files: await Promise.all(
           config.files.map(async (file) => {
             const content = fs.readFileSync(file.path, "utf-8");
@@ -80,6 +119,7 @@ async function generateRegistry() {
   try {
     const configFiles = await glob("registry/**/config.json");
     const configs: ComponentConfig[] = [];
+    const ourComponents = await getOurComponentNames();
 
     for (const configFile of configFiles) {
       const configContent = fs.readFileSync(configFile, "utf-8");
@@ -94,6 +134,11 @@ async function generateRegistry() {
         })
       );
 
+      // Process registry dependencies
+      config.registryDependencies = processRegistryDependencies(
+        config.registryDependencies,
+        ourComponents
+      );
       configs.push(config);
     }
 

@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack & tsx scripts/watch-registry.ts & npm run generate-types",
+    "dev": "next dev --turbopack & npm run watch-registry & npm run generate-types",
     "build": "next build",
     "start": "next start",
     "registry:build": "shadcn build",
     "register": "tsx scripts/register-components.ts",
     "prebuild": "npm run register",
-    "generate-types": "tsx scripts/generate-component-types.ts"
+    "generate-types": "tsx scripts/generate-component-types.ts",
+    "watch-registry": "tsx scripts/watch-registry.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.3",
