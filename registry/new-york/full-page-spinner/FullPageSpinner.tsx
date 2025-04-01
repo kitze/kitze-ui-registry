@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { ReactFC } from "@/lib/types";
-import { Spinner, SpinnerProps } from "@/registry/custom/spinner/Spinner";
+import { Spinner, SpinnerProps } from "@/registry/n/spinner/Spinner";
 
 export interface FullPageSpinnerProps extends SpinnerProps {}
 

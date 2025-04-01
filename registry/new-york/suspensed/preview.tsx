@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Suspensed } from "./Suspensed";
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/registry/custom/spinner/Spinner";
+import { Spinner } from "@/registry/n/spinner/Spinner";
 
 export function Preview() {
   const [isForced, setIsForced] = React.useState(false);

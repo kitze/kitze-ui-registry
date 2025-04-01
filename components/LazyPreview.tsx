@@ -4,7 +4,7 @@ import * as React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import dynamic from "next/dynamic";
 import { ComponentName } from "@/lib/component-types";
-import { Spinner } from "@/registry/custom/spinner/Spinner";
+import { Spinner } from "@/registry/n/spinner/Spinner";
 
 interface LazyPreviewProps {
   name: ComponentName;

@@ -10,7 +10,7 @@
       "description": "A wrapper component for React Suspense with force option",
       "files": [
         {
-          "path": "registry/custom/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
           "type": "registry:component"
         }
       ]
@@ -25,7 +25,7 @@
       ],
       "files": [
         {
-          "path": "registry/custom/spinner/Spinner.tsx",
+          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -40,7 +40,7 @@
       ],
       "files": [
         {
-          "path": "registry/custom/simple-tooltip/SimpleTooltip.tsx",
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -55,7 +55,34 @@
       ],
       "files": [
         {
-          "path": "registry/custom/full-page-spinner/FullPageSpinner.tsx",
+          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
           "type": "registry:component"
         }
       ]
@@ -74,34 +101,7 @@
       ],
       "files": [
         {
-          "path": "registry/custom/custom-button/CustomButton.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/custom/custom-button/CustomButton.types.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/custom/custom-button/CustomButton.variants.ts",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/custom/custom-button/CustomButton.config.ts",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "registryDependencies": [
-        "spinner"
-      ],
-      "files": [
-        {
-          "path": "registry/custom/fill-height-spinner/FillHeightSpinner.tsx",
+          "path": "registry/new-york/custom-button/CustomButton.tsx",
           "type": "registry:component"
         }
       ]
@@ -116,19 +116,7 @@
       ],
       "files": [
         {
-          "path": "registry/custom/conditional-tooltip/ConditionalTooltip.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "conditional-wrap",
-      "type": "registry:component",
-      "title": "Conditional Wrap",
-      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
-      "files": [
-        {
-          "path": "registry/custom/conditional-wrap/ConditionalWrap.tsx",
+          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component"
         }
       ]

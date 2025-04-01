@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { SimpleTooltip } from "@/registry/custom/simple-tooltip/SimpleTooltip";
+import { SimpleTooltip } from "@/registry/n/simple-tooltip/SimpleTooltip";
 import { ComponentName, componentMeta } from "@/lib/component-types";
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
@@ -16,7 +16,7 @@ interface PreviewComponentProps {
 
 export function PreviewComponent({ name, children }: PreviewComponentProps) {
   const meta = componentMeta[name];
-  const installCommand = `npx shadcn-ui@latest add ${name}`;
+  const installCommand = `npx shadcn@latest add ${name}`;
 
   const handleCopy = React.useCallback(() => {
     navigator.clipboard.writeText(installCommand);

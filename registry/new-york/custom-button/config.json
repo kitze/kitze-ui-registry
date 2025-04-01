@@ -9,18 +9,6 @@
     {
       "path": "CustomButton.tsx",
       "type": "registry:component"
-    },
-    {
-      "path": "CustomButton.types.ts",
-      "type": "registry:component"
-    },
-    {
-      "path": "CustomButton.variants.ts",
-      "type": "registry:component"
-    },
-    {
-      "path": "CustomButton.config.ts",
-      "type": "registry:component"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { ReactFC } from "@/lib/types";
-import { SimpleTooltip } from "@/registry/custom/simple-tooltip/SimpleTooltip";
+import { SimpleTooltip } from "@/registry/n/simple-tooltip/SimpleTooltip";
 
 interface ConditionalTooltipClassNames {
   wrapper?: string;

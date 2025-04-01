@@ -2,15 +2,11 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { ReactFC } from "@/lib/types";
 import { useLinkableComponent } from "@/hooks/useLinkableComponent";
-import { ConditionalTooltip } from "@/registry/custom/conditional-tooltip/ConditionalTooltip";
-import { Spinner } from "@/registry/custom/spinner/Spinner";
+import { ConditionalTooltip } from "@/registry/n/conditional-tooltip/ConditionalTooltip";
+import { Spinner } from "@/registry/n/spinner/Spinner";
 import { CustomButtonProps } from "./CustomButton.types";
 import { buttonVariants } from "./CustomButton.variants";
-import {
-  sizeStyles,
-  spinnerSizeMap,
-  defaultIconSizes,
-} from "./CustomButton.config";
+import { sizeStyles, defaultIconSizes } from "./CustomButton.config";
 
 type ColorValue = {
   bg: string;

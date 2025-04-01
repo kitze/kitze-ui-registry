@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ReactFC } from "@/lib/types";
-import { Suspensed } from "@/registry/custom/suspensed/Suspensed";
+import { Suspensed } from "@/registry/n/suspensed/Suspensed";
 
 const variants = {
   default: LucideLoader,
