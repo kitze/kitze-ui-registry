@@ -1,58 +1,34 @@
-import * as React from "react"
-import { OpenInV0Button } from "@/components/open-in-v0-button"
-import { HelloWorld } from "@/registry/new-york/hello-world/hello-world"
-import { ExampleForm } from "@/registry/new-york/example-form/example-form"
-import PokemonPage from "@/registry/new-york/complex-component/page"
-
-// This page displays items from the custom registry.
-// You are free to implement this with your own design as needed.
+import * as React from "react";
+import { PreviewComponent } from "@/components/PreviewComponent";
+import { SuspensedExample } from "@/components/examples/SuspensedExample";
+import { SpinnerExample } from "@/components/examples/SpinnerExample";
 
 export default function Home() {
   return (
     <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
       <header className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight">Custom Registry</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Kitze UI</h1>
         <p className="text-muted-foreground">
-          A custom registry for distribution code using shadcn.
+          by <a href="https://twitter.com/thekitze">@thekitze</a>
         </p>
       </header>
       <main className="flex flex-col flex-1 gap-8">
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A simple hello world component
-            </h2>
-            <OpenInV0Button name="hello-world" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <HelloWorld />
-          </div>
-        </div>
+        <PreviewComponent
+          name="suspensed"
+          title="Suspensed"
+          description="A wrapper component for React Suspense with force option"
+        >
+          <SuspensedExample />
+        </PreviewComponent>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A contact form with Zod validation.
-            </h2>
-            <OpenInV0Button name="example-form" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[500px] relative">
-            <ExampleForm />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A complex component showing hooks, libs and components.
-            </h2>
-            <OpenInV0Button name="complex-component" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <PokemonPage />
-          </div>
-        </div>
+        <PreviewComponent
+          name="spinner"
+          title="Spinner"
+          description="A collection of loading spinner components with different variants and sizes"
+        >
+          <SpinnerExample />
+        </PreviewComponent>
       </main>
     </div>
-  )
+  );
 }

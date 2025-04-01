@@ -4,6 +4,31 @@
   "homepage": "https://ui.kitze.io",
   "items": [
     {
+      "name": "suspensed",
+      "type": "registry:component",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option.",
+      "files": [
+        {
+          "path": "registry/custom/Suspensed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner",
+      "description": "A collection of loading spinner components with different variants and sizes.",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/custom/Spinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "hello-world",
       "type": "registry:component",
       "title": "Hello World",
