@@ -1,0 +1,21 @@
+{
+  "name": "bottom-drawer",
+  "type": "registry:component",
+  "title": "Bottom Drawer",
+  "description": "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations",
+  "dependencies": ["vaul", "framer-motion"],
+  "files": [
+    {
+      "path": "BottomDrawer.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "DrawerContext.tsx",
+      "type": "registry:context"
+    },
+    {
+      "path": "registry/hooks/useControlledOpen.ts",
+      "type": "registry:hook"
+    }
+  ]
+}

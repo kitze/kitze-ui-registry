@@ -16,21 +16,6 @@
       ]
     },
     {
-      "name": "simple-tooltip",
-      "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "registryDependencies": [
-        "tooltip"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "spinner",
       "type": "registry:component",
       "title": "Spinner",
@@ -41,6 +26,21 @@
       "files": [
         {
           "path": "registry/new-york/spinner/Spinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -61,6 +61,26 @@
       ]
     },
     {
+      "name": "page-header",
+      "type": "registry:component",
+      "title": "Page Header",
+      "description": "A responsive page header component with mobile drawer support",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/custom-button.json",
+        "https://ui.kitze.io/r/bottom-drawer.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/page-header/PageHeader.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hooks/useScrolledPast.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
       "name": "full-page-spinner",
       "type": "registry:component",
       "title": "Full Page Spinner",
@@ -71,33 +91,6 @@
       "files": [
         {
           "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "conditional-wrap",
-      "type": "registry:component",
-      "title": "Conditional Wrap",
-      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
-      "files": [
-        {
-          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
           "type": "registry:component"
         }
       ]
@@ -126,6 +119,18 @@
       ]
     },
     {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "conditional-tooltip",
       "type": "registry:component",
       "title": "Conditional Tooltip",
@@ -136,6 +141,45 @@
       "files": [
         {
           "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bottom-drawer",
+      "type": "registry:component",
+      "title": "Bottom Drawer",
+      "description": "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations",
+      "dependencies": [
+        "vaul",
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/bottom-drawer/BottomDrawer.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
+          "type": "registry:context"
+        },
+        {
+          "path": "registry/hooks/useControlledOpen.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
           "type": "registry:component"
         }
       ]

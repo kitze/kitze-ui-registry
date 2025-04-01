@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "suspensed" | "spinner" | "simple-tooltip" | "simple-accordion" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip";
+export type ComponentName = "suspensed" | "simple-tooltip" | "simple-accordion" | "page-header" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "spinner";
 
 export interface ComponentMeta {
   name: ComponentName;
@@ -13,11 +13,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Suspensed",
     description: "A wrapper component for React Suspense with force option"
   },
-  "spinner": {
-    name: "spinner",
-    title: "Spinner",
-    description: "A customizable loading spinner component with different variants and sizes"
-  },
   "simple-tooltip": {
     name: "simple-tooltip",
     title: "Simple Tooltip",
@@ -27,6 +22,11 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "simple-accordion",
     title: "Simple Accordion",
     description: "A simple accordion component"
+  },
+  "page-header": {
+    name: "page-header",
+    title: "Page Header",
+    description: "A responsive page header component with mobile drawer support"
   },
   "full-page-spinner": {
     name: "full-page-spinner",
@@ -52,5 +52,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "conditional-tooltip",
     title: "Conditional Tooltip",
     description: "A tooltip component that conditionally renders based on a condition"
+  },
+  "bottom-drawer": {
+    name: "bottom-drawer",
+    title: "Bottom Drawer",
+    description: "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations"
+  },
+  "spinner": {
+    name: "spinner",
+    title: "Spinner",
+    description: "A customizable loading spinner component with different variants and sizes"
   }
 } as const;

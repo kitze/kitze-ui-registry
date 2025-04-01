@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-header",
+  "type": "registry:component",
+  "title": "Page Header",
+  "description": "A responsive page header component with mobile drawer support",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/custom-button.json",
+    "https://ui.kitze.io/r/bottom-drawer.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/page-header/PageHeader.tsx",
+      "type": "registry:component",
+      "content": "import { ReactNode, useState } from \"react\";\nimport { LucideMenu } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { useScrolledPast } from \"@/registry/hooks/useScrolledPast\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { CustomButton } from \"@/registry/new-york/custom-button/CustomButton\";\nimport { BottomDrawer } from \"@/registry/new-york/bottom-drawer/BottomDrawer\";\n\nexport interface MobileHeaderClassNames {\n  root?: string;\n  container?: string;\n  leftSide?: string;\n  middle?: string;\n  rightSide?: string;\n  menuButton?: string;\n  pastScrolled?: string;\n}\n\nexport interface MobileHeaderProps {\n  leftSide?: ReactNode;\n  middle?: ReactNode;\n  drawerContent?: ReactNode;\n  classNames?: MobileHeaderClassNames;\n  height?: number;\n  renderRightSide?: (props: {\n    menuButton: ReactNode;\n    drawerContent: ReactNode;\n    menuTrigger: (children: ReactNode) => ReactNode;\n  }) => ReactNode;\n}\n\nexport const MobileHeader: ReactFC<MobileHeaderProps> = ({\n  leftSide,\n  middle,\n  drawerContent,\n  classNames,\n  renderRightSide,\n  height = 80,\n}) => {\n  const isScrolled = useScrolledPast(height);\n  const [isOpen, setIsOpen] = useState(false);\n\n  const menuButton = (\n    <CustomButton\n      variant=\"ghost\"\n      leftIcon={LucideMenu}\n      className={cn(\"md:hidden\", classNames?.menuButton)}\n      aria-label=\"Menu\"\n      iconSize={20}\n    />\n  );\n\n  const menuTrigger = (children: ReactNode) => (\n    <BottomDrawer open={isOpen} onOpenChange={setIsOpen} trigger={menuButton}>\n      {children}\n    </BottomDrawer>\n  );\n\n  return (\n    <div\n      style={{\n        height: height,\n      }}\n      className={cn(\n        \"fixed top-0 left-0 right-0 w-full z-30 vertical center\",\n        \"backdrop-blur-xl transition-all duration-200\",\n        \"text-foreground/80 \",\n        isScrolled &&\n          cn(\"shadow-sm dark:bg-background/80\", classNames?.pastScrolled),\n        classNames?.root\n      )}\n    >\n      <div\n        className={cn(\n          \"h max-w-[1200px] center justify-between w-full px-4 py-3\",\n          classNames?.container\n        )}\n      >\n        <div className={cn(\"flex-1\", classNames?.leftSide)}>{leftSide}</div>\n\n        {middle && (\n          <div className={cn(\"flex-1 text-center\", classNames?.middle)}>\n            {middle}\n          </div>\n        )}\n\n        <div className={cn(\"flex-1 flex justify-end\", classNames?.rightSide)}>\n          {renderRightSide\n            ? renderRightSide({ menuButton, drawerContent, menuTrigger })\n            : menuTrigger(drawerContent)}\n        </div>\n      </div>\n    </div>\n  );\n};\n"
+    },
+    {
+      "path": "registry/hooks/useScrolledPast.ts",
+      "type": "registry:hook",
+      "content": "import { useState, useEffect } from \"react\";\n\nexport const useScrolledPast = (threshold: number = 0) => {\n  const [isScrolledPast, setIsScrolledPast] = useState(false);\n\n  useEffect(() => {\n    const handleScroll = () => {\n      setIsScrolledPast(window.scrollY > threshold);\n    };\n\n    window.addEventListener(\"scroll\", handleScroll);\n    return () => window.removeEventListener(\"scroll\", handleScroll);\n  }, [threshold]);\n\n  return isScrolledPast;\n};\n"
+    }
+  ]
+}

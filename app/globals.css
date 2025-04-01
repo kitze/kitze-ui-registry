@@ -193,3 +193,9 @@
 [data-rehype-pretty-code-title] + pre {
   @apply mt-2;
 }
+
+@layer utilities {
+  .debug {
+    @apply border border-red-300;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "page-header",
+  "type": "registry:component",
+  "title": "Page Header",
+  "description": "A responsive page header component with mobile drawer support",
+  "registryDependencies": ["custom-button", "bottom-drawer"],
+  "files": [
+    {
+      "path": "PageHeader.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "registry/hooks/useScrolledPast.ts",
+      "type": "registry:hook"
+    }
+  ]
+}

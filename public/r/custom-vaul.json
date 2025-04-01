@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-vaul",
+  "type": "registry:component",
+  "title": "Custom Vaul",
+  "description": "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations",
+  "dependencies": [
+    "vaul",
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/custom-vaul/CustomVaul.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { motion, AnimatePresence } from \"framer-motion\";\nimport { ReactFC, cn } from \"@/lib/utils\";\nimport { Drawer } from \"vaul\";\nimport { VaulContext } from \"@/registry/new-york/custom-vaul/VaulContext\";\nimport { useControlledOpen } from \"@/registry/hooks/useControlledOpen\";\n\nexport interface CustomVaulClassNames {\n  overlay?: string;\n  content?: string;\n  handle?: string;\n  title?: string;\n}\n\nexport interface CustomVaulProps {\n  title?: string;\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  trigger?: React.ReactNode;\n  classNames?: CustomVaulClassNames;\n  renderHeader?:\n    | ((props: {\n        handle: React.ReactNode;\n        close: () => void;\n      }) => React.ReactNode)\n    | null;\n}\n\nexport const CustomVaul: ReactFC<CustomVaulProps> = ({\n  children,\n  title,\n  open,\n  onOpenChange,\n  trigger,\n  classNames,\n  renderHeader,\n}) => {\n  const { isOpen, setIsOpen, close } = useControlledOpen({\n    open,\n    onOpenChange,\n  });\n\n  const handle = (\n    <div\n      className={cn(\n        \"mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 dark:bg-zinc-700 mb-8\",\n        classNames?.handle\n      )}\n    />\n  );\n\n  const defaultHeader = (\n    <>\n      {handle}\n      {title && (\n        <div\n          className={cn(\n            \"text-lg font-semibold mb-4 text-zinc-900 dark:text-white\",\n            classNames?.title\n          )}\n        >\n          {title}\n        </div>\n      )}\n    </>\n  );\n\n  const noHeader = renderHeader === null;\n\n  return (\n    <VaulContext.Provider value={{ close }}>\n      <Drawer.Root open={isOpen} onOpenChange={setIsOpen}>\n        <AnimatePresence>\n          {isOpen && (\n            <motion.div\n              initial={{ scale: 1 }}\n              animate={{ scale: 0.95 }}\n              exit={{ scale: 1 }}\n              transition={{ duration: 0.3, ease: \"easeInOut\" }}\n              className=\"fixed inset-0 z-30 pointer-events-none\"\n            >\n              <div className=\"w-full h-full origin-top\">\n                <div className=\"h-full overflow-hidden\">\n                  <div className=\"opacity-0\">{trigger}</div>\n                </div>\n              </div>\n            </motion.div>\n          )}\n        </AnimatePresence>\n\n        <Drawer.Trigger asChild>{trigger}</Drawer.Trigger>\n\n        <Drawer.Portal>\n          <Drawer.Overlay\n            className={cn(\n              \"fixed inset-0 bg-black/40 backdrop-blur-md dark:bg-black/60 z-[9999]\",\n              classNames?.overlay\n            )}\n          />\n          <Drawer.Content\n            className={cn(\n              \"bg-white dark:bg-zinc-900 w-[95%] flex flex-col rounded-t-[10px] fixed bottom-0 left-0 right-0 z-[9999] mx-auto\",\n              \"dark:border-t dark:border-zinc-800\",\n              classNames?.content,\n              {\n                \"py-6\": !noHeader,\n              }\n            )}\n          >\n            <div className=\"p-2 bg-white dark:bg-zinc-900 rounded-t-[10px] flex-1 overflow-y-auto\">\n              {noHeader\n                ? null\n                : renderHeader\n                ? renderHeader({ handle, close })\n                : defaultHeader}\n              {children}\n            </div>\n          </Drawer.Content>\n        </Drawer.Portal>\n      </Drawer.Root>\n    </VaulContext.Provider>\n  );\n};\n"
+    },
+    {
+      "path": "registry/new-york/custom-vaul/VaulContext.tsx",
+      "type": "registry:component",
+      "content": "import { createContext, useContext } from \"react\";\n\ninterface VaulContextType {\n  close: () => void;\n}\n\nexport const VaulContext = createContext<VaulContextType | null>(null);\n\nexport const useVaul = () => {\n  const context = useContext(VaulContext);\n  if (!context) {\n    throw new Error(\"useVaul must be used within a VaulProvider\");\n  }\n  return context;\n};\n"
+    },
+    {
+      "path": "registry/hooks/useControlledOpen.ts",
+      "type": "registry:hook",
+      "content": "import { useState, useCallback } from \"react\";\n\ninterface UseControlledOpenProps {\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  defaultOpen?: boolean;\n}\n\nexport const useControlledOpen = ({\n  open: controlledOpen,\n  onOpenChange: controlledOnOpenChange,\n  defaultOpen = false,\n}: UseControlledOpenProps = {}) => {\n  const [internalOpen, setInternalOpen] = useState(defaultOpen);\n\n  const isControlled = controlledOpen !== undefined;\n  const isOpen = isControlled ? controlledOpen : internalOpen;\n\n  const setIsOpen = useCallback(\n    (open: boolean) => {\n      if (!isControlled) {\n        setInternalOpen(open);\n      }\n      controlledOnOpenChange?.(open);\n    },\n    [isControlled, controlledOnOpenChange]\n  );\n\n  const close = useCallback(() => setIsOpen(false), [setIsOpen]);\n\n  return {\n    isOpen,\n    setIsOpen,\n    close,\n    isControlled,\n  };\n};\n"
+    }
+  ]
+}

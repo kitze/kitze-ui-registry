@@ -3,7 +3,7 @@ import { PreviewComponents } from "@/components/PreviewComponents";
 
 export default function Home() {
   return (
-    <div className="max-w-3xl debug mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
       <header className="flex flex-col gap-1">
         <div className="relative">
           <img src="/spaceship.jpg" className="w-full rounded-2xl" />
@@ -36,6 +36,8 @@ export default function Home() {
             "conditional-wrap",
             "conditional-tooltip",
             "simple-accordion",
+            "bottom-drawer",
+            "page-header",
           ]}
         />
       </main>

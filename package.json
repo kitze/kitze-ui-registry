@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack & npm run script:watch-registry & npm run script:generate-types",
+    "dev": "next dev --turbopack & npm run script:watch-and-generate",
     "build": "next build",
     "start": "next start",
     "registry:build": "shadcn build",
-    "prebuild": "npm run script:register",
+    "prebuild": "npm run script:generate-all",
     "script:register": "tsx scripts/register-components.ts",
     "script:generate-types": "tsx scripts/generate-component-types.ts",
-    "script:watch-registry": "tsx scripts/watch-registry.ts"
+    "script:watch-registry": "tsx scripts/watch-registry.ts",
+    "script:generate-all": "npm run script:register && npm run script:generate-types",
+    "script:watch-and-generate": "tsx scripts/watch-registry.ts & npm run script:generate-types"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.3",
@@ -20,6 +22,7 @@
     "@tanstack/react-query": "^5.64.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.6.3",
     "lucide-react": "^0.486.0",
     "next": "15.1.4",
     "next-themes": "^0.4.4",
@@ -30,6 +33,7 @@
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.1.0",
     "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.1.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {

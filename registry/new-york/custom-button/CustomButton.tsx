@@ -5,30 +5,20 @@ import { ConditionalTooltip } from "@/registry/new-york/conditional-tooltip/Cond
 import { Spinner } from "@/registry/new-york/spinner/Spinner";
 
 type SizeStyle = {
-  padding: string;
-  gap: string;
   iconSize?: number;
 };
 
 export const sizeStyles: Record<CustomButtonSize, SizeStyle> = {
   xs: {
-    padding: "px-2.5 py-1.5",
-    gap: "gap-1.5",
     iconSize: 14,
   },
   sm: {
-    padding: "px-3 py-2",
-    gap: "gap-2",
     iconSize: 16,
   },
   md: {
-    padding: "px-4 py-2",
-    gap: "gap-2",
     iconSize: 16,
   },
   lg: {
-    padding: "px-6 py-3",
-    gap: "gap-3",
     iconSize: 20,
   },
 };
@@ -64,10 +54,10 @@ export const buttonVariants = cva(
         link: "text-[var(--button-bg)] underline-offset-4 hover:underline",
       },
       size: {
-        xs: "h-7 px-2 text-xs",
-        sm: "h-9 px-3 text-sm",
-        md: "h-10 px-4 text-sm",
-        lg: "h-12 px-5 text-base",
+        xs: "text-xs",
+        sm: "text-sm",
+        md: "text-sm",
+        lg: "text-base",
       },
       shape: {
         default: "rounded-md",
@@ -78,6 +68,48 @@ export const buttonVariants = cva(
         false: "",
       },
     },
+    compoundVariants: [
+      {
+        isIconButton: true,
+        size: "xs",
+        className: "size-6",
+      },
+      {
+        isIconButton: true,
+        size: "sm",
+        className: "size-8",
+      },
+      {
+        isIconButton: true,
+        size: "md",
+        className: "size-9",
+      },
+      {
+        isIconButton: true,
+        size: "lg",
+        className: "size-11",
+      },
+      {
+        isIconButton: false,
+        size: "xs",
+        className: "h-7 px-2",
+      },
+      {
+        isIconButton: false,
+        size: "sm",
+        className: "h-9 px-3",
+      },
+      {
+        isIconButton: false,
+        size: "md",
+        className: "h-10 px-4",
+      },
+      {
+        isIconButton: false,
+        size: "lg",
+        className: "h-12 px-5",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "md",
@@ -185,10 +217,10 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
   }
 
   const foundSizeStyle = sizeStyles[size] || sizeStyles.md;
-  const { padding, gap } = foundSizeStyle;
   const defaultIconSize = foundSizeStyle.iconSize ?? defaultIconSizes[size];
   const finalIconSize = iconSize ?? defaultIconSize;
-  const isIconOnly = circle || (!children && !!Icon);
+  const hasIcon = !!Icon || !!LeftIcon || !!RightIcon;
+  const isIconOnly = circle || (!children && hasIcon);
 
   const renderIcon = (
     IconComponent: React.ElementType | undefined,
@@ -223,7 +255,7 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
       size,
       shape: circle ? "circle" : "default",
       isIconButton: isIconOnly,
-      class: cn(className, !circle && !isIconOnly && padding, gap),
+      class: className,
     }),
     style: {
       "--button-bg": buttonColors.bg,
