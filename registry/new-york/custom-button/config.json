@@ -11,7 +11,7 @@
       "type": "registry:component"
     },
     {
-      "path": "registry/new-york/hooks/useLinkableComponent.ts",
+      "path": "registry/hooks/useLinkableComponent.ts",
       "type": "registry:hook"
     }
   ]

@@ -8,7 +8,7 @@
     {
       "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
       "type": "registry:component",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/types\";\n\nexport const ConditionalWrap: ReactFC<{\n  condition?: boolean;\n  wrap: (c: React.ReactNode) => React.ReactElement;\n  elseWrap?: (c: React.ReactNode) => React.ReactElement;\n}> = ({ condition, children, wrap, elseWrap }) =>\n  !!condition ? wrap(children) : elseWrap ? elseWrap(children) : children;\n"
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/utils\";\n\nexport const ConditionalWrap: ReactFC<{\n  condition?: boolean;\n  wrap: (c: React.ReactNode) => React.ReactElement;\n  elseWrap?: (c: React.ReactNode) => React.ReactElement;\n}> = ({ condition, children, wrap, elseWrap }) =>\n  !!condition ? wrap(children) : elseWrap ? elseWrap(children) : children;\n"
     }
   ]
 }

@@ -5,7 +5,7 @@
   "title": "Fill Height Spinner",
   "description": "A spinner component that fills and centers in its container height",
   "registryDependencies": [
-    "spinner"
+    "https://ui.kitze.io/r/spinner.json"
   ],
   "files": [
     {

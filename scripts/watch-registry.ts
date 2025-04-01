@@ -91,9 +91,19 @@ async function generateComponentFiles(configs: ComponentConfig[]) {
         ),
         files: await Promise.all(
           config.files.map(async (file) => {
-            const content = fs.readFileSync(file.path, "utf-8");
+            // Fix the file path handling to account for absolute paths
+            const filePath = file.path;
+            let content;
+
+            try {
+              content = fs.readFileSync(filePath, "utf-8");
+            } catch (error) {
+              console.error(`❌ Error reading file ${filePath}:`, error);
+              content = `/* Error: Could not read file ${filePath} */`;
+            }
+
             return {
-              path: file.path,
+              path: filePath,
               type: file.type,
               content,
             };
@@ -128,10 +138,17 @@ async function generateRegistry() {
       // Update file paths to be relative to the component's directory
       const componentDir = path.dirname(configFile);
       config.files = config.files.map(
-        (file: { path: string; type: string }) => ({
-          ...file,
-          path: path.join(componentDir, file.path),
-        })
+        (file: { path: string; type: string }) => {
+          // Fix path handling: if the path already starts with "registry/", don't prepend componentDir
+          const filePath = file.path.startsWith("registry/")
+            ? file.path
+            : path.join(componentDir, file.path);
+
+          return {
+            ...file,
+            path: filePath,
+          };
+        }
       );
 
       // Process registry dependencies
