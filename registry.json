@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "kitze",
+  "name": "kitze-ui",
   "homepage": "https://ui.kitze.io",
   "items": [
     {
