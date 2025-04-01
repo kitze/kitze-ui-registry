@@ -1,0 +1,26 @@
+{
+  "name": "custom-button",
+  "type": "registry:component",
+  "title": "Custom Button",
+  "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["conditional-tooltip", "spinner"],
+  "files": [
+    {
+      "path": "CustomButton.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "CustomButton.types.ts",
+      "type": "registry:component"
+    },
+    {
+      "path": "CustomButton.variants.ts",
+      "type": "registry:component"
+    },
+    {
+      "path": "CustomButton.config.ts",
+      "type": "registry:component"
+    }
+  ]
+}

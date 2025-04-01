@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { Spinner } from "@/registry/custom/Spinner";
+import { Spinner } from "@/registry/custom/spinner/Spinner";
 
-export function SpinnerExample() {
+export function Preview() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
@@ -47,13 +47,6 @@ export function SpinnerExample() {
             <Spinner size="xl" />
             <span className="text-xs text-muted-foreground">xl</span>
           </div>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium">Full Page Spinner</h3>
-        <div className="flex items-center justify-center p-4 border rounded-md bg-muted/50">
-          Cannot preview this component because it takes up the entire screen
         </div>
       </div>
     </div>

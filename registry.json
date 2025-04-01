@@ -7,10 +7,10 @@
       "name": "suspensed",
       "type": "registry:component",
       "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option.",
+      "description": "A wrapper component for React Suspense with force option",
       "files": [
         {
-          "path": "registry/custom/Suspensed.tsx",
+          "path": "registry/custom/suspensed/Suspensed.tsx",
           "type": "registry:component"
         }
       ]
@@ -19,69 +19,117 @@
       "name": "spinner",
       "type": "registry:component",
       "title": "Spinner",
-      "description": "A collection of loading spinner components with different variants and sizes.",
-      "dependencies": ["lucide-react"],
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/custom/Spinner.tsx",
+          "path": "registry/custom/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "hello-world",
+      "name": "simple-tooltip",
       "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
-      "registryDependencies": ["button"],
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
       "files": [
         {
-          "path": "registry/new-york/hello-world/hello-world.tsx",
+          "path": "registry/custom/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "example-form",
+      "name": "full-page-spinner",
       "type": "registry:component",
-      "title": "Example Form",
-      "description": "A contact form with Zod validation.",
-      "dependencies": ["zod"],
-      "registryDependencies": ["button", "input", "label", "textarea", "card"],
+      "title": "Full Page Spinner",
+      "description": "A spinner component that takes full page size and centers itself in the viewport",
+      "registryDependencies": [
+        "spinner"
+      ],
       "files": [
         {
-          "path": "registry/new-york/example-form/example-form.tsx",
+          "path": "registry/custom/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "complex-component",
+      "name": "fill-height-spinner",
       "type": "registry:component",
-      "title": "Complex Component",
-      "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": ["card"],
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "spinner"
+      ],
       "files": [
         {
-          "path": "registry/new-york/complex-component/page.tsx",
-          "type": "registry:page",
-          "target": "app/pokemon/page.tsx"
-        },
+          "path": "registry/custom/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "custom-button",
+      "type": "registry:component",
+      "title": "Custom Button",
+      "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "conditional-tooltip",
+        "spinner"
+      ],
+      "files": [
         {
-          "path": "registry/new-york/complex-component/components/pokemon-card.tsx",
+          "path": "registry/custom/custom-button/CustomButton.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/complex-component/components/pokemon-image.tsx",
+          "path": "registry/custom/custom-button/CustomButton.types.ts",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/complex-component/lib/pokemon.ts",
-          "type": "registry:lib"
+          "path": "registry/custom/custom-button/CustomButton.variants.ts",
+          "type": "registry:component"
         },
         {
-          "path": "registry/new-york/complex-component/hooks/use-pokemon.ts",
-          "type": "registry:hook"
+          "path": "registry/custom/custom-button/CustomButton.config.ts",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/custom/conditional-wrap/ConditionalWrap.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "conditional-tooltip",
+      "type": "registry:component",
+      "title": "Conditional Tooltip",
+      "description": "A tooltip component that conditionally renders based on a condition",
+      "registryDependencies": [
+        "simple-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/custom/conditional-tooltip/ConditionalTooltip.tsx",
+          "type": "registry:component"
         }
       ]
     }

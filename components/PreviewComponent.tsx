@@ -1,34 +1,50 @@
+"use client";
+
 import * as React from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { CopyInstallCommand } from "@/components/copy-install-command";
+import { SimpleTooltip } from "@/registry/custom/simple-tooltip/SimpleTooltip";
+import { ComponentName, componentMeta } from "@/lib/component-types";
+import { Button } from "@/components/ui/button";
+import { Copy } from "lucide-react";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 interface PreviewComponentProps {
-  name: string;
-  title: string;
-  description?: string;
+  name: ComponentName;
   children: React.ReactNode;
 }
 
-export function PreviewComponent({
-  name,
-  title,
-  description,
-  children,
-}: PreviewComponentProps) {
+export function PreviewComponent({ name, children }: PreviewComponentProps) {
+  const meta = componentMeta[name];
+  const installCommand = `npx shadcn-ui@latest add ${name}`;
+
+  const handleCopy = React.useCallback(() => {
+    navigator.clipboard.writeText(installCommand);
+    toast.success("Copied to clipboard!");
+  }, [installCommand]);
+
   return (
-    <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+    <div
+      className={cn("flex flex-col gap-4 border rounded-lg p-4", "relative")}
+    >
       <div className="flex flex-col gap-2">
-        <h2 className="text-sm text-muted-foreground sm:pl-3">
-          {description || title}
-        </h2>
-        <div className="flex items-center gap-2 sm:pl-3">
-          <CopyInstallCommand name={name} className="max-w-[500px]" />
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg font-semibold">{meta.title}</h2>
+          <SimpleTooltip content={installCommand}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8"
+              onClick={handleCopy}
+            >
+              <Copy className="h-4 w-4" />
+            </Button>
+          </SimpleTooltip>
           <OpenInV0Button name={name} className="w-fit shrink-0" />
         </div>
+        <p className="text-sm text-muted-foreground">{meta.description}</p>
       </div>
-      <div className="flex items-center justify-center min-h-[400px] relative">
-        {children}
-      </div>
+      <div className="flex flex-1 relative">{children}</div>
     </div>
   );
 }

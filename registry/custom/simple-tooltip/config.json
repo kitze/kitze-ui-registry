@@ -1,0 +1,13 @@
+{
+  "name": "simple-tooltip",
+  "type": "registry:component",
+  "title": "Simple Tooltip",
+  "description": "A simplified tooltip component built on top of Radix UI tooltip",
+  "registryDependencies": ["tooltip"],
+  "files": [
+    {
+      "path": "SimpleTooltip.tsx",
+      "type": "registry:component"
+    }
+  ]
+}

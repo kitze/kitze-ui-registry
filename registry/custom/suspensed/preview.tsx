@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Suspensed } from "@/registry/custom/Suspensed";
+import { Suspensed } from "./Suspensed";
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/registry/custom/Spinner";
+import { Spinner } from "@/registry/custom/spinner/Spinner";
 
-export function SuspensedExample() {
+export function Preview() {
   const [isForced, setIsForced] = React.useState(false);
 
   return (

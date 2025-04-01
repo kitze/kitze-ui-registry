@@ -4,7 +4,7 @@ import {
   LucideLoaderPinwheel,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ReactFC } from "./types";
+import { ReactFC } from "../../lib/types";
 import { Suspensed } from "./Suspensed";
 
 const variants = {
