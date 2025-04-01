@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ReactFC } from "../../../../lib/types";
+import { ReactFC } from "@/lib/utils";
 import { Spinner, SpinnerProps } from "./Spinner";
 import { cn } from "@/lib/utils";
 

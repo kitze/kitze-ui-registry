@@ -5,8 +5,7 @@ import {
   LucideLoaderCircle,
   LucideLoaderPinwheel,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { ReactFC } from "../../../../lib/types";
+import { cn, ReactFC } from "@/lib/utils";
 
 const variants = {
   default: LucideLoader,
