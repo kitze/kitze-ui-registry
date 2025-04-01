@@ -4,6 +4,18 @@
   "homepage": "https://ui.kitze.io",
   "items": [
     {
+      "name": "suspensed",
+      "type": "registry:component",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
+      "files": [
+        {
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -14,21 +26,6 @@
       "files": [
         {
           "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "spinner",
-      "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -49,28 +46,46 @@
       ]
     },
     {
-      "name": "fill-height-spinner",
+      "name": "full-page-spinner",
       "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
+      "title": "Full Page Spinner",
+      "description": "A spinner component that takes full page size and centers itself in the viewport",
       "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
+        "spinner"
       ],
       "files": [
         {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "suspensed",
+      "name": "spinner",
       "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/spinner/Spinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -84,27 +99,31 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://ui.kitze.io/r/conditional-tooltip.json",
-        "https://ui.kitze.io/r/spinner.json"
+        "conditional-tooltip",
+        "spinner"
       ],
       "files": [
         {
           "path": "registry/new-york/custom-button/CustomButton.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/custom-button/registry/new-york/hooks/useLinkableComponent.ts",
+          "type": "registry:hook"
         }
       ]
     },
     {
-      "name": "full-page-spinner",
+      "name": "conditional-tooltip",
       "type": "registry:component",
-      "title": "Full Page Spinner",
-      "description": "A spinner component that takes full page size and centers itself in the viewport",
+      "title": "Conditional Tooltip",
+      "description": "A tooltip component that conditionally renders based on a condition",
       "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
+        "simple-tooltip"
       ],
       "files": [
         {
-          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -117,21 +136,6 @@
       "files": [
         {
           "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "conditional-tooltip",
-      "type": "registry:component",
-      "title": "Conditional Tooltip",
-      "description": "A tooltip component that conditionally renders based on a condition",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/simple-tooltip.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component"
         }
       ]

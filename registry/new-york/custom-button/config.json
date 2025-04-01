@@ -9,6 +9,10 @@
     {
       "path": "CustomButton.tsx",
       "type": "registry:component"
+    },
+    {
+      "path": "registry/new-york/hooks/useLinkableComponent.ts",
+      "type": "registry:hook"
     }
   ]
 }
