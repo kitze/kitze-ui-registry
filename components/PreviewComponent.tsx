@@ -4,7 +4,6 @@ import * as React from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { SimpleTooltip } from "@/registry/new-york/simple-tooltip/SimpleTooltip";
 import { ComponentName, componentMeta } from "@/lib/component-types";
-import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
 import { cn, getRegistryUrl } from "@/lib/utils";

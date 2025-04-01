@@ -6,7 +6,6 @@
     "dev": "next dev --turbopack & tsx scripts/watch-registry.ts & npm run generate-types",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "registry:build": "shadcn build",
     "register": "tsx scripts/register-components.ts",
     "prebuild": "npm run register",
@@ -33,14 +32,11 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.0.17",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "chokidar": "^4.0.3",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.4",
     "glob": "^10.4.5",
     "postcss": "^8",
     "tailwindcss": "^4.0.17",
