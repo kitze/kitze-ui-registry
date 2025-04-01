@@ -18,6 +18,7 @@ interface ComponentConfig {
   files: {
     path: string;
     type: string;
+    content?: string;
   }[];
 }
 
@@ -26,6 +27,52 @@ interface Registry {
   name: string;
   homepage: string;
   items: ComponentConfig[];
+}
+
+// Function to ensure directory exists
+function ensureDirectoryExists(dirPath: string) {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+  }
+}
+
+// Function to generate individual component JSON files
+async function generateComponentFiles(configs: ComponentConfig[]) {
+  try {
+    ensureDirectoryExists("public/r");
+
+    for (const config of configs) {
+      const componentConfig = {
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        name: config.name,
+        type: config.type,
+        title: config.title,
+        description: config.description,
+        dependencies: config.dependencies,
+        registryDependencies: config.registryDependencies,
+        files: await Promise.all(
+          config.files.map(async (file) => {
+            const content = fs.readFileSync(file.path, "utf-8");
+            return {
+              path: file.path,
+              type: file.type,
+              content,
+            };
+          })
+        ),
+      };
+
+      fs.writeFileSync(
+        `public/r/${config.name}.json`,
+        JSON.stringify(componentConfig, null, 2),
+        "utf-8"
+      );
+    }
+
+    console.log("✅ Individual component JSON files generated");
+  } catch (error) {
+    console.error("❌ Error generating component JSON files:", error);
+  }
 }
 
 // Function to generate registry.json
@@ -62,6 +109,9 @@ async function generateRegistry() {
       JSON.stringify(registry, null, 2),
       "utf-8"
     );
+
+    // Generate individual component files
+    await generateComponentFiles(configs);
 
     console.log("✅ registry.json generated");
   } catch (error) {

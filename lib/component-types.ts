@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "spinner" | "suspensed" | "simple-tooltip" | "simple-accordion" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip";
+export type ComponentName = "suspensed" | "spinner" | "simple-tooltip" | "full-page-spinner" | "simple-accordion" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip";
 
 export interface ComponentMeta {
   name: ComponentName;
@@ -8,30 +8,30 @@ export interface ComponentMeta {
 }
 
 export const componentMeta: Record<ComponentName, ComponentMeta> = {
-  "spinner": {
-    name: "spinner",
-    title: "Spinner",
-    description: "A customizable loading spinner component with different variants and sizes"
-  },
   "suspensed": {
     name: "suspensed",
     title: "Suspensed",
     description: "A wrapper component for React Suspense with force option"
+  },
+  "spinner": {
+    name: "spinner",
+    title: "Spinner",
+    description: "A customizable loading spinner component with different variants and sizes"
   },
   "simple-tooltip": {
     name: "simple-tooltip",
     title: "Simple Tooltip",
     description: "A simplified tooltip component built on top of Radix UI tooltip"
   },
-  "simple-accordion": {
-    name: "simple-accordion",
-    title: "Simple Accordion",
-    description: "A simple accordion component"
-  },
   "full-page-spinner": {
     name: "full-page-spinner",
     title: "Full Page Spinner",
     description: "A spinner component that takes full page size and centers itself in the viewport"
+  },
+  "simple-accordion": {
+    name: "simple-accordion",
+    title: "Simple Accordion",
+    description: "A simple accordion component"
   },
   "fill-height-spinner": {
     name: "fill-height-spinner",

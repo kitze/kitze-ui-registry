@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "simple-tooltip",
+  "type": "registry:component",
+  "title": "Simple Tooltip",
+  "description": "A simplified tooltip component built on top of Radix UI tooltip",
+  "registryDependencies": [
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport { cn } from \"@/lib/utils\";\n\ninterface SimpleTooltipProps {\n  children: React.ReactNode;\n  content: string;\n  className?: string;\n  tooltipClassName?: string;\n}\n\nexport const SimpleTooltip: React.FC<SimpleTooltipProps> = ({\n  children,\n  content,\n  className,\n  tooltipClassName,\n}): React.ReactNode => {\n  if (!content) {\n    return children;\n  }\n\n  return (\n    <TooltipProvider delayDuration={0}>\n      <Tooltip>\n        <TooltipTrigger asChild className={className}>\n          {children}\n        </TooltipTrigger>\n        <TooltipContent className={cn(\"max-w-[200px]\", tooltipClassName)}>\n          {content}\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};\n"
+    }
+  ]
+}

@@ -16,6 +16,21 @@
       ]
     },
     {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/spinner/Spinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -41,21 +56,6 @@
       "files": [
         {
           "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "spinner",
-      "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]

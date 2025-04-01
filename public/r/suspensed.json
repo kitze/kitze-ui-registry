@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "suspensed",
+  "type": "registry:component",
+  "title": "Suspensed",
+  "description": "A wrapper component for React Suspense with force option",
+  "files": [
+    {
+      "path": "registry/new-york/suspensed/Suspensed.tsx",
+      "type": "registry:component",
+      "content": "import { ReactNode, Suspense } from \"react\";\n\ninterface SuspensedProps {\n  children: ReactNode;\n  fallback?: ReactNode;\n  force?: boolean;\n}\n\nexport const Suspensed = ({\n  children,\n  fallback = null,\n  force = false,\n}: SuspensedProps) => {\n  if (force) {\n    return fallback;\n  }\n  return <Suspense fallback={fallback}>{children}</Suspense>;\n};\n"
+    }
+  ]
+}
