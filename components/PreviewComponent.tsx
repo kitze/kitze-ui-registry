@@ -17,7 +17,8 @@ interface PreviewComponentProps {
 export function PreviewComponent({ name, children }: PreviewComponentProps) {
   const meta = componentMeta[name];
   if (!meta) {
-    return console.error(`Component ${name} not found`);
+    console.error(`Component ${name} not found`);
+    return null;
   }
   const installCommand = `npx shadcn@latest add ${getRegistryUrl(name)}`;
 
