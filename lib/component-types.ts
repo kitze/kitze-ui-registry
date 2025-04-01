@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "suspensed" | "simple-tooltip" | "full-page-spinner" | "fill-height-spinner" | "conditional-tooltip" | "conditional-wrap" | "spinner" | "custom-button";
+export type ComponentName = "spinner" | "suspensed" | "simple-tooltip" | "simple-accordion" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip";
 
 export interface ComponentMeta {
   name: ComponentName;
@@ -8,6 +8,11 @@ export interface ComponentMeta {
 }
 
 export const componentMeta: Record<ComponentName, ComponentMeta> = {
+  "spinner": {
+    name: "spinner",
+    title: "Spinner",
+    description: "A customizable loading spinner component with different variants and sizes"
+  },
   "suspensed": {
     name: "suspensed",
     title: "Suspensed",
@@ -17,6 +22,11 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "simple-tooltip",
     title: "Simple Tooltip",
     description: "A simplified tooltip component built on top of Radix UI tooltip"
+  },
+  "simple-accordion": {
+    name: "simple-accordion",
+    title: "Simple Accordion",
+    description: "A simple accordion component"
   },
   "full-page-spinner": {
     name: "full-page-spinner",
@@ -28,24 +38,19 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Fill Height Spinner",
     description: "A spinner component that fills and centers in its container height"
   },
-  "conditional-tooltip": {
-    name: "conditional-tooltip",
-    title: "Conditional Tooltip",
-    description: "A tooltip component that conditionally renders based on a condition"
+  "custom-button": {
+    name: "custom-button",
+    title: "Custom Button",
+    description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
   },
   "conditional-wrap": {
     name: "conditional-wrap",
     title: "Conditional Wrap",
     description: "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc."
   },
-  "spinner": {
-    name: "spinner",
-    title: "Spinner",
-    description: "A customizable loading spinner component with different variants and sizes"
-  },
-  "custom-button": {
-    name: "custom-button",
-    title: "Custom Button",
-    description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
+  "conditional-tooltip": {
+    name: "conditional-tooltip",
+    title: "Conditional Tooltip",
+    description: "A tooltip component that conditionally renders based on a condition"
   }
 } as const;

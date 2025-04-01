@@ -16,21 +16,6 @@
       ]
     },
     {
-      "name": "spinner",
-      "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/spinner/Spinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -41,6 +26,36 @@
       "files": [
         {
           "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-accordion",
+      "type": "registry:component",
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -76,18 +91,6 @@
       ]
     },
     {
-      "name": "conditional-wrap",
-      "type": "registry:component",
-      "title": "Conditional Wrap",
-      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
-      "files": [
-        {
-          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "custom-button",
       "type": "registry:component",
       "title": "Custom Button",
@@ -102,6 +105,18 @@
       "files": [
         {
           "path": "registry/new-york/custom-button/CustomButton.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
           "type": "registry:component"
         }
       ]

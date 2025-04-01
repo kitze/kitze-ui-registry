@@ -35,6 +35,7 @@ export default function Home() {
             "simple-tooltip",
             "conditional-wrap",
             "conditional-tooltip",
+            "simple-accordion",
           ]}
         />
       </main>

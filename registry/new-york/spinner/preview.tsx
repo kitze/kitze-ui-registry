@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Spinner } from "@/registry/n/spinner/Spinner";
+import { Spinner } from "@/registry/new-york/spinner/Spinner";
 
 export function Preview() {
   return (

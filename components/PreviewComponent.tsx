@@ -2,12 +2,13 @@
 
 import * as React from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { SimpleTooltip } from "@/registry/n/simple-tooltip/SimpleTooltip";
+import { SimpleTooltip } from "@/registry/new-york/simple-tooltip/SimpleTooltip";
 import { ComponentName, componentMeta } from "@/lib/component-types";
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
+import { cn, getRegistryUrl } from "@/lib/utils";
+import { CustomButton } from "@/registry/new-york/custom-button/CustomButton";
 
 interface PreviewComponentProps {
   name: ComponentName;
@@ -16,7 +17,7 @@ interface PreviewComponentProps {
 
 export function PreviewComponent({ name, children }: PreviewComponentProps) {
   const meta = componentMeta[name];
-  const installCommand = `npx shadcn@latest add ${name}`;
+  const installCommand = `npx shadcn@latest add ${getRegistryUrl(name)}`;
 
   const handleCopy = React.useCallback(() => {
     navigator.clipboard.writeText(installCommand);
@@ -31,14 +32,13 @@ export function PreviewComponent({ name, children }: PreviewComponentProps) {
         <div className="flex items-center gap-2">
           <h2 className="text-lg font-semibold">{meta.title}</h2>
           <SimpleTooltip content={installCommand}>
-            <Button
+            <CustomButton
+              tooltip={installCommand}
+              icon={Copy}
               variant="ghost"
-              size="icon"
               className="h-8 w-8"
               onClick={handleCopy}
-            >
-              <Copy className="h-4 w-4" />
-            </Button>
+            />
           </SimpleTooltip>
           <OpenInV0Button name={name} className="w-fit shrink-0" />
         </div>
