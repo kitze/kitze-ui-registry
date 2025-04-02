@@ -16,7 +16,7 @@
     },
     {
       "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
-      "type": "registry:context",
+      "type": "registry:component",
       "content": "import { createContext, useContext } from \"react\";\n\ninterface DrawerContextType {\n  close: () => void;\n}\n\nexport const DrawerContext = createContext<DrawerContextType | null>(null);\n\nexport const useDrawer = () => {\n  const context = useContext(DrawerContext);\n  if (!context) {\n    throw new Error(\"useDrawer must be used within a DrawerProvider\");\n  }\n  return context;\n};\n"
     },
     {

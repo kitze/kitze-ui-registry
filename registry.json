@@ -31,6 +31,21 @@
       ]
     },
     {
+      "name": "simple-accordion",
+      "type": "registry:component",
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -46,16 +61,16 @@
       ]
     },
     {
-      "name": "simple-accordion",
+      "name": "full-page-spinner",
       "type": "registry:component",
-      "title": "Simple Accordion",
-      "description": "A simple accordion component",
+      "title": "Full Page Spinner",
+      "description": "A spinner component that takes full page size and centers itself in the viewport",
       "registryDependencies": [
-        "accordion"
+        "https://ui.kitze.io/r/spinner.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -81,16 +96,16 @@
       ]
     },
     {
-      "name": "full-page-spinner",
+      "name": "fill-height-spinner",
       "type": "registry:component",
-      "title": "Full Page Spinner",
-      "description": "A spinner component that takes full page size and centers itself in the viewport",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
       "registryDependencies": [
         "https://ui.kitze.io/r/spinner.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -161,26 +176,11 @@
         },
         {
           "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
-          "type": "registry:context"
+          "type": "registry:component"
         },
         {
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook"
-        }
-      ]
-    },
-    {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component"
         }
       ]
     }

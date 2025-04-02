@@ -11,7 +11,7 @@
     },
     {
       "path": "DrawerContext.tsx",
-      "type": "registry:context"
+      "type": "registry:component"
     },
     {
       "path": "registry/hooks/useControlledOpen.ts",
