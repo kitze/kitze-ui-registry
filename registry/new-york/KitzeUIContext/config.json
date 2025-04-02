@@ -1,5 +1,5 @@
 {
-  "name": "KitzeUIContext",
+  "name": "kitze-ui-context",
   "type": "registry:component",
   "title": "Kitze UI Context",
   "description": "Provides UI context like mobile detection for Kitze UI components.",

@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "suspensed" | "spinner" | "simple-tooltip" | "simple-accordion" | "page-header" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "KitzeUIContext";
+export type ComponentName = "suspensed" | "spinner" | "simple-tooltip" | "simple-accordion" | "page-header" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "kitze-ui-context";
 
 export interface ComponentMeta {
   name: ComponentName;
@@ -63,8 +63,8 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Bottom Drawer",
     description: "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations"
   },
-  "KitzeUIContext": {
-    name: "KitzeUIContext",
+  "kitze-ui-context": {
+    name: "kitze-ui-context",
     title: "Kitze UI Context",
     description: "Provides UI context like mobile detection for Kitze UI components."
   }
