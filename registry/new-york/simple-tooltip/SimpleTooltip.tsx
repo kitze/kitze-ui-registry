@@ -7,6 +7,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { TooltipPortal } from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
 
 interface SimpleTooltipProps {
@@ -32,9 +33,11 @@ export const SimpleTooltip: React.FC<SimpleTooltipProps> = ({
         <TooltipTrigger asChild className={className}>
           {children}
         </TooltipTrigger>
-        <TooltipContent className={cn("max-w-[200px]", tooltipClassName)}>
-          {content}
-        </TooltipContent>
+        <TooltipPortal>
+          <TooltipContent className={cn("max-w-[200px]", tooltipClassName)}>
+            {content}
+          </TooltipContent>
+        </TooltipPortal>
       </Tooltip>
     </TooltipProvider>
   );

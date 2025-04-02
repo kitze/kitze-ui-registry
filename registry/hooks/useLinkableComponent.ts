@@ -18,7 +18,7 @@ export function useLinkableComponent<T extends LinkableProps>(props: T) {
     }),
   };
 
-  const Component = href ? (external ? "a" : Link) : undefined;
+  const Component = href ? (external ? "a" : Link) : "div";
 
   return {
     Component,

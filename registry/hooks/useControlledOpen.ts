@@ -1,37 +1,43 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 interface UseControlledOpenProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
-  defaultOpen?: boolean;
+}
+
+interface UseControlledOpenResult {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  close: () => void;
 }
 
 export const useControlledOpen = ({
-  open: controlledOpen,
-  onOpenChange: controlledOnOpenChange,
-  defaultOpen = false,
-}: UseControlledOpenProps = {}) => {
-  const [internalOpen, setInternalOpen] = useState(defaultOpen);
+  open,
+  onOpenChange,
+}: UseControlledOpenProps): UseControlledOpenResult => {
+  const [internalOpen, setInternalOpen] = useState(false);
 
-  const isControlled = controlledOpen !== undefined;
-  const isOpen = isControlled ? controlledOpen : internalOpen;
+  // Determine if the component is controlled or uncontrolled
+  const isControlled = open !== undefined;
+  const isOpen = isControlled ? open : internalOpen;
 
-  const setIsOpen = useCallback(
-    (open: boolean) => {
-      if (!isControlled) {
-        setInternalOpen(open);
-      }
-      controlledOnOpenChange?.(open);
-    },
-    [isControlled, controlledOnOpenChange]
-  );
-
-  const close = useCallback(() => setIsOpen(false), [setIsOpen]);
-
-  return {
-    isOpen,
-    setIsOpen,
-    close,
-    isControlled,
+  const setIsOpen = (newOpen: boolean) => {
+    if (!isControlled) {
+      setInternalOpen(newOpen);
+    }
+    if (onOpenChange) {
+      onOpenChange(newOpen);
+    }
   };
+
+  const close = () => setIsOpen(false);
+
+  // Sync internal state with controlled prop
+  useEffect(() => {
+    if (isControlled) {
+      setInternalOpen(open);
+    }
+  }, [isControlled, open]);
+
+  return { isOpen, setIsOpen, close };
 };

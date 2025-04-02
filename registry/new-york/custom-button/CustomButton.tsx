@@ -199,8 +199,8 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
       text: "var(--color-destructive-foreground)",
     },
     primary: {
-      bg: "var(--color-primary-foreground)",
-      text: "var(--color-primary)",
+      bg: "var(--color-primary)",
+      text: "var(--color-primary-foreground)",
     },
     secondary: {
       bg: "var(--color-secondary)",

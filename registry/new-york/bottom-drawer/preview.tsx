@@ -1,96 +1,66 @@
-import React, { useState } from "react";
-import { BottomDrawer } from "@/registry/new-york/bottom-drawer/BottomDrawer";
+import React from "react";
+import { BottomDrawerMenu } from "./BottomDrawerMenu";
+import { CommonMenuItem } from "@/registry/new-york/simple-dropdown-menu/CommonMenuItem";
+import { CommonMenuLabel } from "@/registry/new-york/simple-dropdown-menu/CommonMenuLabel";
+import { CommonMenuSeparator } from "@/registry/new-york/simple-dropdown-menu/CommonMenuSeparator";
+import { CommonMenuGroup } from "@/registry/new-york/simple-dropdown-menu/CommonMenuGroup";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import {
+  User,
+  Settings,
+  LogOut,
+  Bell,
+  Bookmark,
+  Edit,
+  Trash,
+  HelpCircle,
+} from "lucide-react";
 
-export default function BottomDrawerPreview() {
-  const [open, setOpen] = useState(false);
-
+export default function BottomDrawerMenuPreview() {
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-wrap gap-4">
-        <Button onClick={() => setOpen(true)}>Open Default Drawer</Button>
-        <BottomDrawer open={open} onOpenChange={setOpen} title="Default Drawer">
-          <div className="p-4">
-            <p className="text-zinc-600 dark:text-zinc-400">
-              This is a simple drawer component built on top of Vaul.
-            </p>
-          </div>
-        </BottomDrawer>
-      </div>
-
-      <div className="flex flex-wrap gap-4">
-        <BottomDrawer
-          trigger={<Button variant="outline">Custom Trigger</Button>}
-          title="Drawer with Custom Trigger"
+      <div className="flex flex-wrap items-center justify-center gap-8 p-8 border rounded-lg">
+        <BottomDrawerMenu
+          content={
+            <>
+              <CommonMenuLabel>My Account</CommonMenuLabel>
+              <CommonMenuSeparator />
+              <CommonMenuGroup>
+                <CommonMenuItem leftIcon={User}>Profile</CommonMenuItem>
+                <CommonMenuItem leftIcon={Settings}>Settings</CommonMenuItem>
+                <CommonMenuItem leftIcon={Bell}>Notifications</CommonMenuItem>
+                <CommonMenuItem leftIcon={Bookmark}>Saved Items</CommonMenuItem>
+              </CommonMenuGroup>
+              <CommonMenuSeparator />
+              <CommonMenuItem leftIcon={LogOut} destructive>
+                Log out
+              </CommonMenuItem>
+            </>
+          }
         >
-          <div className="p-4">
-            <p className="text-zinc-600 dark:text-zinc-400">
-              This drawer uses a custom trigger element.
-            </p>
-          </div>
-        </BottomDrawer>
-      </div>
+          <Button variant="outline">User Menu</Button>
+        </BottomDrawerMenu>
 
-      <div className="flex flex-wrap gap-4">
-        <BottomDrawer
-          trigger={<Button variant="secondary">Custom Header</Button>}
-          renderHeader={({ handle, close }) => (
-            <div className="flex flex-col">
-              {handle}
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold">Custom Header</h2>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 w-8 p-0"
-                  onClick={close}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          )}
+        <BottomDrawerMenu
+          content={
+            <>
+              <CommonMenuLabel>Actions</CommonMenuLabel>
+              <CommonMenuItem leftIcon={Edit}>Edit</CommonMenuItem>
+              <CommonMenuItem leftIcon={Bookmark}>Bookmark</CommonMenuItem>
+              <CommonMenuItem
+                leftIcon={HelpCircle}
+                hint="Get detailed information about this document"
+              >
+                Help
+              </CommonMenuItem>
+              <CommonMenuItem leftIcon={Trash} destructive>
+                Delete
+              </CommonMenuItem>
+            </>
+          }
         >
-          <div className="p-4">
-            <p className="text-zinc-600 dark:text-zinc-400">
-              This drawer has a custom header with a close button.
-            </p>
-          </div>
-        </BottomDrawer>
-      </div>
-
-      <div className="flex flex-wrap gap-4">
-        <BottomDrawer
-          trigger={<Button variant="destructive">No Header</Button>}
-          renderHeader={null}
-        >
-          <div className="p-6">
-            <h2 className="text-lg font-semibold mb-4">No Header</h2>
-            <p className="text-zinc-600 dark:text-zinc-400">
-              This drawer has no header or handle.
-            </p>
-          </div>
-        </BottomDrawer>
-      </div>
-
-      <div className="flex flex-wrap gap-4">
-        <BottomDrawer
-          trigger={<Button variant="outline">Custom Styles</Button>}
-          title="Custom Styled Drawer"
-          classNames={{
-            overlay: "bg-blue-950/40 backdrop-blur-sm",
-            content: "bg-blue-50 dark:bg-blue-950 max-w-md",
-            handle: "bg-blue-400 dark:bg-blue-600 w-16",
-            title: "text-blue-800 dark:text-blue-300 text-xl",
-          }}
-        >
-          <div className="p-4">
-            <p className="text-blue-600 dark:text-blue-400">
-              This drawer has custom styling applied to various parts.
-            </p>
-          </div>
-        </BottomDrawer>
+          <Button>Document Actions</Button>
+        </BottomDrawerMenu>
       </div>
     </div>
   );

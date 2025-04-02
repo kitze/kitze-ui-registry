@@ -17,6 +17,18 @@ export default function CustomButtonPreview() {
 
       <ComponentPropVariant
         component={CustomButton}
+        componentProps={{
+          color: "pink-400",
+        }}
+        variants={{
+          prop: "variant",
+          values: ["default", "outline", "ghost", "link"],
+        }}
+        className="flex flex-wrap gap-4 *:w-auto *:min-w-[120px]"
+      />
+
+      <ComponentPropVariant
+        component={CustomButton}
         variants={{
           prop: "size",
           values: ["xs", "sm", "md", "lg"],

@@ -2,20 +2,41 @@
   "name": "bottom-drawer",
   "type": "registry:component",
   "title": "Bottom Drawer",
-  "description": "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations",
+  "description": "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant.",
   "dependencies": ["vaul", "framer-motion"],
+  "registryDependencies": ["simple-dropdown-menu", "kitze-ui-context"],
   "files": [
     {
       "path": "BottomDrawer.tsx",
       "type": "registry:component"
     },
     {
-      "path": "DrawerContext.tsx",
+      "path": "BottomDrawerMenu.tsx",
       "type": "registry:component"
     },
     {
-      "path": "registry/hooks/useControlledOpen.ts",
-      "type": "registry:hook"
+      "path": "DrawerContext.tsx",
+      "type": "registry:context"
+    },
+    {
+      "path": "BottomDrawerMenuItem.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "BottomDrawerMenuComponents.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "previews": [
+    {
+      "name": "bottom-drawer",
+      "path": "preview.tsx",
+      "title": "Bottom Drawer"
+    },
+    {
+      "name": "bottom-drawer-menu",
+      "path": "menu-preview.tsx",
+      "title": "Bottom Drawer Menu"
     }
   ]
 }

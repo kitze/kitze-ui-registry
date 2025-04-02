@@ -26,22 +26,6 @@
       ]
     },
     {
-      "name": "theme-switch-slider",
-      "type": "registry:component",
-      "title": "Theme Switch Slider",
-      "description": "A beautiful animated theme switcher with a sliding control and animated stars",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "theme-switch-minimal-next-themes",
       "type": "registry:component",
       "title": "Theme Switch Minimal with Next-Themes",
@@ -79,6 +63,22 @@
       ]
     },
     {
+      "name": "theme-switch-slider",
+      "type": "registry:component",
+      "title": "Theme Switch Slider",
+      "description": "A beautiful animated theme switcher with a sliding control and animated stars",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "suspensed",
       "type": "registry:component",
       "title": "Suspensed",
@@ -86,21 +86,6 @@
       "files": [
         {
           "path": "registry/new-york/suspensed/Suspensed.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-tooltip",
-      "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "registryDependencies": [
-        "tooltip"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -116,6 +101,105 @@
       "files": [
         {
           "path": "registry/new-york/spinner/Spinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-context-menu",
+      "type": "registry:component",
+      "title": "Simple Context Menu",
+      "description": "A simple context menu component that wraps content with right-click menu functionality",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-tooltip.json",
+        "https://ui.kitze.io/r/simple-dropdown-menu.json",
+        "https://ui.kitze.io/r/bottom-drawer.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-context-menu/SimpleContextMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-context-menu/ResponsiveContextMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hooks/useLinkableComponent.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/KitzeUIContext/MenuContext.tsx",
+          "type": "registry:context"
+        }
+      ]
+    },
+    {
+      "name": "simple-dropdown-menu",
+      "type": "registry:component",
+      "title": "Simple Dropdown Menu",
+      "description": "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-tooltip.json",
+        "https://ui.kitze.io/r/bottom-drawer.json",
+        "https://ui.kitze.io/r/kitze-ui-context.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-dropdown-menu/SimpleDropdownMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/ResponsiveDropdownMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuItem.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuLabel.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuSeparator.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuGroup.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/bottom-drawer/BottomDrawerMenuItem.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/bottom-drawer/BottomDrawerMenuComponents.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hooks/useLinkableComponent.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/KitzeUIContext/MenuContext.tsx",
+          "type": "registry:context"
+        }
+      ]
+    },
+    {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -171,6 +255,21 @@
       ]
     },
     {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "custom-button",
       "type": "registry:component",
       "title": "Custom Button",
@@ -194,6 +293,18 @@
       ]
     },
     {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "conditional-tooltip",
       "type": "registry:component",
       "title": "Conditional Tooltip",
@@ -205,30 +316,6 @@
         {
           "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "bottom-drawer",
-      "type": "registry:component",
-      "title": "Bottom Drawer",
-      "description": "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations",
-      "dependencies": [
-        "vaul",
-        "framer-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/bottom-drawer/BottomDrawer.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/hooks/useControlledOpen.ts",
-          "type": "registry:hook"
         }
       ]
     },
@@ -248,29 +335,78 @@
       ]
     },
     {
-      "name": "conditional-wrap",
+      "name": "bottom-drawer",
       "type": "registry:component",
-      "title": "Conditional Wrap",
-      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "title": "Bottom Drawer",
+      "description": "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant.",
+      "dependencies": [
+        "vaul",
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-dropdown-menu.json",
+        "https://ui.kitze.io/r/kitze-ui-context.json"
+      ],
       "files": [
         {
-          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
+          "path": "registry/new-york/bottom-drawer/BottomDrawer.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/bottom-drawer/BottomDrawerMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
+          "type": "registry:context"
+        },
+        {
+          "path": "registry/new-york/bottom-drawer/BottomDrawerMenuItem.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/bottom-drawer/BottomDrawerMenuComponents.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "previews": [
+        {
+          "name": "bottom-drawer",
+          "path": "preview.tsx",
+          "title": "Bottom Drawer"
+        },
+        {
+          "name": "bottom-drawer-menu",
+          "path": "menu-preview.tsx",
+          "title": "Bottom Drawer Menu"
         }
       ]
     },
     {
-      "name": "fill-height-spinner",
+      "name": "ui-alert",
       "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
+      "title": "UI Alert",
+      "description": "A collection of alert components with confirm and delete variations",
+      "dependencies": [],
       "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
+        "KitzeUIContext"
       ],
       "files": [
         {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "path": "registry/new-york/ui-alert/Alert.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/ui-alert/ConfirmAlert.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/ui-alert/ConfirmAlertDelete.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/ui-alert/AlertContext.tsx",
+          "type": "registry:context"
         }
       ]
     }

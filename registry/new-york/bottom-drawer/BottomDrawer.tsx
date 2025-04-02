@@ -55,7 +55,7 @@ export const BottomDrawer: ReactFC<BottomDrawerProps> = ({
       {title && (
         <div
           className={cn(
-            "text-lg font-semibold mb-4 text-zinc-900 dark:text-white",
+            "text-lg pl-4 font-semibold mb-4 text-zinc-900 dark:text-white",
             classNames?.title
           )}
         >
@@ -101,6 +101,7 @@ export const BottomDrawer: ReactFC<BottomDrawerProps> = ({
             className={cn(
               "bg-white dark:bg-zinc-900 w-[95%] flex flex-col rounded-t-[10px] fixed bottom-0 left-0 right-0 z-[9999] mx-auto",
               "dark:border-t dark:border-zinc-800",
+              "max-w-[500px]",
               classNames?.content,
               {
                 "py-6": !noHeader,

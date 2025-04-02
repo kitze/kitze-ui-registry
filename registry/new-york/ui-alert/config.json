@@ -1,0 +1,26 @@
+{
+  "name": "ui-alert",
+  "type": "registry:component",
+  "title": "UI Alert",
+  "description": "A collection of alert components with confirm and delete variations",
+  "dependencies": [],
+  "registryDependencies": ["KitzeUIContext"],
+  "files": [
+    {
+      "path": "Alert.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "ConfirmAlert.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "ConfirmAlertDelete.tsx",
+      "type": "registry:component"
+    },
+    {
+      "path": "AlertContext.tsx",
+      "type": "registry:context"
+    }
+  ]
+}

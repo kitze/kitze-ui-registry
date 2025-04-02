@@ -1,76 +1,59 @@
+"use client";
 import * as React from "react";
-import { PreviewComponents } from "@/components/PreviewComponents";
-import { ThemeSwitchNextThemes } from "@/registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes";
+import { KitzeUIProvider } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import { useMedia } from "use-media";
+import { AlertProvider } from "@/registry/new-york/ui-alert";
+import { Header } from "@/components/Header";
+import { PageContent } from "@/components/PageContent";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { AppSidebar } from "@/components/app-sidebar";
 
 export default function Home() {
+  const isMobile = useMedia({ maxWidth: 768 });
+
   return (
-    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
-      <header className="flex flex-col gap-1">
-        <div className="relative">
-          <img src="/spaceship.jpg" className="w-full rounded-2xl" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-2xl" />
-          <div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <h1 className="text-4xl font-bold tracking-tight">
-                Kitze UI 🤝 shadcn
-              </h1>
-              <p className="text-white/80 text-xl">
-                by{" "}
-                <a
-                  href="https://twitter.com/thekitze"
-                  className="hover:text-white"
-                >
-                  @thekitze
-                </a>
-              </p>
+    <KitzeUIProvider isMobile={isMobile}>
+      <AlertProvider>
+        <SidebarProvider>
+          <AppSidebar />
+          <SidebarInset>
+            <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+              <div className="flex items-center gap-2 px-3">
+                <SidebarTrigger />
+                <Separator orientation="vertical" className="mr-2 h-4" />
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem className="hidden md:block">
+                      <BreadcrumbLink href="#">Kitze UI</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator className="hidden md:block" />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>Components</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
+              </div>
+            </header>
+            <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+              <Header />
+              <PageContent />
             </div>
-
-            <ThemeSwitchNextThemes className="absolute bottom-4 right-4" />
-          </div>
-        </div>
-      </header>
-      <main className="flex flex-col flex-1 gap-8">
-        <PreviewComponents
-          title="Core Components"
-          description="The main set of Kitze UI components built on top of shadcn/ui."
-          names={[
-            "custom-button",
-            "spinner",
-            "full-page-spinner",
-            "fill-height-spinner",
-            "suspensed",
-            "page-header",
-            "bottom-drawer",
-          ]}
-        />
-
-        <PreviewComponents
-          title="Simplified Components"
-          description="These are simplified components that use the shadcn components under the hood, but with much less boilerplate."
-          names={["simple-tooltip", "simple-accordion"]}
-        />
-
-        <PreviewComponents
-          title="Conditionals"
-          description="Utility components for conditionally rendering or wrapping content."
-          names={["conditional-wrap", "conditional-tooltip"]}
-        />
-
-        <PreviewComponents
-          title="Theme switches"
-          description="A set of components for switching between light and dark mode."
-          names={["theme-switch-minimal", "theme-switch-slider"]}
-        />
-
-        <PreviewComponents
-          title="Theme switches for Next Themes"
-          description="A set of components that are connected to the Next Themes library."
-          names={[
-            "theme-switch-slider-next-themes",
-            "theme-switch-minimal-next-themes",
-          ]}
-        />
-      </main>
-    </div>
+          </SidebarInset>
+        </SidebarProvider>
+      </AlertProvider>
+    </KitzeUIProvider>
   );
 }
