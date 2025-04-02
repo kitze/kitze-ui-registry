@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-switch-slider-next-themes",
+  "type": "registry:component",
+  "title": "Theme Switch Slider with Next-Themes",
+  "description": "A theme switcher slider that integrates with the next-themes library for persistent theme management",
+  "dependencies": [
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "https://ui.kitze.io/r/theme-switch-slider.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes.tsx",
+      "type": "registry:component",
+      "content": "import { useTheme } from \"next-themes\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { useMounted } from \"@/registry/hooks/useMounted\";\nimport { ThemeSwitchSlider } from \"@/registry/new-york/theme-switch-slider/ThemeSwitchSlider\";\n\nexport interface ThemeSwitchNextThemesProps {\n  className?: string;\n}\n\nexport const ThemeSwitchNextThemes: ReactFC<ThemeSwitchNextThemesProps> = ({\n  className,\n}) => {\n  const { theme, setTheme } = useTheme();\n  const isDark = theme === \"dark\";\n  const toggleTheme = () => setTheme(isDark ? \"light\" : \"dark\");\n  const mounted = useMounted();\n\n  if (!mounted) {\n    return null;\n  }\n\n  return (\n    <ThemeSwitchSlider\n      theme={theme || \"light\"}\n      setTheme={setTheme}\n      isDark={isDark}\n      toggleTheme={toggleTheme}\n      className={className}\n    />\n  );\n};\n"
+    }
+  ]
+}

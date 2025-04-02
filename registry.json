@@ -4,6 +4,70 @@
   "homepage": "https://ui.kitze.io",
   "items": [
     {
+      "name": "theme-switch-slider-next-themes",
+      "type": "registry:component",
+      "title": "Theme Switch Slider with Next-Themes",
+      "description": "A theme switcher slider that integrates with the next-themes library for persistent theme management",
+      "dependencies": [
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/theme-switch-slider.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "theme-switch-slider",
+      "type": "registry:component",
+      "title": "Theme Switch Slider",
+      "description": "A beautiful animated theme switcher with a sliding control and animated stars",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "theme-switch-minimal-next-themes",
+      "type": "registry:component",
+      "title": "Theme Switch Minimal with Next-Themes",
+      "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
+      "dependencies": [
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/theme-switch-minimal.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "suspensed",
+      "type": "registry:component",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
+      "files": [
+        {
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:component",
       "title": "Spinner",
@@ -19,13 +83,35 @@
       ]
     },
     {
-      "name": "suspensed",
+      "name": "theme-switch-minimal",
       "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
+      "title": "Theme Switch Minimal",
+      "description": "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/custom-button.json"
+      ],
       "files": [
         {
-          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/theme-switch-minimal/ThemeSwitchMinimal.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -81,16 +167,54 @@
       ]
     },
     {
-      "name": "simple-tooltip",
+      "name": "fill-height-spinner",
       "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
       "registryDependencies": [
-        "tooltip"
+        "https://ui.kitze.io/r/spinner.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "custom-button",
+      "type": "registry:component",
+      "title": "Custom Button",
+      "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/conditional-tooltip.json",
+        "https://ui.kitze.io/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/custom-button/CustomButton.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/hooks/useLinkableComponent.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "conditional-tooltip",
+      "type": "registry:component",
+      "title": "Conditional Tooltip",
+      "description": "A tooltip component that conditionally renders based on a condition",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -132,21 +256,6 @@
       ]
     },
     {
-      "name": "conditional-tooltip",
-      "type": "registry:component",
-      "title": "Conditional Tooltip",
-      "description": "A tooltip component that conditionally renders based on a condition",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/simple-tooltip.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "kitze-ui-context",
       "type": "registry:component",
       "title": "Kitze UI Context",
@@ -158,44 +267,6 @@
         {
           "path": "registry/new-york/KitzeUIContext/KitzeUIContext.tsx",
           "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "custom-button",
-      "type": "registry:component",
-      "title": "Custom Button",
-      "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
-      "dependencies": [
-        "class-variance-authority"
-      ],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/conditional-tooltip.json",
-        "https://ui.kitze.io/r/spinner.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/custom-button/CustomButton.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/hooks/useLinkableComponent.ts",
-          "type": "registry:hook"
         }
       ]
     }

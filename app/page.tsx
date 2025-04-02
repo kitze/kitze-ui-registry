@@ -26,18 +26,43 @@ export default function Home() {
       </header>
       <main className="flex flex-col flex-1 gap-8">
         <PreviewComponents
+          title="Core Components"
+          description="The main set of Kitze UI components built on top of shadcn/ui."
           names={[
             "custom-button",
             "spinner",
             "full-page-spinner",
             "fill-height-spinner",
             "suspensed",
-            "simple-tooltip",
-            "conditional-wrap",
-            "conditional-tooltip",
-            "simple-accordion",
-            "bottom-drawer",
             "page-header",
+            "bottom-drawer",
+          ]}
+        />
+
+        <PreviewComponents
+          title="Simplified Components"
+          description="These are simplified components that use the shadcn components under the hood, but with much less boilerplate."
+          names={["simple-tooltip", "simple-accordion"]}
+        />
+
+        <PreviewComponents
+          title="Conditionals"
+          description="Utility components for conditionally rendering or wrapping content."
+          names={["conditional-wrap", "conditional-tooltip"]}
+        />
+
+        <PreviewComponents
+          title="Theme switches"
+          description="A set of components for switching between light and dark mode."
+          names={["theme-switch-minimal", "theme-switch-slider"]}
+        />
+
+        <PreviewComponents
+          title="Theme switches for Next Themes"
+          description="A set of components that are connected to the Next Themes library."
+          names={[
+            "theme-switch-slider-next-themes",
+            "theme-switch-minimal-next-themes",
           ]}
         />
       </main>

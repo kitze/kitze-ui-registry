@@ -3,6 +3,7 @@ import { cn, ReactFC } from "@/lib/utils";
 import { useLinkableComponent } from "@/registry/hooks/useLinkableComponent";
 import { ConditionalTooltip } from "@/registry/new-york/conditional-tooltip/ConditionalTooltip";
 import { Spinner } from "@/registry/new-york/spinner/Spinner";
+import { tv } from "tailwind-variants";
 
 type SizeStyle = {
   iconSize?: number;
@@ -37,90 +38,115 @@ export const defaultIconSizes: Record<CustomButtonSize, number> = {
   lg: 20,
 };
 
-import { cva } from "class-variance-authority";
-import type { VariantProps } from "class-variance-authority";
-
-export const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-all cursor-pointer active:scale-95 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        default:
-          "bg-[var(--button-bg)] text-[var(--button-text)] hover:opacity-90",
-        outline:
-          "border border-[var(--button-bg)/20]/20 text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/5",
-        ghost:
-          "text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)/20]",
-        link: "text-[var(--button-bg)] underline-offset-4 hover:underline",
-      },
-      size: {
-        xs: "text-xs",
-        sm: "text-sm",
-        md: "text-sm",
-        lg: "text-base",
-      },
-      shape: {
-        default: "rounded-md",
-        circle: "rounded-full aspect-square p-0",
-      },
-      isIconButton: {
-        true: "",
-        false: "",
-      },
+export const buttonVariants = tv({
+  base: "inline-flex  items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all cursor-pointer active:scale-95 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  variants: {
+    variant: {
+      default:
+        "bg-[var(--button-bg)] text-[var(--button-text)] hover:opacity-90 dark:text-white",
+      outline:
+        "border border-[var(--button-bg)/20]/20 text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/5 dark:text-white",
+      ghost:
+        "text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)/20] dark:text-white",
+      link: "text-[var(--button-bg)] underline-offset-4 hover:underline dark:text-white",
     },
-    compoundVariants: [
-      {
-        isIconButton: true,
-        size: "xs",
-        className: "size-6",
-      },
-      {
-        isIconButton: true,
-        size: "sm",
-        className: "size-8",
-      },
-      {
-        isIconButton: true,
-        size: "md",
-        className: "size-9",
-      },
-      {
-        isIconButton: true,
-        size: "lg",
-        className: "size-11",
-      },
-      {
-        isIconButton: false,
-        size: "xs",
-        className: "h-7 px-2",
-      },
-      {
-        isIconButton: false,
-        size: "sm",
-        className: "h-9 px-3",
-      },
-      {
-        isIconButton: false,
-        size: "md",
-        className: "h-10 px-4",
-      },
-      {
-        isIconButton: false,
-        size: "lg",
-        className: "h-12 px-5",
-      },
-    ],
-    defaultVariants: {
-      variant: "default",
+    size: {
+      xs: "text-xs",
+      sm: "text-sm",
+      md: "text-sm",
+      lg: "text-base",
+    },
+    shape: {
+      default: "rounded-md",
+      circle: "rounded-full aspect-square",
+    },
+    isIconButton: {
+      true: "",
+      false: "",
+    },
+  },
+  compoundVariants: [
+    {
+      isIconButton: true,
+      size: "xs",
+      shape: "default",
+      class: "size-6 flex items-center justify-center",
+    },
+    {
+      isIconButton: true,
+      size: "sm",
+      shape: "default",
+      class: "size-8 flex items-center justify-center",
+    },
+    {
+      isIconButton: true,
       size: "md",
       shape: "default",
-      isIconButton: false,
+      class: "size-8 flex items-center justify-center",
     },
-  }
-);
+    {
+      isIconButton: true,
+      size: "lg",
+      shape: "default",
+      class: "size-11 flex items-center justify-center",
+    },
+    {
+      isIconButton: true,
+      size: "xs",
+      shape: "circle",
+      class: "aspect-square size-6 p-0",
+    },
+    {
+      isIconButton: true,
+      size: "sm",
+      shape: "circle",
+      class: "aspect-square size-8 p-0",
+    },
+    {
+      isIconButton: true,
+      size: "md",
+      shape: "circle",
+      class: "aspect-square size-9 p-0",
+    },
+    {
+      isIconButton: true,
+      size: "lg",
+      shape: "circle",
+      class: "aspect-square size-11 p-0",
+    },
+    {
+      isIconButton: false,
+      size: "xs",
+      class: "h-7 px-2",
+    },
+    {
+      isIconButton: false,
+      size: "sm",
+      class: "h-9 px-3",
+    },
+    {
+      isIconButton: false,
+      size: "md",
+      class: "h-10 px-4",
+    },
+    {
+      isIconButton: false,
+      size: "lg",
+      class: "h-12 px-5",
+    },
+  ],
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+    shape: "default",
+    isIconButton: false,
+  },
+});
 
-// Add a custom type for button variants that includes color as any string
-export type ButtonVariantsProps = VariantProps<typeof buttonVariants> & {
+// Add a custom type for button variants
+export type ButtonVariantsProps = React.ComponentProps<
+  typeof buttonVariants
+> & {
   class?: string;
 };
 
@@ -166,8 +192,8 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
   className,
   variant = "default",
   size = "md",
-  circle,
-  color = "foreground",
+  circle = false,
+  color = "secondary",
   style,
   icon: Icon,
   iconSize,
@@ -197,8 +223,8 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
       text: "var(--color-destructive-foreground)",
     },
     primary: {
-      bg: "var(--color-primary)",
-      text: "var(--color-primary-foreground)",
+      bg: "var(--color-primary-foreground)",
+      text: "var(--color-primary)",
     },
     secondary: {
       bg: "var(--color-secondary)",
@@ -208,7 +234,7 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
 
   const buttonColors = colorMap[color] ?? {
     bg: `var(--color-${color})`,
-    text: "var(--color-white)",
+    text: "var(--color-default-foreground)",
   };
 
   //if size is not found in sizeStyles, throw an error

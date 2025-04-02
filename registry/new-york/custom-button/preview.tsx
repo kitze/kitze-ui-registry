@@ -58,11 +58,11 @@ export default function CustomButtonPreview() {
         variants={{
           prop: "color",
           values: [
-            "yellow-500",
-            "blue-300",
-            "pink-500",
-            "green-500",
-            "purple-500",
+            "yellow-300",
+            "blue-500",
+            "amber-300",
+            "green-300",
+            "violet-300",
           ],
         }}
         componentProps={{
