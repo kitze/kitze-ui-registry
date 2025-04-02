@@ -9,6 +9,10 @@
     {
       "path": "ThemeSwitchNextThemes.tsx",
       "type": "registry:component"
+    },
+    {
+      "path": "registry/hooks/useMounted.ts",
+      "type": "registry:hook"
     }
   ]
 }

@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-accordion" | "page-header" | "full-page-spinner" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "kitze-ui-context" | "bottom-drawer";
+export type ComponentName = "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal" | "theme-switch-minimal-next-themes" | "suspensed" | "spinner" | "simple-tooltip" | "simple-accordion" | "page-header" | "full-page-spinner" | "custom-button" | "fill-height-spinner" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "kitze-ui-context";
 
 export interface ComponentMeta {
   name: ComponentName;
@@ -18,15 +18,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Theme Switch Slider",
     description: "A beautiful animated theme switcher with a sliding control and animated stars"
   },
-  "theme-switch-minimal-next-themes": {
-    name: "theme-switch-minimal-next-themes",
-    title: "Theme Switch Minimal with Next-Themes",
-    description: "A minimal theme switcher that integrates with the next-themes library for persistent theme management"
-  },
   "theme-switch-minimal": {
     name: "theme-switch-minimal",
     title: "Theme Switch Minimal",
     description: "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes"
+  },
+  "theme-switch-minimal-next-themes": {
+    name: "theme-switch-minimal-next-themes",
+    title: "Theme Switch Minimal with Next-Themes",
+    description: "A minimal theme switcher that integrates with the next-themes library for persistent theme management"
   },
   "suspensed": {
     name: "suspensed",
@@ -58,15 +58,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Full Page Spinner",
     description: "A spinner component that takes full page size and centers itself in the viewport"
   },
-  "fill-height-spinner": {
-    name: "fill-height-spinner",
-    title: "Fill Height Spinner",
-    description: "A spinner component that fills and centers in its container height"
-  },
   "custom-button": {
     name: "custom-button",
     title: "Custom Button",
     description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
+  },
+  "fill-height-spinner": {
+    name: "fill-height-spinner",
+    title: "Fill Height Spinner",
+    description: "A spinner component that fills and centers in its container height"
   },
   "conditional-wrap": {
     name: "conditional-wrap",
@@ -78,14 +78,14 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Conditional Tooltip",
     description: "A tooltip component that conditionally renders based on a condition"
   },
-  "kitze-ui-context": {
-    name: "kitze-ui-context",
-    title: "Kitze UI Context",
-    description: "Provides UI context like mobile detection for Kitze UI components."
-  },
   "bottom-drawer": {
     name: "bottom-drawer",
     title: "Bottom Drawer",
     description: "A customizable bottom drawer component built on top of Vaul with support for custom headers, styles, and animations"
+  },
+  "kitze-ui-context": {
+    name: "kitze-ui-context",
+    title: "Kitze UI Context",
+    description: "Provides UI context like mobile detection for Kitze UI components."
   }
 } as const;
