@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { cn, ReactFC } from "@/lib/utils";
 import { LucideMoon } from "lucide-react";

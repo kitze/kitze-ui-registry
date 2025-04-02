@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "next-themes";
 import { ReactFC } from "@/lib/utils";
 import { useMounted } from "@/registry/hooks/useMounted";

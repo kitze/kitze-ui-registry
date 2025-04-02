@@ -44,6 +44,25 @@ export default function CustomButtonPreview() {
         <CustomButton tooltip="Button with tooltip">Hover me</CustomButton>
       </div>
 
+      <div className="flex flex-wrap gap-4 *:w-auto">
+        <CustomButton icon={Mail} size="xs" />
+        <CustomButton icon={Mail} size="sm" />
+        <CustomButton icon={Mail} size="md" className="min-h-8 min-w-10" />
+        <CustomButton icon={Mail} size="lg" />
+      </div>
+
+      <div className="flex flex-wrap gap-4 *:w-auto">
+        <CustomButton icon={ArrowRight} circle size="xs" />
+        <CustomButton icon={ArrowRight} circle size="sm" />
+        <CustomButton
+          icon={ArrowRight}
+          circle
+          size="md"
+          className="min-h-8 min-w-10"
+        />
+        <CustomButton icon={ArrowRight} circle size="lg" />
+      </div>
+
       <ComponentPropVariant
         component={CustomButton}
         variants={{

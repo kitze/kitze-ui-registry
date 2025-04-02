@@ -79,6 +79,18 @@
       ]
     },
     {
+      "name": "suspensed",
+      "type": "registry:component",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
+      "files": [
+        {
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -94,13 +106,16 @@
       ]
     },
     {
-      "name": "suspensed",
+      "name": "spinner",
       "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -141,21 +156,6 @@
       ]
     },
     {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "full-page-spinner",
       "type": "registry:component",
       "title": "Full Page Spinner",
@@ -166,21 +166,6 @@
       "files": [
         {
           "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "spinner",
-      "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -205,18 +190,6 @@
         {
           "path": "registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook"
-        }
-      ]
-    },
-    {
-      "name": "conditional-wrap",
-      "type": "registry:component",
-      "title": "Conditional Wrap",
-      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
-      "files": [
-        {
-          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
-          "type": "registry:component"
         }
       ]
     },
@@ -270,6 +243,33 @@
       "files": [
         {
           "path": "registry/new-york/KitzeUIContext/KitzeUIContext.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
           "type": "registry:component"
         }
       ]

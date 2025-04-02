@@ -39,16 +39,16 @@ export const defaultIconSizes: Record<CustomButtonSize, number> = {
 };
 
 export const buttonVariants = tv({
-  base: "inline-flex  items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all cursor-pointer active:scale-95 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all cursor-pointer active:scale-95 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   variants: {
     variant: {
       default:
-        "bg-[var(--button-bg)] text-[var(--button-text)] hover:opacity-90 dark:text-white",
+        "bg-[var(--button-bg)] text-[var(--button-text)] hover:opacity-90",
       outline:
-        "border border-[var(--button-bg)/20]/20 text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/5 dark:text-white",
+        "border border-[var(--button-text)]/20 dark:border-[var(--button-bg)] text-[var(--button-text)] bg-transparent hover:bg-[var(--button-bg)]/50",
       ghost:
-        "text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)/20] dark:text-white",
-      link: "text-[var(--button-bg)] underline-offset-4 hover:underline dark:text-white",
+        "text-[var(--button-bg)] text-[var(--button-text)] bg-transparent dark:hover:bg-[var(--button-bg)]/30 hover:bg-[var(--button-bg)]",
+      link: "text-[var(--button-text)] text-[var(--button-text)]  underline-offset-4 hover:underline",
     },
     size: {
       xs: "text-xs",
@@ -58,7 +58,7 @@ export const buttonVariants = tv({
     },
     shape: {
       default: "rounded-md",
-      circle: "rounded-full aspect-square",
+      circle: "rounded-full!",
     },
     isIconButton: {
       true: "",
@@ -69,50 +69,26 @@ export const buttonVariants = tv({
     {
       isIconButton: true,
       size: "xs",
-      shape: "default",
-      class: "size-6 flex items-center justify-center",
+      class:
+        "min-h-6 min-w-6 h-6 w-6 max-h-6 max-w-6 flex items-center justify-center",
     },
     {
       isIconButton: true,
       size: "sm",
-      shape: "default",
-      class: "size-8 flex items-center justify-center",
+      class:
+        "min-h-8 min-w-8 h-8 w-8 max-h-8 max-w-8 flex items-center justify-center",
     },
     {
       isIconButton: true,
       size: "md",
-      shape: "default",
-      class: "size-8 flex items-center justify-center",
+      class:
+        "min-h-10 min-w-10 h-10 w-10 max-h-10 max-w-10 flex items-center justify-center",
     },
     {
       isIconButton: true,
       size: "lg",
-      shape: "default",
-      class: "size-11 flex items-center justify-center",
-    },
-    {
-      isIconButton: true,
-      size: "xs",
-      shape: "circle",
-      class: "aspect-square size-6 p-0",
-    },
-    {
-      isIconButton: true,
-      size: "sm",
-      shape: "circle",
-      class: "aspect-square size-8 p-0",
-    },
-    {
-      isIconButton: true,
-      size: "md",
-      shape: "circle",
-      class: "aspect-square size-9 p-0",
-    },
-    {
-      isIconButton: true,
-      size: "lg",
-      shape: "circle",
-      class: "aspect-square size-11 p-0",
+      class:
+        "min-h-12 min-w-12 h-12 w-12 max-h-12 max-w-12 flex items-center justify-center",
     },
     {
       isIconButton: false,
