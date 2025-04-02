@@ -16,36 +16,6 @@
       ]
     },
     {
-      "name": "spinner",
-      "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/spinner/Spinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-accordion",
-      "type": "registry:component",
-      "title": "Simple Accordion",
-      "description": "A simple accordion component",
-      "registryDependencies": [
-        "accordion"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -61,16 +31,16 @@
       ]
     },
     {
-      "name": "full-page-spinner",
+      "name": "spinner",
       "type": "registry:component",
-      "title": "Full Page Spinner",
-      "description": "A spinner component that takes full page size and centers itself in the viewport",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -90,22 +60,37 @@
           "type": "registry:component"
         },
         {
-          "path": "registry/hooks/useScrolledPast.ts",
+          "path": "registry/new-york/page-header/registry/hooks/useScrolledPast.ts",
           "type": "registry:hook"
         }
       ]
     },
     {
-      "name": "fill-height-spinner",
+      "name": "simple-accordion",
       "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "full-page-spinner",
+      "type": "registry:component",
+      "title": "Full Page Spinner",
+      "description": "A spinner component that takes full page size and centers itself in the viewport",
       "registryDependencies": [
         "https://ui.kitze.io/r/spinner.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -128,8 +113,23 @@
           "type": "registry:component"
         },
         {
-          "path": "registry/hooks/useLinkableComponent.ts",
+          "path": "registry/new-york/custom-button/registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component"
         }
       ]
     },
@@ -161,6 +161,21 @@
       ]
     },
     {
+      "name": "KitzeUIContext",
+      "type": "registry:component",
+      "title": "Kitze UI Context",
+      "description": "Provides UI context like mobile detection for Kitze UI components.",
+      "dependencies": [
+        "react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/KitzeUIContext/KitzeUIContext.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "bottom-drawer",
       "type": "registry:component",
       "title": "Bottom Drawer",
@@ -179,7 +194,7 @@
           "type": "registry:component"
         },
         {
-          "path": "registry/hooks/useControlledOpen.ts",
+          "path": "registry/new-york/bottom-drawer/registry/hooks/useControlledOpen.ts",
           "type": "registry:hook"
         }
       ]

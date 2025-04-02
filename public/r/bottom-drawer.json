@@ -20,9 +20,9 @@
       "content": "import { createContext, useContext } from \"react\";\n\ninterface DrawerContextType {\n  close: () => void;\n}\n\nexport const DrawerContext = createContext<DrawerContextType | null>(null);\n\nexport const useDrawer = () => {\n  const context = useContext(DrawerContext);\n  if (!context) {\n    throw new Error(\"useDrawer must be used within a DrawerProvider\");\n  }\n  return context;\n};\n"
     },
     {
-      "path": "registry/hooks/useControlledOpen.ts",
+      "path": "registry/new-york/bottom-drawer/registry/hooks/useControlledOpen.ts",
       "type": "registry:hook",
-      "content": "import { useState, useCallback } from \"react\";\n\ninterface UseControlledOpenProps {\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n  defaultOpen?: boolean;\n}\n\nexport const useControlledOpen = ({\n  open: controlledOpen,\n  onOpenChange: controlledOnOpenChange,\n  defaultOpen = false,\n}: UseControlledOpenProps = {}) => {\n  const [internalOpen, setInternalOpen] = useState(defaultOpen);\n\n  const isControlled = controlledOpen !== undefined;\n  const isOpen = isControlled ? controlledOpen : internalOpen;\n\n  const setIsOpen = useCallback(\n    (open: boolean) => {\n      if (!isControlled) {\n        setInternalOpen(open);\n      }\n      controlledOnOpenChange?.(open);\n    },\n    [isControlled, controlledOnOpenChange]\n  );\n\n  const close = useCallback(() => setIsOpen(false), [setIsOpen]);\n\n  return {\n    isOpen,\n    setIsOpen,\n    close,\n    isControlled,\n  };\n};\n"
+      "content": "/* Error: Could not read file registry/new-york/bottom-drawer/registry/hooks/useControlledOpen.ts */"
     }
   ]
 }

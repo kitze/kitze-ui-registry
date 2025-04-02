@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "KitzeUIContext",
+  "type": "registry:component",
+  "title": "Kitze UI Context",
+  "description": "Provides UI context like mobile detection for Kitze UI components.",
+  "dependencies": [
+    "react"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/KitzeUIContext/KitzeUIContext.tsx",
+      "type": "registry:component",
+      "content": "import { ReactFC } from \"@/lib/utils\";\nimport { createContext, useContext } from \"react\";\n\ninterface KitzeUIContextType {\n  isMobile: boolean;\n}\n\nconst KitzeUIContext = createContext<KitzeUIContextType | undefined>(undefined);\n\nexport interface KitzeUIProviderProps {\n  isMobile: boolean;\n  children: React.ReactNode;\n}\n\nexport const KitzeUIProvider: ReactFC<KitzeUIProviderProps> = ({\n  children,\n  isMobile,\n}) => {\n  return (\n    <KitzeUIContext.Provider value={{ isMobile }}>\n      {children}\n    </KitzeUIContext.Provider>\n  );\n};\n\nexport const useKitzeUI = () => {\n  const context = useContext(KitzeUIContext);\n  if (context === undefined) {\n    throw new Error(\"useKitzeUI must be used within a KitzeUIProvider\");\n  }\n  return context;\n};\n"
+    }
+  ]
+}
