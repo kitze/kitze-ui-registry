@@ -1,10 +1,12 @@
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 There is no such thing as registry:context. For Context components we still register them as registry:component
 
 Do not manually update [component-types.ts](mdc:lib/component-types.ts) ever, it's auto generated.
 Also [registry.json](mdc:registry.json) is auto generated.
 Also json files in public/r/ are automatically generated
+
+DO NOT run npm run dev ever, assume the server is always running.

@@ -1,5 +1,7 @@
 {
   "name": "responsive-dialog",
+  "title": "Responsive Dialog",
+  "description": "This dialog will display as a drawer on mobile devices and a regular dialog on desktop. Try resizing your browser to see the different appearances.",
   "dependencies": [
     "next",
     "react",

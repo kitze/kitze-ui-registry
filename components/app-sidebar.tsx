@@ -14,7 +14,7 @@ import {
 import { componentGroups } from "@/lib/sidebar-data";
 import Link from "next/link";
 import { ThemeSwitchNextThemes } from "@/registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes";
-import { Twitter } from "lucide-react";
+import { Twitter, Github } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 // Helper function to format component names
@@ -43,10 +43,19 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <div className="flex items-center gap-2 px-4 py-3">
+        <div className="flex items-center justify-between gap-2 px-4 py-3">
           <Link href="/" className="font-bold text-lg">
             Kitze UI
           </Link>
+          <a
+            href="https://github.com/kitze/kitze-ui-repository"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center text-muted-foreground hover:text-primary transition-colors"
+            aria-label="GitHub Repository"
+          >
+            <Github size={18} />
+          </a>
         </div>
       </SidebarHeader>
       <SidebarContent>

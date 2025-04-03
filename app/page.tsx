@@ -1,87 +1,131 @@
 "use client";
 import * as React from "react";
-import { KitzeUIProvider } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
-import { useMedia } from "use-media";
-import { AlertProvider } from "@/registry/new-york/ui-alert";
 import { Header } from "@/components/Header";
-import { PageContent } from "@/components/PageContent";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { AppSidebar } from "@/components/app-sidebar";
-import { DemoForm } from "@/registry/new-york/form-field-wrapper/DemoForm";
-import { PreviewComponents } from "@/components/PreviewComponents";
-import { DummyFormProvider } from "@/components/DummyFormProvider";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function Home() {
-  const isMobile = useMedia({ maxWidth: 768 });
-
   return (
-    <KitzeUIProvider isMobile={isMobile}>
-      <AlertProvider>
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b">
-              <div className="flex items-center gap-2 px-3">
-                <SidebarTrigger />
-                <Separator orientation="vertical" className="mr-2 h-4" />
-                <Breadcrumb>
-                  <BreadcrumbList>
-                    <BreadcrumbItem className="hidden md:block">
-                      <BreadcrumbLink href="#">Kitze UI</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator className="hidden md:block" />
-                    <BreadcrumbItem>
-                      <BreadcrumbPage>Components</BreadcrumbPage>
-                    </BreadcrumbItem>
-                  </BreadcrumbList>
-                </Breadcrumb>
-              </div>
-            </header>
-            <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
-              <Header />
-              <PageContent />
-              <Separator />
-              <DummyFormProvider>
-                <PreviewComponents
-                  title="Forms"
-                  description="Components for building forms with react-hook-form."
-                  names={[
-                    "form-field-input",
-                    "form-field-checkbox",
-                    "form-field-wrapper",
-                  ]}
-                />
-              </DummyFormProvider>
-              <Separator />
-              <DemoForm />
-              <Separator />
-              <PreviewComponents
-                title="Simplified Components"
-                description="These are simplified components that use the shadcn components under the hood, but with much less boilerplate."
-                names={[
-                  "simple-tooltip",
-                  "simple-accordion",
-                  "simple-dialog",
-                  "simple-popover",
-                ]}
-              />
+    <>
+      <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+        <div className="flex items-center gap-2 px-3">
+          <SidebarTrigger />
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbPage>Kitze UI</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+      </header>
+      <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+        <Header />
+        <div className="prose dark:prose-invert max-w-none">
+          <p className="text-lg mb-6">
+            Kitze UI is a collection of reusable components compatible with the
+            shadcn CLI, designed to make building beautiful and functional
+            interfaces easier, and with much less boilerplate.
+          </p>
+          <p className="text-lg mb-10">
+            Browse the components using the sidebar to find the right tools for
+            your next project. Each component comes with a live preview and
+            usage examples.
+          </p>
+
+          <Separator className="my-8" />
+
+          <h3 className="text-2xl font-bold mb-8">Component Types</h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <div className="border rounded-lg p-6 shadow-sm">
+              <h4 className="text-xl font-semibold mb-3">
+                Original Components
+              </h4>
+              <p>
+                Some components here are completely original and not dependent
+                on existing shadcn/ui components, offering unique functionality.
+              </p>
             </div>
-          </SidebarInset>
-        </SidebarProvider>
-      </AlertProvider>
-    </KitzeUIProvider>
+
+            <div className="border rounded-lg p-6 shadow-sm">
+              <h4 className="text-xl font-semibold mb-3">
+                Enhanced Alternatives
+              </h4>
+              <p>
+                Components like CustomButton offer more variations and props
+                than the standard shadcn/ui versions, giving you more
+                flexibility and control.
+              </p>
+            </div>
+
+            <div className="border rounded-lg p-6 shadow-sm">
+              <h4 className="text-xl font-semibold mb-3">Simplified API</h4>
+              <p>
+                Simplified versions built on top existing shadcn/ui components
+                (like SimpleDialog, SimplePopover, SimpleTooltip) reduce
+                boilerplate and allow you to achieve the same results with much
+                less code.
+              </p>
+            </div>
+
+            <div className="border rounded-lg p-6 shadow-sm">
+              <h4 className="text-xl font-semibold mb-3">
+                Responsive Components
+              </h4>
+              <p>
+                Smart components that automatically adapt to screen size -
+                rendering as popovers or dialogs on desktop but transforming
+                into bottom drawers on mobile without requiring additional code.
+              </p>
+            </div>
+          </div>
+
+          <Separator className="my-8" />
+
+          <h3 className="text-2xl font-bold mb-6">Why Kitze UI?</h3>
+          <ul className="space-y-3 mb-10">
+            <li className="flex gap-2 items-start">
+              <div className="rounded-full bg-primary w-1.5 h-1.5 mt-2.5" />
+              <span>
+                Compatible with the shadcn CLI for high-quality, accessible
+                components
+              </span>
+            </li>
+            <li className="flex gap-2 items-start">
+              <div className="rounded-full bg-primary w-1.5 h-1.5 mt-2.5" />
+              <span>
+                Simplified APIs to reduce boilerplate and increase productivity
+              </span>
+            </li>
+            <li className="flex gap-2 items-start">
+              <div className="rounded-full bg-primary w-1.5 h-1.5 mt-2.5" />
+              <span>Fully responsive with mobile-first design</span>
+            </li>
+            <li className="flex gap-2 items-start">
+              <div className="rounded-full bg-primary w-1.5 h-1.5 mt-2.5" />
+              <span>Dark and light mode support out of the box</span>
+            </li>
+            <li className="flex gap-2 items-start">
+              <div className="rounded-full bg-primary w-1.5 h-1.5 mt-2.5" />
+              <span>Typescript support for better developer experience</span>
+            </li>
+          </ul>
+
+          <div className="bg-muted/50 p-6 rounded-lg text-center mt-8">
+            <p className="text-lg font-medium">
+              Get started by selecting a component category from the sidebar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

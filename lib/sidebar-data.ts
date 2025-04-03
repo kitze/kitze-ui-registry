@@ -10,31 +10,43 @@ export const componentGroups = [
       "fill-height-spinner",
       "suspensed",
       "page-header",
-      "bottom-drawer",
       "ui-alert",
+      "kitze-ui-context",
+    ],
+  },
+  {
+    title: "Form Components",
+    description:
+      "Components for building forms with react-hook-form integration.",
+    components: [
+      "form-field-wrapper",
+      "form-field-input",
+      "form-field-checkbox",
     ],
   },
   {
     title: "Simplified Components",
     description:
       "These are simplified components that use the shadcn components under the hood, but with much less boilerplate.",
-    components: ["simple-tooltip", "simple-accordion", "simple-dialog"],
+    components: [
+      "simple-tooltip",
+      "simple-accordion",
+      "simple-dialog",
+      "simple-popover",
+      "simple-context-menu",
+      "simple-dropdown-menu",
+    ],
   },
   {
     title: "Menu Components",
     description: "Components for displaying context menus and dropdown menus.",
-    components: [
-      "simple-context-menu",
-      "simple-dropdown-menu",
-      "bottom-drawer",
-      "responsive-dialog",
-    ],
+    components: ["bottom-drawer"],
   },
   {
-    title: "Responsive Menu",
+    title: "Responsive Components",
     description:
-      "Menu components that adapt to desktop or mobile view, showing either a regular menu or a bottom drawer.",
-    components: ["simple-context-menu", "simple-dropdown-menu"],
+      "Components that adapt to desktop or mobile view automatically.",
+    components: ["responsive-dialog", "responsive-popover"],
   },
   {
     title: "Conditionals",

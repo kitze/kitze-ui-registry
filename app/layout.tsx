@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeWrapper } from "./ThemeWrapper";
-import { KitzeUIProvider } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import ClientLayout from "./ClientLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeWrapper>{children}</ThemeWrapper>
+        <ThemeWrapper>
+          <ClientLayout>{children}</ClientLayout>
+        </ThemeWrapper>
         <Toaster position="bottom-right" />
       </body>
     </html>

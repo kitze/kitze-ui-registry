@@ -5,10 +5,37 @@ import { useParams } from "next/navigation";
 import { LazyPreview } from "@/components/LazyPreview";
 import { ComponentName, componentMeta } from "@/lib/component-types";
 import Link from "next/link";
-import { KitzeUIProvider } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
-import { AlertProvider } from "@/registry/new-york/ui-alert";
-import { useMedia } from "use-media";
 import { PreviewComponent } from "@/components/PreviewComponent";
+import { Separator } from "@/components/ui/separator";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+
+// Helper function to format component name for display
+const formatComponentName = (name: string) => {
+  // Define special cases for capitalization
+  const specialCases: Record<string, string> = {
+    ui: "UI",
+  };
+
+  return name
+    .split("-")
+    .map((word) => {
+      // Check if the word is a special case
+      if (word.toLowerCase() in specialCases) {
+        return specialCases[word.toLowerCase()];
+      }
+      // Standard capitalization
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+};
 
 // Helper function to check if a string is a valid ComponentName
 const isValidComponentName = (name: string): name is ComponentName => {
@@ -18,42 +45,68 @@ const isValidComponentName = (name: string): name is ComponentName => {
 export default function ComponentPage() {
   const params = useParams();
   const nameParam = params.name as string;
-  const isMobile = useMedia({ maxWidth: 768 });
 
   // Check if component exists in our registry
   if (!isValidComponentName(nameParam)) {
     return (
-      <KitzeUIProvider isMobile={isMobile}>
-        <AlertProvider>
-          <div className="flex flex-col items-center justify-center py-20">
-            <h2 className="text-2xl font-bold mb-2">Component Not Found</h2>
-            <p className="text-muted-foreground mb-4">
-              The component "{nameParam}" doesn't exist in our registry.
-            </p>
-            <Link href="/" className="text-primary underline">
-              Return to homepage
-            </Link>
+      <>
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+          <div className="flex items-center gap-2 px-3">
+            <SidebarTrigger />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="/">Kitze UI</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Not Found</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
           </div>
-        </AlertProvider>
-      </KitzeUIProvider>
+        </header>
+        <div className="flex flex-col items-center justify-center py-20">
+          <h2 className="text-2xl font-bold mb-2">Component Not Found</h2>
+          <p className="text-muted-foreground mb-4">
+            The component "{nameParam}" doesn't exist in our registry.
+          </p>
+          <Link href="/" className="text-primary underline">
+            Return to homepage
+          </Link>
+        </div>
+      </>
     );
   }
 
   const name = nameParam as ComponentName;
+  const formattedName = formatComponentName(name);
 
   return (
-    <KitzeUIProvider isMobile={isMobile}>
-      <AlertProvider>
-        <div className="container py-8 max-w-4xl mx-auto">
-          <Link href="/" className="text-primary mb-6 inline-block">
-            ← Back to All Components
-          </Link>
-
-          <PreviewComponent name={name}>
-            <LazyPreview name={name} />
-          </PreviewComponent>
+    <>
+      <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+        <div className="flex items-center gap-2 px-3">
+          <SidebarTrigger />
+          <Separator orientation="vertical" className="mr-2 h-4" />
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem className="hidden md:block">
+                <BreadcrumbLink href="/">Kitze UI</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{formattedName}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
-      </AlertProvider>
-    </KitzeUIProvider>
+      </header>
+      <div className="container py-8 max-w-4xl mx-auto">
+        <PreviewComponent name={name}>
+          <LazyPreview name={name} />
+        </PreviewComponent>
+      </div>
+    </>
   );
 }
