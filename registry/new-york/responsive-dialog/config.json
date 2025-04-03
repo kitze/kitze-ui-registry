@@ -1,0 +1,21 @@
+{
+  "name": "responsive-dialog",
+  "dependencies": [
+    "next",
+    "react",
+    "react-dom",
+    "tailwindcss",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-dialog",
+    "vaul"
+  ],
+  "files": ["ResponsiveDialog.tsx"],
+  "type": "component",
+  "registryDependencies": [
+    "dialog",
+    "bottom-drawer",
+    "simple-dialog",
+    "kitze-ui-context"
+  ]
+}

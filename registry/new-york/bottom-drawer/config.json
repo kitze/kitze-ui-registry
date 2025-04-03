@@ -16,7 +16,7 @@
     },
     {
       "path": "DrawerContext.tsx",
-      "type": "registry:context"
+      "type": "registry:component"
     },
     {
       "path": "BottomDrawerMenuItem.tsx",

@@ -24,7 +24,7 @@
     },
     {
       "path": "registry/new-york/KitzeUIContext/MenuContext.tsx",
-      "type": "registry:context"
+      "type": "registry:component"
     }
   ]
 }

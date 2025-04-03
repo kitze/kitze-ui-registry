@@ -4,10 +4,7 @@
   "type": "registry:component",
   "title": "Bottom Drawer",
   "description": "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant.",
-  "dependencies": [
-    "vaul",
-    "framer-motion"
-  ],
+  "dependencies": ["vaul", "framer-motion"],
   "registryDependencies": [
     "https://ui.kitze.io/r/simple-dropdown-menu.json",
     "https://ui.kitze.io/r/kitze-ui-context.json"
@@ -25,7 +22,7 @@
     },
     {
       "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
-      "type": "registry:context",
+      "type": "registry:component",
       "content": "import { createContext, useContext } from \"react\";\n\ninterface DrawerContextType {\n  close: () => void;\n}\n\nexport const DrawerContext = createContext<DrawerContextType | null>(null);\n\nexport const useDrawer = () => {\n  const context = useContext(DrawerContext);\n  if (!context) {\n    throw new Error(\"useDrawer must be used within a DrawerProvider\");\n  }\n  return context;\n};\n"
     },
     {

@@ -18,7 +18,7 @@ export function PreviewComponents({
   names,
 }: PreviewComponentsProps) {
   return (
-    <div className="grid grid-cols-1 gap-6">
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2 mb-4">
         <h2
           className="text-2xl font-bold tracking-tight"
@@ -28,17 +28,20 @@ export function PreviewComponents({
         </h2>
         <p className="text-muted-foreground">{description}</p>
       </div>
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="flex flex-col gap-4">
         {names.map((name) => (
-          <Link
-            key={name}
-            href={`/component/${name}`}
-            className="block transition-opacity hover:opacity-90"
-          >
-            <PreviewComponent name={name}>
+          <div key={name}>
+            <PreviewComponent
+              name={name}
+              titleWrapper={(children: React.ReactNode) => (
+                <Link href={`/component/${name}`} className="hover:underline">
+                  {children}
+                </Link>
+              )}
+            >
               <LazyPreview name={name} />
             </PreviewComponent>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

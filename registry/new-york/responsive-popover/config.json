@@ -1,0 +1,12 @@
+{
+  "name": "responsive-popover",
+  "displayName": "Responsive Popover",
+  "description": "A responsive popover component that displays as a popover on desktop and a bottom drawer on mobile.",
+  "category": "overlays",
+  "type": "component",
+  "registryDependencies": [
+    "simple-popover",
+    "bottom-drawer",
+    "kitze-ui-context"
+  ]
+}

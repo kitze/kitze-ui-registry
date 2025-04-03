@@ -18,7 +18,7 @@ export const componentGroups = [
     title: "Simplified Components",
     description:
       "These are simplified components that use the shadcn components under the hood, but with much less boilerplate.",
-    components: ["simple-tooltip", "simple-accordion"],
+    components: ["simple-tooltip", "simple-accordion", "simple-dialog"],
   },
   {
     title: "Menu Components",
@@ -27,10 +27,11 @@ export const componentGroups = [
       "simple-context-menu",
       "simple-dropdown-menu",
       "bottom-drawer",
+      "responsive-dialog",
     ],
   },
   {
-    title: "Responsive Menu Components",
+    title: "Responsive Menu",
     description:
       "Menu components that adapt to desktop or mobile view, showing either a regular menu or a bottom drawer.",
     components: ["simple-context-menu", "simple-dropdown-menu"],

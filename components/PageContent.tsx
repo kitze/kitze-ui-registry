@@ -22,19 +22,34 @@ export function PageContent() {
       <PreviewComponents
         title="Simplified Components"
         description="These are simplified components that use the shadcn components under the hood, but with much less boilerplate."
-        names={["simple-tooltip", "simple-accordion"]}
+        names={[
+          "simple-tooltip",
+          "simple-accordion",
+          "simple-dialog",
+          "simple-popover",
+        ]}
       />
 
       <PreviewComponents
         title="Menu Components"
         description="Components for displaying context menus and dropdown menus."
-        names={["simple-context-menu", "simple-dropdown-menu", "bottom-drawer"]}
+        names={[
+          "simple-context-menu",
+          "simple-dropdown-menu",
+          "bottom-drawer",
+          "responsive-dialog",
+        ]}
       />
 
       <PreviewComponents
         title="Responsive Menu Components"
         description="Menu components that adapt to desktop or mobile view, showing either a regular menu or a bottom drawer."
-        names={["simple-context-menu", "simple-dropdown-menu"]}
+        names={[
+          "simple-context-menu",
+          "simple-dropdown-menu",
+          "responsive-popover",
+          "responsive-dialog",
+        ]}
       />
 
       <PreviewComponents

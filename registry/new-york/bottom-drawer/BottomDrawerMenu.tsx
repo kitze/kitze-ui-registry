@@ -15,7 +15,13 @@ export const BottomDrawerMenu: ReactFC<BottomDrawerMenuProps> = ({
   title,
 }) => {
   return (
-    <BottomDrawer title={title} trigger={children}>
+    <BottomDrawer
+      title={title}
+      trigger={children}
+      classNames={{
+        childrenWrapper: "px-0",
+      }}
+    >
       <MenuProvider menuType="bottom-drawer">
         <div className="flex flex-col">{content}</div>
       </MenuProvider>

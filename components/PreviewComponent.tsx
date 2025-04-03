@@ -12,9 +12,14 @@ import { CustomButton } from "@/registry/new-york/custom-button/CustomButton";
 interface PreviewComponentProps {
   name: ComponentName;
   children: React.ReactNode;
+  titleWrapper?: (children: React.ReactNode) => React.ReactNode;
 }
 
-export function PreviewComponent({ name, children }: PreviewComponentProps) {
+export function PreviewComponent({
+  name,
+  children,
+  titleWrapper,
+}: PreviewComponentProps) {
   const meta = componentMeta[name];
   if (!meta) {
     console.error(`Component ${name} not found`);
@@ -27,13 +32,15 @@ export function PreviewComponent({ name, children }: PreviewComponentProps) {
     toast.success("Copied to clipboard!");
   }, [installCommand]);
 
+  const title = <h2 className="text-lg font-semibold">{meta.title}</h2>;
+
   return (
     <div
       className={cn("flex flex-col gap-4 border rounded-lg p-4", "relative")}
     >
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
-          <h2 className="text-lg font-semibold">{meta.title}</h2>
+          {titleWrapper ? titleWrapper(title) : title}
           <SimpleTooltip content={installCommand}>
             <CustomButton
               tooltip={installCommand}

@@ -10,6 +10,7 @@ export interface BottomDrawerClassNames {
   content?: string;
   handle?: string;
   title?: string;
+  childrenWrapper?: string;
 }
 
 export interface BottomDrawerProps {
@@ -55,7 +56,7 @@ export const BottomDrawer: ReactFC<BottomDrawerProps> = ({
       {title && (
         <div
           className={cn(
-            "text-lg pl-4 font-semibold mb-4 text-zinc-900 dark:text-white",
+            "text-lg font-semibold mb-4 text-zinc-900 dark:text-white",
             classNames?.title
           )}
         >
@@ -108,7 +109,12 @@ export const BottomDrawer: ReactFC<BottomDrawerProps> = ({
               }
             )}
           >
-            <div className="p-2 bg-white dark:bg-zinc-900 rounded-t-[10px] flex-1 overflow-y-auto">
+            <div
+              className={cn(
+                "px-6 pb-6 md:pb-2 bg-white dark:bg-zinc-900 rounded-t-[10px] flex-1 overflow-y-auto",
+                classNames?.childrenWrapper
+              )}
+            >
               {noHeader
                 ? null
                 : renderHeader

@@ -20,6 +20,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { AppSidebar } from "@/components/app-sidebar";
+import { DemoForm } from "@/registry/new-york/form-field-wrapper/DemoForm";
+import { PreviewComponents } from "@/components/PreviewComponents";
+import { DummyFormProvider } from "@/components/DummyFormProvider";
 
 export default function Home() {
   const isMobile = useMedia({ maxWidth: 768 });
@@ -50,6 +53,31 @@ export default function Home() {
             <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
               <Header />
               <PageContent />
+              <Separator />
+              <DummyFormProvider>
+                <PreviewComponents
+                  title="Forms"
+                  description="Components for building forms with react-hook-form."
+                  names={[
+                    "form-field-input",
+                    "form-field-checkbox",
+                    "form-field-wrapper",
+                  ]}
+                />
+              </DummyFormProvider>
+              <Separator />
+              <DemoForm />
+              <Separator />
+              <PreviewComponents
+                title="Simplified Components"
+                description="These are simplified components that use the shadcn components under the hood, but with much less boilerplate."
+                names={[
+                  "simple-tooltip",
+                  "simple-accordion",
+                  "simple-dialog",
+                  "simple-popover",
+                ]}
+              />
             </div>
           </SidebarInset>
         </SidebarProvider>

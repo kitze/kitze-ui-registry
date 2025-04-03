@@ -8,9 +8,7 @@
       "type": "registry:component",
       "title": "Theme Switch Slider with Next-Themes",
       "description": "A theme switcher slider that integrates with the next-themes library for persistent theme management",
-      "dependencies": [
-        "next-themes"
-      ],
+      "dependencies": ["next-themes"],
       "registryDependencies": [
         "https://ui.kitze.io/r/theme-switch-slider.json"
       ],
@@ -30,9 +28,7 @@
       "type": "registry:component",
       "title": "Theme Switch Minimal with Next-Themes",
       "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
-      "dependencies": [
-        "next-themes"
-      ],
+      "dependencies": ["next-themes"],
       "registryDependencies": [
         "https://ui.kitze.io/r/theme-switch-minimal.json"
       ],
@@ -48,13 +44,8 @@
       "type": "registry:component",
       "title": "Theme Switch Minimal",
       "description": "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/custom-button.json"
-      ],
+      "dependencies": ["framer-motion", "lucide-react"],
+      "registryDependencies": ["https://ui.kitze.io/r/custom-button.json"],
       "files": [
         {
           "path": "registry/new-york/theme-switch-minimal/ThemeSwitchMinimal.tsx",
@@ -67,10 +58,7 @@
       "type": "registry:component",
       "title": "Theme Switch Slider",
       "description": "A beautiful animated theme switcher with a sliding control and animated stars",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
+      "dependencies": ["framer-motion", "lucide-react"],
       "files": [
         {
           "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
@@ -95,9 +83,7 @@
       "type": "registry:component",
       "title": "Spinner",
       "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "registry/new-york/spinner/Spinner.tsx",
@@ -131,7 +117,7 @@
         },
         {
           "path": "registry/new-york/KitzeUIContext/MenuContext.tsx",
-          "type": "registry:context"
+          "type": "registry:component"
         }
       ]
     },
@@ -185,7 +171,7 @@
         },
         {
           "path": "registry/new-york/KitzeUIContext/MenuContext.tsx",
-          "type": "registry:context"
+          "type": "registry:component"
         }
       ]
     },
@@ -194,9 +180,7 @@
       "type": "registry:component",
       "title": "Simple Tooltip",
       "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "registryDependencies": [
-        "tooltip"
-      ],
+      "registryDependencies": ["tooltip"],
       "files": [
         {
           "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
@@ -209,9 +193,7 @@
       "type": "registry:component",
       "title": "Simple Accordion",
       "description": "A simple accordion component",
-      "registryDependencies": [
-        "accordion"
-      ],
+      "registryDependencies": ["accordion"],
       "files": [
         {
           "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
@@ -244,9 +226,7 @@
       "type": "registry:component",
       "title": "Full Page Spinner",
       "description": "A spinner component that takes full page size and centers itself in the viewport",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
+      "registryDependencies": ["https://ui.kitze.io/r/spinner.json"],
       "files": [
         {
           "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
@@ -259,9 +239,7 @@
       "type": "registry:component",
       "title": "Fill Height Spinner",
       "description": "A spinner component that fills and centers in its container height",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
+      "registryDependencies": ["https://ui.kitze.io/r/spinner.json"],
       "files": [
         {
           "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
@@ -274,9 +252,7 @@
       "type": "registry:component",
       "title": "Custom Button",
       "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
-      "dependencies": [
-        "class-variance-authority"
-      ],
+      "dependencies": ["class-variance-authority"],
       "registryDependencies": [
         "https://ui.kitze.io/r/conditional-tooltip.json",
         "https://ui.kitze.io/r/spinner.json"
@@ -309,9 +285,7 @@
       "type": "registry:component",
       "title": "Conditional Tooltip",
       "description": "A tooltip component that conditionally renders based on a condition",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/simple-tooltip.json"
-      ],
+      "registryDependencies": ["https://ui.kitze.io/r/simple-tooltip.json"],
       "files": [
         {
           "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
@@ -324,9 +298,7 @@
       "type": "registry:component",
       "title": "Kitze UI Context",
       "description": "Provides UI context like mobile detection for Kitze UI components.",
-      "dependencies": [
-        "react"
-      ],
+      "dependencies": ["react"],
       "files": [
         {
           "path": "registry/new-york/KitzeUIContext/KitzeUIContext.tsx",
@@ -339,10 +311,7 @@
       "type": "registry:component",
       "title": "Bottom Drawer",
       "description": "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant.",
-      "dependencies": [
-        "vaul",
-        "framer-motion"
-      ],
+      "dependencies": ["vaul", "framer-motion"],
       "registryDependencies": [
         "https://ui.kitze.io/r/simple-dropdown-menu.json",
         "https://ui.kitze.io/r/kitze-ui-context.json"
@@ -358,7 +327,7 @@
         },
         {
           "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
-          "type": "registry:context"
+          "type": "registry:component"
         },
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawerMenuItem.tsx",
@@ -388,9 +357,7 @@
       "title": "UI Alert",
       "description": "A collection of alert components with confirm and delete variations",
       "dependencies": [],
-      "registryDependencies": [
-        "KitzeUIContext"
-      ],
+      "registryDependencies": ["KitzeUIContext"],
       "files": [
         {
           "path": "registry/new-york/ui-alert/Alert.tsx",
@@ -406,7 +373,7 @@
         },
         {
           "path": "registry/new-york/ui-alert/AlertContext.tsx",
-          "type": "registry:context"
+          "type": "registry:component"
         }
       ]
     }
