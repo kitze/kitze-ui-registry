@@ -1,7 +1,0 @@
-{
-  "name": "simple-popover",
-  "displayName": "Simple Popover",
-  "description": "A simple popover component that displays content when triggered.",
-  "category": "overlays",
-  "type": "component"
-}

@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useControlledOpen } from "../../hooks/useControlledOpen";
+import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
 
 export type DialogSize =
   | "sm"

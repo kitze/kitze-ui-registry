@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-field-wrapper",
+  "type": "registry:component",
+  "title": "Form Field Wrapper",
+  "description": "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
+  "registryDependencies": [
+    "form"
+  ],
+  "dependencies": [
+    "react-hook-form"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport {\n  useFormContext,\n  FieldValues,\n  FieldPath,\n  ControllerRenderProps,\n} from \"react-hook-form\";\nimport {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/components/ui/form\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface FormFieldWrapperProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> {\n  name: TName;\n  label?: React.ReactNode;\n  renderLabel?: () => React.ReactNode;\n  description?: React.ReactNode;\n  className?: string;\n  required?: boolean;\n  defaultValue?: any; // Consider making this more specific if needed\n  children: (\n    field: ControllerRenderProps<TFieldValues, TName>\n  ) => React.ReactNode;\n}\n\nexport function FormFieldWrapper<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  name,\n  label,\n  renderLabel,\n  description,\n  className,\n  required,\n  defaultValue,\n  children,\n}: FormFieldWrapperProps<TFieldValues, TName>) {\n  const form = useFormContext<TFieldValues>();\n\n  return (\n    <FormField\n      control={form.control}\n      name={name}\n      defaultValue={defaultValue}\n      render={({ field }) => (\n        <FormItem className={cn(\"space-y-2\", className)}>\n          {renderLabel ? (\n            renderLabel()\n          ) : label ? (\n            <FormLabel>\n              {label}\n              {required && <span className=\"text-destructive ml-1\">*</span>}\n            </FormLabel>\n          ) : null}\n          <FormControl>{children(field)}</FormControl>\n          {description && <FormDescription>{description}</FormDescription>}\n          <FormMessage />\n        </FormItem>\n      )}\n    />\n  );\n}\n"
+    },
+    {
+      "path": "registry/new-york/form-field-wrapper/preview.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { FormProvider, useForm } from \"react-hook-form\";\nimport { FormFieldWrapper } from \"./FormFieldWrapper\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function FormFieldWrapperPreview() {\n  const form = useForm({ defaultValues: { example: \"\" } });\n\n  return (\n    <FormProvider {...form}>\n      <form onSubmit={form.handleSubmit((data) => console.log(data))}>\n        <FormFieldWrapper\n          name=\"example\"\n          label=\"Example Label\"\n          description=\"This is a description.\"\n          required\n        >\n          {() => <p>This is the child content rendered inside the wrapper.</p>}\n        </FormFieldWrapper>\n        <Button type=\"submit\" className=\"mt-4\">\n          Submit (Check Console)\n        </Button>\n      </form>\n    </FormProvider>\n  );\n}\n"
+    }
+  ]
+}

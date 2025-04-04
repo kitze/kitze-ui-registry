@@ -4,12 +4,12 @@
   "type": "registry:component",
   "title": "Custom Button",
   "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
-  "dependencies": [
-    "class-variance-authority"
-  ],
   "registryDependencies": [
     "https://ui.kitze.io/r/conditional-tooltip.json",
     "https://ui.kitze.io/r/spinner.json"
+  ],
+  "dependencies": [
+    "class-variance-authority"
   ],
   "files": [
     {

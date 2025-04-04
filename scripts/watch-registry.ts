@@ -1,264 +1,94 @@
-import chokidar from "chokidar";
-import * as fs from "fs";
-import * as path from "path";
-import { glob } from "glob";
+import * as chokidar from "chokidar";
 import { exec } from "child_process";
-import { promisify } from "util";
+import * as path from "path";
 
-const execAsync = promisify(exec);
+console.log("🔍 Watching registry folder for changes...");
 
-// Types for our component configs
-interface ComponentConfig {
-  name: string;
-  type: string;
-  title: string;
-  description: string;
-  dependencies?: string[];
-  registryDependencies?: string[];
-  files: {
-    path: string;
-    type: string;
-    content?: string;
-  }[];
-}
-
-interface Registry {
-  $schema: string;
-  name: string;
-  homepage: string;
-  items: ComponentConfig[];
-}
-
-// Function to ensure directory exists
-function ensureDirectoryExists(dirPath: string) {
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-}
-
-// Function to get our component names from registry config files
-async function getOurComponentNames(): Promise<string[]> {
-  try {
-    const configFiles = await glob("registry/**/config.json");
-    return configFiles.map((configFile) => {
-      const configContent = fs.readFileSync(configFile, "utf-8");
-      const config = JSON.parse(configContent);
-      return config.name;
-    });
-  } catch (error) {
-    console.error("❌ Error reading registry config files:", error);
-    return [];
-  }
-}
-
-// Function to process registry dependencies
-function processRegistryDependencies(
-  dependencies: string[] | undefined,
-  ourComponents: string[]
-): string[] | undefined {
-  if (!dependencies) return undefined;
-
-  return dependencies.map((dep) => {
-    // If it's a URL, keep it as is
-    if (dep.startsWith("http")) return dep;
-    // If it's one of our components, generate the registry URL
-    if (ourComponents.includes(dep)) {
-      const url = process.env.NEXT_PUBLIC_BASE_URL || "https://ui.kitze.io";
-      return `${url}/r/${dep}.json`;
-    }
-    // If it's a shadcn/ui component, keep the name
-    return dep;
-  });
-}
-
-// Function to generate individual component JSON files
-async function generateComponentFiles(configs: ComponentConfig[]) {
-  try {
-    ensureDirectoryExists("public/r");
-    const ourComponents = await getOurComponentNames();
-
-    for (const config of configs) {
-      const componentConfig = {
-        $schema: "https://ui.shadcn.com/schema/registry-item.json",
-        name: config.name,
-        type: config.type,
-        title: config.title,
-        description: config.description,
-        dependencies: config.dependencies,
-        registryDependencies: processRegistryDependencies(
-          config.registryDependencies,
-          ourComponents
-        ),
-        files: await Promise.all(
-          config.files.map(async (file) => {
-            // Fix the file path handling to account for absolute paths
-            const filePath = file.path;
-            let content;
-
-            try {
-              content = fs.readFileSync(filePath, "utf-8");
-            } catch (error) {
-              console.error(`❌ Error reading file ${filePath}:`, error);
-              content = `/* Error: Could not read file ${filePath} */`;
-            }
-
-            return {
-              path: filePath,
-              type: file.type,
-              content,
-            };
-          })
-        ),
-      };
-
-      fs.writeFileSync(
-        `public/r/${config.name}.json`,
-        JSON.stringify(componentConfig, null, 2),
-        "utf-8"
-      );
-    }
-
-    console.log("✅ Individual component JSON files generated");
-  } catch (error) {
-    console.error("❌ Error generating component JSON files:", error);
-  }
-}
-
-// Function to generate registry.json
-async function generateRegistry() {
-  try {
-    const configFiles = await glob("registry/**/config.json");
-    const configs: ComponentConfig[] = [];
-    const ourComponents = await getOurComponentNames();
-
-    for (const configFile of configFiles) {
-      const configContent = fs.readFileSync(configFile, "utf-8");
-      const config = JSON.parse(configContent);
-
-      // Update file paths to be relative to the component's directory
-      const componentDir = path.dirname(configFile);
-      config.files = config.files.map(
-        (file: { path: string; type: string }) => {
-          // Fix path handling: if the path already starts with "registry/", don't prepend componentDir
-          const filePath = file.path.startsWith("registry/")
-            ? file.path
-            : path.join(componentDir, file.path);
-
-          return {
-            ...file,
-            path: filePath,
-          };
-        }
-      );
-
-      // Process registry dependencies
-      config.registryDependencies = processRegistryDependencies(
-        config.registryDependencies,
-        ourComponents
-      );
-      configs.push(config);
-    }
-
-    const registry: Registry = {
-      $schema: "https://ui.shadcn.com/schema/registry.json",
-      name: "kitze-ui",
-      homepage: "https://ui.kitze.io",
-      items: configs,
-    };
-
-    fs.writeFileSync(
-      "registry.json",
-      JSON.stringify(registry, null, 2),
-      "utf-8"
-    );
-
-    // Generate individual component files
-    await generateComponentFiles(configs);
-
-    console.log("✅ registry.json generated");
-  } catch (error) {
-    console.error("❌ Error generating registry.json:", error);
-  }
-}
-
-// Function to generate component types
-async function generateTypes() {
-  try {
-    const configFiles = await glob("registry/**/config.json");
-    const components: ComponentConfig[] = [];
-
-    for (const configFile of configFiles) {
-      const configContent = fs.readFileSync(configFile, "utf-8");
-      const config = JSON.parse(configContent);
-      components.push(config);
-    }
-
-    const componentNames = components.map((c) => `"${c.name}"`).join(" | ");
-
-    const typeContent = `// This file is auto-generated. Do not edit manually.
-export type ComponentName = ${componentNames};
-
-export interface ComponentMeta {
-  name: ComponentName;
-  title: string;
-  description: string;
-}
-
-export const componentMeta: Record<ComponentName, ComponentMeta> = {
-${components
-  .map(
-    (c) => `  "${c.name}": {
-    name: "${c.name}",
-    title: "${c.title}",
-    description: "${c.description}"
-  }`
-  )
-  .join(",\n")}
-} as const;
-`;
-
-    fs.writeFileSync("lib/component-types.ts", typeContent, "utf-8");
-
-    console.log("✅ Component types generated");
-  } catch (error) {
-    console.error("❌ Error generating component types:", error);
-  }
-}
-
-// Function to run both generators
-async function regenerateFiles() {
-  console.log("🔄 Regenerating files...");
-  await generateRegistry();
-  await generateTypes();
-  console.log("✨ All files regenerated");
-}
-
-// Initialize watcher
+// Create a watcher for the registry folder
 const watcher = chokidar.watch("registry", {
   ignored: /(^|[\/\\])\../, // ignore dotfiles
   persistent: true,
-  ignoreInitial: false,
+  ignoreInitial: true, // don't trigger events when first starting up
 });
 
-// Add event listeners
+// Define a flag to prevent multiple simultaneous executions
+let isGenerating = false;
+
+// Debounce function to prevent multiple rapid executions
+let debounceTimer: NodeJS.Timeout | null = null;
+
+// Function to run the generate script
+const runGenerate = () => {
+  if (isGenerating || debounceTimer) return;
+
+  // Set a debounce timer to wait for more changes
+  debounceTimer = setTimeout(() => {
+    debounceTimer = null;
+
+    if (isGenerating) return;
+    isGenerating = true;
+
+    console.log("🚀 Change detected, running generate script...");
+
+    exec("tsx scripts/generate-once.ts", (error, stdout, stderr) => {
+      isGenerating = false;
+
+      if (error) {
+        console.error(`❌ Error executing generate script: ${error.message}`);
+        return;
+      }
+
+      if (stderr) {
+        console.error(`⚠️ Generate script warnings: ${stderr}`);
+      }
+
+      console.log(stdout);
+      console.log(
+        "✅ Generate script completed, continuing to watch for changes..."
+      );
+    });
+  }, 500); // Wait 500ms to debounce multiple rapid changes
+};
+
+// Clean shutdown function
+const shutdown = async () => {
+  console.log("\n🛑 Stopping registry watcher...");
+
+  // Clear any pending debounce timer
+  if (debounceTimer) {
+    clearTimeout(debounceTimer);
+    debounceTimer = null;
+  }
+
+  // Close the watcher
+  await watcher.close();
+
+  console.log("👋 Registry watcher shutdown complete. Goodbye!");
+  process.exit(0);
+};
+
+// Handle graceful shutdown on SIGINT (Ctrl+C)
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
+
+// Watch for file changes
 watcher
-  .on("add", (path) => {
-    if (path.includes("config.json")) {
-      console.log(`File ${path} has been added`);
-      regenerateFiles();
-    }
+  .on("add", (filePath) => {
+    console.log(`➕ File added: ${filePath}`);
+    runGenerate();
   })
-  .on("change", (path) => {
-    if (path.includes("config.json")) {
-      console.log(`File ${path} has been changed`);
-      regenerateFiles();
-    }
+  .on("change", (filePath) => {
+    console.log(`🔄 File changed: ${filePath}`);
+    runGenerate();
   })
-  .on("unlink", (path) => {
-    if (path.includes("config.json")) {
-      console.log(`File ${path} has been removed`);
-      regenerateFiles();
-    }
+  .on("unlink", (filePath) => {
+    console.log(`➖ File removed: ${filePath}`);
+    runGenerate();
+  })
+  .on("error", (error) => {
+    console.error(`❌ Watcher error: ${error}`);
   });
 
-console.log("👀 Watching registry folder for changes...");
+console.log(
+  "👀 Watching for changes in registry folder (press Ctrl+C to stop)"
+);

@@ -3,16 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack & npm run script:watch-and-generate",
+    "dev": "concurrently \"next dev --turbopack\" \"npm run watch\" --kill-others",
     "build": "next build",
     "start": "next start",
     "registry:build": "shadcn build",
-    "prebuild": "npm run script:generate-all",
-    "script:register": "tsx scripts/register-components.ts",
-    "script:generate-types": "tsx scripts/generate-component-types.ts",
-    "script:watch-registry": "tsx scripts/watch-registry.ts",
-    "script:generate-all": "npm run script:register && npm run script:generate-types",
-    "script:watch-and-generate": "tsx scripts/watch-registry.ts & npm run script:generate-types"
+    "prebuild": "npm run generate",
+    "generate": "tsx scripts/generate-once.ts",
+    "watch": "tsx scripts/watch-registry.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -57,10 +56,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "chokidar": "^4.0.3",
+    "concurrently": "^8.2.2",
     "glob": "^10.4.5",
     "postcss": "^8",
     "tailwindcss": "^4.0.17",
     "tsx": "^4.19.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.1.1"
   }
 }

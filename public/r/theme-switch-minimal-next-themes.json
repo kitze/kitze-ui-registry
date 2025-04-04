@@ -4,11 +4,11 @@
   "type": "registry:component",
   "title": "Theme Switch Minimal with Next-Themes",
   "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
-  "dependencies": [
-    "next-themes"
-  ],
   "registryDependencies": [
     "https://ui.kitze.io/r/theme-switch-minimal.json"
+  ],
+  "dependencies": [
+    "next-themes"
   ],
   "files": [
     {

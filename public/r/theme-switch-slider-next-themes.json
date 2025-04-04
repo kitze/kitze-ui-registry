@@ -4,11 +4,11 @@
   "type": "registry:component",
   "title": "Theme Switch Slider with Next-Themes",
   "description": "A theme switcher slider that integrates with the next-themes library for persistent theme management",
-  "dependencies": [
-    "next-themes"
-  ],
   "registryDependencies": [
     "https://ui.kitze.io/r/theme-switch-slider.json"
+  ],
+  "dependencies": [
+    "next-themes"
   ],
   "files": [
     {

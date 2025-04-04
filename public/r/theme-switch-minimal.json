@@ -4,12 +4,12 @@
   "type": "registry:component",
   "title": "Theme Switch Minimal",
   "description": "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/custom-button.json"
+  ],
   "dependencies": [
     "framer-motion",
     "lucide-react"
-  ],
-  "registryDependencies": [
-    "https://ui.kitze.io/r/custom-button.json"
   ],
   "files": [
     {
