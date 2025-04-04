@@ -1,0 +1,13 @@
+{
+  "name": "menu-context",
+  "type": "registry:context",
+  "title": "Menu Context",
+  "description": "Context provider to determine the type of menu (dropdown, context, bottom-drawer) and provide a close function.",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "MenuContext.tsx",
+      "type": "registry:component"
+    }
+  ]
+}

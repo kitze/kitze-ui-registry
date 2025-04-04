@@ -1,0 +1,17 @@
+{
+  "name": "responsive-tooltip",
+  "type": "registry:component",
+  "title": "Responsive Tooltip",
+  "description": "A tooltip component that adapts to desktop (tooltip) and mobile (bottom drawer) views",
+  "registryDependencies": [
+    "simple-tooltip",
+    "conditional-wrap",
+    "bottom-drawer"
+  ],
+  "files": [
+    {
+      "path": "ResponsiveTooltip.tsx",
+      "type": "registry:component"
+    }
+  ]
+}

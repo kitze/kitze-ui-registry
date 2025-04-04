@@ -28,7 +28,10 @@ export const KitzeUIProvider: ReactFC<KitzeUIProviderProps> = ({
 export const useKitzeUI = () => {
   const context = useContext(KitzeUIContext);
   if (context === undefined) {
-    throw new Error("useKitzeUI must be used within a KitzeUIProvider");
+    console.warn(
+      "useKitzeUI should be used within a KitzeUIProvider, otherwise it will assume that mobile is false"
+    );
+    return { isMobile: false };
   }
   return context;
 };

@@ -1,9 +1,9 @@
 {
   "name": "kitze-ui-context",
-  "type": "registry:component",
+  "type": "registry:context",
   "title": "Kitze UI Context",
   "description": "Provides UI context like mobile detection for Kitze UI components.",
-  "dependencies": ["react"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "KitzeUIContext.tsx",

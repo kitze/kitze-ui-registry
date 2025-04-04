@@ -1,6 +1,6 @@
 import React from "react";
 import { HelpCircle } from "lucide-react";
-import { ResponsiveTooltip } from "./ResponsiveTooltip";
+import { ResponsiveTooltip } from "@/registry/new-york/responsive-tooltip/ResponsiveTooltip";
 import { ReactFC } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
