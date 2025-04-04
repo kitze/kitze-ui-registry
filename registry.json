@@ -580,6 +580,13 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "test-component",
+      "type": "registry:component",
+      "title": "Test Component",
+      "description": "A test component",
+      "files": []
     }
   ]
 }
