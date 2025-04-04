@@ -5,7 +5,7 @@ import {
   ContextMenuContent,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
-import { MenuProvider } from "@/registry/new-york/KitzeUIContext/MenuContext";
+import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
 
 export interface SimpleContextMenuClassNames {

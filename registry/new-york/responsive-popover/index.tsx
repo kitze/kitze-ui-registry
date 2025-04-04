@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useKitzeUI } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
 import { SimplePopover } from "@/registry/new-york/simple-popover";
 import {

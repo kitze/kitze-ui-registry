@@ -5,8 +5,8 @@ import {
   SimpleDropdownMenuProps,
 } from "./SimpleDropdownMenu";
 import { BottomDrawer } from "@/registry/new-york/bottom-drawer/BottomDrawer";
-import { MenuProvider } from "@/registry/new-york/KitzeUIContext/MenuContext";
-import { useKitzeUI } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
+import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
 
 export interface ResponsiveDropdownMenuProps extends SimpleDropdownMenuProps {

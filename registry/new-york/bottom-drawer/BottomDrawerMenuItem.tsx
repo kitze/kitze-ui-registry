@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactFC, cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
-import { HelpInfoCircle } from "@/registry/new-york/KitzeUIContext/HelpInfoCircle";
+import { HelpInfoCircle } from "@/registry/new-york/help-info-circle/HelpInfoCircle";
 
 export interface BottomDrawerMenuItemProps {
   children: React.ReactNode;

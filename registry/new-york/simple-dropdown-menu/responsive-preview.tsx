@@ -5,7 +5,7 @@ import { CommonMenuLabel } from "./CommonMenuLabel";
 import { CommonMenuSeparator } from "./CommonMenuSeparator";
 import { CommonMenuGroup } from "./CommonMenuGroup";
 import { Button } from "@/components/ui/button";
-import { KitzeUIProvider } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import { KitzeUIProvider } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { User, Settings, LogOut, ChevronDown } from "lucide-react";
 
 export default function ResponsiveDropdownMenuPreview() {

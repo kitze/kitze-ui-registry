@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MenuProvider } from "@/registry/new-york/KitzeUIContext/MenuContext";
+import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
 
 export interface SimpleDropdownMenuClassNames {

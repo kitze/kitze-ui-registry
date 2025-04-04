@@ -8,18 +8,11 @@ import {
   useLinkableComponent,
   LinkableProps,
 } from "@/registry/hooks/useLinkableComponent";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
-import { useMenuContext } from "@/registry/new-york/KitzeUIContext/MenuContext";
+import { useMenuContext } from "@/registry/new-york/menu-context/MenuContext";
 import { BottomDrawerMenuItem } from "@/registry/new-york/bottom-drawer/BottomDrawerMenuItem";
-import { HelpInfoCircle } from "@/registry/new-york/KitzeUIContext/HelpInfoCircle";
+import { HelpInfoCircle } from "@/registry/new-york/help-info-circle/HelpInfoCircle";
 
 export interface CommonMenuItemProps extends LinkableProps {
   children: React.ReactNode;

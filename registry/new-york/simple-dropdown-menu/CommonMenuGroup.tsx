@@ -2,7 +2,7 @@ import React from "react";
 import { ReactFC } from "@/lib/utils";
 import { DropdownMenuGroup } from "@/components/ui/dropdown-menu";
 import { ContextMenuGroup } from "@/components/ui/context-menu";
-import { useMenuContext } from "@/registry/new-york/KitzeUIContext/MenuContext";
+import { useMenuContext } from "@/registry/new-york/menu-context/MenuContext";
 import { BottomDrawerMenuGroup } from "@/registry/new-york/bottom-drawer/BottomDrawerMenuComponents";
 
 export interface CommonMenuGroupProps {

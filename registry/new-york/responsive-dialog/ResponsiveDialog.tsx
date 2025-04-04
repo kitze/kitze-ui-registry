@@ -8,9 +8,8 @@ import {
   BottomDrawer,
   BottomDrawerProps,
 } from "@/registry/new-york/bottom-drawer/BottomDrawer";
-import { useKitzeUI } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
-import { Button } from "@/components/ui/button";
 import { CustomButton } from "../custom-button/CustomButton";
 
 export interface ResponsiveDialogProps

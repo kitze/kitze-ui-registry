@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useMedia } from "use-media";
-import { KitzeUIProvider } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import { KitzeUIProvider } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { AlertProvider } from "@/registry/new-york/ui-alert";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";

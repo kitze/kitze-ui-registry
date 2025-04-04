@@ -2,8 +2,8 @@ import React from "react";
 import { ReactFC } from "@/lib/utils";
 import { SimpleContextMenu, SimpleContextMenuProps } from "./SimpleContextMenu";
 import { BottomDrawer } from "@/registry/new-york/bottom-drawer/BottomDrawer";
-import { MenuProvider } from "@/registry/new-york/KitzeUIContext/MenuContext";
-import { useKitzeUI } from "@/registry/new-york/KitzeUIContext/KitzeUIContext";
+import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
+import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { useLongPress } from "use-long-press";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
 

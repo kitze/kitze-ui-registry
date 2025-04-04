@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactFC } from "@/lib/utils";
 import { BottomDrawer } from "./BottomDrawer";
-import { MenuProvider } from "@/registry/new-york/KitzeUIContext/MenuContext";
+import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
 
 export interface BottomDrawerMenuProps {
   children: React.ReactNode;
