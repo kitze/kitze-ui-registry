@@ -466,10 +466,25 @@ async function generateTypes() {
       }
     }
 
+    // Get all hook files from registry/hooks directory
+    const hookFiles = await glob("registry/hooks/*.ts");
+    const hookNames = hookFiles.map((file) => {
+      // Extract just the filename without extension
+      const filename = path.basename(file, ".ts");
+      return `"${filename}"`;
+    });
+
     const componentNames = components.map((c) => `"${c.name}"`).join(" | ");
+    const availableHooks =
+      hookNames.length > 0 ? hookNames.join(" | ") : "string";
 
     const typeContent = `// This file is auto-generated. Do not edit manually.
 export type ComponentName = ${componentNames || "never"}; // Handle empty case
+
+export type AvailableHook = ${availableHooks}; // Auto-generated from registry/hooks
+
+// Shadcn UI component types
+export type ShadcnComponent = string; // List of available shadcn/ui components
 
 export interface ComponentMeta {
   name: ComponentName;

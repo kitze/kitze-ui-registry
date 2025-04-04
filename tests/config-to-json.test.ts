@@ -1,11 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import * as fs from "fs";
-import path from "path";
 import type {
   ComponentConfig,
   ComponentFile,
-  ComponentFileType,
-  AvailableHook,
 } from "../lib/component-config-types";
 
 // Mock the fs module
@@ -143,7 +140,6 @@ describe("Config to JSON conversion", () => {
       title: "Test Legacy Component",
       description: "A test component with legacy dependency format",
       type: "registry:component",
-      hooks: ["useTestHook"],
       shadcnDependencies: ["button", "dialog"],
       linkedDependencies: ["simple-dialog"],
       dependencies: ["next", "react", "@radix-ui/react-dialog"],
@@ -215,9 +211,7 @@ describe("Config to JSON conversion", () => {
       title: "Test Component with Duplicated Hook",
       description: "A test component with duplicated hook references",
       type: "registry:component",
-      dependencies: {
-        hooks: ["useTestHook"],
-      },
+      hooks: ["useControlledOpen"],
       files: [
         {
           path: "registry/new-york/test-component/TestComponent.tsx",

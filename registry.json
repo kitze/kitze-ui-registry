@@ -60,6 +60,28 @@
       "linkedDependencies": []
     },
     {
+      "name": "theme-switch-minimal-next-themes",
+      "type": "registry:component",
+      "title": "Theme Switch Minimal with Next-Themes",
+      "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
+      "dependencies": {
+        "npm": [
+          "next-themes"
+        ],
+        "linked": [
+          "theme-switch-minimal"
+        ]
+      },
+      "files": [
+        {
+          "path": "registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "shadcnDependencies": [],
+      "linkedDependencies": []
+    },
+    {
       "name": "theme-switch-slider",
       "type": "registry:component",
       "title": "Theme Switch Slider",
@@ -80,21 +102,13 @@
       "linkedDependencies": []
     },
     {
-      "name": "theme-switch-minimal-next-themes",
+      "name": "suspensed",
       "type": "registry:component",
-      "title": "Theme Switch Minimal with Next-Themes",
-      "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
-      "dependencies": {
-        "npm": [
-          "next-themes"
-        ],
-        "linked": [
-          "theme-switch-minimal"
-        ]
-      },
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
       "files": [
         {
-          "path": "registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
           "type": "registry:component"
         }
       ],
@@ -125,13 +139,22 @@
       "linkedDependencies": []
     },
     {
-      "name": "suspensed",
+      "name": "simple-popover",
+      "title": "Simple Popover",
+      "description": "A simple popover component that displays content when triggered.",
       "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
+      "dependencies": {
+        "shad": [
+          "popover"
+        ]
+      },
       "files": [
         {
-          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/simple-popover/index.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-popover/preview.tsx",
           "type": "registry:component"
         }
       ],
@@ -151,48 +174,6 @@
       "files": [
         {
           "path": "registry/new-york/spinner/Spinner.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "shadcnDependencies": [],
-      "linkedDependencies": []
-    },
-    {
-      "name": "simple-tooltip",
-      "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "dependencies": {
-        "shad": [
-          "tooltip"
-        ]
-      },
-      "files": [
-        {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "shadcnDependencies": [],
-      "linkedDependencies": []
-    },
-    {
-      "name": "simple-popover",
-      "title": "Simple Popover",
-      "description": "A simple popover component that displays content when triggered.",
-      "type": "registry:component",
-      "dependencies": {
-        "shad": [
-          "popover"
-        ]
-      },
-      "files": [
-        {
-          "path": "registry/new-york/simple-popover/index.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-popover/preview.tsx",
           "type": "registry:component"
         }
       ],
@@ -273,6 +254,25 @@
       "files": [
         {
           "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "shadcnDependencies": [],
+      "linkedDependencies": []
+    },
+    {
+      "name": "simple-accordion",
+      "type": "registry:component",
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "dependencies": {
+        "shad": [
+          "accordion"
+        ]
+      },
+      "files": [
+        {
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component"
         }
       ],
@@ -420,6 +420,44 @@
       "linkedDependencies": []
     },
     {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "dependencies": {
+        "shad": [
+          "tooltip"
+        ]
+      },
+      "files": [
+        {
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "shadcnDependencies": [],
+      "linkedDependencies": []
+    },
+    {
+      "name": "kitze-ui-context",
+      "type": "registry:component",
+      "title": "Kitze UI Context",
+      "description": "Provides UI context like mobile detection for Kitze UI components.",
+      "dependencies": {
+        "linked": [
+          "ui-alert"
+        ]
+      },
+      "files": [
+        {
+          "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "shadcnDependencies": [],
+      "linkedDependencies": []
+    },
+    {
       "name": "menu-context",
       "type": "registry:component",
       "title": "Menu Context",
@@ -456,25 +494,6 @@
       "linkedDependencies": []
     },
     {
-      "name": "kitze-ui-context",
-      "type": "registry:component",
-      "title": "Kitze UI Context",
-      "description": "Provides UI context like mobile detection for Kitze UI components.",
-      "dependencies": {
-        "linked": [
-          "ui-alert"
-        ]
-      },
-      "files": [
-        {
-          "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "shadcnDependencies": [],
-      "linkedDependencies": []
-    },
-    {
       "name": "full-page-spinner",
       "type": "registry:component",
       "title": "Full Page Spinner",
@@ -494,47 +513,25 @@
       "linkedDependencies": []
     },
     {
-      "name": "form-field-input",
+      "name": "form-field-wrapper",
       "type": "registry:component",
-      "title": "Form Field Input",
-      "description": "An input component integrated with react-hook-form using FormFieldWrapper.",
+      "title": "Form Field Wrapper",
+      "description": "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
       "dependencies": {
         "npm": [
           "react-hook-form"
         ],
-        "linked": [
-          "form-field-wrapper"
-        ],
         "shad": [
-          "input"
+          "form"
         ]
       },
       "files": [
         {
-          "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
+          "path": "registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/form-field-input/preview.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "shadcnDependencies": [],
-      "linkedDependencies": []
-    },
-    {
-      "name": "simple-accordion",
-      "type": "registry:component",
-      "title": "Simple Accordion",
-      "description": "A simple accordion component",
-      "dependencies": {
-        "shad": [
-          "accordion"
-        ]
-      },
-      "files": [
-        {
-          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "path": "registry/new-york/form-field-wrapper/preview.tsx",
           "type": "registry:component"
         }
       ],
@@ -583,32 +580,6 @@
       "files": [
         {
           "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "shadcnDependencies": [],
-      "linkedDependencies": []
-    },
-    {
-      "name": "custom-button",
-      "type": "registry:component",
-      "title": "Custom Button",
-      "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
-      "dependencies": {
-        "npm": [
-          "class-variance-authority"
-        ],
-        "linked": [
-          "conditional-tooltip",
-          "spinner"
-        ],
-        "hooks": [
-          "useLinkableComponent"
-        ]
-      },
-      "files": [
-        {
-          "path": "registry/new-york/custom-button/CustomButton.tsx",
           "type": "registry:component"
         }
       ],
@@ -700,25 +671,54 @@
       "linkedDependencies": []
     },
     {
-      "name": "form-field-wrapper",
+      "name": "custom-button",
       "type": "registry:component",
-      "title": "Form Field Wrapper",
-      "description": "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
+      "title": "Custom Button",
+      "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
       "dependencies": {
         "npm": [
-          "react-hook-form"
+          "class-variance-authority"
         ],
-        "shad": [
-          "form"
+        "linked": [
+          "conditional-tooltip",
+          "spinner"
+        ],
+        "hooks": [
+          "useLinkableComponent"
         ]
       },
       "files": [
         {
-          "path": "registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
+          "path": "registry/new-york/custom-button/CustomButton.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "shadcnDependencies": [],
+      "linkedDependencies": []
+    },
+    {
+      "name": "form-field-input",
+      "type": "registry:component",
+      "title": "Form Field Input",
+      "description": "An input component integrated with react-hook-form using FormFieldWrapper.",
+      "dependencies": {
+        "npm": [
+          "react-hook-form"
+        ],
+        "linked": [
+          "form-field-wrapper"
+        ],
+        "shad": [
+          "input"
+        ]
+      },
+      "files": [
+        {
+          "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/form-field-wrapper/preview.tsx",
+          "path": "registry/new-york/form-field-input/preview.tsx",
           "type": "registry:component"
         }
       ],

@@ -2,11 +2,10 @@
  * Type definitions for component registry configurations
  */
 
-import {
-  ComponentName,
-  AvailableHook,
-  ShadcnComponent,
-} from "./component-types";
+import { ComponentName, AvailableHook } from "./component-types";
+
+// Define and export ShadcnComponent type
+export type ShadcnComponent = string;
 
 // Types of available component files
 export type ComponentFileType =
