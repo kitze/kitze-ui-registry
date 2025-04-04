@@ -253,60 +253,61 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
           console.info(`  - ${hook.path}`)
         );
 
-        // Process dependencies - combine new structure with legacy fields
-        // Determine if dependencies is an object or an array for npm dependencies
-        const npmDependencies =
+        // Process dependencies according to shadcn schema
+        // Dependencies should be a simple array of npm packages
+        let npmDependencies: string[] | undefined = undefined;
+        let registryDeps: string[] | undefined = undefined;
+
+        // Extract dependencies from our object structure or legacy arrays
+        if (
           typeof config.dependencies === "object" &&
           !Array.isArray(config.dependencies)
-            ? config.dependencies.npm
-            : Array.isArray(config.dependencies)
-            ? config.dependencies
-            : undefined;
+        ) {
+          // New structured format
+          npmDependencies = config.dependencies.npm;
 
-        // Get shadcn dependencies from either new format or legacy format
-        const shadcnDeps = processShadcnDependencies(
-          typeof config.dependencies === "object" &&
-            !Array.isArray(config.dependencies)
-            ? config.dependencies.shad
-            : config.shadcnDependencies
-        );
+          // Process shad components to registryDependencies
+          const shadDeps = config.dependencies.shad || [];
 
-        // Get linked dependencies from either new format or legacy format
-        const linkedDeps = processLinkedDependencies(
-          typeof config.dependencies === "object" &&
-            !Array.isArray(config.dependencies)
-            ? config.dependencies.linked
-            : config.linkedDependencies,
-          baseUrl
-        );
+          // Process linked components to registryDependencies (as URLs)
+          const linkedDeps = config.dependencies.linked
+            ? processLinkedDependencies(config.dependencies.linked, baseUrl)
+            : [];
 
-        // Finally, handle registryDependencies if explicitly provided
-        let explicitRegistryDeps = config.registryDependencies
-          ? processRegistryDependencies(
+          // Combine shad and linked into registryDependencies
+          if (shadDeps.length > 0 || (linkedDeps && linkedDeps.length > 0)) {
+            registryDeps = [...shadDeps, ...(linkedDeps || [])];
+          }
+        } else if (Array.isArray(config.dependencies)) {
+          // Legacy format: dependencies as direct array of npm packages
+          npmDependencies = config.dependencies;
+        }
+
+        // Process legacy shadcnDependencies and linkedDependencies if present
+        if (!registryDeps) {
+          const shadDeps = config.shadcnDependencies || [];
+          const linkedDeps =
+            processLinkedDependencies(config.linkedDependencies, baseUrl) || [];
+
+          if (shadDeps.length > 0 || linkedDeps.length > 0) {
+            registryDeps = [...shadDeps, ...linkedDeps];
+          } else if (config.registryDependencies) {
+            // Use legacy registryDependencies as fallback
+            registryDeps = processRegistryDependencies(
               config.registryDependencies,
               ourComponents
-            )
-          : undefined;
+            );
+          }
+        }
 
-        // Combine dependencies for registryDependencies in the output
-        // Priority: explicit registryDependencies > combined shadcnDeps and linkedDeps
-        const finalRegistryDependencies =
-          explicitRegistryDeps ||
-          (shadcnDeps || linkedDeps
-            ? [...(shadcnDeps || []), ...(linkedDeps || [])]
-            : undefined);
-
-        // Create output JSON object
-        // Note: We omit the 'hooks' property to align with expected output format
+        // Create output JSON object following the shadcn schema
         const outputJson = {
           $schema: "https://ui.shadcn.com/schema/registry-item.json",
           name: config.name,
           type: config.type,
           title: config.title,
           description: config.description,
-          ...(finalRegistryDependencies && {
-            registryDependencies: finalRegistryDependencies,
-          }),
+          ...(registryDeps && { registryDependencies: registryDeps }),
           ...(npmDependencies && { dependencies: npmDependencies }),
           files: allFiles,
         };
@@ -401,17 +402,65 @@ async function generateRegistry() {
           };
         });
 
-        // Process the new dependency types
-        config.shadcnDependencies = config.shadcnDependencies || [];
-        config.linkedDependencies = config.linkedDependencies || [];
+        // Process dependencies to match shadcn schema format
+        // Dependencies should be a simple array of npm packages
+        let npmDependencies: string[] | undefined = undefined;
+        let registryDeps: string[] | undefined = undefined;
 
-        // Keep the legacy registryDependencies for backward compatibility
-        config.registryDependencies = processRegistryDependencies(
-          config.registryDependencies,
-          ourComponents
-        );
+        // Extract dependencies from our object structure or legacy arrays
+        if (
+          typeof config.dependencies === "object" &&
+          !Array.isArray(config.dependencies)
+        ) {
+          // New structured format
+          npmDependencies = config.dependencies.npm;
 
-        configs.push(config);
+          // Process shad components to registryDependencies
+          const shadDeps = config.dependencies.shad || [];
+
+          // Process linked components to registryDependencies (as URLs)
+          const linkedDeps = config.dependencies.linked
+            ? processLinkedDependencies(config.dependencies.linked)
+            : [];
+
+          // Combine shad and linked into registryDependencies
+          if (shadDeps.length > 0 || (linkedDeps && linkedDeps.length > 0)) {
+            registryDeps = [...shadDeps, ...(linkedDeps || [])];
+          }
+        } else if (Array.isArray(config.dependencies)) {
+          // Legacy format: dependencies as direct array of npm packages
+          npmDependencies = config.dependencies;
+        }
+
+        // Process legacy shadcnDependencies and linkedDependencies if present
+        if (!registryDeps) {
+          const shadDeps = config.shadcnDependencies || [];
+          const linkedDeps =
+            processLinkedDependencies(config.linkedDependencies) || [];
+
+          if (shadDeps.length > 0 || linkedDeps.length > 0) {
+            registryDeps = [...shadDeps, ...linkedDeps];
+          } else if (config.registryDependencies) {
+            // Use legacy registryDependencies as fallback
+            registryDeps = processRegistryDependencies(
+              config.registryDependencies,
+              ourComponents
+            );
+          }
+        }
+
+        // Create a new config object that matches the shadcn schema format
+        const schemaCompliantConfig = {
+          name: config.name,
+          type: config.type,
+          title: config.title,
+          description: config.description,
+          dependencies: npmDependencies,
+          registryDependencies: registryDeps,
+          files: config.files,
+        };
+
+        configs.push(schemaCompliantConfig);
       } catch (error) {
         console.error(`❌ Error processing config file ${configFile}:`, error);
         continue;
