@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "input" | "with-search-bar" | "ui-alert" | "twemoji-react" | "twemoji-area" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "responsive-tooltip" | "responsive-popover" | "responsive-dialog" | "page-header" | "menu-context" | "help-info-circle" | "full-page-spinner" | "form-field-wrapper" | "form-field-input" | "kitze-ui-context" | "form-field-checkbox" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer"; // Handle empty case
+export type ComponentName = "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "responsive-tooltip" | "responsive-popover" | "responsive-dialog" | "page-header" | "menu-context" | "help-info-circle" | "kitze-ui-context" | "full-page-spinner" | "form-field-wrapper" | "form-field-input" | "form-field-checkbox" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "input" | "with-search-bar"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -13,30 +13,10 @@ export interface ComponentMeta {
 }
 
 export const componentMeta: Record<ComponentName, ComponentMeta> = {
-  "input": {
-    name: "input",
-    title: "Input",
-    description: "A customizable input component with support for left/right icons, loading state, and custom styling"
-  },
-  "with-search-bar": {
-    name: "with-search-bar",
-    title: "With Search Bar",
-    description: "A component that provides a searchable interface with animated transitions"
-  },
   "ui-alert": {
     name: "ui-alert",
     title: "UI Alert",
     description: "A collection of alert components with confirm and delete variations"
-  },
-  "twemoji-react": {
-    name: "twemoji-react",
-    title: "Twemoji React",
-    description: "A React component for displaying Twitter Emoji (Twemoji) in your React application"
-  },
-  "twemoji-area": {
-    name: "twemoji-area",
-    title: "Twemoji Area",
-    description: "A component for processing and displaying emojis using Twemoji within a container"
   },
   "theme-switch-slider-next-themes": {
     name: "theme-switch-slider-next-themes",
@@ -138,6 +118,11 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Help Info Circle",
     description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
   },
+  "kitze-ui-context": {
+    name: "kitze-ui-context",
+    title: "Kitze UI Context",
+    description: "Provides UI context like mobile detection for Kitze UI components."
+  },
   "full-page-spinner": {
     name: "full-page-spinner",
     title: "Full Page Spinner",
@@ -152,11 +137,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "form-field-input",
     title: "Form Field Input",
     description: "An input component integrated with react-hook-form using FormFieldWrapper."
-  },
-  "kitze-ui-context": {
-    name: "kitze-ui-context",
-    title: "Kitze UI Context",
-    description: "Provides UI context like mobile detection for Kitze UI components."
   },
   "form-field-checkbox": {
     name: "form-field-checkbox",
@@ -187,5 +167,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "bottom-drawer",
     title: "Bottom Drawer",
     description: "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant."
+  },
+  "input": {
+    name: "input",
+    title: "Input",
+    description: "A customizable input component with support for left/right icons, loading state, and custom styling"
+  },
+  "with-search-bar": {
+    name: "with-search-bar",
+    title: "With Search Bar",
+    description: "A component that provides a searchable interface with animated transitions"
   }
 } as const;

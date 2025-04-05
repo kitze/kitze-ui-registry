@@ -23,21 +23,6 @@
       ]
     },
     {
-      "name": "twemoji-react",
-      "type": "registry:component",
-      "title": "Twemoji React",
-      "description": "A React component for displaying Twitter Emoji (Twemoji) in your React application",
-      "dependencies": [
-        "@twemoji/api"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/twemoji-react/TwemojiReact.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "theme-switch-slider-next-themes",
       "type": "registry:component",
       "title": "Theme Switch Slider with Next-Themes",
@@ -104,22 +89,6 @@
       "files": [
         {
           "path": "registry/new-york/theme-switch-minimal/ThemeSwitchMinimal.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "twemoji-area",
-      "type": "registry:component",
-      "title": "Twemoji Area",
-      "description": "A component for processing and displaying emojis using Twemoji within a container",
-      "dependencies": [
-        "@twemoji/api",
-        "react-error-boundary"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/twemoji-area/TwemojiArea.tsx",
           "type": "registry:component"
         }
       ]
