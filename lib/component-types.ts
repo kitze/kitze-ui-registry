@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "with-search-bar" | "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-popover" | "simple-dialog" | "simple-context-menu" | "simple-dropdown-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "responsive-tooltip" | "responsive-popover" | "responsive-dialog" | "menu-context" | "kitze-ui-context" | "page-header" | "kbd-shortcuts-list" | "kbd-shortcuts" | "kbd" | "input" | "hoverable-icon" | "help-info-circle" | "gradient-text" | "full-page-spinner" | "form-field-input" | "form-field-checkbox" | "form-field-wrapper" | "fill-height-spinner" | "dialog-manager" | "conditional-wrap" | "custom-button" | "conditional-tooltip" | "bottom-drawer"; // Handle empty case
+export type ComponentName = "with-search-bar" | "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "responsive-tooltip" | "responsive-popover" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts-list" | "kbd-shortcuts" | "kbd" | "input" | "hoverable-icon" | "gradient-text" | "full-page-spinner" | "form-field-wrapper" | "form-field-textarea" | "form-field-input" | "form-field-checkbox" | "dialog-manager" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "responsive-dialog" | "help-info-circle"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -63,6 +63,11 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Simple Popover",
     description: "A simple popover component that displays content when triggered."
   },
+  "simple-dropdown-menu": {
+    name: "simple-dropdown-menu",
+    title: "Simple Dropdown Menu",
+    description: "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile"
+  },
   "simple-dialog": {
     name: "simple-dialog",
     title: "Simple Dialog",
@@ -72,11 +77,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "simple-context-menu",
     title: "Simple Context Menu",
     description: "A simple context menu component that wraps content with right-click menu functionality"
-  },
-  "simple-dropdown-menu": {
-    name: "simple-dropdown-menu",
-    title: "Simple Dropdown Menu",
-    description: "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile"
   },
   "simple-accordion": {
     name: "simple-accordion",
@@ -103,10 +103,10 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Responsive Popover",
     description: "A responsive popover component that displays as a popover on desktop and a bottom drawer on mobile."
   },
-  "responsive-dialog": {
-    name: "responsive-dialog",
-    title: "Responsive Dialog",
-    description: "This dialog will display as a drawer on mobile devices and a regular dialog on desktop. Try resizing your browser to see the different appearances."
+  "page-header": {
+    name: "page-header",
+    title: "Page Header",
+    description: "A responsive page header component with mobile drawer support"
   },
   "menu-context": {
     name: "menu-context",
@@ -117,11 +117,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "kitze-ui-context",
     title: "Kitze UI Context",
     description: "Provides UI context like mobile detection for Kitze UI components."
-  },
-  "page-header": {
-    name: "page-header",
-    title: "Page Header",
-    description: "A responsive page header component with mobile drawer support"
   },
   "kbd-shortcuts-list": {
     name: "kbd-shortcuts-list",
@@ -148,11 +143,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Hoverable Icon",
     description: "A linkable icon component with tooltip support, hover effects, and color customization"
   },
-  "help-info-circle": {
-    name: "help-info-circle",
-    title: "Help Info Circle",
-    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
-  },
   "gradient-text": {
     name: "gradient-text",
     title: "Gradient Text",
@@ -162,6 +152,16 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "full-page-spinner",
     title: "Full Page Spinner",
     description: "A spinner component that takes full page size and centers itself in the viewport"
+  },
+  "form-field-wrapper": {
+    name: "form-field-wrapper",
+    title: "Form Field Wrapper",
+    description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
+  },
+  "form-field-textarea": {
+    name: "form-field-textarea",
+    title: "Form Field Textarea",
+    description: "A textarea component integrated with react-hook-form using FormFieldWrapper."
   },
   "form-field-input": {
     name: "form-field-input",
@@ -173,30 +173,25 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Form Field Checkbox",
     description: "A checkbox component integrated with react-hook-form using FormFieldWrapper."
   },
-  "form-field-wrapper": {
-    name: "form-field-wrapper",
-    title: "Form Field Wrapper",
-    description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
+  "dialog-manager": {
+    name: "dialog-manager",
+    title: "Dialog Manager",
+    description: "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application."
   },
   "fill-height-spinner": {
     name: "fill-height-spinner",
     title: "Fill Height Spinner",
     description: "A spinner component that fills and centers in its container height"
   },
-  "dialog-manager": {
-    name: "dialog-manager",
-    title: "Dialog Manager",
-    description: "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application."
+  "custom-button": {
+    name: "custom-button",
+    title: "Custom Button",
+    description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
   },
   "conditional-wrap": {
     name: "conditional-wrap",
     title: "Conditional Wrap",
     description: "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc."
-  },
-  "custom-button": {
-    name: "custom-button",
-    title: "Custom Button",
-    description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
   },
   "conditional-tooltip": {
     name: "conditional-tooltip",
@@ -207,5 +202,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "bottom-drawer",
     title: "Bottom Drawer",
     description: "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant."
+  },
+  "responsive-dialog": {
+    name: "responsive-dialog",
+    title: "Responsive Dialog",
+    description: "This dialog will display as a drawer on mobile devices and a regular dialog on desktop. Try resizing your browser to see the different appearances."
+  },
+  "help-info-circle": {
+    name: "help-info-circle",
+    title: "Help Info Circle",
+    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
   }
 } as const;

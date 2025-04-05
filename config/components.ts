@@ -88,6 +88,7 @@ export const components: ComponentDefinition[] = [
   { id: "form-field-wrapper", groupId: "form" },
   { id: "form-field-input", groupId: "form" },
   { id: "form-field-checkbox", groupId: "form" },
+  { id: "form-field-textarea", groupId: "form" },
 
   // Menu Components
   { id: "bottom-drawer", groupId: "menu" },
