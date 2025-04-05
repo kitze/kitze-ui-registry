@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "suspensed" | "spinner" | "simple-tooltip" | "theme-switch-minimal" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "responsive-tooltip" | "simple-context-menu" | "simple-accordion" | "responsive-popover" | "responsive-dialog" | "menu-context" | "help-info-circle" | "full-page-spinner" | "form-field-wrapper" | "form-field-input" | "form-field-checkbox" | "fill-height-spinner" | "custom-button" | "conditional-tooltip" | "conditional-wrap" | "bottom-drawer" | "kitze-ui-context" | "page-header"; // Handle empty case
+export type ComponentName = "with-search-bar" | "ui-alert" | "twemoji-react" | "twemoji-area" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "responsive-tooltip" | "responsive-popover" | "page-header" | "responsive-dialog" | "menu-context" | "kitze-ui-context" | "full-page-spinner" | "form-field-wrapper" | "form-field-input" | "form-field-checkbox" | "fill-height-spinner" | "custom-button" | "help-info-circle" | "conditional-wrap" | "bottom-drawer" | "conditional-tooltip"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -13,10 +13,25 @@ export interface ComponentMeta {
 }
 
 export const componentMeta: Record<ComponentName, ComponentMeta> = {
+  "with-search-bar": {
+    name: "with-search-bar",
+    title: "With Search Bar",
+    description: "A component that provides a searchable interface with animated transitions"
+  },
   "ui-alert": {
     name: "ui-alert",
     title: "UI Alert",
     description: "A collection of alert components with confirm and delete variations"
+  },
+  "twemoji-react": {
+    name: "twemoji-react",
+    title: "Twemoji React",
+    description: "A React component for displaying Twitter Emoji (Twemoji) in your React application"
+  },
+  "twemoji-area": {
+    name: "twemoji-area",
+    title: "Twemoji Area",
+    description: "A component for processing and displaying emojis using Twemoji within a container"
   },
   "theme-switch-slider-next-themes": {
     name: "theme-switch-slider-next-themes",
@@ -33,6 +48,11 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Theme Switch Minimal with Next-Themes",
     description: "A minimal theme switcher that integrates with the next-themes library for persistent theme management"
   },
+  "theme-switch-minimal": {
+    name: "theme-switch-minimal",
+    title: "Theme Switch Minimal",
+    description: "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes"
+  },
   "suspensed": {
     name: "suspensed",
     title: "Suspensed",
@@ -47,11 +67,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "simple-tooltip",
     title: "Simple Tooltip",
     description: "A simplified tooltip component built on top of Radix UI tooltip"
-  },
-  "theme-switch-minimal": {
-    name: "theme-switch-minimal",
-    title: "Theme Switch Minimal",
-    description: "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes"
   },
   "simple-popover": {
     name: "simple-popover",
@@ -68,11 +83,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Simple Dialog",
     description: "A simple dialog component using Radix UI."
   },
-  "responsive-tooltip": {
-    name: "responsive-tooltip",
-    title: "Responsive Tooltip",
-    description: "A tooltip component that adapts to desktop (tooltip) and mobile (bottom drawer) views"
-  },
   "simple-context-menu": {
     name: "simple-context-menu",
     title: "Simple Context Menu",
@@ -83,10 +93,30 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Simple Accordion",
     description: "A simple accordion component"
   },
+  "segmented-control": {
+    name: "segmented-control",
+    title: "Segmented Control",
+    description: "A simple, accessible segmented control component with size variants"
+  },
+  "search-bar": {
+    name: "search-bar",
+    title: "Search Bar",
+    description: "A reusable search input component with clear functionality"
+  },
+  "responsive-tooltip": {
+    name: "responsive-tooltip",
+    title: "Responsive Tooltip",
+    description: "A tooltip component that adapts to desktop (tooltip) and mobile (bottom drawer) views"
+  },
   "responsive-popover": {
     name: "responsive-popover",
     title: "Responsive Popover",
     description: "A responsive popover component that displays as a popover on desktop and a bottom drawer on mobile."
+  },
+  "page-header": {
+    name: "page-header",
+    title: "Page Header",
+    description: "A responsive page header component with mobile drawer support"
   },
   "responsive-dialog": {
     name: "responsive-dialog",
@@ -98,10 +128,10 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Menu Context",
     description: "Context provider to determine the type of menu (dropdown, context, bottom-drawer) and provide a close function."
   },
-  "help-info-circle": {
-    name: "help-info-circle",
-    title: "Help Info Circle",
-    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
+  "kitze-ui-context": {
+    name: "kitze-ui-context",
+    title: "Kitze UI Context",
+    description: "Provides UI context like mobile detection for Kitze UI components."
   },
   "full-page-spinner": {
     name: "full-page-spinner",
@@ -133,10 +163,10 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Custom Button",
     description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
   },
-  "conditional-tooltip": {
-    name: "conditional-tooltip",
-    title: "Conditional Tooltip",
-    description: "A tooltip component that conditionally renders based on a condition"
+  "help-info-circle": {
+    name: "help-info-circle",
+    title: "Help Info Circle",
+    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
   },
   "conditional-wrap": {
     name: "conditional-wrap",
@@ -148,14 +178,9 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Bottom Drawer",
     description: "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant."
   },
-  "kitze-ui-context": {
-    name: "kitze-ui-context",
-    title: "Kitze UI Context",
-    description: "Provides UI context like mobile detection for Kitze UI components."
-  },
-  "page-header": {
-    name: "page-header",
-    title: "Page Header",
-    description: "A responsive page header component with mobile drawer support"
+  "conditional-tooltip": {
+    name: "conditional-tooltip",
+    title: "Conditional Tooltip",
+    description: "A tooltip component that conditionally renders based on a condition"
   }
 } as const;

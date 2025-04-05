@@ -1,45 +1,51 @@
 #!/usr/bin/env bash
 
-# This script tests the pre-commit hook by making temporary changes to registry.json
-# and attempting to commit them.
+# This script tests that our registry validator correctly identifies valid and invalid components
+# Note: This doesn't test the actual pre-commit hook, just the validation script
 
 set -e
+
+echo "🔍 Testing registry validation..."
+echo "This test will:"
+echo "  1. Test a valid component (should pass validation)"
+echo "  2. Test an invalid component (should fail validation)"
+echo "========================================================================"
 
 # Create a temporary copy of registry.json
 cp registry.json registry.json.backup
 
-echo "=== Testing with a valid component ==="
+echo -e "\n✅ === TEST 1: Validating a valid component ==="
 # Make a temporary change to registry.json (a valid one)
 node -e "const fs = require('fs'); const reg = JSON.parse(fs.readFileSync('registry.json')); reg.items.push({name: 'test-component', type: 'registry:component', title: 'Test Component', description: 'A test component', files: []}); fs.writeFileSync('registry.json', JSON.stringify(reg, null, 2));"
 
-echo "Made temporary change to registry.json (added a valid test-component)"
-echo "Attempting to commit..."
+echo "📝 Made temporary change to registry.json (added a valid test-component)"
+echo "🔄 Running validation... (this should pass)"
 
-# Try to commit the change
-git add registry.json
-git commit -m "Test commit with valid component (should pass hook)" || echo "Commit failed"
+# Run the validation directly
+npx tsx scripts/lint-registry.ts && echo "✅ Validation passed as expected!" || echo "❌ ERROR: Validation failed on a valid component"
 
 # Restore the original registry.json
 mv registry.json.backup registry.json
-git restore --staged registry.json
 
-echo -e "\n=== Testing with an invalid component (missing required fields) ==="
+echo -e "\n❌ === TEST 2: Validating an invalid component ==="
 # Make a copy again
 cp registry.json registry.json.backup
 
 # Make an invalid change (missing required 'type' field)
 node -e "const fs = require('fs'); const reg = JSON.parse(fs.readFileSync('registry.json')); reg.items.push({name: 'invalid-component', title: 'Invalid Component', description: 'Missing required type field', files: []}); fs.writeFileSync('registry.json', JSON.stringify(reg, null, 2));"
 
-echo "Made temporary change to registry.json (added an invalid test-component)"
-echo "Attempting to commit (this should fail)..."
+echo "📝 Made temporary change to registry.json (added an invalid test-component)"
+echo "🔄 Running validation... (this should fail)"
 
-# Try to commit the change
-git add registry.json
-git commit -m "Test commit with invalid component (should fail hook)" || echo "Commit failed as expected because the component was invalid"
+# Run the validation directly - this should fail
+if npx tsx scripts/lint-registry.ts; then
+  echo "❌ ERROR: Validation passed when it should have failed!"
+else
+  echo "✅ Great! Validation correctly identified the invalid component"
+fi
 
 # Restore the original registry.json
 mv registry.json.backup registry.json
-git restore --staged registry.json
 
-echo -e "\n✅ Done testing pre-commit hook"
-echo "Your pre-commit hook is configured to validate registry files before committing." 
+echo -e "\n🏁 Validation test complete."
+echo "🛡️  With husky and lint-staged set up, your registry will be protected against invalid components!" 

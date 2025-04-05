@@ -13,14 +13,29 @@ import { glob } from "glob";
  * 3. Each individual component JSON file in public/r/ against the registry-item schema
  */
 
+// Set a timeout to ensure the script doesn't hang
+const TIMEOUT_MS = 30000; // 30 seconds
+const timeout = setTimeout(() => {
+  console.error("❌ Validation timed out after 30 seconds");
+  process.exit(1);
+}, TIMEOUT_MS);
+
+// Ensure timeout is cleared if process exits normally
+process.on("exit", () => {
+  clearTimeout(timeout);
+});
+
+// Handle file path from command line if provided
+const customFilePath = process.argv[2];
+
 async function validateRegistry() {
   try {
     console.log("Starting registry validation...");
 
-    // Get registry.json
-    const registryPath = path.resolve("registry.json");
+    // Get registry.json or use custom path if provided
+    const registryPath = customFilePath || path.resolve("registry.json");
     if (!fs.existsSync(registryPath)) {
-      console.error("❌ registry.json not found");
+      console.error(`❌ File not found: ${registryPath}`);
       process.exit(1);
     }
 
@@ -32,7 +47,7 @@ async function validateRegistry() {
     const registryResult = Registry.safeParse(registryJson);
 
     if (!registryResult.success) {
-      console.error("❌ registry.json structure validation failed:");
+      console.error("❌ Registry structure validation failed:");
       // Format and display errors
       const formattedErrors = formatZodErrors(registryResult.error);
       formattedErrors.forEach((err) => console.error(`  - ${err}`));
@@ -56,11 +71,18 @@ async function validateRegistry() {
       } else {
         invalidItems++;
 
-        // Format and add errors with item context
+        // For missing required fields, create a simple error message
         const errors = formatZodErrors(itemResult.error);
         errors.forEach((err) => {
-          itemErrors.push(`Item ${i} (${item.name}): ${err}`);
+          itemErrors.push(`Item ${i} (${item.name || "unnamed"}): ${err}`);
         });
+
+        // Early exit on first error if running in pre-commit hook
+        if (process.env.FORCE_EXIT_ON_ERROR) {
+          console.error(`❌ Invalid item: ${item.name || "unnamed"}`);
+          console.error(itemErrors[0]);
+          process.exit(1);
+        }
       }
     }
 
@@ -77,58 +99,67 @@ async function validateRegistry() {
       process.exit(1);
     }
 
-    // Validate individual component JSON files in public/r directory
-    console.log("\nValidating individual component JSON files in public/r/...");
-    const componentFiles = await glob("public/r/*.json");
-    console.log(`Found ${componentFiles.length} component JSON files`);
+    // Skip component file validation if we're just validating a specific file
+    if (!customFilePath) {
+      // Validate individual component JSON files in public/r directory
+      console.log(
+        "\nValidating individual component JSON files in public/r/..."
+      );
+      const componentFiles = await glob("public/r/*.json");
+      console.log(`Found ${componentFiles.length} component JSON files`);
 
-    let validComponentFiles = 0;
-    let invalidComponentFiles = 0;
-    const componentFileErrors: string[] = [];
+      let validComponentFiles = 0;
+      let invalidComponentFiles = 0;
+      const componentFileErrors: string[] = [];
 
-    for (const filePath of componentFiles) {
-      const fileName = path.basename(filePath);
-      try {
-        const fileContent = JSON.parse(fs.readFileSync(filePath, "utf8"));
-        const fileResult = Registry_item.safeParse(fileContent);
+      for (const filePath of componentFiles) {
+        const fileName = path.basename(filePath);
+        try {
+          const fileContent = JSON.parse(fs.readFileSync(filePath, "utf8"));
+          const fileResult = Registry_item.safeParse(fileContent);
 
-        if (fileResult.success) {
-          validComponentFiles++;
-        } else {
+          if (fileResult.success) {
+            validComponentFiles++;
+          } else {
+            invalidComponentFiles++;
+
+            // Format and add errors with file context
+            const errors = formatZodErrors(fileResult.error);
+            errors.forEach((err) => {
+              componentFileErrors.push(`File ${fileName}: ${err}`);
+            });
+          }
+        } catch (error) {
           invalidComponentFiles++;
-
-          // Format and add errors with file context
-          const errors = formatZodErrors(fileResult.error);
-          errors.forEach((err) => {
-            componentFileErrors.push(`File ${fileName}: ${err}`);
-          });
+          componentFileErrors.push(
+            `File ${fileName}: Invalid JSON - ${
+              error instanceof Error ? error.message : String(error)
+            }`
+          );
         }
-      } catch (error) {
-        invalidComponentFiles++;
-        componentFileErrors.push(
-          `File ${fileName}: Invalid JSON - ${
-            error instanceof Error ? error.message : String(error)
-          }`
+      }
+
+      // Report component file validation results
+      if (invalidComponentFiles === 0) {
+        console.log(
+          `✅ All ${validComponentFiles} component files validated successfully`
         );
+      } else {
+        console.error(
+          `❌ Found ${invalidComponentFiles} invalid component files (${validComponentFiles} valid)`
+        );
+        componentFileErrors.forEach((err) => console.error(`  - ${err}`));
+        process.exit(1);
       }
     }
 
-    // Report component file validation results
-    if (invalidComponentFiles === 0) {
-      console.log(
-        `✅ All ${validComponentFiles} component files validated successfully`
-      );
-    } else {
-      console.error(
-        `❌ Found ${invalidComponentFiles} invalid component files (${validComponentFiles} valid)`
-      );
-      componentFileErrors.forEach((err) => console.error(`  - ${err}`));
-      process.exit(1);
-    }
-
     console.log("\n✅ Registry validation complete");
+    // Clear the timeout explicitly
+    clearTimeout(timeout);
   } catch (error) {
     console.error("❌ Error validating registry:", error);
+    // Clear the timeout on error too
+    clearTimeout(timeout);
     process.exit(1);
   }
 }

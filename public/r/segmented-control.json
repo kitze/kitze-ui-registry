@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-control",
+  "type": "registry:component",
+  "title": "Segmented Control",
+  "description": "A simple, accessible segmented control component with size variants",
+  "dependencies": [
+    "lucide-react",
+    "tailwind-variants"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nexport type SegmentedControlOption = {\n  value: string;\n  label: string;\n  leftIcon?: React.ComponentType<any>;\n  rightIcon?: React.ComponentType<any>;\n  leftSide?: React.ComponentType<any>;\n  rightSide?: React.ComponentType<any>;\n  disabled?: boolean;\n};\n\nconst segmentedControl = tv({\n  base: \"inline-flex items-center justify-start rounded-md bg-muted p-1\",\n  variants: {\n    size: {\n      sm: \"h-8\",\n      md: \"h-10\",\n      lg: \"h-12\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nconst segmentedItem = tv({\n  base: \"inline-flex items-center justify-center whitespace-nowrap rounded-sm ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer hover:bg-background/50 disabled:pointer-events-none disabled:opacity-50\",\n  variants: {\n    size: {\n      sm: \"px-2 py-1 text-xs\",\n      md: \"px-3 py-1.5 text-sm\",\n      lg: \"px-4 py-2 text-base\",\n    },\n    active: {\n      true: \"bg-background text-foreground shadow-sm hover:bg-background\",\n      false: \"\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    active: false,\n  },\n});\n\nconst iconSize = {\n  sm: \"h-3 w-3\",\n  md: \"h-4 w-4\",\n  lg: \"h-5 w-5\",\n};\n\nexport interface SegmentedControlProps\n  extends VariantProps<typeof segmentedControl> {\n  options: SegmentedControlOption[];\n  value: string;\n  onChange: (value: string) => void;\n  className?: string;\n  tabClassName?: string;\n  activeTabClassName?: string;\n}\n\nexport const SegmentedControl = ({\n  options,\n  value,\n  onChange,\n  className,\n  tabClassName,\n  activeTabClassName,\n  size = \"md\",\n}: SegmentedControlProps) => {\n  return (\n    <div\n      className={segmentedControl({ size, className })}\n      role=\"tablist\"\n      aria-orientation=\"horizontal\"\n    >\n      {options.map((option) => {\n        const isActive = option.value === value;\n        const LeftIcon = option.leftIcon;\n        const RightIcon = option.rightIcon;\n        const LeftSide = option.leftSide;\n        const RightSide = option.rightSide;\n\n        return (\n          <button\n            key={option.value}\n            type=\"button\"\n            role=\"tab\"\n            onClick={() => !option.disabled && onChange(option.value)}\n            className={cn(\n              segmentedItem({ size, active: isActive }),\n              tabClassName,\n              isActive && activeTabClassName\n            )}\n            aria-selected={isActive}\n            disabled={option.disabled}\n          >\n            {LeftSide && <LeftSide />}\n            {LeftIcon && (\n              <LeftIcon className={cn(\"mr-2\", iconSize[size || \"md\"])} />\n            )}\n            {option.label}\n            {RightIcon && (\n              <RightIcon className={cn(\"ml-2\", iconSize[size || \"md\"])} />\n            )}\n            {RightSide && <RightSide />}\n          </button>\n        );\n      })}\n    </div>\n  );\n};\n"
+    }
+  ]
+}
