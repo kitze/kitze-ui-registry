@@ -11,3 +11,4 @@ alwaysApply: true
 - Automatically fix the imports to match our project (especially if they have ../../../ and other relative directories like ./ etc)
 - Make a preview.tsx file for the component
 - Add the preview to [app-sidebar.tsx](mdc:components/app-sidebar.tsx) afterwards
+- Don't ever list "react", "react-dom" or "next" or "tailwind" as dependencies

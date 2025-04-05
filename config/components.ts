@@ -71,6 +71,9 @@ export const components: ComponentDefinition[] = [
   { id: "custom-button", groupId: "enhanced" },
   { id: "input", groupId: "enhanced" },
   { id: "gradient-text", groupId: "enhanced" },
+  { id: "kbd", groupId: "enhanced" },
+  { id: "kbd-shortcuts", groupId: "enhanced" },
+  { id: "kbd-shortcuts-list", groupId: "enhanced" },
 
   // Simplified Components
   { id: "simple-tooltip", groupId: "simplified" },
