@@ -5,7 +5,7 @@
   "title": "Form Field Input",
   "description": "An input component integrated with react-hook-form using FormFieldWrapper.",
   "registryDependencies": [
-    "input",
+    "https://ui.kitze.io/r/input.json",
     "https://ui.kitze.io/r/form-field-wrapper.json"
   ],
   "dependencies": [

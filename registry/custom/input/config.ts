@@ -1,19 +1,19 @@
 import { ComponentConfig } from "@/lib/component-config-types";
 
 const config: ComponentConfig = {
-  name: "twemoji-react",
+  name: "input",
   type: "registry:component",
-  title: "Twemoji React",
+  title: "Input",
   description:
-    "A React component for displaying Twitter Emoji (Twemoji) in your React application",
+    "A customizable input component with support for left/right icons, loading state, and custom styling",
 
   dependencies: {
-    npm: ["@twemoji/api"],
+    npm: [],
   },
 
   files: [
     {
-      path: "TwemojiReact.tsx",
+      path: "Input.tsx",
       type: "registry:component",
     },
   ],

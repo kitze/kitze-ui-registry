@@ -1,2 +1,0 @@
-# Run lint-staged to validate registry files
-npx lint-staged

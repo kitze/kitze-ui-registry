@@ -28,55 +28,11 @@
       "title": "Twemoji React",
       "description": "A React component for displaying Twitter Emoji (Twemoji) in your React application",
       "dependencies": [
-        "@twemoji/api",
-        "lodash.isequal"
+        "@twemoji/api"
       ],
       "files": [
         {
           "path": "registry/new-york/twemoji-react/TwemojiReact.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "twemoji-area",
-      "type": "registry:component",
-      "title": "Twemoji Area",
-      "description": "A component for processing and displaying emojis using Twemoji within a container",
-      "dependencies": [
-        "@twemoji/api",
-        "react-error-boundary"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/twemoji-area/TwemojiArea.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "ui-alert",
-      "type": "registry:component",
-      "title": "UI Alert",
-      "description": "A collection of alert components with confirm and delete variations",
-      "registryDependencies": [
-        "alert-dialog"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/ui-alert/Alert.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/ui-alert/ConfirmAlert.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/ui-alert/ConfirmAlertDelete.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/ui-alert/AlertContext.tsx",
           "type": "registry:component"
         }
       ]
@@ -153,6 +109,22 @@
       ]
     },
     {
+      "name": "twemoji-area",
+      "type": "registry:component",
+      "title": "Twemoji Area",
+      "description": "A component for processing and displaying emojis using Twemoji within a container",
+      "dependencies": [
+        "@twemoji/api",
+        "react-error-boundary"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/twemoji-area/TwemojiArea.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "suspensed",
       "type": "registry:component",
       "title": "Suspensed",
@@ -160,6 +132,36 @@
       "files": [
         {
           "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/spinner/Spinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -179,21 +181,6 @@
         },
         {
           "path": "registry/new-york/simple-popover/preview.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-tooltip",
-      "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "registryDependencies": [
-        "tooltip"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -288,31 +275,16 @@
       ]
     },
     {
-      "name": "spinner",
+      "name": "simple-accordion",
       "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "registryDependencies": [
+        "accordion"
       ],
       "files": [
         {
-          "path": "registry/new-york/spinner/Spinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "search-bar",
-      "type": "registry:component",
-      "title": "Search Bar",
-      "description": "A reusable search input component with clear functionality",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/search-bar/SearchBar.tsx",
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component"
         }
       ]
@@ -334,16 +306,33 @@
       ]
     },
     {
-      "name": "simple-accordion",
+      "name": "search-bar",
       "type": "registry:component",
-      "title": "Simple Accordion",
-      "description": "A simple accordion component",
-      "registryDependencies": [
-        "accordion"
+      "title": "Search Bar",
+      "description": "A reusable search input component with clear functionality",
+      "dependencies": [
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "path": "registry/new-york/search-bar/SearchBar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "responsive-tooltip",
+      "type": "registry:component",
+      "title": "Responsive Tooltip",
+      "description": "A tooltip component that adapts to desktop (tooltip) and mobile (bottom drawer) views",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-tooltip.json",
+        "https://ui.kitze.io/r/conditional-wrap.json",
+        "https://ui.kitze.io/r/bottom-drawer.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/responsive-tooltip/ResponsiveTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -398,18 +387,17 @@
       ]
     },
     {
-      "name": "responsive-tooltip",
+      "name": "page-header",
       "type": "registry:component",
-      "title": "Responsive Tooltip",
-      "description": "A tooltip component that adapts to desktop (tooltip) and mobile (bottom drawer) views",
+      "title": "Page Header",
+      "description": "A responsive page header component with mobile drawer support",
       "registryDependencies": [
-        "https://ui.kitze.io/r/simple-tooltip.json",
-        "https://ui.kitze.io/r/conditional-wrap.json",
+        "https://ui.kitze.io/r/custom-button.json",
         "https://ui.kitze.io/r/bottom-drawer.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/responsive-tooltip/ResponsiveTooltip.tsx",
+          "path": "registry/new-york/page-header/PageHeader.tsx",
           "type": "registry:component"
         }
       ]
@@ -475,17 +463,23 @@
       ]
     },
     {
-      "name": "page-header",
+      "name": "form-field-wrapper",
       "type": "registry:component",
-      "title": "Page Header",
-      "description": "A responsive page header component with mobile drawer support",
+      "title": "Form Field Wrapper",
+      "description": "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
+      "dependencies": [
+        "react-hook-form"
+      ],
       "registryDependencies": [
-        "https://ui.kitze.io/r/custom-button.json",
-        "https://ui.kitze.io/r/bottom-drawer.json"
+        "form"
       ],
       "files": [
         {
-          "path": "registry/new-york/page-header/PageHeader.tsx",
+          "path": "registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/form-field-wrapper/preview.tsx",
           "type": "registry:component"
         }
       ]
@@ -514,43 +508,6 @@
       ]
     },
     {
-      "name": "form-field-wrapper",
-      "type": "registry:component",
-      "title": "Form Field Wrapper",
-      "description": "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "registryDependencies": [
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/form-field-wrapper/preview.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "form-field-checkbox",
       "type": "registry:component",
       "title": "Form Field Checkbox",
@@ -569,6 +526,21 @@
         },
         {
           "path": "registry/new-york/form-field-checkbox/preview.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -593,6 +565,18 @@
       ]
     },
     {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "conditional-tooltip",
       "type": "registry:component",
       "title": "Conditional Tooltip",
@@ -603,18 +587,6 @@
       "files": [
         {
           "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "conditional-wrap",
-      "type": "registry:component",
-      "title": "Conditional Wrap",
-      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
-      "files": [
-        {
-          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
           "type": "registry:component"
         }
       ]
@@ -659,6 +631,46 @@
         },
         {
           "path": "registry/new-york/bottom-drawer/menu-preview.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/custom/input/Input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "ui-alert",
+      "type": "registry:component",
+      "title": "UI Alert",
+      "description": "A collection of alert components with confirm and delete variations",
+      "registryDependencies": [
+        "alert-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/ui-alert/Alert.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/ui-alert/ConfirmAlert.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/ui-alert/ConfirmAlertDelete.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/ui-alert/AlertContext.tsx",
           "type": "registry:component"
         }
       ]

@@ -10,7 +10,6 @@ import {
   useCallback,
 } from "react";
 import twemoji from "@twemoji/api";
-import isEqual from "lodash.isequal";
 
 export interface TwemojiReactProps {
   children?: ReactNode;
@@ -18,6 +17,32 @@ export interface TwemojiReactProps {
   options?: object;
   tag?: string;
 }
+
+// Simple object comparison function to replace lodash isEqual
+const shallowEqual = (objA: any, objB: any): boolean => {
+  if (objA === objB) {
+    return true;
+  }
+
+  if (!objA || !objB) {
+    return false;
+  }
+
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  for (const key of keysA) {
+    if (objA[key] !== objB[key]) {
+      return false;
+    }
+  }
+
+  return true;
+};
 
 export const TwemojiReact = memo(
   ({
@@ -61,7 +86,7 @@ export const TwemojiReact = memo(
 
     useEffect(() => {
       // Only parse if props have changed
-      if (!isEqual(currentProps, prevPropsRef.current)) {
+      if (!shallowEqual(currentProps, prevPropsRef.current)) {
         parseTwemoji();
         prevPropsRef.current = currentProps;
       }
