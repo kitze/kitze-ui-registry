@@ -133,21 +133,6 @@
       ]
     },
     {
-      "name": "spinner",
-      "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/spinner/Spinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -158,6 +143,25 @@
       "files": [
         {
           "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-popover",
+      "type": "registry:component",
+      "title": "Simple Popover",
+      "description": "A simple popover component that displays content when triggered.",
+      "registryDependencies": [
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-popover/index.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-popover/preview.tsx",
           "type": "registry:component"
         }
       ]
@@ -187,46 +191,16 @@
       ]
     },
     {
-      "name": "simple-popover",
+      "name": "spinner",
       "type": "registry:component",
-      "title": "Simple Popover",
-      "description": "A simple popover component that displays content when triggered.",
-      "registryDependencies": [
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-popover/index.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-popover/preview.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-context-menu",
-      "type": "registry:component",
-      "title": "Simple Context Menu",
-      "description": "A simple context menu component that wraps content with right-click menu functionality",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
       "dependencies": [
-        "use-long-press"
-      ],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/simple-tooltip.json",
-        "https://ui.kitze.io/r/simple-dropdown-menu.json",
-        "https://ui.kitze.io/r/bottom-drawer.json",
-        "https://ui.kitze.io/r/menu-context.json",
-        "https://ui.kitze.io/r/kitze-ui-context.json"
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-context-menu/SimpleContextMenu.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-context-menu/ResponsiveContextMenu.tsx",
+          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -271,16 +245,27 @@
       ]
     },
     {
-      "name": "simple-accordion",
+      "name": "simple-context-menu",
       "type": "registry:component",
-      "title": "Simple Accordion",
-      "description": "A simple accordion component",
+      "title": "Simple Context Menu",
+      "description": "A simple context menu component that wraps content with right-click menu functionality",
+      "dependencies": [
+        "use-long-press"
+      ],
       "registryDependencies": [
-        "accordion"
+        "https://ui.kitze.io/r/simple-tooltip.json",
+        "https://ui.kitze.io/r/simple-dropdown-menu.json",
+        "https://ui.kitze.io/r/bottom-drawer.json",
+        "https://ui.kitze.io/r/menu-context.json",
+        "https://ui.kitze.io/r/kitze-ui-context.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "path": "registry/new-york/simple-context-menu/SimpleContextMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-context-menu/ResponsiveContextMenu.tsx",
           "type": "registry:component"
         }
       ]
@@ -297,6 +282,21 @@
       "files": [
         {
           "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-accordion",
+      "type": "registry:component",
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component"
         }
       ]
@@ -319,6 +319,21 @@
       ]
     },
     {
+      "name": "search-bar",
+      "type": "registry:component",
+      "title": "Search Bar",
+      "description": "A reusable search input component with clear functionality",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/search-bar/SearchBar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "responsive-popover",
       "type": "registry:component",
       "title": "Responsive Popover",
@@ -335,21 +350,6 @@
         },
         {
           "path": "registry/new-york/responsive-popover/preview.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "search-bar",
-      "type": "registry:component",
-      "title": "Search Bar",
-      "description": "A reusable search input component with clear functionality",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/search-bar/SearchBar.tsx",
           "type": "registry:component"
         }
       ]
@@ -383,6 +383,22 @@
       ]
     },
     {
+      "name": "page-header",
+      "type": "registry:component",
+      "title": "Page Header",
+      "description": "A responsive page header component with mobile drawer support",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/custom-button.json",
+        "https://ui.kitze.io/r/bottom-drawer.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/page-header/PageHeader.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "menu-context",
       "type": "registry:component",
       "title": "Menu Context",
@@ -410,43 +426,16 @@
       ]
     },
     {
-      "name": "page-header",
+      "name": "full-page-spinner",
       "type": "registry:component",
-      "title": "Page Header",
-      "description": "A responsive page header component with mobile drawer support",
+      "title": "Full Page Spinner",
+      "description": "A spinner component that takes full page size and centers itself in the viewport",
       "registryDependencies": [
-        "https://ui.kitze.io/r/custom-button.json",
-        "https://ui.kitze.io/r/bottom-drawer.json"
+        "https://ui.kitze.io/r/spinner.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/page-header/PageHeader.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "input",
-      "type": "registry:component",
-      "title": "Input",
-      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/input/Input.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "gradient-text",
-      "type": "registry:component",
-      "title": "Gradient Text",
-      "description": "A text component with animated gradient effects",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/gradient-text/GradientText.tsx",
+          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -470,16 +459,27 @@
       ]
     },
     {
-      "name": "full-page-spinner",
+      "name": "gradient-text",
       "type": "registry:component",
-      "title": "Full Page Spinner",
-      "description": "A spinner component that takes full page size and centers itself in the viewport",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
+      "title": "Gradient Text",
+      "description": "A text component with animated gradient effects",
+      "dependencies": [],
       "files": [
         {
-          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "path": "registry/new-york/gradient-text/GradientText.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/input/Input.tsx",
           "type": "registry:component"
         }
       ]
@@ -507,24 +507,24 @@
       ]
     },
     {
-      "name": "form-field-input",
+      "name": "form-field-checkbox",
       "type": "registry:component",
-      "title": "Form Field Input",
-      "description": "An input component integrated with react-hook-form using FormFieldWrapper.",
+      "title": "Form Field Checkbox",
+      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
       "dependencies": [
         "react-hook-form"
       ],
       "registryDependencies": [
-        "input",
+        "checkbox",
         "https://ui.kitze.io/r/form-field-wrapper.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
+          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/form-field-input/preview.tsx",
+          "path": "registry/new-york/form-field-checkbox/preview.tsx",
           "type": "registry:component"
         }
       ]
@@ -545,24 +545,24 @@
       ]
     },
     {
-      "name": "form-field-checkbox",
+      "name": "form-field-input",
       "type": "registry:component",
-      "title": "Form Field Checkbox",
-      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
+      "title": "Form Field Input",
+      "description": "An input component integrated with react-hook-form using FormFieldWrapper.",
       "dependencies": [
         "react-hook-form"
       ],
       "registryDependencies": [
-        "checkbox",
+        "input",
         "https://ui.kitze.io/r/form-field-wrapper.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
+          "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/form-field-checkbox/preview.tsx",
+          "path": "registry/new-york/form-field-input/preview.tsx",
           "type": "registry:component"
         }
       ]

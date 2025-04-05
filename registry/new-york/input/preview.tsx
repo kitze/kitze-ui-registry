@@ -27,18 +27,18 @@ export function Preview() {
 
       <div className="flex flex-col gap-4">
         <h3 className="text-sm font-medium">Loading State</h3>
+        <button
+          onClick={toggleLoading}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm"
+        >
+          {isLoading ? "Stop Loading" : "Start Loading"}
+        </button>
         <div className="flex gap-4 items-center">
           <Input
             placeholder="Loading input"
             isLoading={isLoading}
             className="flex-grow"
           />
-          <button
-            onClick={toggleLoading}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm"
-          >
-            {isLoading ? "Stop Loading" : "Start Loading"}
-          </button>
         </div>
         <Input placeholder="Always loading" isLoading={true} spinnerSize="xs" />
         <Input
