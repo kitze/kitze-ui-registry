@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn, ReactFC } from "@/lib/utils";
+import { cn, ReactFC, Size } from "@/lib/utils";
 import { useLinkableComponent } from "@/registry/hooks/useLinkableComponent";
 import { ConditionalTooltip } from "@/registry/new-york/conditional-tooltip/ConditionalTooltip";
 import { Spinner } from "@/registry/new-york/spinner/Spinner";
@@ -9,7 +9,7 @@ type SizeStyle = {
   iconSize?: number;
 };
 
-export const sizeStyles: Record<CustomButtonSize, SizeStyle> = {
+export const sizeStyles: Record<Size, SizeStyle> = {
   xs: {
     iconSize: 14,
   },
@@ -24,14 +24,14 @@ export const sizeStyles: Record<CustomButtonSize, SizeStyle> = {
   },
 };
 
-export const spinnerSizeMap: Record<CustomButtonSize, number> = {
+export const spinnerSizeMap: Record<Size, number> = {
   xs: 14,
   sm: 16,
   md: 16,
   lg: 20,
 };
 
-export const defaultIconSizes: Record<CustomButtonSize, number> = {
+export const defaultIconSizes: Record<Size, number> = {
   xs: 14,
   sm: 16,
   md: 16,
@@ -126,12 +126,11 @@ export type ButtonVariantsProps = React.ComponentProps<
   class?: string;
 };
 
-export type CustomButtonSize = "xs" | "sm" | "md" | "lg";
 export type CustomButtonVariant = "default" | "outline" | "ghost" | "link";
 
 export interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: CustomButtonSize;
+  size?: Size;
   variant?: CustomButtonVariant;
   color?: string;
   circle?: boolean;

@@ -12,3 +12,5 @@ export const getRegistryUrl = (name: string) => {
 };
 
 export type ReactFC<T> = React.FC<PropsWithChildren & T>;
+
+export type Size = "xs" | "sm" | "md" | "lg";

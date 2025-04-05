@@ -12,11 +12,6 @@
       "path": "registry/new-york/simple-popover/index.tsx",
       "type": "registry:component",
       "content": "import * as React from \"react\";\nimport {\n  Popover,\n  PopoverContent,\n  PopoverTrigger,\n} from \"@/components/ui/popover\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SimplePopoverProps {\n  trigger: React.ReactNode;\n  content: React.ReactNode;\n  classNames?: {\n    content?: string;\n    trigger?: string;\n  };\n  align?: \"start\" | \"center\" | \"end\";\n  sideOffset?: number;\n}\n\nexport const SimplePopover = ({\n  trigger,\n  content,\n  classNames = {},\n  align = \"center\",\n  sideOffset = 4,\n}: SimplePopoverProps) => {\n  return (\n    <Popover>\n      <PopoverTrigger className={classNames.trigger}>{trigger}</PopoverTrigger>\n      <PopoverContent\n        className={cn(\"w-auto min-w-[200px]\", classNames.content)}\n        align={align}\n        sideOffset={sideOffset}\n      >\n        {content}\n      </PopoverContent>\n    </Popover>\n  );\n};\n"
-    },
-    {
-      "path": "registry/new-york/simple-popover/preview.tsx",
-      "type": "registry:component",
-      "content": "import React from \"react\";\nimport { SimplePopover } from \"./index\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function SimplePopoverPreview() {\n  return (\n    <div className=\"flex items-center justify-center p-8\">\n      <SimplePopover\n        trigger={<Button variant=\"outline\">Open Popover</Button>}\n        content={\n          <div className=\"p-2\">\n            <h4 className=\"font-medium mb-2\">Popover Title</h4>\n            <p className=\"text-sm text-muted-foreground\">\n              This is the popover content.\n            </p>\n          </div>\n        }\n      />\n    </div>\n  );\n}\n"
     }
   ]
 }

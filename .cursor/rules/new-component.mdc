@@ -12,3 +12,5 @@ alwaysApply: true
 - Make a preview.tsx file for the component
 - Add the preview to [app-sidebar.tsx](mdc:components/app-sidebar.tsx) afterwards
 - Don't ever list "react", "react-dom" or "next" or "tailwind" as dependencies
+- Always use lucide icons. Do not install react-icons! Assume that lucide-react is installed and don't do that step.
+- Do not EVER use  path: "preview.tsx", in the config files

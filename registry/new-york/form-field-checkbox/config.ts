@@ -18,10 +18,6 @@ const config: ComponentConfig = {
       path: "FormFieldCheckbox.tsx",
       type: "registry:component",
     },
-    {
-      path: "preview.tsx",
-      type: "registry:component",
-    },
   ],
 };
 

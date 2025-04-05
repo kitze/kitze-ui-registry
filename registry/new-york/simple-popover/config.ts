@@ -16,10 +16,6 @@ const config: ComponentConfig = {
       path: "index.tsx",
       type: "registry:component",
     },
-    {
-      path: "preview.tsx",
-      type: "registry:component",
-    },
   ],
 };
 

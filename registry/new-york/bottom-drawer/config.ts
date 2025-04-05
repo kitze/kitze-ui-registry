@@ -34,14 +34,6 @@ const config: ComponentConfig = {
       path: "BottomDrawerMenuComponents.tsx",
       type: "registry:component",
     },
-    {
-      path: "preview.tsx",
-      type: "registry:component",
-    },
-    {
-      path: "menu-preview.tsx",
-      type: "registry:component",
-    },
   ],
 };
 
