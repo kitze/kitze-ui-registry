@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "responsive-tooltip" | "responsive-popover" | "responsive-dialog" | "page-header" | "menu-context" | "help-info-circle" | "kitze-ui-context" | "full-page-spinner" | "form-field-wrapper" | "form-field-input" | "form-field-checkbox" | "fill-height-spinner" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "input" | "with-search-bar"; // Handle empty case
+export type ComponentName = "with-search-bar" | "theme-switch-slider-next-themes" | "ui-alert" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "spinner" | "simple-tooltip" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "responsive-tooltip" | "responsive-popover" | "responsive-dialog" | "page-header" | "menu-context" | "kitze-ui-context" | "input" | "help-info-circle" | "gradient-text" | "full-page-spinner" | "form-field-input" | "form-field-checkbox" | "form-field-wrapper" | "fill-height-spinner" | "conditional-wrap" | "custom-button" | "conditional-tooltip" | "bottom-drawer"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -13,15 +13,20 @@ export interface ComponentMeta {
 }
 
 export const componentMeta: Record<ComponentName, ComponentMeta> = {
-  "ui-alert": {
-    name: "ui-alert",
-    title: "UI Alert",
-    description: "A collection of alert components with confirm and delete variations"
+  "with-search-bar": {
+    name: "with-search-bar",
+    title: "With Search Bar",
+    description: "A component that provides a searchable interface with animated transitions"
   },
   "theme-switch-slider-next-themes": {
     name: "theme-switch-slider-next-themes",
     title: "Theme Switch Slider with Next-Themes",
     description: "A theme switcher slider that integrates with the next-themes library for persistent theme management"
+  },
+  "ui-alert": {
+    name: "ui-alert",
+    title: "UI Alert",
+    description: "A collection of alert components with confirm and delete variations"
   },
   "theme-switch-slider": {
     name: "theme-switch-slider",
@@ -113,25 +118,30 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Menu Context",
     description: "Context provider to determine the type of menu (dropdown, context, bottom-drawer) and provide a close function."
   },
-  "help-info-circle": {
-    name: "help-info-circle",
-    title: "Help Info Circle",
-    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
-  },
   "kitze-ui-context": {
     name: "kitze-ui-context",
     title: "Kitze UI Context",
     description: "Provides UI context like mobile detection for Kitze UI components."
   },
+  "input": {
+    name: "input",
+    title: "Input",
+    description: "A customizable input component with support for left/right icons, loading state, and custom styling"
+  },
+  "help-info-circle": {
+    name: "help-info-circle",
+    title: "Help Info Circle",
+    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
+  },
+  "gradient-text": {
+    name: "gradient-text",
+    title: "Gradient Text",
+    description: "A text component with animated gradient effects"
+  },
   "full-page-spinner": {
     name: "full-page-spinner",
     title: "Full Page Spinner",
     description: "A spinner component that takes full page size and centers itself in the viewport"
-  },
-  "form-field-wrapper": {
-    name: "form-field-wrapper",
-    title: "Form Field Wrapper",
-    description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
   },
   "form-field-input": {
     name: "form-field-input",
@@ -143,20 +153,25 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Form Field Checkbox",
     description: "A checkbox component integrated with react-hook-form using FormFieldWrapper."
   },
+  "form-field-wrapper": {
+    name: "form-field-wrapper",
+    title: "Form Field Wrapper",
+    description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
+  },
   "fill-height-spinner": {
     name: "fill-height-spinner",
     title: "Fill Height Spinner",
     description: "A spinner component that fills and centers in its container height"
   },
-  "custom-button": {
-    name: "custom-button",
-    title: "Custom Button",
-    description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
-  },
   "conditional-wrap": {
     name: "conditional-wrap",
     title: "Conditional Wrap",
     description: "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc."
+  },
+  "custom-button": {
+    name: "custom-button",
+    title: "Custom Button",
+    description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
   },
   "conditional-tooltip": {
     name: "conditional-tooltip",
@@ -167,15 +182,5 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "bottom-drawer",
     title: "Bottom Drawer",
     description: "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant."
-  },
-  "input": {
-    name: "input",
-    title: "Input",
-    description: "A customizable input component with support for left/right icons, loading state, and custom styling"
-  },
-  "with-search-bar": {
-    name: "with-search-bar",
-    title: "With Search Bar",
-    description: "A component that provides a searchable interface with animated transitions"
   }
 } as const;

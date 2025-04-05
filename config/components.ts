@@ -70,6 +70,7 @@ export const components: ComponentDefinition[] = [
   // Enhanced Components
   { id: "custom-button", groupId: "enhanced" },
   { id: "input", groupId: "enhanced" },
+  { id: "gradient-text", groupId: "enhanced" },
 
   // Simplified Components
   { id: "simple-tooltip", groupId: "simplified" },
@@ -106,8 +107,6 @@ export const components: ComponentDefinition[] = [
   { id: "theme-switch-minimal-next-themes", groupId: "next-themes" },
 
   // Additional components
-  { id: "twemoji-react", groupId: "simplified" },
-  { id: "twemoji-area", groupId: "simplified" },
   { id: "search-bar", groupId: "enhanced" },
   { id: "with-search-bar", groupId: "enhanced" },
   { id: "segmented-control", groupId: "enhanced" },

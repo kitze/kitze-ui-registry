@@ -3,7 +3,7 @@ description:
 globs: 
 alwaysApply: true
 ---
-- When making a new component add a folder to /registry/custom like /registry/custom/component-name and the component inside like ComponentName.tsx
+- When making a new component add a folder to /registry/new-york like /registry/new-york/component-name and the component inside like ComponentName.tsx
 - Add a config.ts to it with ComponentConfig type (import { ComponentConfig } from "@/lib/component-config-types";)
 - Do NOT modify registry.json, it's auto generated with a script!!
 - Do not modify the public/r folder it's auto generated

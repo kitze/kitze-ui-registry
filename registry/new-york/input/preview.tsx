@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Input } from "@/registry/custom/input/Input";
+import { Input } from "@/registry/new-york/input/Input";
 import { Mail, Search, User, Lock } from "lucide-react";
 
 export function Preview() {

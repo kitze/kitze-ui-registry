@@ -44,6 +44,7 @@ export function Input({
   isLoading = false,
   spinnerSize = "sm",
   disabled,
+  iconClassName,
   ref,
   ...props
 }: InputProps & { ref?: React.Ref<HTMLInputElement> }) {
@@ -106,8 +107,9 @@ export function Input({
           {effectiveLeftIcon && (
             <div
               className={cn(
-                "size-4 text-muted-foreground transition-colors duration-200",
-                classNames.leftIcon
+                "size-5 text-foreground/70 transition-colors duration-200 flex items-center justify-center",
+                classNames.leftIcon,
+                iconClassName
               )}
             >
               {React.createElement(effectiveLeftIcon)}
@@ -126,8 +128,9 @@ export function Input({
           {rightIcon && (
             <div
               className={cn(
-                "size-4 text-muted-foreground transition-colors duration-200",
-                classNames.rightIcon
+                "size-5 text-foreground/70 transition-colors duration-200 flex items-center justify-center",
+                classNames.rightIcon,
+                iconClassName
               )}
             >
               {React.createElement(rightIcon)}
