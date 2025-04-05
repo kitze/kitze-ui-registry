@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "simple-select",
+  "type": "registry:component",
+  "title": "Simple Select",
+  "description": "A simplified select component that accepts an array of options with value, label, emoji, and icon",
+  "registryDependencies": [
+    "select"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/simple-select/SimpleSelect.tsx",
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type SimpleSelectOption = {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n};\n\nexport interface SimpleSelectProps {\n  options: SimpleSelectOption[];\n  value?: string;\n  onValueChange?: (value: string) => void;\n  placeholder?: string;\n  className?: string;\n  triggerClassName?: string;\n  disabled?: boolean;\n}\n\nexport function SimpleSelect({\n  options,\n  value,\n  onValueChange,\n  placeholder = \"Select an option\",\n  className,\n  triggerClassName,\n  disabled,\n}: SimpleSelectProps) {\n  return (\n    <Select value={value} onValueChange={onValueChange} disabled={disabled}>\n      <SelectTrigger className={triggerClassName}>\n        <SelectValue placeholder={placeholder} />\n      </SelectTrigger>\n      <SelectContent>\n        {options.map((option) => (\n          <SelectItem key={option.value} value={option.value}>\n            {option.icon &&\n              React.createElement(option.icon, { className: \"mr-2 h-4 w-4\" })}\n            {option.emoji && <span className=\"mr-2\">{option.emoji}</span>}\n            {option.label || option.value}\n          </SelectItem>\n        ))}\n      </SelectContent>\n    </Select>\n  );\n}\n"
+    }
+  ]
+}

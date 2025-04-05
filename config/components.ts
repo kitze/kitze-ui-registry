@@ -83,12 +83,14 @@ export const components: ComponentDefinition[] = [
   { id: "simple-popover", groupId: "simplified" },
   { id: "simple-context-menu", groupId: "simplified" },
   { id: "simple-dropdown-menu", groupId: "simplified" },
+  { id: "simple-select", groupId: "simplified" },
 
   // Form Components
   { id: "form-field-wrapper", groupId: "form" },
   { id: "form-field-input", groupId: "form" },
   { id: "form-field-checkbox", groupId: "form" },
   { id: "form-field-textarea", groupId: "form" },
+  { id: "form-field-select", groupId: "form" },
 
   // Menu Components
   { id: "bottom-drawer", groupId: "menu" },

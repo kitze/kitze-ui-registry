@@ -50,22 +50,6 @@
       ]
     },
     {
-      "name": "theme-switch-slider",
-      "type": "registry:component",
-      "title": "Theme Switch Slider",
-      "description": "A beautiful animated theme switcher with a sliding control and animated stars",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "theme-switch-slider-next-themes",
       "type": "registry:component",
       "title": "Theme Switch Slider with Next-Themes",
@@ -84,19 +68,29 @@
       ]
     },
     {
-      "name": "theme-switch-minimal-next-themes",
+      "name": "theme-switch-slider",
       "type": "registry:component",
-      "title": "Theme Switch Minimal with Next-Themes",
-      "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
+      "title": "Theme Switch Slider",
+      "description": "A beautiful animated theme switcher with a sliding control and animated stars",
       "dependencies": [
-        "next-themes"
-      ],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/theme-switch-minimal.json"
+        "framer-motion",
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
+          "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "suspensed",
+      "type": "registry:component",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
+      "files": [
+        {
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
           "type": "registry:component"
         }
       ]
@@ -121,13 +115,16 @@
       ]
     },
     {
-      "name": "suspensed",
+      "name": "spinner",
       "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -148,16 +145,37 @@
       ]
     },
     {
-      "name": "spinner",
+      "name": "theme-switch-minimal-next-themes",
       "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
+      "title": "Theme Switch Minimal with Next-Themes",
+      "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
       "dependencies": [
-        "lucide-react"
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/theme-switch-minimal.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/spinner/Spinner.tsx",
+          "path": "registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-select",
+      "type": "registry:component",
+      "title": "Simple Select",
+      "description": "A simplified select component that accepts an array of options with value, label, emoji, and icon",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-select/SimpleSelect.tsx",
           "type": "registry:component"
         }
       ]
@@ -173,6 +191,30 @@
       "files": [
         {
           "path": "registry/new-york/simple-popover/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-dialog",
+      "type": "registry:component",
+      "title": "Simple Dialog",
+      "description": "A simple dialog component using Radix UI.",
+      "dependencies": [
+        "next",
+        "react",
+        "react-dom",
+        "tailwindcss",
+        "clsx",
+        "tailwind-merge",
+        "@radix-ui/react-dialog"
+      ],
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
           "type": "registry:component"
         }
       ]
@@ -214,69 +256,6 @@
       "files": [
         {
           "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-dialog",
-      "type": "registry:component",
-      "title": "Simple Dialog",
-      "description": "A simple dialog component using Radix UI.",
-      "dependencies": [
-        "next",
-        "react",
-        "react-dom",
-        "tailwindcss",
-        "clsx",
-        "tailwind-merge",
-        "@radix-ui/react-dialog"
-      ],
-      "registryDependencies": [
-        "dialog"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-dropdown-menu",
-      "type": "registry:component",
-      "title": "Simple Dropdown Menu",
-      "description": "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile",
-      "registryDependencies": [
-        "dropdown-menu",
-        "https://ui.kitze.io/r/simple-tooltip.json",
-        "https://ui.kitze.io/r/bottom-drawer.json",
-        "https://ui.kitze.io/r/kitze-ui-context.json",
-        "https://ui.kitze.io/r/menu-context.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-dropdown-menu/SimpleDropdownMenu.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-dropdown-menu/ResponsiveDropdownMenu.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-dropdown-menu/CommonMenuItem.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-dropdown-menu/CommonMenuLabel.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-dropdown-menu/CommonMenuSeparator.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-dropdown-menu/CommonMenuGroup.tsx",
           "type": "registry:component"
         }
       ]
@@ -330,6 +309,62 @@
       ]
     },
     {
+      "name": "responsive-popover",
+      "type": "registry:component",
+      "title": "Responsive Popover",
+      "description": "A responsive popover component that displays as a popover on desktop and a bottom drawer on mobile.",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-popover.json",
+        "https://ui.kitze.io/r/bottom-drawer.json",
+        "https://ui.kitze.io/r/kitze-ui-context.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/responsive-popover/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-dropdown-menu",
+      "type": "registry:component",
+      "title": "Simple Dropdown Menu",
+      "description": "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile",
+      "registryDependencies": [
+        "dropdown-menu",
+        "https://ui.kitze.io/r/simple-tooltip.json",
+        "https://ui.kitze.io/r/bottom-drawer.json",
+        "https://ui.kitze.io/r/kitze-ui-context.json",
+        "https://ui.kitze.io/r/menu-context.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-dropdown-menu/SimpleDropdownMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/ResponsiveDropdownMenu.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuItem.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuLabel.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuSeparator.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-dropdown-menu/CommonMenuGroup.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "responsive-dialog",
       "type": "registry:component",
       "title": "Responsive Dialog",
@@ -358,30 +393,17 @@
       ]
     },
     {
-      "name": "responsive-popover",
+      "name": "page-header",
       "type": "registry:component",
-      "title": "Responsive Popover",
-      "description": "A responsive popover component that displays as a popover on desktop and a bottom drawer on mobile.",
+      "title": "Page Header",
+      "description": "A responsive page header component with mobile drawer support",
       "registryDependencies": [
-        "https://ui.kitze.io/r/simple-popover.json",
-        "https://ui.kitze.io/r/bottom-drawer.json",
-        "https://ui.kitze.io/r/kitze-ui-context.json"
+        "https://ui.kitze.io/r/custom-button.json",
+        "https://ui.kitze.io/r/bottom-drawer.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/responsive-popover/index.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "menu-context",
-      "type": "registry:component",
-      "title": "Menu Context",
-      "description": "Context provider to determine the type of menu (dropdown, context, bottom-drawer) and provide a close function.",
-      "files": [
-        {
-          "path": "registry/new-york/menu-context/MenuContext.tsx",
+          "path": "registry/new-york/page-header/PageHeader.tsx",
           "type": "registry:component"
         }
       ]
@@ -418,19 +440,6 @@
       ]
     },
     {
-      "name": "kbd",
-      "type": "registry:component",
-      "title": "Keyboard Shortcut",
-      "description": "A keyboard shortcut display component for showing key combinations",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/kbd/Kbd.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "kbd-shortcuts-list",
       "type": "registry:component",
       "title": "Keyboard Shortcuts List",
@@ -448,14 +457,26 @@
       ]
     },
     {
-      "name": "input",
+      "name": "menu-context",
       "type": "registry:component",
-      "title": "Input",
-      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
+      "title": "Menu Context",
+      "description": "Context provider to determine the type of menu (dropdown, context, bottom-drawer) and provide a close function.",
+      "files": [
+        {
+          "path": "registry/new-york/menu-context/MenuContext.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:component",
+      "title": "Keyboard Shortcut",
+      "description": "A keyboard shortcut display component for showing key combinations",
       "dependencies": [],
       "files": [
         {
-          "path": "registry/new-york/input/Input.tsx",
+          "path": "registry/new-york/kbd/Kbd.tsx",
           "type": "registry:component"
         }
       ]
@@ -474,6 +495,19 @@
       "files": [
         {
           "path": "registry/new-york/hoverable-icon/HoverableIcon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/input/Input.tsx",
           "type": "registry:component"
         }
       ]
@@ -502,40 +536,6 @@
       "files": [
         {
           "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "page-header",
-      "type": "registry:component",
-      "title": "Page Header",
-      "description": "A responsive page header component with mobile drawer support",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/custom-button.json",
-        "https://ui.kitze.io/r/bottom-drawer.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/page-header/PageHeader.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "help-info-circle",
-      "type": "registry:component",
-      "title": "Help Info Circle",
-      "description": "A help icon that displays information in a tooltip on desktop and a drawer on mobile",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/responsive-tooltip.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/help-info-circle/HelpInfoCircle.tsx",
           "type": "registry:component"
         }
       ]
@@ -578,6 +578,24 @@
       ]
     },
     {
+      "name": "help-info-circle",
+      "type": "registry:component",
+      "title": "Help Info Circle",
+      "description": "A help icon that displays information in a tooltip on desktop and a drawer on mobile",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/responsive-tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/help-info-circle/HelpInfoCircle.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "form-field-input",
       "type": "registry:component",
       "title": "Form Field Input",
@@ -592,6 +610,44 @@
       "files": [
         {
           "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "form-field-select",
+      "type": "registry:component",
+      "title": "Form Field Select",
+      "description": "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/form-field-wrapper.json",
+        "https://ui.kitze.io/r/simple-select.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "form-field-checkbox",
+      "type": "registry:component",
+      "title": "Form Field Checkbox",
+      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "https://ui.kitze.io/r/form-field-wrapper.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
           "type": "registry:component"
         }
       ]
@@ -622,25 +678,6 @@
       "files": [
         {
           "path": "registry/new-york/dialog-manager/DialogManager.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "form-field-checkbox",
-      "type": "registry:component",
-      "title": "Form Field Checkbox",
-      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "registryDependencies": [
-        "checkbox",
-        "https://ui.kitze.io/r/form-field-wrapper.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
           "type": "registry:component"
         }
       ]
@@ -677,21 +714,6 @@
       ]
     },
     {
-      "name": "conditional-tooltip",
-      "type": "registry:component",
-      "title": "Conditional Tooltip",
-      "description": "A tooltip component that conditionally renders based on a condition",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/simple-tooltip.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "bottom-drawer",
       "type": "registry:component",
       "title": "Bottom Drawer",
@@ -723,6 +745,21 @@
         },
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawerMenuComponents.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "conditional-tooltip",
+      "type": "registry:component",
+      "title": "Conditional Tooltip",
+      "description": "A tooltip component that conditionally renders based on a condition",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component"
         }
       ]
