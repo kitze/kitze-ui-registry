@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { ThemeWrapper } from "./ThemeWrapper";
@@ -34,6 +35,11 @@ export default function RootLayout({
           <ClientLayout>{children}</ClientLayout>
         </ThemeWrapper>
         <Toaster position="bottom-right" />
+        <Script
+          src="https://umami.server.kitze.io/script.js"
+          data-website-id="7fb6209a-29cb-4e2c-81af-5bfbdc45b418"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

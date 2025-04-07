@@ -75,6 +75,7 @@ export const components: ComponentDefinition[] = [
   { id: "kbd-shortcuts", groupId: "enhanced" },
   { id: "kbd-shortcuts-list", groupId: "enhanced" },
   { id: "hoverable-icon", groupId: "enhanced" },
+  { id: "advanced-select", groupId: "enhanced" },
 
   // Simplified Components
   { id: "simple-tooltip", groupId: "simplified" },
@@ -91,6 +92,7 @@ export const components: ComponentDefinition[] = [
   { id: "form-field-checkbox", groupId: "form" },
   { id: "form-field-textarea", groupId: "form" },
   { id: "form-field-select", groupId: "form" },
+  { id: "form-field-advanced-select", groupId: "form" },
 
   // Menu Components
   { id: "bottom-drawer", groupId: "menu" },

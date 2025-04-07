@@ -38,6 +38,7 @@
     "breadcrumb": "link:@/components/ui/breadcrumb",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "framer-motion": "^12.6.3",
     "json-schema-to-zod": "^2.6.1",
     "lodash": "^4.17.21",

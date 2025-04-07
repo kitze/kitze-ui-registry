@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-field-advanced-select",
+  "type": "registry:component",
+  "title": "Form Field Advanced Select",
+  "description": "A form field component that integrates the AdvancedSelect with form handling capabilities",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/form-field-wrapper.json",
+    "https://ui.kitze.io/r/advanced-select.json"
+  ],
+  "dependencies": [
+    "react-hook-form",
+    "class-variance-authority",
+    "cmdk",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/form-field-advanced-select/FormFieldAdvancedSelect.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { FieldValues, FieldPath } from \"react-hook-form\";\nimport {\n  FormFieldWrapper,\n  FormFieldWrapperProps,\n} from \"@/registry/new-york/form-field-wrapper/FormFieldWrapper\";\nimport {\n  AdvancedSelect,\n  AdvancedSelectProps,\n} from \"@/registry/new-york/advanced-select/AdvancedSelect\";\nimport { SelectOption } from \"@/lib/select-option\";\n\nexport interface FormFieldAdvancedSelectProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> extends Omit<FormFieldWrapperProps<TFieldValues, TName>, \"children\"> {\n  options: SelectOption[];\n  placeholder?: string;\n  searchable?: boolean;\n  maxCount?: number;\n  variant?: \"default\" | \"secondary\" | \"destructive\" | \"inverted\";\n  disabled?: boolean;\n}\n\nexport function FormFieldAdvancedSelect<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  options,\n  placeholder,\n  searchable = false,\n  maxCount,\n  variant,\n  disabled,\n  ...wrapperProps\n}: FormFieldAdvancedSelectProps<TFieldValues, TName>) {\n  return (\n    <FormFieldWrapper<TFieldValues, TName> {...wrapperProps}>\n      {(field) => (\n        <AdvancedSelect\n          options={options}\n          value={field.value || []}\n          onValueChange={field.onChange}\n          placeholder={placeholder}\n          searchable={searchable}\n          maxCount={maxCount}\n          variant={variant}\n          disabled={disabled}\n        />\n      )}\n    </FormFieldWrapper>\n  );\n}\n"
+    }
+  ]
+}

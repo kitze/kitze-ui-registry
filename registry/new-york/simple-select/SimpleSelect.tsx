@@ -8,17 +8,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { LucideIcon } from "lucide-react";
+import { SelectOption } from "@/lib/select-option";
 
-export type SimpleSelectOption = {
-  value: string;
-  label?: string;
-  emoji?: string;
-  icon?: LucideIcon;
-};
+export type SimpleSelectOption = SelectOption;
 
 export interface SimpleSelectProps {
-  options: SimpleSelectOption[];
+  options: SelectOption[];
   value?: string;
   onValueChange?: (value: string) => void;
   placeholder?: string;
