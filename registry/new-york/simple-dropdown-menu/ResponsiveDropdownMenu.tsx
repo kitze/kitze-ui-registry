@@ -4,8 +4,7 @@ import {
   SimpleDropdownMenu,
   SimpleDropdownMenuProps,
 } from "./SimpleDropdownMenu";
-import { BottomDrawer } from "@/registry/new-york/bottom-drawer/BottomDrawer";
-import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
+import { BottomDrawerMenu } from "@/registry/new-york/bottom-drawer/BottomDrawerMenu";
 import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
 
@@ -28,33 +27,25 @@ export const ResponsiveDropdownMenu: ReactFC<ResponsiveDropdownMenuProps> = ({
   side = "bottom",
 }) => {
   const { isMobile } = useKitzeUI();
-  const { isOpen, setIsOpen, close } = useControlledOpen({
+  const { isOpen, setIsOpen } = useControlledOpen({
     open,
     onOpenChange,
   });
-
-  // Function to close the menu when clicking on menu items
-  const closeMenu = () => {
-    if (closeOnClick) {
-      close();
-    }
-  };
 
   // On mobile, render content in a bottom drawer
   if (isMobile) {
     return (
       <>
         <div onClick={() => setIsOpen(true)}>{children}</div>
-        <BottomDrawer
+        <BottomDrawerMenu
           open={isOpen}
           onOpenChange={setIsOpen}
           title={drawerTitle}
-          trigger={null}
+          closeOnClick={closeOnClick}
+          content={content}
         >
-          <MenuProvider menuType="bottom-drawer" closeMenu={closeMenu}>
-            <div className="flex flex-col">{content}</div>
-          </MenuProvider>
-        </BottomDrawer>
+          {null}
+        </BottomDrawerMenu>
       </>
     );
   }

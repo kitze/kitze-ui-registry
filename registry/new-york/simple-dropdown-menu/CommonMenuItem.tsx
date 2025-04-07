@@ -20,6 +20,7 @@ export interface CommonMenuItemProps extends LinkableProps {
   hint?: string;
   leftIcon?: LucideIcon;
   rightIcon?: LucideIcon;
+  emoji?: string;
   className?: string;
   disabled?: boolean;
   destructive?: boolean;
@@ -33,6 +34,7 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
   hint,
   leftIcon,
   rightIcon,
+  emoji,
   className,
   disabled,
   destructive,
@@ -44,14 +46,10 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
 
   // Handle click with menu closing
   const handleClick = () => {
-    if (onSelect) {
-      onSelect();
-    }
-
-    // Close the menu if closeMenu function is provided
-    if (closeMenu) {
-      closeMenu();
-    }
+    console.log("clicking!");
+    alert("clicking!");
+    onSelect?.();
+    closeMenu?.();
   };
 
   // If we're in a bottom drawer, render the BottomDrawerMenuItem
@@ -60,6 +58,7 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
       <BottomDrawerMenuItem
         leftIcon={leftIcon}
         rightIcon={rightIcon}
+        emoji={emoji}
         className={className}
         disabled={disabled}
         destructive={destructive}
@@ -87,12 +86,16 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
     destructive && "text-destructive"
   );
 
+  // We'll still keep the class for backward compatibility
   const itemClasses = cn(className, destructive && "text-destructive");
 
   const content = (
     <>
-      {leftIcon &&
-        React.createElement(leftIcon, { className: cn("mr-2", iconClasses) })}
+      {emoji ? (
+        <span className="mr-2 text-base">{emoji}</span>
+      ) : leftIcon ? (
+        React.createElement(leftIcon, { className: cn("mr-2", iconClasses) })
+      ) : null}
       <span>{children}</span>
       {hint && (
         <span className="ml-2">
@@ -119,6 +122,7 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
         disabled={disabled}
         onSelect={handleClick}
         asChild
+        variant={destructive ? "destructive" : "default"}
       >
         <Component href={href} {...linkProps}>
           {content}
@@ -133,6 +137,7 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
       className={itemClasses}
       disabled={disabled}
       onSelect={handleClick}
+      variant={destructive ? "destructive" : "default"}
     >
       {content}
     </MenuItem>

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { SimpleContextMenu } from "./SimpleContextMenu";
 import { ResponsiveContextMenu } from "./ResponsiveContextMenu";
+import ResponsiveContextMenuPreview from "./ResponsiveContextMenuPreview";
 import { CommonMenuItem } from "@/registry/new-york/simple-dropdown-menu/CommonMenuItem";
+import { CommonMenuItemEdit } from "@/registry/new-york/simple-dropdown-menu/CommonMenuItemEdit";
+import { CommonMenuItemDelete } from "@/registry/new-york/simple-dropdown-menu/CommonMenuItemDelete";
 import { CommonMenuSeparator } from "@/registry/new-york/simple-dropdown-menu/CommonMenuSeparator";
 import {
   FileText,
@@ -17,6 +20,17 @@ import {
 
 export default function SimpleContextMenuPreview() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleEdit = () => {
+    setMessage("Edit action triggered");
+    setTimeout(() => setMessage(null), 3000);
+  };
+
+  const handleDelete = () => {
+    setMessage("Item was deleted");
+    setTimeout(() => setMessage(null), 3000);
+  };
 
   const contextMenuContent = (
     <>
@@ -46,6 +60,12 @@ export default function SimpleContextMenuPreview() {
 
   return (
     <div className="flex flex-col gap-8">
+      {message && (
+        <div className="p-3 bg-green-100 text-green-800 rounded-md mb-2">
+          {message}
+        </div>
+      )}
+
       <h3 className="text-lg font-semibold mb-4">Simple Context Menu</h3>
       <div className="flex items-center justify-center p-8 border rounded-lg">
         <SimpleContextMenu content={contextMenuContent}>
@@ -123,6 +143,39 @@ export default function SimpleContextMenuPreview() {
           Toggle Controlled Menu
         </button>
       </div>
+
+      <h3 className="text-lg font-semibold mt-8 mb-4">
+        Specialized Menu Items
+      </h3>
+      <div className="flex items-center justify-center p-8 border rounded-lg">
+        <ResponsiveContextMenu
+          content={
+            <>
+              <CommonMenuItemEdit onSelect={handleEdit} shortcut="⌘E" />
+              <CommonMenuSeparator />
+              <CommonMenuItemDelete
+                itemName="document"
+                onDelete={handleDelete}
+                shortcut="⌘⌫"
+              />
+            </>
+          }
+          drawerTitle="Document Actions"
+        >
+          <div className="p-4 border border-blue-200 bg-blue-50 rounded-md w-[250px] h-[100px] flex items-center justify-center">
+            <p className="text-center">
+              Try the new Edit and Delete actions
+              <br />
+              (with Right-click or long-press)
+            </p>
+          </div>
+        </ResponsiveContextMenu>
+      </div>
+
+      <h3 className="text-lg font-semibold mt-8 mb-4">
+        Responsive Context Menu (Full Preview)
+      </h3>
+      <ResponsiveContextMenuPreview />
     </div>
   );
 }

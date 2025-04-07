@@ -15,6 +15,7 @@ const config: ComponentConfig = {
       "bottom-drawer",
       "kitze-ui-context",
       "menu-context",
+      "ui-alert",
     ],
   },
 
@@ -29,6 +30,14 @@ const config: ComponentConfig = {
     },
     {
       path: "CommonMenuItem.tsx",
+      type: "registry:component",
+    },
+    {
+      path: "CommonMenuItemEdit.tsx",
+      type: "registry:component",
+    },
+    {
+      path: "CommonMenuItemDelete.tsx",
       type: "registry:component",
     },
     {

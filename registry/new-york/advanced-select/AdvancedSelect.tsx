@@ -463,7 +463,7 @@ export const AdvancedSelect = React.forwardRef<
                 {searchable &&
                   filteredOptions.length === 0 &&
                   (!searchQuery || !onCreate) && (
-                    <CommandEmpty className="py-1.5">
+                    <CommandEmpty className="py-1.5 ml-2">
                       No results found.
                     </CommandEmpty>
                   )}

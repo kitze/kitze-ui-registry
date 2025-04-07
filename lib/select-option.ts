@@ -15,4 +15,7 @@ export interface SelectOption {
 
   /** Optional Lucide icon component to display next to the option */
   icon?: LucideIcon;
+
+  /** Whether to close the menu when the option is clicked */
+  closeOnClick?: boolean;
 }

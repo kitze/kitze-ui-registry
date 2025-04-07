@@ -2,11 +2,13 @@ import React from "react";
 import { ReactFC, cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 import { HelpInfoCircle } from "@/registry/new-york/help-info-circle/HelpInfoCircle";
+import { useMenuContext } from "../menu-context/MenuContext";
 
 export interface BottomDrawerMenuItemProps {
   children: React.ReactNode;
   leftIcon?: LucideIcon;
   rightIcon?: LucideIcon;
+  emoji?: string;
   className?: string;
   disabled?: boolean;
   destructive?: boolean;
@@ -16,12 +18,14 @@ export interface BottomDrawerMenuItemProps {
   isLast?: boolean;
   shortcut?: string;
   hint?: string;
+  closeOnClick?: boolean;
 }
 
 export const BottomDrawerMenuItem: ReactFC<BottomDrawerMenuItemProps> = ({
   children,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
+  emoji,
   className,
   disabled,
   destructive,
@@ -31,7 +35,9 @@ export const BottomDrawerMenuItem: ReactFC<BottomDrawerMenuItemProps> = ({
   isLast,
   shortcut,
   hint,
+  closeOnClick = true,
 }) => {
+  const { closeMenu } = useMenuContext();
   const Component = href ? (external ? "a" : "a") : "button";
   const linkProps = href
     ? {
@@ -51,7 +57,6 @@ export const BottomDrawerMenuItem: ReactFC<BottomDrawerMenuItemProps> = ({
 
   const itemClasses = cn(
     "flex items-center w-full px-4 py-3 text-base",
-    !isLast && "border-b border-zinc-100 dark:border-zinc-800",
     "transition-colors active:bg-zinc-50 dark:active:bg-zinc-800/50",
     "text-left justify-start",
     disabled && "opacity-50 pointer-events-none",
@@ -62,13 +67,20 @@ export const BottomDrawerMenuItem: ReactFC<BottomDrawerMenuItemProps> = ({
   return (
     <Component
       className={itemClasses}
-      onClick={onClick}
+      onClick={() => {
+        onClick?.();
+        if (closeOnClick) {
+          closeMenu?.();
+        }
+      }}
       disabled={disabled && Component === "button"}
       {...linkProps}
     >
-      {LeftIcon && (
+      {emoji ? (
+        <span className="mr-3 flex-shrink-0 text-base">{emoji}</span>
+      ) : LeftIcon ? (
         <LeftIcon className={cn("mr-3 flex-shrink-0", iconClasses)} />
-      )}
+      ) : null}
       <span className="flex-1">{children}</span>
       {hint && (
         <div className="ml-2 flex-shrink-0">

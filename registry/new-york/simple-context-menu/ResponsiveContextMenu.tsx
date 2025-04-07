@@ -1,8 +1,7 @@
 import React from "react";
 import { ReactFC } from "@/lib/utils";
 import { SimpleContextMenu, SimpleContextMenuProps } from "./SimpleContextMenu";
-import { BottomDrawer } from "@/registry/new-york/bottom-drawer/BottomDrawer";
-import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
+import { BottomDrawerMenu } from "@/registry/new-york/bottom-drawer/BottomDrawerMenu";
 import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { useLongPress } from "use-long-press";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
@@ -24,17 +23,10 @@ export const ResponsiveContextMenu: ReactFC<ResponsiveContextMenuProps> = ({
   classNames = {},
 }) => {
   const { isMobile } = useKitzeUI();
-  const { isOpen, setIsOpen, close } = useControlledOpen({
+  const { isOpen, setIsOpen } = useControlledOpen({
     open,
     onOpenChange,
   });
-
-  // Function to close the menu when clicking on menu items
-  const closeMenu = () => {
-    if (closeOnClick) {
-      close();
-    }
-  };
 
   // Only use long press detection on mobile
   const bind = useLongPress(
@@ -74,16 +66,15 @@ export const ResponsiveContextMenu: ReactFC<ResponsiveContextMenuProps> = ({
         {children}
       </div>
 
-      <BottomDrawer
+      <BottomDrawerMenu
         open={isOpen}
         onOpenChange={setIsOpen}
         title={drawerTitle}
-        trigger={null}
+        closeOnClick={closeOnClick}
+        content={content}
       >
-        <MenuProvider menuType="bottom-drawer" closeMenu={closeMenu}>
-          <div className="flex flex-col">{content}</div>
-        </MenuProvider>
-      </BottomDrawer>
+        {null}
+      </BottomDrawerMenu>
     </>
   );
 };

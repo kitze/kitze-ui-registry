@@ -21,7 +21,6 @@ export function PreviewComponent({
   titleWrapper,
 }: PreviewComponentProps) {
   const meta = componentMeta[name];
-  console.log(meta);
   if (!meta) {
     console.error(`Component ${name} not found`);
     return null;

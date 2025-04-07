@@ -10,6 +10,7 @@ export interface BottomDrawerClassNames {
   content?: string;
   handle?: string;
   title?: string;
+  headerWrapper?: string;
   childrenWrapper?: string;
 }
 
@@ -105,21 +106,27 @@ export const BottomDrawer: ReactFC<BottomDrawerProps> = ({
               "max-w-[500px]",
               classNames?.content,
               {
-                "py-6": !noHeader,
+                "pt-6": !noHeader,
               }
             )}
           >
+            {!noHeader && (
+              <div
+                className={cn(
+                  "px-4 bg-white dark:bg-zinc-900 rounded-t-[10px]",
+                  classNames?.headerWrapper
+                )}
+              >
+                {renderHeader ? renderHeader({ handle, close }) : defaultHeader}
+              </div>
+            )}
             <div
               className={cn(
-                "px-6 pb-6 md:pb-2 bg-white dark:bg-zinc-900 rounded-t-[10px] flex-1 overflow-y-auto",
+                "px-6 pb-6 pt-0 md:pb-2 bg-white dark:bg-zinc-900 flex-1 overflow-y-auto",
+                noHeader && "pt-6 rounded-t-[10px]",
                 classNames?.childrenWrapper
               )}
             >
-              {noHeader
-                ? null
-                : renderHeader
-                ? renderHeader({ handle, close })
-                : defaultHeader}
               {children}
             </div>
           </Drawer.Content>

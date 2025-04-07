@@ -55,3 +55,51 @@ export const BottomDrawerMenuGroup: ReactFC<BottomDrawerMenuGroupProps> = ({
     <div className={cn("flex flex-col w-full", className)}>{children}</div>
   );
 };
+
+// MenuItems - Container with divide-y styling
+export interface BottomDrawerMenuItemsProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const BottomDrawerMenuItems: ReactFC<BottomDrawerMenuItemsProps> = ({
+  children,
+  className,
+}) => {
+  return (
+    <div
+      className={cn(
+        "flex flex-col divide-y divide-zinc-100 dark:divide-zinc-800",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Group with title and items
+export interface BottomDrawerGroupProps {
+  title?: string;
+  children: React.ReactNode;
+  className?: string;
+  titleClassName?: string;
+}
+
+export const BottomDrawerGroup: ReactFC<BottomDrawerGroupProps> = ({
+  title,
+  children,
+  className,
+  titleClassName,
+}) => {
+  return (
+    <div className={cn("flex flex-col w-full", className)}>
+      {title && (
+        <BottomDrawerMenuLabel className={titleClassName}>
+          {title}
+        </BottomDrawerMenuLabel>
+      )}
+      <BottomDrawerMenuItems>{children}</BottomDrawerMenuItems>
+    </div>
+  );
+};

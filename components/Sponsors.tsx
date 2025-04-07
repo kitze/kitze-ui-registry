@@ -76,8 +76,10 @@ export function Sponsors() {
 
       <div className="flex justify-center mt-8">
         <a
-          href="mailto:hi@kitze.io"
+          href="https://kitze.lemonsqueezy.com/buy/8b946195-05b4-4b3b-b56a-3dd5b2dea781"
           className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary rounded-md shadow-sm hover:bg-primary/90 hover:-translate-y-1 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Want your logo here?
         </a>

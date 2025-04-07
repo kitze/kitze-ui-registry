@@ -17,7 +17,7 @@ export function Header() {
                 href="https://twitter.com/thekitze"
                 className="hover:text-white"
               >
-                @thekitze
+                thekitze
               </a>
             </p>
           </div>

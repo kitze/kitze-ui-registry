@@ -18,10 +18,9 @@ export type ComponentDefinition = {
 // Define component groups
 export const componentGroups: ComponentGroup[] = [
   {
-    id: "simplified",
-    title: "Simplified Components",
-    description:
-      "These are simplified components that use the shadcn components under the hood, but with much less boilerplate.",
+    id: "components",
+    title: "Components",
+    description: "Standard UI components for building interfaces.",
   },
   {
     id: "enhanced",
@@ -63,19 +62,27 @@ export const componentGroups: ComponentGroup[] = [
     description:
       "A set of components that are connected to the Next Themes library.",
   },
+  {
+    id: "simplified",
+    title: "Simplified Components",
+    description:
+      "These are simplified components that use the shadcn components under the hood, but with much less boilerplate.",
+  },
 ];
 
 // Define all components in a flat list using the ComponentName type
 export const components: ComponentDefinition[] = [
-  // Enhanced Components
-  { id: "custom-button", groupId: "enhanced" },
+  // Enhanced Components - keep only these three
   { id: "input", groupId: "enhanced" },
-  { id: "gradient-text", groupId: "enhanced" },
-  { id: "kbd", groupId: "enhanced" },
-  { id: "kbd-shortcuts", groupId: "enhanced" },
-  { id: "kbd-shortcuts-list", groupId: "enhanced" },
-  { id: "hoverable-icon", groupId: "enhanced" },
   { id: "advanced-select", groupId: "enhanced" },
+  { id: "custom-button", groupId: "enhanced" },
+
+  // Moved to Components
+  { id: "gradient-text", groupId: "components" },
+  { id: "kbd", groupId: "components" },
+  { id: "kbd-shortcuts", groupId: "components" },
+  { id: "kbd-shortcuts-list", groupId: "components" },
+  { id: "hoverable-icon", groupId: "components" },
 
   // Simplified Components
   { id: "simple-tooltip", groupId: "simplified" },
@@ -102,6 +109,7 @@ export const components: ComponentDefinition[] = [
   { id: "responsive-dialog", groupId: "responsive" },
   { id: "responsive-popover", groupId: "responsive" },
   { id: "responsive-tooltip", groupId: "responsive" },
+  { id: "responsive-select", groupId: "responsive" },
 
   // Conditionals
   { id: "conditional-wrap", groupId: "conditionals" },
@@ -115,20 +123,20 @@ export const components: ComponentDefinition[] = [
   { id: "theme-switch-slider-next-themes", groupId: "next-themes" },
   { id: "theme-switch-minimal-next-themes", groupId: "next-themes" },
 
-  // Additional components
-  { id: "search-bar", groupId: "enhanced" },
-  { id: "with-search-bar", groupId: "enhanced" },
-  { id: "segmented-control", groupId: "enhanced" },
-  { id: "help-info-circle", groupId: "enhanced" },
+  // Additional components - moved from enhanced to components
+  { id: "search-bar", groupId: "components" },
+  { id: "with-search-bar", groupId: "components" },
+  { id: "segmented-control", groupId: "components" },
+  { id: "help-info-circle", groupId: "components" },
 
-  // Core components distributed to appropriate groups
-  { id: "spinner", groupId: "enhanced" },
-  { id: "full-page-spinner", groupId: "enhanced" },
-  { id: "fill-height-spinner", groupId: "enhanced" },
-  { id: "suspensed", groupId: "enhanced" },
-  { id: "page-header", groupId: "enhanced" },
-  { id: "ui-alert", groupId: "enhanced" },
-  { id: "kitze-ui-context", groupId: "enhanced" },
+  // Core components - moved from enhanced to components
+  { id: "spinner", groupId: "components" },
+  { id: "full-page-spinner", groupId: "components" },
+  { id: "fill-height-spinner", groupId: "components" },
+  { id: "suspensed", groupId: "components" },
+  { id: "page-header", groupId: "components" },
+  { id: "ui-alert", groupId: "components" },
+  { id: "kitze-ui-context", groupId: "components" },
 ];
 
 // Function to filter components based on search query

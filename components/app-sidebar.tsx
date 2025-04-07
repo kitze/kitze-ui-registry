@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { ThemeSwitchNextThemes } from "@/registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes";
-import { Twitter, Github } from "lucide-react";
+import { Twitter, Github, LucideGithub } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { SearchBar } from "@/registry/new-york/search-bar/SearchBar";
 import {
@@ -62,12 +62,12 @@ export function AppSidebar() {
             className="flex items-center text-muted-foreground hover:text-primary transition-colors"
             aria-label="GitHub Repository"
           >
-            <Github size={18} />
+            <LucideGithub size={18} />
           </a>
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <div className="px-4 py-2 space-y-3">
+        <div className="p-2">
           <SearchBar
             value={searchValue}
             onChange={setSearchValue}
@@ -119,7 +119,6 @@ export function AppSidebar() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm hover:text-primary"
             >
-              <Twitter size={16} />
               <span>@thekitze</span>
             </a>
             <ThemeSwitchNextThemes />
