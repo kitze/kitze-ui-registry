@@ -19,6 +19,7 @@ const config: ComponentConfig = {
     ],
     shad: ["dialog"],
     hooks: ["useControlledOpen"],
+    linked: ["bottom-drawer", "custom-button"],
   },
   files: [
     {

@@ -238,26 +238,13 @@
         "@radix-ui/react-dialog"
       ],
       "registryDependencies": [
-        "dialog"
+        "dialog",
+        "https://ui.kitze.io/r/bottom-drawer.json",
+        "https://ui.kitze.io/r/custom-button.json"
       ],
       "files": [
         {
           "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-accordion",
-      "type": "registry:component",
-      "title": "Simple Accordion",
-      "description": "A simple accordion component",
-      "registryDependencies": [
-        "accordion"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component"
         }
       ]
@@ -284,6 +271,21 @@
         },
         {
           "path": "registry/new-york/simple-context-menu/ResponsiveContextMenu.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-accordion",
+      "type": "registry:component",
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component"
         }
       ]
@@ -356,6 +358,21 @@
       ]
     },
     {
+      "name": "search-bar",
+      "type": "registry:component",
+      "title": "Search Bar",
+      "description": "A reusable search input component with clear functionality",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/search-bar/SearchBar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "page-header",
       "type": "registry:component",
       "title": "Page Header",
@@ -372,16 +389,16 @@
       ]
     },
     {
-      "name": "search-bar",
+      "name": "kitze-ui-context",
       "type": "registry:component",
-      "title": "Search Bar",
-      "description": "A reusable search input component with clear functionality",
-      "dependencies": [
-        "lucide-react"
+      "title": "Kitze UI Context",
+      "description": "Provides UI context like mobile detection for Kitze UI components.",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/ui-alert.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/search-bar/SearchBar.tsx",
+          "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
           "type": "registry:component"
         }
       ]
@@ -432,16 +449,14 @@
       ]
     },
     {
-      "name": "kitze-ui-context",
+      "name": "input",
       "type": "registry:component",
-      "title": "Kitze UI Context",
-      "description": "Provides UI context like mobile detection for Kitze UI components.",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/ui-alert.json"
-      ],
+      "title": "Input",
+      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
+      "dependencies": [],
       "files": [
         {
-          "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
+          "path": "registry/new-york/input/Input.tsx",
           "type": "registry:component"
         }
       ]
@@ -455,19 +470,6 @@
       "files": [
         {
           "path": "registry/new-york/kbd/Kbd.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "input",
-      "type": "registry:component",
-      "title": "Input",
-      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/input/Input.tsx",
           "type": "registry:component"
         }
       ]
@@ -509,19 +511,6 @@
       ]
     },
     {
-      "name": "gradient-text",
-      "type": "registry:component",
-      "title": "Gradient Text",
-      "description": "A text component with animated gradient effects",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/gradient-text/GradientText.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "full-page-spinner",
       "type": "registry:component",
       "title": "Full Page Spinner",
@@ -532,6 +521,19 @@
       "files": [
         {
           "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:component",
+      "title": "Gradient Text",
+      "description": "A text component with animated gradient effects",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/gradient-text/GradientText.tsx",
           "type": "registry:component"
         }
       ]
@@ -574,25 +576,6 @@
       ]
     },
     {
-      "name": "form-field-select",
-      "type": "registry:component",
-      "title": "Form Field Select",
-      "description": "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/form-field-wrapper.json",
-        "https://ui.kitze.io/r/simple-select.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "form-field-input",
       "type": "registry:component",
       "title": "Form Field Input",
@@ -607,6 +590,25 @@
       "files": [
         {
           "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "form-field-select",
+      "type": "registry:component",
+      "title": "Form Field Select",
+      "description": "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/form-field-wrapper.json",
+        "https://ui.kitze.io/r/simple-select.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
           "type": "registry:component"
         }
       ]
@@ -729,6 +731,30 @@
       ]
     },
     {
+      "name": "advanced-select",
+      "type": "registry:component",
+      "title": "Advanced Select",
+      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
+      "dependencies": [
+        "class-variance-authority",
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "popover",
+        "command",
+        "separator",
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "bottom-drawer",
       "type": "registry:component",
       "title": "Bottom Drawer",
@@ -760,30 +786,6 @@
         },
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawerMenuComponents.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "advanced-select",
-      "type": "registry:component",
-      "title": "Advanced Select",
-      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
-      "dependencies": [
-        "class-variance-authority",
-        "cmdk",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "popover",
-        "command",
-        "separator",
-        "badge",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
           "type": "registry:component"
         }
       ]

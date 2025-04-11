@@ -5,7 +5,9 @@
   "title": "Simple Dialog",
   "description": "A simple dialog component using Radix UI.",
   "registryDependencies": [
-    "dialog"
+    "dialog",
+    "https://ui.kitze.io/r/bottom-drawer.json",
+    "https://ui.kitze.io/r/custom-button.json"
   ],
   "dependencies": [
     "next",

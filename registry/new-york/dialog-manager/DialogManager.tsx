@@ -53,15 +53,18 @@ export type DialogManagerProps = {
   classNames?: {
     root?: string;
   };
+  mobileView?: SimpleDialogProps["mobileView"];
   children?: React.ReactNode;
 };
 
 const DialogList = memo(function DialogList({
   dialogs,
   onClose,
+  defaultMobileView,
 }: {
   dialogs: DialogConfig[];
   onClose: (id: string) => void;
+  defaultMobileView?: SimpleDialogProps["mobileView"];
 }) {
   return (
     <>
@@ -90,7 +93,9 @@ const DialogList = memo(function DialogList({
               }}
               size={size}
               classNames={classNames}
-              mobileView={mobileView}
+              mobileView={
+                mobileView !== undefined ? mobileView : defaultMobileView
+              }
               drawerTitle={drawerTitle}
               showCancel={showCancel}
               onCancel={() => {
@@ -122,6 +127,7 @@ const DialogList = memo(function DialogList({
 
 export const DialogManager = memo(function DialogManager({
   classNames,
+  mobileView,
   children,
 }: DialogManagerProps) {
   const [dialogs, setDialogs] = useState<DialogConfig[]>([]);
@@ -161,7 +167,11 @@ export const DialogManager = memo(function DialogManager({
           classNames?.root
         )}
       >
-        <DialogList dialogs={dialogs} onClose={closeDialog} />
+        <DialogList
+          dialogs={dialogs}
+          onClose={closeDialog}
+          defaultMobileView={mobileView}
+        />
       </div>
     </DialogContext.Provider>
   );
