@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-tab-panels",
+  "type": "registry:component",
+  "title": "Responsive Tab Panels",
+  "description": "Displays content panels with a tab switcher that adapts to mobile view using ResponsiveSegmentedControl.",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/tab-panels.json",
+    "https://ui.kitze.io/r/responsive-segmented-control.json",
+    "https://ui.kitze.io/r/kitze-ui-context.json",
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/responsive-tab-panels/ResponsiveTabPanels.tsx",
+      "type": "registry:component",
+      "content": "/* File not found: registry/new-york/responsive-tab-panels/ResponsiveTabPanels.tsx */"
+    }
+  ]
+}

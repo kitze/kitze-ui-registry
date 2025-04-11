@@ -18,4 +18,7 @@ export interface SelectOption {
 
   /** Whether to close the menu when the option is clicked */
   closeOnClick?: boolean;
+
+  /** Optional disabled property */
+  disabled?: boolean;
 }

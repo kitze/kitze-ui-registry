@@ -7,9 +7,10 @@ import React, {
   memo,
 } from "react";
 import {
-  ResponsiveDialog,
-  ResponsiveDialogProps,
-} from "@/registry/new-york/responsive-dialog/ResponsiveDialog";
+  SimpleDialog,
+  SimpleDialogProps,
+} from "@/registry/new-york/simple-dialog/SimpleDialog";
+import { cn } from "@/lib/utils";
 
 export type OpenDialogProps = {
   title?: string;
@@ -17,8 +18,15 @@ export type OpenDialogProps = {
     | ((props: { close: () => void }) => React.ReactNode)
     | React.ComponentType<any>;
   props?: Record<string, any>;
-  size?: ResponsiveDialogProps["size"];
-  classNames?: ResponsiveDialogProps["classNames"];
+  size?: SimpleDialogProps["size"];
+  classNames?: SimpleDialogProps["classNames"];
+  mobileView?: SimpleDialogProps["mobileView"];
+  drawerTitle?: SimpleDialogProps["drawerTitle"];
+  showCancel?: SimpleDialogProps["showCancel"];
+  onCancel?: SimpleDialogProps["onCancel"];
+  onSubmit?: SimpleDialogProps["onSubmit"];
+  submitText?: SimpleDialogProps["submitText"];
+  cancelText?: SimpleDialogProps["cancelText"];
 };
 
 type DialogConfig = OpenDialogProps & {
@@ -58,26 +66,53 @@ const DialogList = memo(function DialogList({
   return (
     <>
       {dialogs.map(
-        ({ id, title, component: Component, props, size, classNames }) => (
+        ({
+          id,
+          title,
+          component: Component,
+          props,
+          size,
+          classNames,
+          mobileView,
+          drawerTitle,
+          showCancel,
+          onCancel,
+          onSubmit,
+          submitText,
+          cancelText,
+        }) => (
           <div key={id} className="pointer-events-auto">
-            <ResponsiveDialog
+            <SimpleDialog
               title={title}
-              showCancel={true}
-              onCancel={() => onClose(id)}
               open={true}
-              onOpenChange={(open) => {
+              onOpenChange={(open: boolean) => {
                 if (!open) onClose(id);
               }}
               size={size}
               classNames={classNames}
+              mobileView={mobileView}
+              drawerTitle={drawerTitle}
+              showCancel={showCancel}
+              onCancel={() => {
+                if (onCancel) onCancel();
+                onClose(id);
+              }}
+              onSubmit={() => {
+                if (onSubmit) onSubmit();
+                onClose(id);
+              }}
+              submitText={submitText}
+              cancelText={cancelText}
             >
+              {/* Render the component passed to openDialog */}
               {typeof Component === "function" ? (
                 <Component {...props} close={() => onClose(id)} />
               ) : (
+                // Re-add ts-ignore as Component type might be complex for TSX
                 // @ts-ignore
                 <Component {...props} />
               )}
-            </ResponsiveDialog>
+            </SimpleDialog>
           </div>
         )
       )}
@@ -120,7 +155,14 @@ export const DialogManager = memo(function DialogManager({
   return (
     <DialogContext.Provider value={contextValue}>
       {children}
-      <DialogList dialogs={dialogs} onClose={closeDialog} />
+      <div
+        className={cn(
+          "pointer-events-none fixed inset-0 z-[100]",
+          classNames?.root
+        )}
+      >
+        <DialogList dialogs={dialogs} onClose={closeDialog} />
+      </div>
     </DialogContext.Provider>
   );
 });

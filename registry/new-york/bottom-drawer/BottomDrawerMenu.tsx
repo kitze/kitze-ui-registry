@@ -12,7 +12,7 @@ import { BottomDrawerMenuItems } from "./BottomDrawerMenuComponents";
 export interface BottomDrawerMenuProps {
   children: React.ReactNode;
   content?: React.ReactNode;
-  items?: Omit<BottomDrawerMenuItemProps, "children">[] & { label: string }[];
+  items?: (Omit<BottomDrawerMenuItemProps, "children"> & { label: string })[];
   title?: string;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;

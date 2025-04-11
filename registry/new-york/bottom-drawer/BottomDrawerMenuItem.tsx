@@ -88,7 +88,6 @@ export const BottomDrawerMenuItem: ReactFC<BottomDrawerMenuItemProps> = ({
             content={hint}
             drawerTitle="Help"
             iconClassName={destructive ? "text-destructive" : ""}
-            isMobile={true}
           />
         </div>
       )}

@@ -21,10 +21,7 @@ export function Preview() {
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-2">
             <span>Field Label</span>
-            <HelpInfoCircle
-              content="This help icon provides additional information about the field"
-              isMobile={isMobile}
-            />
+            <HelpInfoCircle content="This help icon provides additional information about the field" />
           </div>
 
           <div className="flex items-center gap-2">
@@ -45,7 +42,6 @@ export function Preview() {
               iconClassName="h-5 w-5 text-blue-500"
               tooltipClassName="max-w-xs"
               drawerTitle="Advanced Settings Help"
-              isMobile={isMobile}
             />
           </div>
         </div>

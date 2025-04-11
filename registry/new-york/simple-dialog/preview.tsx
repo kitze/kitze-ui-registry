@@ -1,76 +1,66 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { SimpleDialog } from "./SimpleDialog";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-export default function SimpleDialogPreview() {
-  const [openDialog, setOpenDialog] = React.useState(false);
+const Preview = () => {
+  const [name, setName] = useState("");
 
-  return (
-    <div className="space-y-8">
-      <div className="flex flex-col space-y-4">
-        <h2 className="text-lg font-semibold">Basic Dialog</h2>
-        <SimpleDialog title="Basic Dialog">
-          <p>This is a basic dialog with just a title and some content.</p>
-        </SimpleDialog>
-      </div>
+  const handleSubmit = () => {
+    alert(`Submitted name: ${name}`);
+  };
 
-      <div className="flex flex-col space-y-4">
-        <h2 className="text-lg font-semibold">Custom Trigger</h2>
-        <SimpleDialog
-          title="Custom Trigger Dialog"
-          trigger={<Button>Custom Button</Button>}
-        >
-          <p>This dialog uses a custom trigger button.</p>
-        </SimpleDialog>
-      </div>
-
-      <div className="flex flex-col space-y-4">
-        <h2 className="text-lg font-semibold">Controlled Dialog</h2>
-        <Button onClick={() => setOpenDialog(true)}>
-          Open Controlled Dialog
-        </Button>
-        <SimpleDialog
-          title="Controlled Dialog"
-          open={openDialog}
-          onOpenChange={setOpenDialog}
-        >
-          <p>This dialog is controlled externally with the open state.</p>
-          <div className="mt-4">
-            <Button onClick={() => setOpenDialog(false)}>Close Dialog</Button>
-          </div>
-        </SimpleDialog>
-      </div>
-
-      <div className="flex flex-col space-y-4">
-        <h2 className="text-lg font-semibold">Different Sizes</h2>
-        <div className="flex flex-wrap gap-4">
-          {["sm", "md", "lg", "xl", "2xl"].map((size) => (
-            <SimpleDialog
-              key={size}
-              title={`${size.toUpperCase()} Dialog`}
-              size={size as any}
-              trigger={<Button variant="outline">{size.toUpperCase()}</Button>}
-            >
-              <p>This dialog is set to size: {size}</p>
-            </SimpleDialog>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex flex-col space-y-4">
-        <h2 className="text-lg font-semibold">Custom Styling</h2>
-        <SimpleDialog
-          title="Custom Styled Dialog"
-          trigger={<Button variant="secondary">Custom Styled</Button>}
-          classNames={{
-            header: "bg-primary/10 p-4 rounded-t-lg",
-            title: "text-primary text-xl",
-            body: "bg-secondary/10 p-6",
-          }}
-        >
-          <p>This dialog has custom styling applied to different parts.</p>
-        </SimpleDialog>
+  const dialogContent = (
+    <div className="grid gap-4">
+      <div className="grid grid-cols-4 items-center gap-4">
+        <Label htmlFor="name" className="text-right">
+          Name
+        </Label>
+        <Input
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="col-span-3"
+        />
       </div>
     </div>
   );
-}
+
+  return (
+    // Single container for examples
+    <div className="flex flex-wrap items-center justify-center gap-4 p-4">
+      {/* Example 1: mobileView="keep" (Default Dialog) */}
+      <SimpleDialog
+        trigger={<Button variant="outline">Edit Profile (Keep)</Button>}
+        title="Edit Profile"
+        mobileView="keep" // Default behavior
+        onSubmit={handleSubmit}
+      >
+        {dialogContent}
+      </SimpleDialog>
+
+      {/* Example 2: mobileView="bottom-drawer" */}
+      <SimpleDialog
+        trigger={<Button variant="secondary">Edit Profile (Drawer)</Button>}
+        title="Edit Profile"
+        mobileView="bottom-drawer"
+        drawerTitle="Edit Profile Drawer"
+        onSubmit={handleSubmit}
+        submitText="Save Changes"
+      >
+        {dialogContent}
+      </SimpleDialog>
+
+      {/* Add a note about the switcher */}
+      <p className="w-full text-center text-sm text-muted-foreground mt-4">
+        Use the Desktop/Mobile switcher above to see the different mobile
+        behaviors.
+      </p>
+    </div>
+  );
+};
+
+export default Preview;

@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-import { ComponentName, componentMeta } from "@/lib/component-types";
+import { ComponentName } from "@/lib/component-types";
 
 // Component group definition
 export type ComponentGroup = {
@@ -105,12 +104,6 @@ export const components: ComponentDefinition[] = [
   { id: "bottom-drawer", groupId: "menu" },
   { id: "menu-context", groupId: "menu" },
 
-  // Responsive Components
-  { id: "responsive-dialog", groupId: "responsive" },
-  { id: "responsive-popover", groupId: "responsive" },
-  { id: "responsive-tooltip", groupId: "responsive" },
-  { id: "responsive-select", groupId: "responsive" },
-
   // Conditionals
   { id: "conditional-wrap", groupId: "conditionals" },
   { id: "conditional-tooltip", groupId: "conditionals" },
@@ -137,6 +130,7 @@ export const components: ComponentDefinition[] = [
   { id: "page-header", groupId: "components" },
   { id: "ui-alert", groupId: "components" },
   { id: "kitze-ui-context", groupId: "components" },
+  { id: "tab-panels", groupId: "components" },
 ];
 
 // Function to filter components based on search query

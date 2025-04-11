@@ -1,6 +1,9 @@
 import React from "react";
 import { HelpCircle } from "lucide-react";
-import { ResponsiveTooltip } from "@/registry/new-york/responsive-tooltip/ResponsiveTooltip";
+import {
+  SimpleTooltip,
+  TooltipMobileViewType,
+} from "@/registry/new-york/simple-tooltip/SimpleTooltip";
 import { ReactFC } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +13,7 @@ export interface HelpInfoCircleProps {
   iconClassName?: string;
   tooltipClassName?: string;
   drawerTitle?: string;
-  isMobile?: boolean;
+  mobileView?: TooltipMobileViewType;
 }
 
 export const HelpInfoCircle: ReactFC<HelpInfoCircleProps> = ({
@@ -19,17 +22,17 @@ export const HelpInfoCircle: ReactFC<HelpInfoCircleProps> = ({
   iconClassName,
   tooltipClassName,
   drawerTitle = "Help Information",
-  isMobile = false,
+  mobileView = "bottom-drawer",
 }) => {
   return (
-    <ResponsiveTooltip
+    <SimpleTooltip
       content={content}
       tooltipClassName={tooltipClassName}
       drawerTitle={drawerTitle}
       className={className}
-      isMobile={isMobile}
+      mobileView={mobileView}
     >
-      <span className={cn("inline-flex cursor-pointer", className)}>
+      <span className={cn("inline-flex cursor-pointer")}>
         <HelpCircle
           className={cn(
             "h-4 w-4 text-muted-foreground hover:text-foreground transition-colors",
@@ -37,6 +40,6 @@ export const HelpInfoCircle: ReactFC<HelpInfoCircleProps> = ({
           )}
         />
       </span>
-    </ResponsiveTooltip>
+    </SimpleTooltip>
   );
 };

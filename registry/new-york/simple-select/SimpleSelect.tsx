@@ -18,6 +18,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { SelectOption } from "@/lib/select-option";
+import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
+import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
+import { ResponsiveSelectBottomDrawerMenu } from "@/registry/new-york/responsive-select/ResponsiveSelectBottomDrawerMenu";
+
+export type SelectMobileViewType = "keep" | "native" | "bottom-drawer";
 
 export type SimpleSelectOption = SelectOption;
 
@@ -31,6 +36,8 @@ export interface SimpleSelectProps {
   disabled?: boolean;
   withSearch?: boolean;
   searchPlaceholder?: string;
+  mobileView?: SelectMobileViewType;
+  drawerTitle?: string;
 }
 
 export function SimpleSelect({
@@ -43,29 +50,121 @@ export function SimpleSelect({
   disabled,
   withSearch = false,
   searchPlaceholder = "Search options...",
+  mobileView = "keep",
+  drawerTitle = "Select an option",
 }: SimpleSelectProps) {
-  const [open, setOpen] = React.useState(false);
+  const { isMobile } = useKitzeUI();
+  const { isOpen, setIsOpen, close } = useControlledOpen({});
+
+  const selectedOption = options.find((option) => option.value === value);
+
+  const triggerButton = (
+    <Button
+      variant="outline"
+      role="combobox"
+      aria-expanded={isOpen}
+      className={cn("w-full justify-between", triggerClassName, className)}
+      onClick={() => setIsOpen(!isOpen)}
+      disabled={disabled}
+    >
+      {value && selectedOption ? (
+        <span className="flex items-center truncate">
+          {selectedOption.icon &&
+            React.createElement(selectedOption.icon, {
+              className: "mr-2 h-4 w-4",
+            })}
+          {selectedOption.emoji && (
+            <span className="mr-2">{selectedOption.emoji}</span>
+          )}
+          {selectedOption.label || selectedOption.value}
+        </span>
+      ) : (
+        placeholder
+      )}
+      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+    </Button>
+  );
+
+  if (isMobile && mobileView === "native") {
+    return (
+      <div className={cn("relative w-full", className)}>
+        <div
+          className={cn(
+            "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+            triggerClassName,
+            disabled && "opacity-50 cursor-not-allowed"
+          )}
+          aria-disabled={disabled}
+        >
+          <span className="flex-grow truncate">
+            {selectedOption?.icon &&
+              React.createElement(selectedOption.icon, {
+                className: "mr-2 h-4 w-4 inline",
+              })}
+            {selectedOption?.emoji && (
+              <span className="mr-2">{selectedOption.emoji}</span>
+            )}
+            {value && selectedOption
+              ? selectedOption.label || value
+              : placeholder}
+          </span>
+          <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50 shrink-0" />
+        </div>
+        <select
+          value={value || ""}
+          onChange={(e) => onValueChange?.(e.target.value)}
+          disabled={disabled}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+        >
+          {placeholder && (
+            <option value="" disabled hidden>
+              {placeholder}
+            </option>
+          )}
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label || option.value}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  }
+
+  if (isMobile && mobileView === "bottom-drawer") {
+    return (
+      <ResponsiveSelectBottomDrawerMenu
+        options={options}
+        value={value}
+        onValueChange={(val) => {
+          onValueChange?.(val);
+          close();
+        }}
+        placeholder={placeholder}
+        drawerTitle={drawerTitle}
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        searchPlaceholder={searchPlaceholder}
+        triggerClassName={triggerClassName}
+        className={className}
+        disabled={disabled}
+      >
+        {triggerButton}
+      </ResponsiveSelectBottomDrawerMenu>
+    );
+  }
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className={cn(
-            "w-[200px] justify-between",
-            triggerClassName,
-            className
-          )}
-        >
-          {value
-            ? options.find((option) => option.value === value)?.label
-            : placeholder}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
+        {React.cloneElement(triggerButton, { "aria-expanded": isOpen })}
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent
+        className={cn("w-[--radix-popover-trigger-width] p-0", className)}
+        style={{
+          minWidth: "var(--radix-popover-trigger-width)",
+        }}
+      >
         <Command>
           {withSearch && <CommandInput placeholder={searchPlaceholder} />}
           <CommandList>
@@ -77,7 +176,7 @@ export function SimpleSelect({
                   value={option.value}
                   onSelect={(currentValue) => {
                     onValueChange?.(currentValue === value ? "" : currentValue);
-                    setOpen(false);
+                    setIsOpen(false);
                   }}
                 >
                   <Check
@@ -86,6 +185,11 @@ export function SimpleSelect({
                       value === option.value ? "opacity-100" : "opacity-0"
                     )}
                   />
+                  {option.icon &&
+                    React.createElement(option.icon, {
+                      className: "mr-2 h-4 w-4",
+                    })}
+                  {option.emoji && <span className="mr-2">{option.emoji}</span>}
                   {option.label}
                 </CommandItem>
               ))}

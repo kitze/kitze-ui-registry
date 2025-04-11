@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-segmented-control",
+  "type": "registry:component",
+  "title": "Responsive Segmented Control",
+  "description": "A segmented control that adapts to mobile views using a responsive select.",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/segmented-control.json",
+    "https://ui.kitze.io/r/responsive-select.json",
+    "https://ui.kitze.io/r/kitze-ui-context.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/responsive-segmented-control/ResponsiveSegmentedControl.tsx",
+      "type": "registry:component",
+      "content": "/* File not found: registry/new-york/responsive-segmented-control/ResponsiveSegmentedControl.tsx */"
+    }
+  ]
+}

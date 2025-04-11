@@ -10,7 +10,7 @@ const config: ComponentConfig = {
 
   dependencies: {
     npm: ["lucide-react"],
-    linked: ["responsive-tooltip"] as ComponentName[],
+    linked: ["simple-tooltip"],
   },
 
   files: [

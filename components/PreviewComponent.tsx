@@ -1,13 +1,19 @@
 "use client";
 
 import * as React from "react";
+import { useState } from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { SimpleTooltip } from "@/registry/new-york/simple-tooltip/SimpleTooltip";
 import { ComponentName, componentMeta } from "@/lib/component-types";
-import { Copy } from "lucide-react";
+import { Copy, Monitor, Smartphone } from "lucide-react";
 import { toast } from "sonner";
 import { cn, getRegistryUrl } from "@/lib/utils";
 import { CustomButton } from "@/registry/new-york/custom-button/CustomButton";
+import {
+  SegmentedControl,
+  SegmentedControlOption,
+} from "@/registry/new-york/segmented-control/SegmentedControl";
+import { KitzeUIProvider } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 
 interface PreviewComponentProps {
   name: ComponentName;
@@ -15,11 +21,17 @@ interface PreviewComponentProps {
   titleWrapper?: (children: React.ReactNode) => React.ReactNode;
 }
 
+const viewOptions: SegmentedControlOption[] = [
+  { value: "desktop", label: "Desktop", leftIcon: Monitor },
+  { value: "mobile", label: "Mobile", leftIcon: Smartphone },
+];
+
 export function PreviewComponent({
   name,
   children,
   titleWrapper,
 }: PreviewComponentProps) {
+  const [viewMode, setViewMode] = useState<"desktop" | "mobile">("desktop");
   const meta = componentMeta[name];
   if (!meta) {
     console.error(`Component ${name} not found`);
@@ -33,13 +45,14 @@ export function PreviewComponent({
   }, [installCommand]);
 
   const title = <h2 className="text-lg font-semibold">{meta.title}</h2>;
+  const isMobileView = viewMode === "mobile";
 
   return (
     <div
       className={cn("flex flex-col gap-4 border rounded-lg p-4", "relative")}
     >
       <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {titleWrapper ? titleWrapper(title) : title}
           <SimpleTooltip content={installCommand}>
             <CustomButton
@@ -51,10 +64,25 @@ export function PreviewComponent({
             />
           </SimpleTooltip>
           <OpenInV0Button name={name} className="w-fit shrink-0" />
+          <div className="ml-auto">
+            <SegmentedControl
+              options={viewOptions}
+              value={viewMode}
+              onChange={(value) => setViewMode(value as "desktop" | "mobile")}
+              size="sm"
+            />
+          </div>
         </div>
         <p className="text-sm text-muted-foreground">{meta.description}</p>
       </div>
-      <div className="flex flex-1 relative">{children}</div>
+      <div
+        className={cn(
+          "flex flex-1 relative justify-center",
+          isMobileView && "max-w-xs mx-auto w-full"
+        )}
+      >
+        <KitzeUIProvider isMobile={isMobileView}>{children}</KitzeUIProvider>
+      </div>
     </div>
   );
 }

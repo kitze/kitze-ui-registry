@@ -7,6 +7,9 @@ import { ComponentName, AvailableHook } from "./component-types";
 // Define and export ShadcnComponent type
 export type ShadcnComponent = string;
 
+// Helper type to ensure no spaces
+type NoSpaces<T extends string> = T extends `${string} ${string}` ? never : T;
+
 // Types of available component files
 export type ComponentFileType =
   | "registry:block"
@@ -57,7 +60,7 @@ export interface DependenciesConfig {
  * @property {string[]} [registryDependencies] - DEPRECATED: Combined shadcn and linked dependencies
  */
 export interface ComponentConfig {
-  name: string;
+  name: NoSpaces<`${Lowercase<string>}`>;
   title: string;
   description: string;
   type: string;

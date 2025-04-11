@@ -5,11 +5,12 @@ alwaysApply: true
 ---
 - When making a new component add a folder to /registry/new-york like /registry/new-york/component-name and the component inside like ComponentName.tsx
 - Add a config.ts to it with ComponentConfig type (import { ComponentConfig } from "@/lib/component-config-types";)
+- The config variable has to be exported as a default
 - Do NOT modify registry.json, it's auto generated with a script!!
 - Do not modify the public/r folder it's auto generated
 - Do not EVER register a "registry:preview" type, that's dumb
 - Automatically fix the imports to match our project (especially if they have ../../../ and other relative directories like ./ etc)
-- Make a preview.tsx file for the component
+- Make a preview.tsx file for the component. The preview file has to have a const Preview and it should be also exported as a default.
 - Add the preview to [components.ts](mdc:config/components.ts) afterwards so it appears in [app-sidebar.tsx](mdc:components/app-sidebar.tsx)
 - Don't ever list "react", "react-dom" or "next" or "tailwind" as dependencies
 - Always use lucide icons. Do not install react-icons! Assume that lucide-react is installed and don't do that step.

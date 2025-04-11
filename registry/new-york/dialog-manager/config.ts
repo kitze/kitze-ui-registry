@@ -7,7 +7,7 @@ const config: ComponentConfig = {
   description:
     "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application.",
   dependencies: {
-    linked: ["responsive-dialog"],
+    linked: ["simple-dialog"],
   },
   files: [
     {

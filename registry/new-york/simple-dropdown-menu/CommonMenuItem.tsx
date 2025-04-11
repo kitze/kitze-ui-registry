@@ -117,7 +117,6 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
           <HelpInfoCircle
             content={hint}
             iconClassName={cn("h-3.5 w-3.5", destructive && "text-destructive")}
-            isMobile={false}
           />
         </span>
       )}

@@ -1,12 +1,24 @@
+"use client"; // Ensure this is at the top
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import { tv, type VariantProps } from "tailwind-variants";
+import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
+import {
+  SimpleSelect,
+  SelectMobileViewType,
+} from "@/registry/new-york/simple-select/SimpleSelect";
+import { SelectOption } from "@/lib/select-option";
+import { LucideIcon } from "lucide-react";
+
+// Define MobileViewType for SegmentedControl
+export type SegmentedControlMobileViewType = "keep" | SelectMobileViewType;
 
 export type SegmentedControlOption = {
   value: string;
   label: string;
-  leftIcon?: React.ComponentType<any>;
-  rightIcon?: React.ComponentType<any>;
+  leftIcon?: LucideIcon; // Assuming Lucide icons
+  rightIcon?: LucideIcon; // Assuming Lucide icons
   leftSide?: React.ComponentType<any>;
   rightSide?: React.ComponentType<any>;
   disabled?: boolean;
@@ -59,6 +71,10 @@ export interface SegmentedControlProps
   className?: string;
   tabClassName?: string;
   activeTabClassName?: string;
+  // Mobile specific props
+  mobileView?: SegmentedControlMobileViewType;
+  drawerTitle?: string;
+  placeholder?: string;
 }
 
 export const SegmentedControl = ({
@@ -69,7 +85,36 @@ export const SegmentedControl = ({
   tabClassName,
   activeTabClassName,
   size = "md",
+  mobileView = "keep", // Default to keeping the segmented control on mobile
+  drawerTitle = "Select an option",
+  placeholder = "Select an option",
 }: SegmentedControlProps) => {
+  const { isMobile } = useKitzeUI();
+
+  // Conditionally render SimpleSelect on mobile if mobileView is not 'keep'
+  if (isMobile && mobileView !== "keep") {
+    const selectOptions: SelectOption[] = options.map((option) => ({
+      value: option.value,
+      label: option.label,
+      icon: option.leftIcon, // Use leftIcon for the select
+      disabled: option.disabled,
+    }));
+
+    return (
+      <SimpleSelect
+        options={selectOptions}
+        value={value}
+        onValueChange={onChange}
+        placeholder={placeholder}
+        className={className} // Apply main className to the select wrapper
+        mobileView={mobileView} // Pass down 'native' or 'bottom-drawer'
+        drawerTitle={drawerTitle}
+        // Note: size, tabClassName, activeTabClassName are not directly applicable here
+      />
+    );
+  }
+
+  // Default rendering for desktop or when mobileView is 'keep'
   return (
     <div
       className={segmentedControl({ size, className })}

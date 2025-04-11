@@ -6,8 +6,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter,
 } from "@/components/ui/dialog";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";
+import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
+import { BottomDrawer } from "@/registry/new-york/bottom-drawer/BottomDrawer";
+import { CustomButton } from "@/registry/new-york/custom-button/CustomButton";
+
+export type DialogMobileViewType = "keep" | "bottom-drawer";
 
 export type DialogSize =
   | "sm"
@@ -29,6 +35,10 @@ export type DialogClassNames = {
   footer?: string;
   submitButton?: string;
   cancelButton?: string;
+  drawerRoot?: string;
+  drawerContent?: string;
+  drawerHeader?: string;
+  drawerFooter?: string;
 };
 
 export interface SimpleDialogProps {
@@ -39,6 +49,13 @@ export interface SimpleDialogProps {
   onOpenChange?: (open: boolean) => void;
   size?: DialogSize;
   classNames?: DialogClassNames;
+  mobileView?: DialogMobileViewType;
+  drawerTitle?: string;
+  showCancel?: boolean;
+  onCancel?: () => void;
+  onSubmit?: () => void;
+  submitText?: string;
+  cancelText?: string;
 }
 
 const sizeToMaxWidth: Record<DialogSize, string> = {
@@ -61,17 +78,85 @@ export const SimpleDialog = ({
   onOpenChange,
   size = "sm",
   classNames = {},
+  mobileView = "keep",
+  drawerTitle,
+  showCancel = true,
+  onCancel,
+  onSubmit,
+  submitText = "Submit",
+  cancelText = "Cancel",
 }: SimpleDialogProps) => {
-  const { isOpen, setIsOpen } = useControlledOpen({
+  const { isMobile } = useKitzeUI();
+  const { isOpen, setIsOpen, close } = useControlledOpen({
     open,
     onOpenChange,
   });
+
+  const handleCancel = () => {
+    close();
+    if (onCancel) onCancel();
+  };
+
+  const handleSubmit = () => {
+    if (onSubmit) onSubmit();
+    close();
+  };
+
+  const footerContent = (onSubmit || showCancel) && (
+    <div className={cn("flex justify-end gap-2 pt-4", classNames.footer)}>
+      {showCancel && (
+        <CustomButton
+          variant="outline"
+          onClick={handleCancel}
+          className={classNames.cancelButton}
+        >
+          {cancelText}
+        </CustomButton>
+      )}
+      {onSubmit && (
+        <CustomButton
+          onClick={handleSubmit}
+          className={classNames.submitButton}
+        >
+          {submitText}
+        </CustomButton>
+      )}
+    </div>
+  );
+
+  if (isMobile && mobileView === "bottom-drawer") {
+    return (
+      <BottomDrawer
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        trigger={trigger}
+        title={drawerTitle || title}
+        classNames={{
+          content: classNames.drawerContent,
+          headerWrapper: classNames.drawerHeader,
+        }}
+      >
+        <div className={cn("px-6 pt-0", classNames.body)}>{children}</div>
+        {footerContent && (
+          <div
+            className={cn(classNames.drawerFooter, "pt-4 px-6 pb-6 md:pb-2")}
+          >
+            {footerContent}
+          </div>
+        )}
+      </BottomDrawer>
+    );
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       {trigger && (
         <DialogTrigger asChild>
-          <button className="text-sm font-medium">{trigger}</button>
+          {typeof trigger === "string" ? (
+            <CustomButton>{trigger}</CustomButton>
+          ) : (
+            trigger
+          )}
         </DialogTrigger>
       )}
       <DialogContent
@@ -87,6 +172,27 @@ export const SimpleDialog = ({
           </DialogHeader>
         )}
         <div className={cn("py-4", classNames.body)}>{children}</div>
+        {footerContent && (
+          <DialogFooter className={classNames.footer}>
+            {showCancel && (
+              <CustomButton
+                variant="outline"
+                onClick={handleCancel}
+                className={classNames.cancelButton}
+              >
+                {cancelText}
+              </CustomButton>
+            )}
+            {onSubmit && (
+              <CustomButton
+                onClick={handleSubmit}
+                className={classNames.submitButton}
+              >
+                {submitText}
+              </CustomButton>
+            )}
+          </DialogFooter>
+        )}
       </DialogContent>
     </Dialog>
   );
