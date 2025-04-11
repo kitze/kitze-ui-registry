@@ -5,10 +5,10 @@ const config: ComponentConfig = {
   type: "registry:component",
   title: "Simple Select",
   description:
-    "A simplified select component that accepts an array of options with value, label, emoji, and icon",
+    "A simplified select component that accepts an array of options with value, label, and search functionality",
 
   dependencies: {
-    shad: ["select"],
+    shad: ["button", "command", "popover"],
     npm: ["lucide-react"],
   },
 

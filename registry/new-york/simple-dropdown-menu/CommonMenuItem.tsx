@@ -20,12 +20,20 @@ export interface CommonMenuItemProps extends LinkableProps {
   hint?: string;
   leftIcon?: LucideIcon;
   rightIcon?: LucideIcon;
-  emoji?: string;
   className?: string;
+  rootClassName?: string;
+  textClassName?: string;
+  leftIconClassName?: string;
+  rightIconClassName?: string;
+  shortcutClassName?: string;
+  hintClassName?: string;
   disabled?: boolean;
   destructive?: boolean;
   onSelect?: () => void;
   isLast?: boolean;
+  href?: string;
+  onClick?: () => void;
+  external?: boolean;
 }
 
 export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
@@ -34,21 +42,27 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
   hint,
   leftIcon,
   rightIcon,
-  emoji,
   className,
+  rootClassName,
+  textClassName,
+  leftIconClassName,
+  rightIconClassName,
+  shortcutClassName,
+  hintClassName,
   disabled,
   destructive,
   onSelect,
   isLast,
+  onClick,
+  external,
   ...rest
 }) => {
   const { menuType, closeMenu } = useMenuContext();
 
   // Handle click with menu closing
   const handleClick = () => {
-    console.log("clicking!");
-    alert("clicking!");
     onSelect?.();
+    onClick?.();
     closeMenu?.();
   };
 
@@ -58,13 +72,12 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
       <BottomDrawerMenuItem
         leftIcon={leftIcon}
         rightIcon={rightIcon}
-        emoji={emoji}
-        className={className}
+        className={cn(className, rootClassName)}
         disabled={disabled}
         destructive={destructive}
         onClick={handleClick}
         href={rest.href}
-        external={rest.external}
+        external={external}
         isLast={isLast}
         hint={hint}
       >
@@ -82,23 +95,25 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
 
   const iconClasses = cn(
     "h-4 w-4",
-    "text-muted-foreground",
+    "text-muted-foreground group-hover:text-current",
+    destructive && "text-destructive group-hover:text-destructive"
+  );
+
+  const itemClasses = cn(
+    className,
+    rootClassName,
     destructive && "text-destructive"
   );
 
-  // We'll still keep the class for backward compatibility
-  const itemClasses = cn(className, destructive && "text-destructive");
-
   const content = (
     <>
-      {emoji ? (
-        <span className="mr-2 text-base">{emoji}</span>
-      ) : leftIcon ? (
-        React.createElement(leftIcon, { className: cn("mr-2", iconClasses) })
-      ) : null}
-      <span>{children}</span>
+      {leftIcon &&
+        React.createElement(leftIcon, {
+          className: cn("mr-2", iconClasses, leftIconClassName),
+        })}
+      <span className={textClassName}>{children}</span>
       {hint && (
-        <span className="ml-2">
+        <span className={cn("ml-2", hintClassName)}>
           <HelpInfoCircle
             content={hint}
             iconClassName={cn("h-3.5 w-3.5", destructive && "text-destructive")}
@@ -108,9 +123,11 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
       )}
       {rightIcon &&
         React.createElement(rightIcon, {
-          className: cn("ml-auto", iconClasses),
+          className: cn("ml-auto", iconClasses, rightIconClassName),
         })}
-      {shortcut && <MenuShortcut>{shortcut}</MenuShortcut>}
+      {shortcut && (
+        <MenuShortcut className={shortcutClassName}>{shortcut}</MenuShortcut>
+      )}
     </>
   );
 
@@ -118,11 +135,10 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
   if (href && Component !== "div") {
     return (
       <MenuItem
-        className={itemClasses}
+        className={cn(itemClasses, "group")}
         disabled={disabled}
-        onSelect={handleClick}
+        onClick={handleClick}
         asChild
-        variant={destructive ? "destructive" : "default"}
       >
         <Component href={href} {...linkProps}>
           {content}
@@ -134,10 +150,9 @@ export const CommonMenuItem: ReactFC<CommonMenuItemProps> = ({
   // Without link
   return (
     <MenuItem
-      className={itemClasses}
+      className={cn(itemClasses, "group")}
       disabled={disabled}
-      onSelect={handleClick}
-      variant={destructive ? "destructive" : "default"}
+      onClick={handleClick}
     >
       {content}
     </MenuItem>

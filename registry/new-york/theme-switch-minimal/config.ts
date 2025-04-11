@@ -12,6 +12,8 @@ const config: ComponentConfig = {
     linked: ["custom-button"],
   },
 
+  hooks: ["useMounted"],
+
   files: [
     {
       path: "ThemeSwitchMinimal.tsx",

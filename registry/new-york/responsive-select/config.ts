@@ -5,15 +5,29 @@ const config: ComponentConfig = {
   type: "registry:component",
   title: "Responsive Select",
   description:
-    "A responsive select component that changes its appearance on mobile devices based on the specified mode.",
+    "A responsive select component that changes its appearance on mobile devices and supports search functionality.",
+
+  registryDependencies: [
+    "bottom-drawer",
+    "bottom-drawer-menu",
+    "bottom-drawer-menu-item",
+    "simple-select",
+    "search-bar",
+    "kitze-ui-context",
+  ],
 
   dependencies: {
-    linked: ["simple-select", "bottom-drawer", "kitze-ui-context"],
+    shad: ["button", "command", "popover"],
+    npm: ["lucide-react"],
   },
 
   files: [
     {
       path: "ResponsiveSelect.tsx",
+      type: "registry:component",
+    },
+    {
+      path: "ResponsiveSelectBottomDrawerMenu.tsx",
       type: "registry:component",
     },
   ],
