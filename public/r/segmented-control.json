@@ -4,6 +4,9 @@
   "type": "registry:component",
   "title": "Segmented Control",
   "description": "A simple, accessible segmented control component with size variants",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/simple-select.json"
+  ],
   "dependencies": [
     "lucide-react",
     "tailwind-variants"

@@ -17,6 +17,10 @@ const config: ComponentConfig = {
       path: "SimpleSelect.tsx",
       type: "registry:component",
     },
+    {
+      path: "SimpleSelectBottomDrawerMenu.tsx",
+      type: "registry:component",
+    },
   ],
 };
 

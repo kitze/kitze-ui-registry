@@ -9,6 +9,7 @@ const config: ComponentConfig = {
 
   dependencies: {
     npm: ["lucide-react", "tailwind-variants"],
+    linked: ["simple-select"],
   },
 
   files: [
