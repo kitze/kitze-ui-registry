@@ -23,6 +23,7 @@ export type OpenDialogProps = {
   mobileView?: SimpleDialogProps["mobileView"];
   drawerTitle?: SimpleDialogProps["drawerTitle"];
   showCancel?: SimpleDialogProps["showCancel"];
+  showCloseButton?: SimpleDialogProps["showCloseButton"];
   onCancel?: SimpleDialogProps["onCancel"];
   onSubmit?: SimpleDialogProps["onSubmit"];
   submitText?: SimpleDialogProps["submitText"];
@@ -79,6 +80,7 @@ const DialogList = memo(function DialogList({
           mobileView,
           drawerTitle,
           showCancel,
+          showCloseButton,
           onCancel,
           onSubmit,
           submitText,
@@ -98,14 +100,17 @@ const DialogList = memo(function DialogList({
               }
               drawerTitle={drawerTitle}
               showCancel={showCancel}
+              showCloseButton={showCloseButton}
               onCancel={() => {
                 if (onCancel) onCancel();
                 onClose(id);
               }}
-              onSubmit={() => {
-                if (onSubmit) onSubmit();
-                onClose(id);
-              }}
+              {...(onSubmit && {
+                onSubmit: () => {
+                  onSubmit();
+                  onClose(id);
+                },
+              })}
               submitText={submitText}
               cancelText={cancelText}
             >

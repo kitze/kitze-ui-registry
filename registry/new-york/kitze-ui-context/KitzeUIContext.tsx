@@ -1,7 +1,6 @@
 "use client";
 import { ReactFC } from "@/lib/utils";
 import { createContext, useContext } from "react";
-import { AlertProvider, useAlerts } from "../ui-alert/AlertContext";
 
 interface KitzeUIContextType {
   isMobile: boolean;

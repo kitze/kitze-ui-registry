@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "with-search-bar" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal" | "theme-switch-minimal-next-themes" | "suspensed" | "spinner" | "tab-panels" | "simple-tooltip" | "simple-popover" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "simple-dropdown-menu" | "segmented-control" | "simple-select" | "search-bar" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts-list" | "kbd-shortcuts" | "kbd" | "hoverable-icon" | "input" | "gradient-text" | "form-field-wrapper" | "form-field-textarea" | "form-field-select" | "form-field-input" | "form-field-checkbox" | "help-info-circle" | "form-field-advanced-select" | "fill-height-spinner" | "dialog-manager" | "custom-button" | "custom-badge" | "conditional-wrap" | "conditional-tooltip" | "ui-alert" | "bottom-drawer" | "advanced-select" | "full-page-spinner"; // Handle empty case
+export type ComponentName = "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "tab-panels" | "suspensed" | "with-search-bar" | "spinner" | "simple-tooltip" | "simple-select" | "simple-popover" | "simple-dialog" | "simple-dropdown-menu" | "simple-context-menu" | "segmented-control" | "search-bar" | "simple-accordion" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts-list" | "kbd-shortcuts" | "kbd" | "input" | "hoverable-icon" | "help-info-circle" | "gradient-text" | "full-page-spinner" | "form-field-wrapper" | "form-field-textarea" | "form-field-select" | "form-field-checkbox" | "form-field-advanced-select" | "fill-height-spinner" | "dialog-manager" | "form-field-input" | "custom-button" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "advanced-select" | "custom-badge"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -13,10 +13,10 @@ export interface ComponentMeta {
 }
 
 export const componentMeta: Record<ComponentName, ComponentMeta> = {
-  "with-search-bar": {
-    name: "with-search-bar",
-    title: "With Search Bar",
-    description: "A component that provides a searchable interface with animated transitions"
+  "ui-alert": {
+    name: "ui-alert",
+    title: "UI Alert",
+    description: "A collection of alert components with confirm and delete variations"
   },
   "theme-switch-slider-next-themes": {
     name: "theme-switch-slider-next-themes",
@@ -28,35 +28,45 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Theme Switch Slider",
     description: "A beautiful animated theme switcher with a sliding control and animated stars"
   },
-  "theme-switch-minimal": {
-    name: "theme-switch-minimal",
-    title: "Theme Switch Minimal",
-    description: "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes"
-  },
   "theme-switch-minimal-next-themes": {
     name: "theme-switch-minimal-next-themes",
     title: "Theme Switch Minimal with Next-Themes",
     description: "A minimal theme switcher that integrates with the next-themes library for persistent theme management"
   },
-  "suspensed": {
-    name: "suspensed",
-    title: "Suspensed",
-    description: "A wrapper component for React Suspense with force option"
-  },
-  "spinner": {
-    name: "spinner",
-    title: "Spinner",
-    description: "A customizable loading spinner component with different variants and sizes"
+  "theme-switch-minimal": {
+    name: "theme-switch-minimal",
+    title: "Theme Switch Minimal",
+    description: "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes"
   },
   "tab-panels": {
     name: "tab-panels",
     title: "Tab Panels",
     description: "A component to display content in tabs using a segmented control."
   },
+  "suspensed": {
+    name: "suspensed",
+    title: "Suspensed",
+    description: "A wrapper component for React Suspense with force option"
+  },
+  "with-search-bar": {
+    name: "with-search-bar",
+    title: "With Search Bar",
+    description: "A component that provides a searchable interface with animated transitions"
+  },
+  "spinner": {
+    name: "spinner",
+    title: "Spinner",
+    description: "A customizable loading spinner component with different variants and sizes"
+  },
   "simple-tooltip": {
     name: "simple-tooltip",
     title: "Simple Tooltip",
     description: "A simplified tooltip component built on top of Radix UI tooltip"
+  },
+  "simple-select": {
+    name: "simple-select",
+    title: "Simple Select",
+    description: "A simplified select component that accepts an array of options with value, label, and search functionality"
   },
   "simple-popover": {
     name: "simple-popover",
@@ -68,35 +78,30 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Simple Dialog",
     description: "A simple dialog component using Radix UI."
   },
-  "simple-context-menu": {
-    name: "simple-context-menu",
-    title: "Simple Context Menu",
-    description: "A simple context menu component that wraps content with right-click menu functionality"
-  },
-  "simple-accordion": {
-    name: "simple-accordion",
-    title: "Simple Accordion",
-    description: "A simple accordion component"
-  },
   "simple-dropdown-menu": {
     name: "simple-dropdown-menu",
     title: "Simple Dropdown Menu",
     description: "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile"
+  },
+  "simple-context-menu": {
+    name: "simple-context-menu",
+    title: "Simple Context Menu",
+    description: "A simple context menu component that wraps content with right-click menu functionality"
   },
   "segmented-control": {
     name: "segmented-control",
     title: "Segmented Control",
     description: "A simple, accessible segmented control component with size variants"
   },
-  "simple-select": {
-    name: "simple-select",
-    title: "Simple Select",
-    description: "A simplified select component that accepts an array of options with value, label, and search functionality"
-  },
   "search-bar": {
     name: "search-bar",
     title: "Search Bar",
     description: "A reusable search input component with clear functionality"
+  },
+  "simple-accordion": {
+    name: "simple-accordion",
+    title: "Simple Accordion",
+    description: "A simple accordion component"
   },
   "page-header": {
     name: "page-header",
@@ -128,20 +133,30 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Keyboard Shortcut",
     description: "A keyboard shortcut display component for showing key combinations"
   },
-  "hoverable-icon": {
-    name: "hoverable-icon",
-    title: "Hoverable Icon",
-    description: "A linkable icon component with tooltip support, hover effects, and color customization"
-  },
   "input": {
     name: "input",
     title: "Input",
     description: "A customizable input component with support for left/right icons, loading state, and custom styling"
   },
+  "hoverable-icon": {
+    name: "hoverable-icon",
+    title: "Hoverable Icon",
+    description: "A linkable icon component with tooltip support, hover effects, and color customization"
+  },
+  "help-info-circle": {
+    name: "help-info-circle",
+    title: "Help Info Circle",
+    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
+  },
   "gradient-text": {
     name: "gradient-text",
     title: "Gradient Text",
     description: "A text component with animated gradient effects"
+  },
+  "full-page-spinner": {
+    name: "full-page-spinner",
+    title: "Full Page Spinner",
+    description: "A spinner component that takes full page size and centers itself in the viewport"
   },
   "form-field-wrapper": {
     name: "form-field-wrapper",
@@ -158,20 +173,10 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Form Field Select",
     description: "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration"
   },
-  "form-field-input": {
-    name: "form-field-input",
-    title: "Form Field Input",
-    description: "An input component integrated with react-hook-form using FormFieldWrapper."
-  },
   "form-field-checkbox": {
     name: "form-field-checkbox",
     title: "Form Field Checkbox",
     description: "A checkbox component integrated with react-hook-form using FormFieldWrapper."
-  },
-  "help-info-circle": {
-    name: "help-info-circle",
-    title: "Help Info Circle",
-    description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
   },
   "form-field-advanced-select": {
     name: "form-field-advanced-select",
@@ -188,15 +193,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Dialog Manager",
     description: "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application."
   },
+  "form-field-input": {
+    name: "form-field-input",
+    title: "Form Field Input",
+    description: "An input component integrated with react-hook-form using FormFieldWrapper."
+  },
   "custom-button": {
     name: "custom-button",
     title: "Custom Button",
     description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
-  },
-  "custom-badge": {
-    name: "custom-badge",
-    title: "Custom Badge",
-    description: "A customizable badge component with color and style options."
   },
   "conditional-wrap": {
     name: "conditional-wrap",
@@ -208,11 +213,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Conditional Tooltip",
     description: "A tooltip component that conditionally renders based on a condition"
   },
-  "ui-alert": {
-    name: "ui-alert",
-    title: "UI Alert",
-    description: "A collection of alert components with confirm and delete variations"
-  },
   "bottom-drawer": {
     name: "bottom-drawer",
     title: "Bottom Drawer",
@@ -223,9 +223,9 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Advanced Select",
     description: "A multi-select component with search capabilities, multiple selection as badges, and animations"
   },
-  "full-page-spinner": {
-    name: "full-page-spinner",
-    title: "Full Page Spinner",
-    description: "A spinner component that takes full page size and centers itself in the viewport"
+  "custom-badge": {
+    name: "custom-badge",
+    title: "Custom Badge",
+    description: "A customizable badge component with color and style options."
   }
 } as const;
