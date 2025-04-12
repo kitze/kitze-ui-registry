@@ -1,4 +1,5 @@
 import { ComponentName } from "@/lib/component-types";
+import { Registry } from "@/lib/component-config-types";
 
 // Component group definition
 export type ComponentGroup = {
@@ -131,6 +132,13 @@ export const components: ComponentDefinition[] = [
   { id: "ui-alert", groupId: "components" },
   { id: "kitze-ui-context", groupId: "components" },
   { id: "tab-panels", groupId: "components" },
+
+  // Custom Badge
+  {
+    id: "custom-badge",
+    groupId: "enhanced",
+    customLabel: "Custom Badge",
+  },
 ];
 
 // Function to filter components based on search query

@@ -73,6 +73,7 @@ export interface SegmentedControlProps
   activeTabClassName?: string;
   // Mobile specific props
   mobileView?: SegmentedControlMobileViewType;
+  mobileViewSearch?: boolean;
   drawerTitle?: string;
   placeholder?: string;
 }
@@ -86,6 +87,7 @@ export const SegmentedControl = ({
   activeTabClassName,
   size = "md",
   mobileView = "keep", // Default to keeping the segmented control on mobile
+  mobileViewSearch = false, // Default to not showing search
   drawerTitle = "Select an option",
   placeholder = "Select an option",
 }: SegmentedControlProps) => {
@@ -108,6 +110,7 @@ export const SegmentedControl = ({
         placeholder={placeholder}
         className={className} // Apply main className to the select wrapper
         mobileView={mobileView} // Pass down 'native' or 'bottom-drawer'
+        mobileViewSearch={mobileViewSearch} // Pass down search visibility
         drawerTitle={drawerTitle}
         // Note: size, tabClassName, activeTabClassName are not directly applicable here
       />

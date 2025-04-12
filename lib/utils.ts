@@ -14,3 +14,8 @@ export const getRegistryUrl = (name: string) => {
 export type ReactFC<T> = React.FC<PropsWithChildren & T>;
 
 export type Size = "xs" | "sm" | "md" | "lg";
+
+export const processColor = (c: string | undefined): string | undefined => {
+  if (!c) return undefined;
+  return c.startsWith("bg-") ? c.substring(3) : c;
+};

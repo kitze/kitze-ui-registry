@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn, ReactFC, Size } from "@/lib/utils";
+import { cn, ReactFC, Size, processColor } from "@/lib/utils";
 import { useLinkableComponent } from "@/registry/hooks/useLinkableComponent";
 import { ConditionalTooltip } from "@/registry/new-york/conditional-tooltip/ConditionalTooltip";
 import { Spinner } from "@/registry/new-york/spinner/Spinner";
@@ -42,13 +42,15 @@ export const buttonVariants = tv({
   base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all cursor-pointer active:scale-95 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   variants: {
     variant: {
-      default:
-        "bg-[var(--button-bg)] text-[var(--button-text)] hover:opacity-90",
+      filled:
+        "bg-[var(--button-bg)] text-[var(--button-filled-text)] hover:opacity-90",
+      light:
+        "bg-[var(--button-bg)]/10 text-[var(--button-bg)] hover:bg-[var(--button-bg)]/20",
       outline:
-        "border border-[var(--button-text)]/20 dark:border-[var(--button-bg)] text-[var(--button-text)] bg-transparent hover:bg-[var(--button-bg)]/50",
+        "border border-[var(--button-bg)]/50 text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/10",
       ghost:
-        "text-[var(--button-bg)] text-[var(--button-text)] bg-transparent dark:hover:bg-[var(--button-bg)]/30 hover:bg-[var(--button-bg)]",
-      link: "text-[var(--button-text)] text-[var(--button-text)]  underline-offset-4 hover:underline",
+        "text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/10",
+      link: "text-[var(--button-bg)] underline-offset-4 hover:underline",
     },
     size: {
       xs: "text-xs",
@@ -66,6 +68,11 @@ export const buttonVariants = tv({
     },
   },
   compoundVariants: [
+    {
+      variant: "light",
+      color: "secondary",
+      class: "text-red-500!",
+    },
     {
       isIconButton: true,
       size: "xs",
@@ -112,7 +119,7 @@ export const buttonVariants = tv({
     },
   ],
   defaultVariants: {
-    variant: "default",
+    variant: "filled",
     size: "md",
     shape: "default",
     isIconButton: false,
@@ -126,7 +133,12 @@ export type ButtonVariantsProps = React.ComponentProps<
   class?: string;
 };
 
-export type CustomButtonVariant = "default" | "outline" | "ghost" | "link";
+export type CustomButtonVariant =
+  | "filled"
+  | "light"
+  | "outline"
+  | "ghost"
+  | "link";
 
 export interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -165,7 +177,7 @@ type ColorMap = {
 
 export const CustomButton: ReactFC<CustomButtonProps> = ({
   className,
-  variant = "default",
+  variant = "filled",
   size = "md",
   circle = false,
   color = "secondary",
@@ -192,6 +204,8 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
     linkProps,
   } = useLinkableComponent({ href, external, ...props });
 
+  const finalColor = processColor(color);
+
   const colorMap: ColorMap = {
     destructive: {
       bg: "var(--color-destructive)",
@@ -207,8 +221,8 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
     },
   };
 
-  const buttonColors = colorMap[color] ?? {
-    bg: `var(--color-${color})`,
+  const buttonColors = colorMap[finalColor ?? ""] ?? {
+    bg: `var(--color-${finalColor})`,
     text: "var(--color-default-foreground)",
   };
 
@@ -261,6 +275,8 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
     style: {
       "--button-bg": buttonColors.bg,
       "--button-text": buttonColors.text,
+      "--button-filled-text":
+        finalColor && finalColor in colorMap ? buttonColors.text : "white",
       ...style,
     } as React.CSSProperties,
     ...linkProps,

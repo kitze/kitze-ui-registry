@@ -37,6 +37,7 @@ export interface SimpleSelectProps {
   withSearch?: boolean;
   searchPlaceholder?: string;
   mobileView?: SelectMobileViewType;
+  mobileViewSearch?: boolean;
   drawerTitle?: string;
 }
 
@@ -51,6 +52,7 @@ export function SimpleSelect({
   withSearch = false,
   searchPlaceholder = "Search options...",
   mobileView = "keep",
+  mobileViewSearch = false,
   drawerTitle = "Select an option",
 }: SimpleSelectProps) {
   const { isMobile } = useKitzeUI();
@@ -145,6 +147,7 @@ export function SimpleSelect({
         open={isOpen}
         onOpenChange={setIsOpen}
         searchPlaceholder={searchPlaceholder}
+        showSearch={mobileViewSearch}
         triggerClassName={triggerClassName}
         className={className}
         disabled={disabled}

@@ -32,10 +32,10 @@ export default function Preview() {
             <div className="flex items-center justify-between w-full">
               <h4 className="text-md font-medium">Items List</h4>
               <div className="flex items-center gap-2">
-                <button className="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">
+                <button className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded text-sm hover:bg-gray-200 dark:hover:bg-gray-700">
                   Filter
                 </button>
-                <button className="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">
+                <button className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded text-sm hover:bg-gray-200 dark:hover:bg-gray-700">
                   Sort
                 </button>
               </div>
@@ -61,13 +61,6 @@ export default function Preview() {
             </div>
           </WithSearchBar>
         </div>
-      </div>
-
-      <div className="mt-4">
-        <h4 className="font-medium">Current Search Query:</h4>
-        <pre className="bg-gray-100 p-2 rounded mt-1">
-          {searchQuery || "(empty)"}
-        </pre>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ export interface ResponsiveSelectBottomDrawerMenuProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   searchPlaceholder?: string;
+  showSearch?: boolean;
   triggerClassName?: string;
   className?: string;
   disabled?: boolean;
@@ -30,6 +31,7 @@ export function ResponsiveSelectBottomDrawerMenu({
   open,
   onOpenChange,
   searchPlaceholder = "Search options...",
+  showSearch = false,
   triggerClassName,
   className,
   disabled,
@@ -39,14 +41,14 @@ export function ResponsiveSelectBottomDrawerMenu({
 
   // Filter options based on search query
   const filteredOptions = React.useMemo(() => {
-    if (!searchQuery.trim()) return options;
+    if (!showSearch || !searchQuery.trim()) return options;
 
     const lowercaseQuery = searchQuery.toLowerCase();
     return options.filter((option) => {
       const label = (option.label || option.value).toLowerCase();
       return label.includes(lowercaseQuery);
     });
-  }, [options, searchQuery]);
+  }, [options, searchQuery, showSearch]);
 
   return (
     <BottomDrawerMenu
@@ -55,14 +57,16 @@ export function ResponsiveSelectBottomDrawerMenu({
       onOpenChange={onOpenChange}
       content={
         <div className="flex flex-col">
-          <div className="p-3">
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              placeholder={searchPlaceholder}
-              autoFocus
-            />
-          </div>
+          {showSearch && (
+            <div className="p-3">
+              <SearchBar
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder={searchPlaceholder}
+                autoFocus
+              />
+            </div>
+          )}
           {filteredOptions.length === 0 ? (
             <div className="py-4 px-3 text-center text-muted-foreground">
               No options found
