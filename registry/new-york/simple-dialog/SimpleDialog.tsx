@@ -136,7 +136,7 @@ export const SimpleDialog = ({
           headerWrapper: classNames.drawerHeader,
         }}
       >
-        <div className={cn("px-6 pt-0", classNames.body)}>{children}</div>
+        <div className={classNames.body}>{children}</div>
         {footerContent && (
           <div
             className={cn(classNames.drawerFooter, "pt-4 px-6 pb-6 md:pb-2")}

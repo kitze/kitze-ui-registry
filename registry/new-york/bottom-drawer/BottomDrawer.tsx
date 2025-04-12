@@ -122,7 +122,7 @@ export const BottomDrawer: ReactFC<BottomDrawerProps> = ({
             )}
             <div
               className={cn(
-                "px-6 pb-6 pt-0 md:pb-2 bg-white dark:bg-zinc-900 flex-1 overflow-y-auto",
+                "px-2 pb-6 pt-0 md:pb-2 bg-white dark:bg-zinc-900 flex-1 overflow-y-auto",
                 noHeader && "pt-6 rounded-t-[10px]",
                 classNames?.childrenWrapper
               )}
