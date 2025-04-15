@@ -100,6 +100,7 @@ export const components: ComponentDefinition[] = [
   { id: "form-field-textarea", groupId: "form" },
   { id: "form-field-select", groupId: "form" },
   { id: "form-field-advanced-select", groupId: "form" },
+  { id: "form-field-segmented-control", groupId: "form" },
 
   // Menu Components
   { id: "bottom-drawer", groupId: "menu" },

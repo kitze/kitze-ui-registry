@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-field-segmented-control",
+  "type": "registry:component",
+  "title": "Form Field Segmented Control",
+  "description": "A form field component that combines FormFieldWrapper with SegmentedControl for easy form integration",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/form-field-wrapper.json",
+    "https://ui.kitze.io/r/segmented-control.json"
+  ],
+  "dependencies": [
+    "react-hook-form"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/form-field-segmented-control/FormFieldSegmentedControl.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { FieldValues, FieldPath } from \"react-hook-form\";\nimport {\n  FormFieldWrapper,\n  FormFieldWrapperProps,\n} from \"@/registry/new-york/form-field-wrapper/FormFieldWrapper\";\nimport {\n  SegmentedControl,\n  SegmentedControlOption,\n  SegmentedControlProps,\n} from \"@/registry/new-york/segmented-control/SegmentedControl\";\n\nexport interface FormFieldSegmentedControlProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> extends Omit<FormFieldWrapperProps<TFieldValues, TName>, \"children\"> {\n  options: SegmentedControlOption[];\n  size?: SegmentedControlProps[\"size\"];\n  className?: string;\n  tabClassName?: string;\n  activeTabClassName?: string;\n  mobileView?: SegmentedControlProps[\"mobileView\"];\n  mobileViewSearch?: boolean;\n  drawerTitle?: string;\n  placeholder?: string;\n  disabled?: boolean;\n}\n\nexport function FormFieldSegmentedControl<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  options,\n  size,\n  className,\n  tabClassName,\n  activeTabClassName,\n  mobileView,\n  mobileViewSearch,\n  drawerTitle,\n  placeholder,\n  disabled,\n  ...wrapperProps\n}: FormFieldSegmentedControlProps<TFieldValues, TName>) {\n  return (\n    <FormFieldWrapper<TFieldValues, TName> {...wrapperProps}>\n      {(field) => (\n        <SegmentedControl\n          options={options}\n          value={field.value}\n          onChange={field.onChange}\n          size={size}\n          className={className}\n          tabClassName={tabClassName}\n          activeTabClassName={activeTabClassName}\n          mobileView={mobileView}\n          mobileViewSearch={mobileViewSearch}\n          drawerTitle={drawerTitle}\n          placeholder={placeholder}\n        />\n      )}\n    </FormFieldWrapper>\n  );\n}\n"
+    }
+  ]
+}
