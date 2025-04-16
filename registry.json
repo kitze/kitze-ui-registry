@@ -50,22 +50,6 @@
       ]
     },
     {
-      "name": "theme-switch-slider",
-      "type": "registry:component",
-      "title": "Theme Switch Slider",
-      "description": "A beautiful animated theme switcher with a sliding control and animated stars",
-      "dependencies": [
-        "framer-motion",
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "theme-switch-slider-next-themes",
       "type": "registry:component",
       "title": "Theme Switch Slider with Next-Themes",
@@ -79,6 +63,22 @@
       "files": [
         {
           "path": "registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "theme-switch-slider",
+      "type": "registry:component",
+      "title": "Theme Switch Slider",
+      "description": "A beautiful animated theme switcher with a sliding control and animated stars",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
           "type": "registry:component"
         }
       ]
@@ -158,13 +158,16 @@
       ]
     },
     {
-      "name": "suspensed",
+      "name": "simple-tooltip",
       "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
       "files": [
         {
-          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component"
         }
       ]
@@ -185,16 +188,37 @@
       ]
     },
     {
-      "name": "simple-tooltip",
+      "name": "suspensed",
       "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
+      "files": [
+        {
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "simple-select",
+      "type": "registry:component",
+      "title": "Simple Select",
+      "description": "A simplified select component that accepts an array of options with value, label, and search functionality",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "tooltip"
+        "button",
+        "command",
+        "popover"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
+          "path": "registry/new-york/simple-select/SimpleSelect.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/simple-select/SimpleSelectBottomDrawerMenu.tsx",
           "type": "registry:component"
         }
       ]
@@ -248,27 +272,20 @@
       ]
     },
     {
-      "name": "simple-dialog",
+      "name": "segmented-control",
       "type": "registry:component",
-      "title": "Simple Dialog",
-      "description": "A simple dialog component using Radix UI.",
+      "title": "Segmented Control",
+      "description": "A simple, accessible segmented control component with size variants",
       "dependencies": [
-        "next",
-        "react",
-        "react-dom",
-        "tailwindcss",
-        "clsx",
-        "tailwind-merge",
-        "@radix-ui/react-dialog"
+        "lucide-react",
+        "tailwind-variants"
       ],
       "registryDependencies": [
-        "dialog",
-        "https://ui.kitze.io/r/bottom-drawer.json",
-        "https://ui.kitze.io/r/custom-button.json"
+        "https://ui.kitze.io/r/simple-select.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
+          "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
           "type": "registry:component"
         }
       ]
@@ -300,6 +317,32 @@
       ]
     },
     {
+      "name": "simple-dialog",
+      "type": "registry:component",
+      "title": "Simple Dialog",
+      "description": "A simple dialog component using Radix UI.",
+      "dependencies": [
+        "next",
+        "react",
+        "react-dom",
+        "tailwindcss",
+        "clsx",
+        "tailwind-merge",
+        "@radix-ui/react-dialog"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "https://ui.kitze.io/r/bottom-drawer.json",
+        "https://ui.kitze.io/r/custom-button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "simple-accordion",
       "type": "registry:component",
       "title": "Simple Accordion",
@@ -310,25 +353,6 @@
       "files": [
         {
           "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "segmented-control",
-      "type": "registry:component",
-      "title": "Segmented Control",
-      "description": "A simple, accessible segmented control component with size variants",
-      "dependencies": [
-        "lucide-react",
-        "tailwind-variants"
-      ],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/simple-select.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
           "type": "registry:component"
         }
       ]
@@ -360,23 +384,6 @@
       "files": [
         {
           "path": "registry/new-york/page-header/PageHeader.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "kbd-shortcuts-list",
-      "type": "registry:component",
-      "title": "Keyboard Shortcuts List",
-      "description": "A component for displaying a list of keyboard shortcuts with labels",
-      "dependencies": [],
-      "registryDependencies": [
-        "https://ui.kitze.io/r/kbd-shortcuts.json",
-        "https://ui.kitze.io/r/kbd.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/kbd-shortcuts-list/KbdShortcutsList.tsx",
           "type": "registry:component"
         }
       ]
@@ -425,6 +432,36 @@
       ]
     },
     {
+      "name": "kbd-shortcuts-list",
+      "type": "registry:component",
+      "title": "Keyboard Shortcuts List",
+      "description": "A component for displaying a list of keyboard shortcuts with labels",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://ui.kitze.io/r/kbd-shortcuts.json",
+        "https://ui.kitze.io/r/kbd.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/kbd-shortcuts-list/KbdShortcutsList.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:component",
+      "title": "Keyboard Shortcut",
+      "description": "A keyboard shortcut display component for showing key combinations",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/kbd/Kbd.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:component",
       "title": "Input",
@@ -433,30 +470,6 @@
       "files": [
         {
           "path": "registry/new-york/input/Input.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "simple-select",
-      "type": "registry:component",
-      "title": "Simple Select",
-      "description": "A simplified select component that accepts an array of options with value, label, and search functionality",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "command",
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-select/SimpleSelect.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/simple-select/SimpleSelectBottomDrawerMenu.tsx",
           "type": "registry:component"
         }
       ]
@@ -498,19 +511,6 @@
       ]
     },
     {
-      "name": "kbd",
-      "type": "registry:component",
-      "title": "Keyboard Shortcut",
-      "description": "A keyboard shortcut display component for showing key combinations",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/kbd/Kbd.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "gradient-text",
       "type": "registry:component",
       "title": "Gradient Text",
@@ -519,6 +519,21 @@
       "files": [
         {
           "path": "registry/new-york/gradient-text/GradientText.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "full-page-spinner",
+      "type": "registry:component",
+      "title": "Full Page Spinner",
+      "description": "A spinner component that takes full page size and centers itself in the viewport",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component"
         }
       ]
@@ -542,35 +557,20 @@
       ]
     },
     {
-      "name": "form-field-textarea",
+      "name": "form-field-select",
       "type": "registry:component",
-      "title": "Form Field Textarea",
-      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
+      "title": "Form Field Select",
+      "description": "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration",
       "dependencies": [
         "react-hook-form"
       ],
       "registryDependencies": [
-        "textarea",
-        "https://ui.kitze.io/r/form-field-wrapper.json"
+        "https://ui.kitze.io/r/form-field-wrapper.json",
+        "https://ui.kitze.io/r/simple-select.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "full-page-spinner",
-      "type": "registry:component",
-      "title": "Full Page Spinner",
-      "description": "A spinner component that takes full page size and centers itself in the viewport",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/spinner.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
           "type": "registry:component"
         }
       ]
@@ -595,20 +595,20 @@
       ]
     },
     {
-      "name": "form-field-checkbox",
+      "name": "form-field-textarea",
       "type": "registry:component",
-      "title": "Form Field Checkbox",
-      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
+      "title": "Form Field Textarea",
+      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
       "dependencies": [
         "react-hook-form"
       ],
       "registryDependencies": [
-        "checkbox",
+        "textarea",
         "https://ui.kitze.io/r/form-field-wrapper.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
+          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
           "type": "registry:component"
         }
       ]
@@ -633,20 +633,20 @@
       ]
     },
     {
-      "name": "form-field-select",
+      "name": "form-field-checkbox",
       "type": "registry:component",
-      "title": "Form Field Select",
-      "description": "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration",
+      "title": "Form Field Checkbox",
+      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
       "dependencies": [
         "react-hook-form"
       ],
       "registryDependencies": [
-        "https://ui.kitze.io/r/form-field-wrapper.json",
-        "https://ui.kitze.io/r/simple-select.json"
+        "checkbox",
+        "https://ui.kitze.io/r/form-field-wrapper.json"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
+          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
           "type": "registry:component"
         }
       ]
@@ -689,6 +689,21 @@
       ]
     },
     {
+      "name": "dialog-manager",
+      "type": "registry:component",
+      "title": "Dialog Manager",
+      "description": "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application.",
+      "registryDependencies": [
+        "https://ui.kitze.io/r/simple-dialog.json"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/dialog-manager/DialogManager.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "custom-button",
       "type": "registry:component",
       "title": "Custom Button",
@@ -703,21 +718,6 @@
       "files": [
         {
           "path": "registry/new-york/custom-button/CustomButton.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "dialog-manager",
-      "type": "registry:component",
-      "title": "Dialog Manager",
-      "description": "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application.",
-      "registryDependencies": [
-        "https://ui.kitze.io/r/simple-dialog.json"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/dialog-manager/DialogManager.tsx",
           "type": "registry:component"
         }
       ]
@@ -762,6 +762,30 @@
       ]
     },
     {
+      "name": "advanced-select",
+      "type": "registry:component",
+      "title": "Advanced Select",
+      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
+      "dependencies": [
+        "class-variance-authority",
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "popover",
+        "command",
+        "separator",
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "bottom-drawer",
       "type": "registry:component",
       "title": "Bottom Drawer",
@@ -793,30 +817,6 @@
         },
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawerMenuComponents.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "advanced-select",
-      "type": "registry:component",
-      "title": "Advanced Select",
-      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
-      "dependencies": [
-        "class-variance-authority",
-        "cmdk",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "popover",
-        "command",
-        "separator",
-        "badge",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
           "type": "registry:component"
         }
       ]
