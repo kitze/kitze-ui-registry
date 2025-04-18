@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "with-search-bar" | "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "suspensed" | "tab-panels" | "spinner" | "simple-tooltip" | "simple-select" | "simple-popover" | "simple-dialog" | "simple-dropdown-menu" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts" | "kbd" | "input" | "hoverable-icon" | "help-info-circle" | "gradient-text" | "kbd-shortcuts-list" | "full-page-spinner" | "form-field-wrapper" | "form-field-select" | "form-field-segmented-control" | "form-field-input" | "form-field-checkbox" | "form-field-textarea" | "dialog-manager" | "custom-button" | "custom-badge" | "conditional-wrap" | "fill-height-spinner" | "conditional-tooltip" | "bottom-drawer" | "form-field-advanced-select" | "advanced-select"; // Handle empty case
+export type ComponentName = "with-search-bar" | "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "tab-panels" | "suspensed" | "spinner" | "simple-tooltip" | "simple-select" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "segmented-control" | "simple-accordion" | "search-bar" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts-list" | "kbd-shortcuts" | "kbd" | "input" | "hoverable-icon" | "help-info-circle" | "gradient-text" | "full-page-spinner" | "form-field-wrapper" | "form-field-textarea" | "form-field-select" | "form-field-segmented-control" | "form-field-input" | "form-field-checkbox" | "fill-height-spinner" | "form-field-advanced-select" | "dialog-manager" | "custom-button" | "custom-badge" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "advanced-select"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -43,15 +43,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Theme Switch Minimal",
     description: "A minimal theme switch button with smooth icon transitions for light, dark, and system theme modes"
   },
-  "suspensed": {
-    name: "suspensed",
-    title: "Suspensed",
-    description: "A wrapper component for React Suspense with force option"
-  },
   "tab-panels": {
     name: "tab-panels",
     title: "Tab Panels",
     description: "A component to display content in tabs using a segmented control."
+  },
+  "suspensed": {
+    name: "suspensed",
+    title: "Suspensed",
+    description: "A wrapper component for React Suspense with force option"
   },
   "spinner": {
     name: "spinner",
@@ -73,30 +73,30 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Simple Popover",
     description: "A simple popover component that displays content when triggered."
   },
-  "simple-dialog": {
-    name: "simple-dialog",
-    title: "Simple Dialog",
-    description: "A simple dialog component using Radix UI."
-  },
   "simple-dropdown-menu": {
     name: "simple-dropdown-menu",
     title: "Simple Dropdown Menu",
     description: "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile"
+  },
+  "simple-dialog": {
+    name: "simple-dialog",
+    title: "Simple Dialog",
+    description: "A simple dialog component using Radix UI."
   },
   "simple-context-menu": {
     name: "simple-context-menu",
     title: "Simple Context Menu",
     description: "A simple context menu component that wraps content with right-click menu functionality"
   },
-  "simple-accordion": {
-    name: "simple-accordion",
-    title: "Simple Accordion",
-    description: "A simple accordion component"
-  },
   "segmented-control": {
     name: "segmented-control",
     title: "Segmented Control",
     description: "A simple, accessible segmented control component with size variants"
+  },
+  "simple-accordion": {
+    name: "simple-accordion",
+    title: "Simple Accordion",
+    description: "A simple accordion component"
   },
   "search-bar": {
     name: "search-bar",
@@ -117,6 +117,11 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "kitze-ui-context",
     title: "Kitze UI Context",
     description: "Provides UI context like mobile detection for Kitze UI components."
+  },
+  "kbd-shortcuts-list": {
+    name: "kbd-shortcuts-list",
+    title: "Keyboard Shortcuts List",
+    description: "A component for displaying a list of keyboard shortcuts with labels"
   },
   "kbd-shortcuts": {
     name: "kbd-shortcuts",
@@ -148,11 +153,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Gradient Text",
     description: "A text component with animated gradient effects"
   },
-  "kbd-shortcuts-list": {
-    name: "kbd-shortcuts-list",
-    title: "Keyboard Shortcuts List",
-    description: "A component for displaying a list of keyboard shortcuts with labels"
-  },
   "full-page-spinner": {
     name: "full-page-spinner",
     title: "Full Page Spinner",
@@ -162,6 +162,11 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "form-field-wrapper",
     title: "Form Field Wrapper",
     description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
+  },
+  "form-field-textarea": {
+    name: "form-field-textarea",
+    title: "Form Field Textarea",
+    description: "A textarea component integrated with react-hook-form using FormFieldWrapper."
   },
   "form-field-select": {
     name: "form-field-select",
@@ -183,10 +188,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Form Field Checkbox",
     description: "A checkbox component integrated with react-hook-form using FormFieldWrapper."
   },
-  "form-field-textarea": {
-    name: "form-field-textarea",
-    title: "Form Field Textarea",
-    description: "A textarea component integrated with react-hook-form using FormFieldWrapper."
+  "fill-height-spinner": {
+    name: "fill-height-spinner",
+    title: "Fill Height Spinner",
+    description: "A spinner component that fills and centers in its container height"
+  },
+  "form-field-advanced-select": {
+    name: "form-field-advanced-select",
+    title: "Form Field Advanced Select",
+    description: "A form field component that integrates the AdvancedSelect with form handling capabilities"
   },
   "dialog-manager": {
     name: "dialog-manager",
@@ -208,11 +218,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Conditional Wrap",
     description: "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc."
   },
-  "fill-height-spinner": {
-    name: "fill-height-spinner",
-    title: "Fill Height Spinner",
-    description: "A spinner component that fills and centers in its container height"
-  },
   "conditional-tooltip": {
     name: "conditional-tooltip",
     title: "Conditional Tooltip",
@@ -222,11 +227,6 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     name: "bottom-drawer",
     title: "Bottom Drawer",
     description: "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant."
-  },
-  "form-field-advanced-select": {
-    name: "form-field-advanced-select",
-    title: "Form Field Advanced Select",
-    description: "A form field component that integrates the AdvancedSelect with form handling capabilities"
   },
   "advanced-select": {
     name: "advanced-select",

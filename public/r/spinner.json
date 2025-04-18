@@ -11,6 +11,7 @@
     {
       "path": "registry/new-york/spinner/Spinner.tsx",
       "type": "registry:component",
+      "target": "components",
       "content": "\"use client\";\n\nimport {\n  LucideLoader,\n  LucideLoaderCircle,\n  LucideLoaderPinwheel,\n} from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { ReactFC } from \"@/lib/utils\";\n\nconst variants = {\n  default: LucideLoader,\n  circle: LucideLoaderCircle,\n  pinwheel: LucideLoaderPinwheel,\n} as const;\n\nconst sizes = {\n  xs: \"w-3 h-3\",\n  sm: \"w-4 h-4\",\n  md: \"w-5 h-5\",\n  lg: \"w-6 h-6\",\n  xl: \"w-8 h-8\",\n} as const;\n\nexport interface SpinnerProps {\n  /**\n   * The variant of the spinner\n   * @default \"default\"\n   */\n  variant?: keyof typeof variants;\n\n  /**\n   * The size of the spinner\n   * @default \"md\"\n   */\n  size?: keyof typeof sizes;\n\n  /**\n   * Optional className for the spinner\n   */\n  className?: string;\n}\n\nexport const Spinner: ReactFC<SpinnerProps> = ({\n  variant = \"default\",\n  size = \"md\",\n  className = \"\",\n}) => {\n  const SpinnerIcon = variants[variant] || variants.default;\n  const foundSize = sizes[size] || sizes.md;\n\n  return (\n    <SpinnerIcon\n      className={cn(\"animate-spin text-foreground/50\", foundSize, className)}\n    />\n  );\n};\n"
     }
   ]

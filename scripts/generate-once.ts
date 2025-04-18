@@ -111,6 +111,25 @@ function processRegistryDependencies(
 }
 
 /**
+ * Determines the target directory based on the file type.
+ * @param fileType - The type of the registry file (e.g., "registry:component").
+ * @returns The target directory string (e.g., "components") or undefined.
+ */
+function getTargetDirectory(fileType: string): string | undefined {
+  switch (fileType) {
+    case "registry:component":
+    case "registry:ui": // Assuming UI components also go into 'components'
+      return "components";
+    case "registry:hook":
+      return "hooks";
+    case "registry:lib":
+      return "lib";
+    default:
+      return undefined; // No specific target for other types
+  }
+}
+
+/**
  * Generates JSON files for each component configuration
  *
  * The generated JSON follows the shadcn/ui registry schema format:
@@ -242,8 +261,14 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
             .join(", ")}`
         );
 
+        // Add target field to files based on their type
+        const filesWithTarget = allFiles.map((file) => {
+          const target = getTargetDirectory(file.type);
+          return target ? { ...file, target } : file;
+        });
+
         // Log hooks info for debugging
-        const hookFilesInFinalArray = allFiles.filter(
+        const hookFilesInFinalArray = filesWithTarget.filter(
           (file) => file.type === "registry:hook"
         );
         console.info(
@@ -309,7 +334,7 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
           description: config.description,
           ...(registryDeps && { registryDependencies: registryDeps }),
           ...(npmDependencies && { dependencies: npmDependencies }),
-          files: allFiles,
+          files: filesWithTarget,
         };
 
         // Write the JSON file, overwriting any existing file
@@ -358,6 +383,7 @@ async function generateRegistry() {
         }
 
         // Process hooks array if present and add them to files
+        const processedHookFiles: ComponentFile[] = [];
         if (
           config.hooks &&
           Array.isArray(config.hooks) &&
@@ -369,7 +395,7 @@ async function generateRegistry() {
 
           // Add each hook as a file entry
           config.hooks.forEach((hookName) => {
-            config.files.push({
+            processedHookFiles.push({
               path: `registry/hooks/${hookName}.ts`,
               type: "registry:hook",
             });
@@ -377,29 +403,54 @@ async function generateRegistry() {
         }
 
         const componentDir = path.dirname(configFile);
-        config.files = config.files.map((file) => {
-          // Defensive check: ensure file.path is a string before calling startsWith
-          const filePath =
-            typeof file.path === "string" &&
-            // If it already has registry/ prefix or it's a hook reference, keep it as is
-            file.path.startsWith("registry/")
-              ? file.path
-              : path.join(
-                  componentDir,
-                  typeof file.path === "string" ? file.path : ""
-                ); // Handle non-string path safely
+        const processedComponentFiles: ComponentFile[] = config.files.map(
+          (file) => {
+            // Defensive check: ensure file.path is a string before calling startsWith
+            const filePath =
+              typeof file.path === "string" &&
+              // If it already has registry/ prefix or it's a hook reference, keep it as is
+              file.path.startsWith("registry/")
+                ? file.path
+                : path.join(
+                    componentDir,
+                    typeof file.path === "string" ? file.path : ""
+                  ); // Handle non-string path safely
 
-          if (typeof file.path !== "string") {
-            console.error(
-              `❌ Invalid file path encountered in ${configFile}:`,
-              file
+            if (typeof file.path !== "string") {
+              console.error(
+                `❌ Invalid file path encountered in ${configFile}:`,
+                file
+              );
+            }
+
+            return {
+              ...file,
+              path: filePath,
+            };
+          }
+        );
+
+        // Combine processed component files and hook files, removing duplicates based on path
+        const combinedFiles = [
+          ...processedComponentFiles,
+          ...processedHookFiles,
+        ];
+        const uniqueFilesMap = new Map<string, ComponentFile>();
+        combinedFiles.forEach((file) => {
+          if (!uniqueFilesMap.has(file.path)) {
+            uniqueFilesMap.set(file.path, file);
+          } else {
+            console.warn(
+              `⚠️ Duplicate file path detected and ignored: ${file.path} in ${config.name}`
             );
           }
+        });
+        const allFilesForRegistry = Array.from(uniqueFilesMap.values());
 
-          return {
-            ...file,
-            path: filePath,
-          };
+        // Add target field to files based on their type
+        const filesWithTarget = allFilesForRegistry.map((file) => {
+          const target = getTargetDirectory(file.type);
+          return target ? { ...file, target } : file;
         });
 
         // Process dependencies to match shadcn schema format
@@ -457,7 +508,7 @@ async function generateRegistry() {
           description: config.description,
           dependencies: npmDependencies,
           registryDependencies: registryDeps,
-          files: config.files,
+          files: filesWithTarget,
         };
 
         configs.push(schemaCompliantConfig);
