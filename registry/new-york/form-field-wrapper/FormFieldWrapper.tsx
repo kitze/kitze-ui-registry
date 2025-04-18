@@ -52,7 +52,7 @@ export function FormFieldWrapper<
       name={name}
       defaultValue={defaultValue}
       render={({ field }) => (
-        <FormItem className={cn("space-y-2", className)}>
+        <FormItem className={cn("flex flex-col gap-0", className)}>
           {renderLabel ? (
             renderLabel()
           ) : label ? (
