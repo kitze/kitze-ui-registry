@@ -188,7 +188,7 @@ export const SimpleDialog = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      {trigger && (
+      {trigger && open === undefined && (
         <DialogTrigger asChild>
           {typeof trigger === "string" ? (
             <CustomButton>{trigger}</CustomButton>
