@@ -264,7 +264,12 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
         // Add target field to files based on their type
         const filesWithTarget = allFiles.map((file) => {
           const target = getTargetDirectory(file.type);
-          return target ? { ...file, target } : file;
+          const targetDir = getTargetDirectory(file.type);
+          const filename = path.basename(file.path);
+          const targetPath = targetDir
+            ? path.join(targetDir, filename)
+            : undefined;
+          return targetPath ? { ...file, target: targetPath } : file;
         });
 
         // Log hooks info for debugging
@@ -450,7 +455,12 @@ async function generateRegistry() {
         // Add target field to files based on their type
         const filesWithTarget = allFilesForRegistry.map((file) => {
           const target = getTargetDirectory(file.type);
-          return target ? { ...file, target } : file;
+          const targetDir = getTargetDirectory(file.type);
+          const filename = path.basename(file.path);
+          const targetPath = targetDir
+            ? path.join(targetDir, filename)
+            : undefined;
+          return targetPath ? { ...file, target: targetPath } : file;
         });
 
         // Process dependencies to match shadcn schema format

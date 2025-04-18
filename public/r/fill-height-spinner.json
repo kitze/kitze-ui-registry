@@ -11,7 +11,7 @@
     {
       "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
       "type": "registry:component",
-      "target": "components",
+      "target": "components/FillHeightSpinner.tsx",
       "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { Spinner, SpinnerProps } from \"@/registry/new-york/spinner/Spinner\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface FillHeightSpinnerProps extends SpinnerProps {\n  /**\n   * Optional className for the wrapper div\n   */\n  wrapperClassName?: string;\n}\n\nexport const FillHeightSpinner: ReactFC<FillHeightSpinnerProps> = ({\n  size = \"xl\",\n  wrapperClassName,\n  ...props\n}) => {\n  return (\n    <div\n      className={cn(\n        \"flex-1 flex w-full items-center justify-center\",\n        wrapperClassName\n      )}\n    >\n      <Spinner size={size} {...props} />\n    </div>\n  );\n};\n"
     }
   ]

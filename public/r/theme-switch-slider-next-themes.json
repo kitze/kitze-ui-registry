@@ -14,7 +14,7 @@
     {
       "path": "registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes.tsx",
       "type": "registry:component",
-      "target": "components",
+      "target": "components/ThemeSwitchNextThemes.tsx",
       "content": "\"use client\";\n\nimport { useTheme } from \"next-themes\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { useMounted } from \"@/registry/hooks/useMounted\";\nimport { ThemeSwitchSlider } from \"@/registry/new-york/theme-switch-slider/ThemeSwitchSlider\";\n\nexport interface ThemeSwitchNextThemesProps {\n  className?: string;\n}\n\nexport const ThemeSwitchNextThemes: ReactFC<ThemeSwitchNextThemesProps> = ({\n  className,\n}) => {\n  const { theme, setTheme } = useTheme();\n  const isDark = theme === \"dark\";\n  const toggleTheme = () => setTheme(isDark ? \"light\" : \"dark\");\n  const mounted = useMounted();\n\n  if (!mounted) {\n    return null;\n  }\n\n  return (\n    <ThemeSwitchSlider\n      theme={theme || \"light\"}\n      setTheme={setTheme}\n      isDark={isDark}\n      toggleTheme={toggleTheme}\n      className={className}\n    />\n  );\n};\n"
     }
   ]

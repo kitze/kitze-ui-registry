@@ -15,7 +15,7 @@
     {
       "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
       "type": "registry:component",
-      "target": "components",
+      "target": "components/FormFieldSelect.tsx",
       "content": "import React from \"react\";\nimport { FieldValues, FieldPath } from \"react-hook-form\";\nimport {\n  FormFieldWrapper,\n  FormFieldWrapperProps,\n} from \"@/registry/new-york/form-field-wrapper/FormFieldWrapper\";\nimport {\n  SimpleSelect,\n  SimpleSelectOption,\n  SimpleSelectProps,\n} from \"@/registry/new-york/simple-select/SimpleSelect\";\n\nexport interface FormFieldSelectProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> extends Omit<FormFieldWrapperProps<TFieldValues, TName>, \"children\"> {\n  options: SimpleSelectOption[];\n  placeholder?: string;\n  triggerClassName?: string;\n  disabled?: boolean;\n}\n\nexport function FormFieldSelect<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  options,\n  placeholder,\n  triggerClassName,\n  disabled,\n  ...wrapperProps\n}: FormFieldSelectProps<TFieldValues, TName>) {\n  return (\n    <FormFieldWrapper<TFieldValues, TName> {...wrapperProps}>\n      {(field) => (\n        <SimpleSelect\n          options={options}\n          value={field.value}\n          onValueChange={field.onChange}\n          placeholder={placeholder}\n          triggerClassName={triggerClassName}\n          disabled={disabled}\n        />\n      )}\n    </FormFieldWrapper>\n  );\n}\n"
     }
   ]

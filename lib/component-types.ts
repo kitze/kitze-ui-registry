@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "with-search-bar" | "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "tab-panels" | "suspensed" | "spinner" | "simple-tooltip" | "simple-select" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "segmented-control" | "simple-accordion" | "search-bar" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts-list" | "kbd-shortcuts" | "kbd" | "input" | "hoverable-icon" | "help-info-circle" | "gradient-text" | "full-page-spinner" | "form-field-wrapper" | "form-field-textarea" | "form-field-select" | "form-field-segmented-control" | "form-field-input" | "form-field-checkbox" | "fill-height-spinner" | "form-field-advanced-select" | "dialog-manager" | "custom-button" | "custom-badge" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "advanced-select"; // Handle empty case
+export type ComponentName = "with-search-bar" | "theme-switch-slider-next-themes" | "ui-alert" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "tab-panels" | "suspensed" | "spinner" | "simple-tooltip" | "simple-select" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts-list" | "kbd-shortcuts" | "input" | "kbd" | "hoverable-icon" | "help-info-circle" | "gradient-text" | "form-field-wrapper" | "full-page-spinner" | "form-field-textarea" | "form-field-select" | "form-field-segmented-control" | "form-field-input" | "form-field-checkbox" | "form-field-advanced-select" | "fill-height-spinner" | "dialog-manager" | "custom-button" | "custom-badge" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "advanced-select"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -18,15 +18,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "With Search Bar",
     description: "A component that provides a searchable interface with animated transitions"
   },
-  "ui-alert": {
-    name: "ui-alert",
-    title: "UI Alert",
-    description: "A collection of alert components with confirm and delete variations"
-  },
   "theme-switch-slider-next-themes": {
     name: "theme-switch-slider-next-themes",
     title: "Theme Switch Slider with Next-Themes",
     description: "A theme switcher slider that integrates with the next-themes library for persistent theme management"
+  },
+  "ui-alert": {
+    name: "ui-alert",
+    title: "UI Alert",
+    description: "A collection of alert components with confirm and delete variations"
   },
   "theme-switch-slider": {
     name: "theme-switch-slider",
@@ -88,15 +88,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Simple Context Menu",
     description: "A simple context menu component that wraps content with right-click menu functionality"
   },
-  "segmented-control": {
-    name: "segmented-control",
-    title: "Segmented Control",
-    description: "A simple, accessible segmented control component with size variants"
-  },
   "simple-accordion": {
     name: "simple-accordion",
     title: "Simple Accordion",
     description: "A simple accordion component"
+  },
+  "segmented-control": {
+    name: "segmented-control",
+    title: "Segmented Control",
+    description: "A simple, accessible segmented control component with size variants"
   },
   "search-bar": {
     name: "search-bar",
@@ -128,15 +128,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Keyboard Shortcuts",
     description: "A component for displaying keyboard shortcuts with customizable separators"
   },
-  "kbd": {
-    name: "kbd",
-    title: "Keyboard Shortcut",
-    description: "A keyboard shortcut display component for showing key combinations"
-  },
   "input": {
     name: "input",
     title: "Input",
     description: "A customizable input component with support for left/right icons, loading state, and custom styling"
+  },
+  "kbd": {
+    name: "kbd",
+    title: "Keyboard Shortcut",
+    description: "A keyboard shortcut display component for showing key combinations"
   },
   "hoverable-icon": {
     name: "hoverable-icon",
@@ -153,15 +153,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Gradient Text",
     description: "A text component with animated gradient effects"
   },
-  "full-page-spinner": {
-    name: "full-page-spinner",
-    title: "Full Page Spinner",
-    description: "A spinner component that takes full page size and centers itself in the viewport"
-  },
   "form-field-wrapper": {
     name: "form-field-wrapper",
     title: "Form Field Wrapper",
     description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
+  },
+  "full-page-spinner": {
+    name: "full-page-spinner",
+    title: "Full Page Spinner",
+    description: "A spinner component that takes full page size and centers itself in the viewport"
   },
   "form-field-textarea": {
     name: "form-field-textarea",
@@ -188,15 +188,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Form Field Checkbox",
     description: "A checkbox component integrated with react-hook-form using FormFieldWrapper."
   },
-  "fill-height-spinner": {
-    name: "fill-height-spinner",
-    title: "Fill Height Spinner",
-    description: "A spinner component that fills and centers in its container height"
-  },
   "form-field-advanced-select": {
     name: "form-field-advanced-select",
     title: "Form Field Advanced Select",
     description: "A form field component that integrates the AdvancedSelect with form handling capabilities"
+  },
+  "fill-height-spinner": {
+    name: "fill-height-spinner",
+    title: "Fill Height Spinner",
+    description: "A spinner component that fills and centers in its container height"
   },
   "dialog-manager": {
     name: "dialog-manager",

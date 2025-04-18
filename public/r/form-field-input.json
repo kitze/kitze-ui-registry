@@ -15,7 +15,7 @@
     {
       "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
       "type": "registry:component",
-      "target": "components",
+      "target": "components/FormFieldInput.tsx",
       "content": "import React from \"react\";\nimport { Input } from \"@/components/ui/input\";\nimport {\n  FormFieldWrapper,\n  FormFieldWrapperProps,\n} from \"@/registry/new-york/form-field-wrapper/FormFieldWrapper\";\nimport { FieldValues, FieldPath } from \"react-hook-form\";\n\nexport interface FormFieldInputProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> extends Omit<FormFieldWrapperProps<TFieldValues, TName>, \"children\"> {\n  placeholder?: string;\n  type?: string;\n}\n\nexport function FormFieldInput<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  placeholder,\n  type = \"text\",\n  ...wrapperProps\n}: FormFieldInputProps<TFieldValues, TName>) {\n  return (\n    <FormFieldWrapper<TFieldValues, TName> {...wrapperProps}>\n      {(field) => <Input type={type} placeholder={placeholder} {...field} />}\n    </FormFieldWrapper>\n  );\n}\n"
     }
   ]

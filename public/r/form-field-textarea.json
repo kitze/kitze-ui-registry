@@ -15,7 +15,7 @@
     {
       "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
       "type": "registry:component",
-      "target": "components",
+      "target": "components/FormFieldTextarea.tsx",
       "content": "import React from \"react\";\nimport { Textarea } from \"@/components/ui/textarea\";\nimport {\n  FormFieldWrapper,\n  FormFieldWrapperProps,\n} from \"@/registry/new-york/form-field-wrapper/FormFieldWrapper\";\nimport { FieldValues, FieldPath } from \"react-hook-form\";\n\nexport interface FormFieldTextareaProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> extends Omit<FormFieldWrapperProps<TFieldValues, TName>, \"children\"> {\n  placeholder?: string;\n  rows?: number;\n}\n\nexport function FormFieldTextarea<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  placeholder,\n  rows,\n  ...wrapperProps\n}: FormFieldTextareaProps<TFieldValues, TName>) {\n  return (\n    <FormFieldWrapper<TFieldValues, TName> {...wrapperProps}>\n      {(field) => <Textarea placeholder={placeholder} rows={rows} {...field} />}\n    </FormFieldWrapper>\n  );\n}\n"
     }
   ]

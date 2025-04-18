@@ -8,7 +8,7 @@
     {
       "path": "registry/new-york/suspensed/Suspensed.tsx",
       "type": "registry:component",
-      "target": "components",
+      "target": "components/Suspensed.tsx",
       "content": "import { ReactNode, Suspense } from \"react\";\n\ninterface SuspensedProps {\n  children: ReactNode;\n  fallback?: ReactNode;\n  force?: boolean;\n}\n\nexport const Suspensed = ({\n  children,\n  fallback = null,\n  force = false,\n}: SuspensedProps) => {\n  if (force) {\n    return fallback;\n  }\n  return <Suspense fallback={fallback}>{children}</Suspense>;\n};\n"
     }
   ]
