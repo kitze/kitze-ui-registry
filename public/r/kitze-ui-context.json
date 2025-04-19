@@ -11,8 +11,8 @@
     {
       "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
       "type": "registry:component",
-      "target": "components/KitzeUIContext.tsx",
-      "content": "\"use client\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { createContext, useContext } from \"react\";\n\ninterface KitzeUIContextType {\n  isMobile: boolean;\n}\n\nconst KitzeUIContext = createContext<KitzeUIContextType | undefined>(undefined);\n\nexport interface KitzeUIProviderProps {\n  isMobile: boolean;\n  children: React.ReactNode;\n}\n\nexport const KitzeUIProvider: ReactFC<KitzeUIProviderProps> = ({\n  children,\n  isMobile,\n}) => {\n  return (\n    <KitzeUIContext.Provider value={{ isMobile }}>\n      {children}\n    </KitzeUIContext.Provider>\n  );\n};\n\nexport const useKitzeUI = () => {\n  const context = useContext(KitzeUIContext);\n  if (context === undefined) {\n    console.warn(\n      \"useKitzeUI should be used within a KitzeUIProvider, otherwise it will assume that mobile is false\"\n    );\n    return { isMobile: false };\n  }\n  return context;\n};\n"
+      "content": "\"use client\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { createContext, useContext } from \"react\";\n\ninterface KitzeUIContextType {\n  isMobile: boolean;\n}\n\nconst KitzeUIContext = createContext<KitzeUIContextType | undefined>(undefined);\n\nexport interface KitzeUIProviderProps {\n  isMobile: boolean;\n  children: React.ReactNode;\n}\n\nexport const KitzeUIProvider: ReactFC<KitzeUIProviderProps> = ({\n  children,\n  isMobile,\n}) => {\n  return (\n    <KitzeUIContext.Provider value={{ isMobile }}>\n      {children}\n    </KitzeUIContext.Provider>\n  );\n};\n\nexport const useKitzeUI = () => {\n  const context = useContext(KitzeUIContext);\n  if (context === undefined) {\n    console.warn(\n      \"useKitzeUI should be used within a KitzeUIProvider, otherwise it will assume that mobile is false\"\n    );\n    return { isMobile: false };\n  }\n  return context;\n};\n",
+      "target": "components/KitzeUIContext.tsx"
     }
   ]
 }

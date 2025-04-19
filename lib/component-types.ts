@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-export type ComponentName = "with-search-bar" | "theme-switch-slider-next-themes" | "ui-alert" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "tab-panels" | "suspensed" | "spinner" | "simple-tooltip" | "simple-select" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "simple-accordion" | "segmented-control" | "search-bar" | "page-header" | "menu-context" | "kitze-ui-context" | "kbd-shortcuts-list" | "kbd-shortcuts" | "input" | "kbd" | "hoverable-icon" | "help-info-circle" | "gradient-text" | "form-field-wrapper" | "full-page-spinner" | "form-field-textarea" | "form-field-select" | "form-field-segmented-control" | "form-field-input" | "form-field-checkbox" | "form-field-advanced-select" | "fill-height-spinner" | "dialog-manager" | "custom-button" | "custom-badge" | "conditional-wrap" | "conditional-tooltip" | "bottom-drawer" | "advanced-select"; // Handle empty case
+export type ComponentName = "with-search-bar" | "ui-alert" | "theme-switch-slider-next-themes" | "theme-switch-slider" | "theme-switch-minimal-next-themes" | "theme-switch-minimal" | "tab-panels" | "suspensed" | "simple-tooltip" | "spinner" | "simple-select" | "simple-popover" | "simple-dropdown-menu" | "simple-dialog" | "simple-context-menu" | "segmented-control" | "simple-accordion" | "search-bar" | "page-header" | "menu-context" | "kbd-shortcuts-list" | "kitze-ui-context" | "kbd-shortcuts" | "kbd" | "input" | "help-info-circle" | "hoverable-icon" | "gradient-text" | "full-page-spinner" | "form-field-wrapper" | "form-field-select" | "form-field-textarea" | "form-field-segmented-control" | "form-field-input" | "form-field-checkbox" | "form-field-advanced-select" | "fill-height-spinner" | "dialog-manager" | "custom-button" | "conditional-wrap" | "custom-badge" | "conditional-tooltip" | "advanced-select" | "bottom-drawer"; // Handle empty case
 
 export type AvailableHook = "useScrolledPast" | "useMounted" | "useLinkableComponent" | "useControlledOpen"; // Auto-generated from registry/hooks
 
@@ -18,15 +18,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "With Search Bar",
     description: "A component that provides a searchable interface with animated transitions"
   },
-  "theme-switch-slider-next-themes": {
-    name: "theme-switch-slider-next-themes",
-    title: "Theme Switch Slider with Next-Themes",
-    description: "A theme switcher slider that integrates with the next-themes library for persistent theme management"
-  },
   "ui-alert": {
     name: "ui-alert",
     title: "UI Alert",
     description: "A collection of alert components with confirm and delete variations"
+  },
+  "theme-switch-slider-next-themes": {
+    name: "theme-switch-slider-next-themes",
+    title: "Theme Switch Slider with Next-Themes",
+    description: "A theme switcher slider that integrates with the next-themes library for persistent theme management"
   },
   "theme-switch-slider": {
     name: "theme-switch-slider",
@@ -53,15 +53,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Suspensed",
     description: "A wrapper component for React Suspense with force option"
   },
-  "spinner": {
-    name: "spinner",
-    title: "Spinner",
-    description: "A customizable loading spinner component with different variants and sizes"
-  },
   "simple-tooltip": {
     name: "simple-tooltip",
     title: "Simple Tooltip",
     description: "A simplified tooltip component built on top of Radix UI tooltip"
+  },
+  "spinner": {
+    name: "spinner",
+    title: "Spinner",
+    description: "A customizable loading spinner component with different variants and sizes"
   },
   "simple-select": {
     name: "simple-select",
@@ -88,15 +88,15 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Simple Context Menu",
     description: "A simple context menu component that wraps content with right-click menu functionality"
   },
-  "simple-accordion": {
-    name: "simple-accordion",
-    title: "Simple Accordion",
-    description: "A simple accordion component"
-  },
   "segmented-control": {
     name: "segmented-control",
     title: "Segmented Control",
     description: "A simple, accessible segmented control component with size variants"
+  },
+  "simple-accordion": {
+    name: "simple-accordion",
+    title: "Simple Accordion",
+    description: "A simple accordion component"
   },
   "search-bar": {
     name: "search-bar",
@@ -113,65 +113,65 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Menu Context",
     description: "Context provider to determine the type of menu (dropdown, context, bottom-drawer) and provide a close function."
   },
-  "kitze-ui-context": {
-    name: "kitze-ui-context",
-    title: "Kitze UI Context",
-    description: "Provides UI context like mobile detection for Kitze UI components."
-  },
   "kbd-shortcuts-list": {
     name: "kbd-shortcuts-list",
     title: "Keyboard Shortcuts List",
     description: "A component for displaying a list of keyboard shortcuts with labels"
+  },
+  "kitze-ui-context": {
+    name: "kitze-ui-context",
+    title: "Kitze UI Context",
+    description: "Provides UI context like mobile detection for Kitze UI components."
   },
   "kbd-shortcuts": {
     name: "kbd-shortcuts",
     title: "Keyboard Shortcuts",
     description: "A component for displaying keyboard shortcuts with customizable separators"
   },
-  "input": {
-    name: "input",
-    title: "Input",
-    description: "A customizable input component with support for left/right icons, loading state, and custom styling"
-  },
   "kbd": {
     name: "kbd",
     title: "Keyboard Shortcut",
     description: "A keyboard shortcut display component for showing key combinations"
   },
-  "hoverable-icon": {
-    name: "hoverable-icon",
-    title: "Hoverable Icon",
-    description: "A linkable icon component with tooltip support, hover effects, and color customization"
+  "input": {
+    name: "input",
+    title: "Input",
+    description: "A customizable input component with support for left/right icons, loading state, and custom styling"
   },
   "help-info-circle": {
     name: "help-info-circle",
     title: "Help Info Circle",
     description: "A help icon that displays information in a tooltip on desktop and a drawer on mobile"
   },
+  "hoverable-icon": {
+    name: "hoverable-icon",
+    title: "Hoverable Icon",
+    description: "A linkable icon component with tooltip support, hover effects, and color customization"
+  },
   "gradient-text": {
     name: "gradient-text",
     title: "Gradient Text",
     description: "A text component with animated gradient effects"
-  },
-  "form-field-wrapper": {
-    name: "form-field-wrapper",
-    title: "Form Field Wrapper",
-    description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
   },
   "full-page-spinner": {
     name: "full-page-spinner",
     title: "Full Page Spinner",
     description: "A spinner component that takes full page size and centers itself in the viewport"
   },
-  "form-field-textarea": {
-    name: "form-field-textarea",
-    title: "Form Field Textarea",
-    description: "A textarea component integrated with react-hook-form using FormFieldWrapper."
+  "form-field-wrapper": {
+    name: "form-field-wrapper",
+    title: "Form Field Wrapper",
+    description: "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling."
   },
   "form-field-select": {
     name: "form-field-select",
     title: "Form Field Select",
     description: "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration"
+  },
+  "form-field-textarea": {
+    name: "form-field-textarea",
+    title: "Form Field Textarea",
+    description: "A textarea component integrated with react-hook-form using FormFieldWrapper."
   },
   "form-field-segmented-control": {
     name: "form-field-segmented-control",
@@ -208,29 +208,29 @@ export const componentMeta: Record<ComponentName, ComponentMeta> = {
     title: "Custom Button",
     description: "A customizable button component with various styles, sizes, and features like loading state and icon support"
   },
-  "custom-badge": {
-    name: "custom-badge",
-    title: "Custom Badge",
-    description: "A customizable badge component with color and style options."
-  },
   "conditional-wrap": {
     name: "conditional-wrap",
     title: "Conditional Wrap",
     description: "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc."
+  },
+  "custom-badge": {
+    name: "custom-badge",
+    title: "Custom Badge",
+    description: "A customizable badge component with color and style options."
   },
   "conditional-tooltip": {
     name: "conditional-tooltip",
     title: "Conditional Tooltip",
     description: "A tooltip component that conditionally renders based on a condition"
   },
-  "bottom-drawer": {
-    name: "bottom-drawer",
-    title: "Bottom Drawer",
-    description: "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant."
-  },
   "advanced-select": {
     name: "advanced-select",
     title: "Advanced Select",
     description: "A multi-select component with search capabilities, multiple selection as badges, and animations"
+  },
+  "bottom-drawer": {
+    name: "bottom-drawer",
+    title: "Bottom Drawer",
+    description: "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant."
   }
 } as const;

@@ -11,8 +11,8 @@
     {
       "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
       "type": "registry:component",
-      "target": "components/FullPageSpinner.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { Spinner, SpinnerProps } from \"@/registry/new-york/spinner/Spinner\";\n\nexport interface FullPageSpinnerProps extends SpinnerProps {}\n\nexport const FullPageSpinner: ReactFC<FullPageSpinnerProps> = ({\n  size = \"xl\",\n  ...props\n}) => {\n  return (\n    <div className=\"min-h-screen min-w-screen flex items-center justify-center\">\n      <Spinner size={size} {...props} />\n    </div>\n  );\n};\n"
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { Spinner, SpinnerProps } from \"@/registry/new-york/spinner/Spinner\";\n\nexport interface FullPageSpinnerProps extends SpinnerProps {}\n\nexport const FullPageSpinner: ReactFC<FullPageSpinnerProps> = ({\n  size = \"xl\",\n  ...props\n}) => {\n  return (\n    <div className=\"min-h-screen min-w-screen flex items-center justify-center\">\n      <Spinner size={size} {...props} />\n    </div>\n  );\n};\n",
+      "target": "components/FullPageSpinner.tsx"
     }
   ]
 }

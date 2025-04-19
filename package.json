@@ -12,6 +12,7 @@
     "generate:schemas": "tsx scripts/generate-schemas.ts",
     "watch": "tsx scripts/watch-registry.ts",
     "lint:registry": "tsx scripts/lint-registry.ts",
+    "validate:deps": "bun run scripts/validate-deps.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },

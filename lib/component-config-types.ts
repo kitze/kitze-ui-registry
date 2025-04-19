@@ -65,15 +65,7 @@ export interface ComponentConfig {
   description: string;
   type: string;
   files: ComponentFile[];
-
-  // New structured dependencies
   dependencies?: string[] | DependenciesConfig;
-
-  // Legacy fields (maintained for backward compatibility)
-  hooks?: AvailableHook[];
-  shadcnDependencies?: ShadcnComponent[];
-  linkedDependencies?: ComponentName[];
-  registryDependencies?: string[];
 }
 
 export interface Registry {

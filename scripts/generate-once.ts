@@ -161,12 +161,10 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
 
     for (const config of configs) {
       try {
-        // Process the hooks for this component
         const processedHooks: ComponentFile[] = [];
         const hookPaths = new Set<string>(); // To track hook paths and avoid duplicates
 
-        // Get hooks from multiple places and merge them (for backward compatibility)
-        // Check if dependencies is an object with hooks or an array
+        // Get hooks from dependencies.hooks if it exists
         const depsHooks =
           typeof config.dependencies === "object" &&
           !Array.isArray(config.dependencies) &&
@@ -174,16 +172,14 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
             ? config.dependencies.hooks
             : [];
 
-        const allHooks = [...depsHooks, ...(config.hooks || [])];
-
-        if (allHooks.length > 0) {
+        if (depsHooks.length > 0) {
           console.info(
-            `ℹ️ Adding hooks to output for ${config.name}: ${allHooks.join(
+            `ℹ️ Adding hooks to output for ${config.name}: ${depsHooks.join(
               ", "
             )}`
           );
 
-          for (const hook of allHooks) {
+          for (const hook of depsHooks) {
             const hookPath = `registry/hooks/${hook}.ts`;
 
             // Skip if we've already processed this hook
@@ -219,8 +215,11 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
         const componentFiles: ComponentFile[] = [];
 
         for (const file of config.files) {
-          // Skip hook files that are already in processedHooks
-          if (file.type === "registry:hook" && hookPaths.has(file.path)) {
+          // Skip hook files that are already in processedHooks based on path
+          if (
+            file.type === "registry:hook" &&
+            processedHooks.some((hook) => hook.path === file.path)
+          ) {
             console.info(
               `⚠️ Skipping duplicate hook file in files array: ${file.path}`
             );
@@ -252,7 +251,7 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
           }
         }
 
-        // Combine component files and hook files
+        // Combine component files and processed hook files
         const allFiles = [...componentFiles, ...processedHooks];
 
         console.info(
@@ -263,7 +262,6 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
 
         // Add target field to files based on their type
         const filesWithTarget = allFiles.map((file) => {
-          const target = getTargetDirectory(file.type);
           const targetDir = getTargetDirectory(file.type);
           const filename = path.basename(file.path);
           const targetPath = targetDir
@@ -277,7 +275,7 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
           (file) => file.type === "registry:hook"
         );
         console.info(
-          `🪝 Found ${hookFilesInFinalArray.length} hook files in final array:`
+          `🪝 Found ${hookFilesInFinalArray.length} hook files in final array for ${config.name}:`
         );
         hookFilesInFinalArray.forEach((hook) =>
           console.info(`  - ${hook.path}`)
@@ -288,7 +286,7 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
         let npmDependencies: string[] | undefined = undefined;
         let registryDeps: string[] | undefined = undefined;
 
-        // Extract dependencies from our object structure or legacy arrays
+        // Extract dependencies from our object structure
         if (
           typeof config.dependencies === "object" &&
           !Array.isArray(config.dependencies)
@@ -309,25 +307,11 @@ export async function generateComponentFiles(configs: ComponentConfig[]) {
             registryDeps = [...shadDeps, ...(linkedDeps || [])];
           }
         } else if (Array.isArray(config.dependencies)) {
-          // Legacy format: dependencies as direct array of npm packages
+          // Legacy support: Treat array directly as npm dependencies
+          console.warn(
+            `⚠️ Component ${config.name} uses legacy array format for dependencies. Treating as NPM dependencies.`
+          );
           npmDependencies = config.dependencies;
-        }
-
-        // Process legacy shadcnDependencies and linkedDependencies if present
-        if (!registryDeps) {
-          const shadDeps = config.shadcnDependencies || [];
-          const linkedDeps =
-            processLinkedDependencies(config.linkedDependencies, baseUrl) || [];
-
-          if (shadDeps.length > 0 || linkedDeps.length > 0) {
-            registryDeps = [...shadDeps, ...linkedDeps];
-          } else if (config.registryDependencies) {
-            // Use legacy registryDependencies as fallback
-            registryDeps = processRegistryDependencies(
-              config.registryDependencies,
-              ourComponents
-            );
-          }
         }
 
         // Create output JSON object following the shadcn schema
@@ -370,8 +354,9 @@ async function generateRegistry() {
   try {
     // Only look for TypeScript config files
     const configFiles = await glob("registry/**/config.ts");
-    const configs: ComponentConfig[] = [];
+    const configs: ComponentConfig[] = []; // This will store the schema-compliant configs for registry.json
     const ourComponents = await getOurComponentNames();
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://ui.kitze.io";
 
     for (const configFile of configFiles) {
       try {
@@ -387,23 +372,35 @@ async function generateRegistry() {
           config.files = []; // Treat as empty if invalid
         }
 
-        // Process hooks array if present and add them to files
+        // Process hooks specified in dependencies.hooks
         const processedHookFiles: ComponentFile[] = [];
-        if (
-          config.hooks &&
-          Array.isArray(config.hooks) &&
-          config.hooks.length > 0
-        ) {
+        const hookPaths = new Set<string>(); // Track hook paths to avoid adding content later if already included
+
+        const depsHooks =
+          typeof config.dependencies === "object" &&
+          !Array.isArray(config.dependencies) &&
+          config.dependencies.hooks
+            ? config.dependencies.hooks
+            : [];
+
+        if (depsHooks.length > 0) {
           console.log(
-            `ℹ️ Processing hooks for ${config.name}: ${config.hooks.join(", ")}`
+            `ℹ️ Processing hooks for registry.json entry ${
+              config.name
+            }: ${depsHooks.join(", ")}`
           );
 
-          // Add each hook as a file entry
-          config.hooks.forEach((hookName) => {
-            processedHookFiles.push({
-              path: `registry/hooks/${hookName}.ts`,
-              type: "registry:hook",
-            });
+          // Add each hook as a file entry *without content* for registry.json
+          depsHooks.forEach((hookName) => {
+            const hookPath = `registry/hooks/${hookName}.ts`;
+            if (!hookPaths.has(hookPath)) {
+              // Avoid duplicates
+              processedHookFiles.push({
+                path: hookPath,
+                type: "registry:hook",
+              });
+              hookPaths.add(hookPath);
+            }
           });
         }
 
@@ -413,7 +410,7 @@ async function generateRegistry() {
             // Defensive check: ensure file.path is a string before calling startsWith
             const filePath =
               typeof file.path === "string" &&
-              // If it already has registry/ prefix or it's a hook reference, keep it as is
+              // If it already has registry/ prefix keep it as is
               file.path.startsWith("registry/")
                 ? file.path
                 : path.join(
@@ -442,19 +439,38 @@ async function generateRegistry() {
         ];
         const uniqueFilesMap = new Map<string, ComponentFile>();
         combinedFiles.forEach((file) => {
+          // Use path as the key to ensure uniqueness
           if (!uniqueFilesMap.has(file.path)) {
             uniqueFilesMap.set(file.path, file);
           } else {
-            console.warn(
-              `⚠️ Duplicate file path detected and ignored: ${file.path} in ${config.name}`
-            );
+            // If a component file duplicates a hook path, keep the component file info
+            const existingFile = uniqueFilesMap.get(file.path);
+            if (
+              existingFile?.type === "registry:hook" &&
+              file.type !== "registry:hook"
+            ) {
+              console.warn(
+                `⚠️ Component file replacing hook placeholder: ${file.path} in ${config.name}`
+              );
+              uniqueFilesMap.set(file.path, file);
+            } else if (
+              existingFile?.type !== "registry:hook" &&
+              file.type === "registry:hook"
+            ) {
+              console.warn(
+                `⚠️ Hook placeholder ignored due to existing component file: ${file.path} in ${config.name}`
+              );
+            } else {
+              console.warn(
+                `⚠️ Duplicate file path detected and ignored: ${file.path} in ${config.name}`
+              );
+            }
           }
         });
         const allFilesForRegistry = Array.from(uniqueFilesMap.values());
 
         // Add target field to files based on their type
         const filesWithTarget = allFilesForRegistry.map((file) => {
-          const target = getTargetDirectory(file.type);
           const targetDir = getTargetDirectory(file.type);
           const filename = path.basename(file.path);
           const targetPath = targetDir
@@ -464,11 +480,10 @@ async function generateRegistry() {
         });
 
         // Process dependencies to match shadcn schema format
-        // Dependencies should be a simple array of npm packages
         let npmDependencies: string[] | undefined = undefined;
         let registryDeps: string[] | undefined = undefined;
 
-        // Extract dependencies from our object structure or legacy arrays
+        // Extract dependencies from our object structure
         if (
           typeof config.dependencies === "object" &&
           !Array.isArray(config.dependencies)
@@ -481,7 +496,7 @@ async function generateRegistry() {
 
           // Process linked components to registryDependencies (as URLs)
           const linkedDeps = config.dependencies.linked
-            ? processLinkedDependencies(config.dependencies.linked)
+            ? processLinkedDependencies(config.dependencies.linked, baseUrl)
             : [];
 
           // Combine shad and linked into registryDependencies
@@ -489,50 +504,75 @@ async function generateRegistry() {
             registryDeps = [...shadDeps, ...(linkedDeps || [])];
           }
         } else if (Array.isArray(config.dependencies)) {
-          // Legacy format: dependencies as direct array of npm packages
+          // Legacy support: Treat array directly as npm dependencies
+          console.warn(
+            `⚠️ Component ${config.name} uses legacy array format for dependencies. Treating as NPM dependencies for registry.json.`
+          );
           npmDependencies = config.dependencies;
         }
 
-        // Process legacy shadcnDependencies and linkedDependencies if present
-        if (!registryDeps) {
-          const shadDeps = config.shadcnDependencies || [];
-          const linkedDeps =
-            processLinkedDependencies(config.linkedDependencies) || [];
-
-          if (shadDeps.length > 0 || linkedDeps.length > 0) {
-            registryDeps = [...shadDeps, ...linkedDeps];
-          } else if (config.registryDependencies) {
-            // Use legacy registryDependencies as fallback
-            registryDeps = processRegistryDependencies(
-              config.registryDependencies,
-              ourComponents
-            );
-          }
-        }
-
-        // Create a new config object that matches the shadcn schema format
+        // Create a new config object that matches the shadcn schema format for registry.json
         const schemaCompliantConfig = {
           name: config.name,
           type: config.type,
           title: config.title,
           description: config.description,
-          dependencies: npmDependencies,
-          registryDependencies: registryDeps,
-          files: filesWithTarget,
+          // Use the processed dependencies
+          ...(npmDependencies && { dependencies: npmDependencies }),
+          ...(registryDeps && { registryDependencies: registryDeps }),
+          files: filesWithTarget, // Include files *without* content
         };
 
-        configs.push(schemaCompliantConfig);
+        configs.push(schemaCompliantConfig as ComponentConfig); // Add the processed config to the list for registry.json
       } catch (error) {
-        console.error(`❌ Error processing config file ${configFile}:`, error);
+        console.error(
+          `❌ Error processing config file ${configFile} for registry:`,
+          error
+        );
         continue;
       }
     }
+
+    // Prepare the final registry object
+    const finalConfigsForRegistry = configs.map((config) => {
+      let npmDeps: string[] | undefined;
+      let regDeps: string[] | undefined;
+
+      if (
+        config.dependencies &&
+        typeof config.dependencies === "object" &&
+        !Array.isArray(config.dependencies)
+      ) {
+        // New structured format
+        npmDeps = config.dependencies.npm;
+        const shadDeps = config.dependencies.shad || [];
+        const linkedDeps = config.dependencies.linked
+          ? processLinkedDependencies(config.dependencies.linked, baseUrl)
+          : [];
+        if (shadDeps.length > 0 || (linkedDeps && linkedDeps.length > 0)) {
+          regDeps = [...shadDeps, ...(linkedDeps || [])];
+        }
+      } else if (Array.isArray(config.dependencies)) {
+        // Legacy array format (treat as npm deps)
+        npmDeps = config.dependencies;
+      }
+
+      return {
+        name: config.name,
+        type: config.type,
+        title: config.title,
+        description: config.description,
+        ...(npmDeps && { dependencies: npmDeps }),
+        ...(regDeps && { registryDependencies: regDeps }),
+        files: config.files, // Files should be processed correctly by now
+      };
+    });
 
     const registry: Registry = {
       $schema: "https://ui.shadcn.com/schema/registry.json",
       name: "kitze-ui",
       homepage: "https://ui.kitze.io",
-      items: configs,
+      items: finalConfigsForRegistry as any, // Use the processed configs
     };
 
     fs.writeFileSync(
@@ -541,7 +581,30 @@ async function generateRegistry() {
       "utf-8"
     );
 
-    await generateComponentFiles(configs);
+    // Regenerate individual component files AFTER registry.json structure is finalized
+    // We need configs array that includes processed files (with content) and dependencies
+    // Let's reload and reprocess for generateComponentFiles to ensure consistency
+    const configsForIndividualFiles: ComponentConfig[] = [];
+    for (const configFile of configFiles) {
+      const loadedConfig = await loadConfig(configFile);
+      if (loadedConfig) {
+        // Reprocess file paths relative to config file location if necessary
+        const componentDir = path.dirname(configFile);
+        loadedConfig.files = loadedConfig.files.map((file) => ({
+          ...file,
+          path:
+            typeof file.path === "string" && file.path.startsWith("registry/")
+              ? file.path
+              : path.join(
+                  componentDir,
+                  typeof file.path === "string" ? file.path : ""
+                ),
+        }));
+        configsForIndividualFiles.push(loadedConfig);
+      }
+    }
+
+    await generateComponentFiles(configsForIndividualFiles);
 
     console.log("✅ registry.json generated.");
   } catch (error) {

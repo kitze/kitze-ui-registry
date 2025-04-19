@@ -8,7 +8,7 @@ const config: ComponentConfig = {
     "A tooltip component that conditionally renders based on a condition",
 
   dependencies: {
-    linked: ["simple-tooltip"],
+    linked: ["simple-tooltip", "conditional-wrap"],
   },
 
   files: [
