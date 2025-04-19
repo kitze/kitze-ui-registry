@@ -11,6 +11,8 @@
     "generate": "tsx scripts/generate-once.ts",
     "generate:schemas": "tsx scripts/generate-schemas.ts",
     "watch": "tsx scripts/watch-registry.ts",
+    "typewatch": "tsc --watch",
+    "typecheck": "tsc --noEmit",
     "lint:registry": "tsx scripts/lint-registry.ts",
     "validate:deps": "bun run scripts/validate-deps.ts",
     "test": "vitest run",
