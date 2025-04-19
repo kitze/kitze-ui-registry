@@ -5,7 +5,8 @@
   "title": "Theme Switch Minimal with Next-Themes",
   "description": "A minimal theme switcher that integrates with the next-themes library for persistent theme management",
   "registryDependencies": [
-    "https://ui.kitze.io/r/theme-switch-minimal.json"
+    "https://ui.kitze.io/r/theme-switch-minimal.json",
+    "https://ui.kitze.io/r/custom-button.json"
   ],
   "dependencies": [
     "next-themes"
@@ -16,6 +17,12 @@
       "type": "registry:component",
       "content": "import { useTheme } from \"next-themes\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { useMounted } from \"@/registry/hooks/useMounted\";\nimport {\n  ThemeSwitchMinimal,\n  ThemeSwitchMinimalClassNames,\n} from \"@/registry/new-york/theme-switch-minimal/ThemeSwitchMinimal\";\nimport { CustomButtonProps } from \"@/registry/new-york/custom-button/CustomButton\";\n\nexport interface ThemeSwitchMinimalNextThemesProps {\n  className?: string;\n  classNames?: ThemeSwitchMinimalClassNames;\n  buttonProps?: Partial<CustomButtonProps>;\n}\n\nexport const ThemeSwitchMinimalNextThemes: ReactFC<\n  ThemeSwitchMinimalNextThemesProps\n> = ({ className, classNames, buttonProps }) => {\n  const { theme, setTheme } = useTheme();\n  const mounted = useMounted();\n\n  if (!mounted) {\n    return null;\n  }\n\n  return (\n    <ThemeSwitchMinimal\n      theme={theme || \"light\"}\n      setTheme={setTheme}\n      className={className}\n      classNames={classNames}\n      buttonProps={buttonProps}\n    />\n  );\n};\n",
       "target": "components/ThemeSwitchMinimalNextThemes.tsx"
+    },
+    {
+      "path": "registry/hooks/useMounted.ts",
+      "type": "registry:hook",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nexport const useMounted = () => {\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  return mounted;\n};\n",
+      "target": "hooks/useMounted.ts"
     }
   ]
 }

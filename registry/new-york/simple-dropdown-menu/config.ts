@@ -8,15 +8,16 @@ const config: ComponentConfig = {
     "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile",
 
   dependencies: {
-    shad: ["dropdown-menu"],
+    shad: ["dropdown-menu", "context-menu"],
     hooks: ["useControlledOpen", "useLinkableComponent"],
     linked: [
-      "simple-tooltip",
       "bottom-drawer",
       "kitze-ui-context",
       "menu-context",
       "ui-alert",
+      "help-info-circle",
     ],
+    npm: ["lucide-react"],
   },
 
   files: [

@@ -7,9 +7,7 @@ const config: ComponentConfig = {
   description:
     "Provides UI context like mobile detection for Kitze UI components.",
 
-  dependencies: {
-    linked: ["ui-alert"],
-  },
+  dependencies: {},
 
   files: [
     {

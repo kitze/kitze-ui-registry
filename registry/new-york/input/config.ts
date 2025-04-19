@@ -8,7 +8,7 @@ const config: ComponentConfig = {
     "A customizable input component with support for left/right icons, loading state, and custom styling",
 
   dependencies: {
-    npm: [],
+    linked: ["spinner"],
   },
 
   files: [

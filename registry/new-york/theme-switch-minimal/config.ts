@@ -10,7 +10,6 @@ const config: ComponentConfig = {
   dependencies: {
     npm: ["framer-motion", "lucide-react"],
     linked: ["custom-button"],
-    hooks: ["useMounted"],
   },
 
   files: [

@@ -9,7 +9,8 @@ const config: ComponentConfig = {
 
   dependencies: {
     npm: ["next-themes"],
-    linked: ["theme-switch-minimal"],
+    linked: ["theme-switch-minimal", "custom-button"],
+    hooks: ["useMounted"],
   },
 
   files: [

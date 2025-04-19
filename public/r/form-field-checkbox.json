@@ -6,6 +6,7 @@
   "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
   "registryDependencies": [
     "checkbox",
+    "label",
     "https://ui.kitze.io/r/form-field-wrapper.json"
   ],
   "dependencies": [

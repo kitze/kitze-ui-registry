@@ -1,59 +1,95 @@
 import fs from "fs/promises";
 import path from "path";
+import * as parser from "@babel/parser";
+import traverse, { NodePath } from "@babel/traverse";
+import * as t from "@babel/types";
+import { ComponentConfig } from "../lib/component-config-types"; // Adjusted path assuming script is in scripts/
 
 const registryPath = path.join(process.cwd(), "registry", "new-york");
 const shadcnUiPrefix = "@/components/ui/";
 const registryPrefix = "@/registry/new-york/";
+const hooksRegistryPrefix = "@/registry/hooks/";
 const excludedNpmPackages = new Set([
   "react",
   "react-dom",
   "next",
   "tailwindcss",
-  "lucide-react",
   "class-variance-authority",
   "clsx",
   "tailwind-merge",
 ]);
 
-// Basic regex, might need refinement for complex cases
-const importRegex =
-  /import(?:["'\\s]*(?:\\w+|\\{[^}]*\\})\\s*from\\s*)?["']([^"']+)["']/g;
-// Regex to find the array content for dependencies and registryDependencies
-const depsArrayRegex = /dependencies\s*:\s*(\[[\s\S]*?\])/; // Match any char including newline
-const registryDepsArrayRegex = /registryDependencies\s*:\s*(\[[\s\S]*?\])/; // Match any char including newline
-const stringLiteralRegex = /"([^"]*)"/g;
+// Removed config parsing regexes and helpers
+// const npmDepsRegex = ...
+// const shadDepsRegex = ...
+// const linkedDepsRegex = ...
+// const hooksArrayRegex = ...
+// const legacyDepsRegex = ...
+// const stringLiteralRegex = ...
+// function parseStringArrayFromMatch(...) { ... }
 
 interface ComponentInfo {
   name: string;
-  mainFile: string;
+  componentFiles: string[];
   configFile: string;
 }
 
-interface ParsedConfig {
-  dependencies: Set<string>;
-  registryDependencies: Set<string>;
+// Removed ParsedConfig interface - no longer needed
+// interface ParsedConfig { ... }
+
+// New function to load config using dynamic import
+async function loadConfigFromPath(
+  configFile: string
+): Promise<ComponentConfig | null> {
+  try {
+    const modulePath = path.resolve(configFile);
+    // Bun/tsx should handle importing .ts directly
+    const module = await import(modulePath);
+    if (module.default) {
+      return module.default as ComponentConfig;
+    } else {
+      console.error(
+        `❌ Config file ${configFile} is missing a default export.`
+      );
+      return null;
+    }
+  } catch (error) {
+    console.error(`❌ Error loading config file ${configFile}:`, error);
+    return null;
+  }
 }
 
 async function findComponentFiles(
   componentDir: string
 ): Promise<ComponentInfo | null> {
   const componentName = path.basename(componentDir);
-  const files = await fs.readdir(componentDir);
-  const mainFile = files.find(
-    (f) => f.endsWith(".tsx") && !f.endsWith("preview.tsx")
-  );
-  const configFile = files.find((f) => f === "config.ts");
+  try {
+    const files = await fs.readdir(componentDir);
+    // Find all .tsx files excluding previews
+    const componentFiles = files
+      .filter((f: string) => f.endsWith(".tsx") && !f.endsWith("preview.tsx"))
+      .map((f: string) => path.join(componentDir, f));
 
-  if (mainFile && configFile) {
-    return {
-      name: componentName,
-      mainFile: path.join(componentDir, mainFile),
-      configFile: path.join(componentDir, configFile),
-    };
+    const configFile = files.find((f: string) => f === "config.ts");
+
+    if (componentFiles.length > 0 && configFile) {
+      return {
+        name: componentName,
+        componentFiles: componentFiles,
+        configFile: path.join(componentDir, configFile),
+      };
+    } else if (componentFiles.length === 0) {
+      console.warn(
+        `Skipping ${componentName}: No component .tsx files found (excluding preview.tsx).`
+      );
+    } else {
+      // configFile is missing
+      console.warn(`Skipping ${componentName}: Missing config.ts file.`);
+    }
+  } catch (error) {
+    console.error(`Error reading directory ${componentDir}:`, error);
   }
-  console.warn(
-    `Skipping ${componentName}: Missing main .tsx or config.ts file.`
-  );
+
   return null;
 }
 
@@ -61,116 +97,204 @@ function extractImports(content: string): {
   shadcn: Set<string>;
   registry: Set<string>;
   npm: Set<string>;
+  hooks: Set<string>;
 } {
   const shadcn = new Set<string>();
   const registry = new Set<string>();
   const npm = new Set<string>();
-  let match;
+  const hooks = new Set<string>();
 
-  while ((match = importRegex.exec(content)) !== null) {
-    const importPath = match[1];
-    if (importPath.startsWith(shadcnUiPrefix)) {
-      shadcn.add(importPath.substring(shadcnUiPrefix.length));
-    } else if (importPath.startsWith(registryPrefix)) {
-      const regComp = importPath.substring(registryPrefix.length).split("/")[0]; // Get component name
-      if (regComp) registry.add(regComp);
-    } else if (
-      !importPath.startsWith(".") &&
-      !importPath.startsWith("@/lib") &&
-      !importPath.startsWith("@/hooks") &&
-      !excludedNpmPackages.has(importPath)
-    ) {
-      // Basic check for NPM packages (not relative, not @/lib, not excluded)
-      npm.add(importPath);
-    }
+  try {
+    const ast = parser.parse(content, {
+      sourceType: "module",
+      plugins: ["jsx", "typescript"],
+    });
+
+    traverse(ast, {
+      ImportDeclaration(path: NodePath<t.ImportDeclaration>) {
+        const importPath = path.node.source.value;
+
+        if (importPath.startsWith(shadcnUiPrefix)) {
+          shadcn.add(importPath.substring(shadcnUiPrefix.length));
+        } else if (importPath.startsWith(registryPrefix)) {
+          const regComp = importPath
+            .substring(registryPrefix.length)
+            .split("/")[0];
+          if (regComp) registry.add(regComp);
+        } else if (importPath.startsWith(hooksRegistryPrefix)) {
+          // Check for hooks
+          // Use string manipulation, not path module
+          const parts = importPath.split("/");
+          const fileName = parts[parts.length - 1]; // Get the last part
+          if (fileName) {
+            const hookName = fileName.replace(/\\.ts$/, ""); // Remove .ts extension
+            if (hookName) hooks.add(hookName);
+          }
+        } else if (
+          !importPath.startsWith(".") &&
+          !importPath.startsWith("@/lib") && // Keep excluding internal lib/hooks
+          !importPath.startsWith("@/hooks") &&
+          !excludedNpmPackages.has(importPath)
+        ) {
+          // Add any other non-relative, non-excluded import as an NPM package
+          npm.add(importPath);
+        }
+      },
+    });
+  } catch (error) {
+    console.error(`Error parsing file content with Babel: ${error}`);
+    // Return empty sets on error, including hooks
+    return {
+      shadcn: new Set(),
+      registry: new Set(),
+      npm: new Set(),
+      hooks: new Set(),
+    };
   }
-  return { shadcn, registry, npm };
-}
 
-function parseConfig(content: string): ParsedConfig {
-  const depsMatch = content.match(depsArrayRegex);
-  const registryDepsMatch = content.match(registryDepsArrayRegex);
-
-  const parseStringArray = (arrayContent: string | null): Set<string> => {
-    const result = new Set<string>();
-    if (arrayContent) {
-      let stringMatch;
-      // Reset regex lastIndex before using exec in a loop
-      stringLiteralRegex.lastIndex = 0;
-      while ((stringMatch = stringLiteralRegex.exec(arrayContent)) !== null) {
-        result.add(stringMatch[1]);
-      }
-    }
-    return result;
-  };
-
-  return {
-    dependencies: parseStringArray(depsMatch ? depsMatch[1] : null),
-    registryDependencies: parseStringArray(
-      registryDepsMatch ? registryDepsMatch[1] : null
-    ),
-  };
+  return { shadcn, registry, npm, hooks };
 }
 
 async function validateComponent(info: ComponentInfo): Promise<boolean> {
   let hasErrors = false;
   try {
-    const [mainContent, configContent] = await Promise.all([
-      fs.readFile(info.mainFile, "utf-8"),
-      fs.readFile(info.configFile, "utf-8"),
-    ]);
+    // Load config directly using dynamic import
+    const config = await loadConfigFromPath(info.configFile);
 
-    const imports = extractImports(mainContent);
-    const config = parseConfig(configContent);
+    if (!config) {
+      console.error(
+        `  SKIPPING validation for ${info.name} due to config load failure.`
+      );
+      return true; // Treat as error if config fails to load
+    }
+
+    // Read and process imports from ALL component files
+    const allImports = {
+      shadcn: new Set<string>(),
+      registry: new Set<string>(),
+      npm: new Set<string>(),
+      hooks: new Set<string>(),
+    };
+    for (const componentFile of info.componentFiles) {
+      try {
+        const content = await fs.readFile(componentFile, "utf-8");
+        const fileImports = extractImports(content);
+        fileImports.shadcn.forEach((imp) => allImports.shadcn.add(imp));
+        fileImports.registry.forEach((imp) => allImports.registry.add(imp));
+        fileImports.npm.forEach((imp) => allImports.npm.add(imp));
+        fileImports.hooks.forEach((imp) => allImports.hooks.add(imp));
+      } catch (readError) {
+        console.error(
+          `Error reading component file ${componentFile}:`,
+          readError
+        );
+        // Optionally set hasErrors = true here if a file read error should fail validation
+      }
+    }
 
     console.log(`\nValidating ${info.name}...`);
 
-    // Compare Shadcn dependencies
-    imports.shadcn.forEach((imp) => {
-      if (!config.dependencies.has(imp)) {
+    // Get dependencies directly from the loaded config object
+    // Use empty sets as fallbacks if dependencies or specific arrays are missing
+    const configDeps = config.dependencies;
+    const configNpm = new Set<string>(
+      typeof configDeps === "object" &&
+      !Array.isArray(configDeps) &&
+      configDeps.npm
+        ? configDeps.npm
+        : []
+    );
+    const configShad = new Set<string>(
+      typeof configDeps === "object" &&
+      !Array.isArray(configDeps) &&
+      configDeps.shad
+        ? configDeps.shad
+        : []
+    );
+    const configLinked = new Set<string>(
+      typeof configDeps === "object" &&
+      !Array.isArray(configDeps) &&
+      configDeps.linked
+        ? configDeps.linked
+        : []
+    );
+    const configHooks = new Set<string>(
+      typeof configDeps === "object" &&
+      !Array.isArray(configDeps) &&
+      configDeps.hooks
+        ? configDeps.hooks
+        : []
+    );
+
+    // Use combined imports (allImports) for validation
+
+    // 1. Compare Shadcn dependencies
+    allImports.shadcn.forEach((imp) => {
+      if (!configShad.has(imp)) {
         console.error(
-          `  ❌ Missing Shadcn dependency in config.ts: "${imp}" (imported in ${path.basename(
-            info.mainFile
-          )})`
+          `  ❌ Missing Shadcn dependency in config.ts (shad:[]): "${imp}"`
         );
         hasErrors = true;
       }
     });
-    config.dependencies.forEach((dep) => {
-      if (!imports.shadcn.has(dep)) {
-        console.warn(`  ⚠️ Unused Shadcn dependency in config.ts: "${dep}"`);
+    configShad.forEach((dep) => {
+      if (!allImports.shadcn.has(dep)) {
+        console.warn(
+          `  ⚠️ Unused Shadcn dependency in config.ts (shad:[]): "${dep}"`
+        );
       }
     });
 
-    // Compare Registry dependencies
-    imports.registry.forEach((imp) => {
-      if (imp !== info.name && !config.registryDependencies.has(imp)) {
-        // Don't check self-import
+    // 2. Compare Registry dependencies
+    allImports.registry.forEach((imp) => {
+      if (imp !== info.name && !configLinked.has(imp)) {
         console.error(
-          `  ❌ Missing registry dependency in config.ts: "${imp}" (imported in ${path.basename(
-            info.mainFile
-          )})`
+          `  ❌ Missing registry dependency in config.ts (linked:[]): "${imp}"`
         );
         hasErrors = true;
       }
     });
-    config.registryDependencies.forEach((dep) => {
-      if (!imports.registry.has(dep)) {
-        console.warn(`  ⚠️ Unused registry dependency in config.ts: "${dep}"`);
+    configLinked.forEach((dep) => {
+      if (!allImports.registry.has(dep)) {
+        console.warn(
+          `  ⚠️ Unused registry dependency in config.ts (linked:[]): "${dep}"`
+        );
       }
     });
 
-    // Check for unexpected NPM imports (basic check)
-    if (imports.npm.size > 0) {
-      console.warn(
-        `  ⚠️ Found potential NPM imports in ${path.basename(
-          info.mainFile
-        )} not declared in config (manual check recommended): ${[
-          ...imports.npm,
-        ].join(", ")}`
-      );
-      // Note: config.ts doesn't standardizedly list NPM packages other than Shadcn deps, so we just warn.
-    }
+    // 3. Compare NPM dependencies
+    allImports.npm.forEach((imp) => {
+      if (!configNpm.has(imp)) {
+        console.error(
+          `  ❌ Missing NPM dependency in config.ts (npm:[]): "${imp}"`
+        );
+        hasErrors = true;
+      }
+    });
+    configNpm.forEach((dep) => {
+      if (!allImports.npm.has(dep)) {
+        console.warn(
+          `  ⚠️ Unused NPM dependency in config.ts (npm:[]): "${dep}"`
+        );
+      }
+    });
+
+    // 4. Compare Hook dependencies
+    allImports.hooks.forEach((imp) => {
+      if (!configHooks.has(imp)) {
+        console.error(
+          `  ❌ Missing Hook dependency in config.ts (hooks:[]): "${imp}"`
+        );
+        hasErrors = true;
+      }
+    });
+    configHooks.forEach((dep) => {
+      if (!allImports.hooks.has(dep)) {
+        console.warn(
+          `  ⚠️ Unused Hook dependency in config.ts (hooks:[]): "${dep}"`
+        );
+      }
+    });
 
     if (!hasErrors) {
       console.log(`  ✅ Config matches imports for ${info.name}.`);
@@ -184,12 +308,14 @@ async function validateComponent(info: ComponentInfo): Promise<boolean> {
 
 async function main() {
   try {
-    await fs.mkdir(path.dirname(registryPath), { recursive: true }); // Ensure scripts dir exists
+    // Ensure the base registry directory exists if needed for other operations,
+    // but finding components doesn't strictly require it.
+    // await fs.mkdir(registryPath, { recursive: true });
 
     const entries = await fs.readdir(registryPath, { withFileTypes: true });
     const componentDirs = entries
-      .filter((dirent) => dirent.isDirectory())
-      .map((dirent) => path.join(registryPath, dirent.name));
+      .filter((dirent: fs.Dirent) => dirent.isDirectory())
+      .map((dirent: fs.Dirent) => path.join(registryPath, dirent.name));
 
     console.log(`Found ${componentDirs.length} component directories.`);
 

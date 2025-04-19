@@ -5,6 +5,9 @@ const config: ComponentConfig = {
   title: "Custom Badge",
   description: "A customizable badge component with color and style options.",
   type: "registry:component",
+  dependencies: {
+    npm: ["tailwind-variants"],
+  },
   files: [
     {
       path: "registry/new-york/custom-badge/CustomBadge.tsx",

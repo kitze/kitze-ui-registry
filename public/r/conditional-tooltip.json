@@ -5,8 +5,7 @@
   "title": "Conditional Tooltip",
   "description": "A tooltip component that conditionally renders based on a condition",
   "registryDependencies": [
-    "https://ui.kitze.io/r/simple-tooltip.json",
-    "https://ui.kitze.io/r/conditional-wrap.json"
+    "https://ui.kitze.io/r/simple-tooltip.json"
   ],
   "files": [
     {

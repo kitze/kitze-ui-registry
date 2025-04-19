@@ -5,12 +5,13 @@
   "title": "Bottom Drawer",
   "description": "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant.",
   "registryDependencies": [
-    "https://ui.kitze.io/r/simple-dropdown-menu.json",
-    "https://ui.kitze.io/r/kitze-ui-context.json"
+    "https://ui.kitze.io/r/help-info-circle.json",
+    "https://ui.kitze.io/r/menu-context.json"
   ],
   "dependencies": [
     "vaul",
-    "framer-motion"
+    "framer-motion",
+    "lucide-react"
   ],
   "files": [
     {

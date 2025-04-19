@@ -8,7 +8,9 @@ const config: ComponentConfig = {
     "A simplified tooltip component built on top of Radix UI tooltip",
 
   dependencies: {
-    shad: ["tooltip"],
+    shad: ["tooltip", "popover"],
+    linked: ["kitze-ui-context", "bottom-drawer"],
+    npm: ["@radix-ui/react-tooltip"],
   },
 
   files: [

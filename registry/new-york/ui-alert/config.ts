@@ -9,6 +9,7 @@ const config: ComponentConfig = {
 
   dependencies: {
     shad: ["alert-dialog"],
+    npm: ["lucide-react"],
   },
 
   files: [

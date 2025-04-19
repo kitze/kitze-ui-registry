@@ -8,7 +8,8 @@
     "https://ui.kitze.io/r/conditional-tooltip.json"
   ],
   "dependencies": [
-    "lucide-react"
+    "lucide-react",
+    "next/link"
   ],
   "files": [
     {

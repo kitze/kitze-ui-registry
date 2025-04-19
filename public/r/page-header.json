@@ -8,6 +8,9 @@
     "https://ui.kitze.io/r/custom-button.json",
     "https://ui.kitze.io/r/bottom-drawer.json"
   ],
+  "dependencies": [
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "registry/new-york/page-header/PageHeader.tsx",

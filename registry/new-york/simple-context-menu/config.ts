@@ -8,15 +8,10 @@ const config: ComponentConfig = {
     "A simple context menu component that wraps content with right-click menu functionality",
 
   dependencies: {
-    npm: ["use-long-press"],
+    npm: ["use-long-press", "lucide-react"],
+    shad: ["context-menu", "dropdown-menu", "tooltip"],
     hooks: ["useControlledOpen", "useLinkableComponent"],
-    linked: [
-      "simple-tooltip",
-      "simple-dropdown-menu",
-      "bottom-drawer",
-      "menu-context",
-      "kitze-ui-context",
-    ],
+    linked: ["bottom-drawer", "menu-context", "kitze-ui-context"],
   },
 
   files: [

@@ -8,8 +8,9 @@ const config: ComponentConfig = {
     "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
 
   dependencies: {
-    npm: ["react-hook-form"],
-    shad: ["form"],
+    npm: ["react-hook-form", "@hookform/resolvers/zod", "zod"],
+    shad: ["form", "button", "card"],
+    linked: ["form-field-input", "form-debug"],
   },
 
   files: [

@@ -8,7 +8,8 @@
     "https://ui.kitze.io/r/segmented-control.json"
   ],
   "dependencies": [
-    "framer-motion"
+    "framer-motion",
+    "lucide-react"
   ],
   "files": [
     {

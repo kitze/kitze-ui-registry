@@ -5,7 +5,8 @@
   "title": "Segmented Control",
   "description": "A simple, accessible segmented control component with size variants",
   "registryDependencies": [
-    "https://ui.kitze.io/r/simple-select.json"
+    "https://ui.kitze.io/r/simple-select.json",
+    "https://ui.kitze.io/r/kitze-ui-context.json"
   ],
   "dependencies": [
     "lucide-react",

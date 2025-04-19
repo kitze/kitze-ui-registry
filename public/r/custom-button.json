@@ -9,7 +9,7 @@
     "https://ui.kitze.io/r/spinner.json"
   ],
   "dependencies": [
-    "class-variance-authority"
+    "tailwind-variants"
   ],
   "files": [
     {

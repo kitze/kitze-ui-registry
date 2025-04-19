@@ -13,7 +13,7 @@ const config: ComponentConfig = {
     },
   ],
   dependencies: {
-    npm: ["framer-motion"],
+    npm: ["framer-motion", "lucide-react"],
     linked: ["segmented-control"],
   },
 };

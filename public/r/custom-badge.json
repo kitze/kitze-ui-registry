@@ -4,6 +4,9 @@
   "type": "registry:component",
   "title": "Custom Badge",
   "description": "A customizable badge component with color and style options.",
+  "dependencies": [
+    "tailwind-variants"
+  ],
   "files": [
     {
       "path": "registry/new-york/custom-badge/CustomBadge.tsx",

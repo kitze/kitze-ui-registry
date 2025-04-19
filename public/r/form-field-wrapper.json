@@ -5,10 +5,16 @@
   "title": "Form Field Wrapper",
   "description": "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
   "registryDependencies": [
-    "form"
+    "form",
+    "button",
+    "card",
+    "https://ui.kitze.io/r/form-field-input.json",
+    "https://ui.kitze.io/r/form-debug.json"
   ],
   "dependencies": [
-    "react-hook-form"
+    "react-hook-form",
+    "@hookform/resolvers/zod",
+    "zod"
   ],
   "files": [
     {

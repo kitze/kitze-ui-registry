@@ -10,7 +10,7 @@ const config: ComponentConfig = {
   dependencies: {
     npm: ["react-hook-form"],
     linked: ["form-field-wrapper"],
-    shad: ["checkbox"],
+    shad: ["checkbox", "label"],
   },
 
   files: [

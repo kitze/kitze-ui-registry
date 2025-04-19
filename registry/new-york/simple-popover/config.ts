@@ -9,6 +9,8 @@ const config: ComponentConfig = {
 
   dependencies: {
     shad: ["popover"],
+    linked: ["kitze-ui-context", "bottom-drawer"],
+    hooks: ["useControlledOpen"],
   },
 
   files: [

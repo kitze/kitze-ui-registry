@@ -9,6 +9,7 @@ const config: ComponentConfig = {
   dependencies: {
     linked: ["custom-button", "bottom-drawer"],
     hooks: ["useScrolledPast"],
+    npm: ["lucide-react"],
   },
 
   files: [

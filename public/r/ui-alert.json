@@ -7,6 +7,9 @@
   "registryDependencies": [
     "alert-dialog"
   ],
+  "dependencies": [
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "registry/new-york/ui-alert/Alert.tsx",

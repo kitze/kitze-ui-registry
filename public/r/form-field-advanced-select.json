@@ -9,10 +9,7 @@
     "https://ui.kitze.io/r/advanced-select.json"
   ],
   "dependencies": [
-    "react-hook-form",
-    "class-variance-authority",
-    "cmdk",
-    "lucide-react"
+    "react-hook-form"
   ],
   "files": [
     {

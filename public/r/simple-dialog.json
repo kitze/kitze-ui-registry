@@ -7,16 +7,12 @@
   "registryDependencies": [
     "dialog",
     "https://ui.kitze.io/r/bottom-drawer.json",
-    "https://ui.kitze.io/r/custom-button.json"
+    "https://ui.kitze.io/r/custom-button.json",
+    "https://ui.kitze.io/r/kitze-ui-context.json"
   ],
   "dependencies": [
-    "next",
-    "react",
-    "react-dom",
-    "tailwindcss",
-    "clsx",
-    "tailwind-merge",
-    "@radix-ui/react-dialog"
+    "@radix-ui/react-dialog",
+    "lucide-react"
   ],
   "files": [
     {

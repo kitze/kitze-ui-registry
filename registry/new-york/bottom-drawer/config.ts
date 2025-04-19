@@ -8,8 +8,8 @@ const config: ComponentConfig = {
     "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant.",
 
   dependencies: {
-    npm: ["vaul", "framer-motion"],
-    linked: ["simple-dropdown-menu", "kitze-ui-context"],
+    npm: ["vaul", "framer-motion", "lucide-react"],
+    linked: ["help-info-circle", "menu-context"],
     hooks: ["useControlledOpen"],
   },
 

@@ -5,14 +5,16 @@
   "title": "Simple Context Menu",
   "description": "A simple context menu component that wraps content with right-click menu functionality",
   "registryDependencies": [
-    "https://ui.kitze.io/r/simple-tooltip.json",
-    "https://ui.kitze.io/r/simple-dropdown-menu.json",
+    "context-menu",
+    "dropdown-menu",
+    "tooltip",
     "https://ui.kitze.io/r/bottom-drawer.json",
     "https://ui.kitze.io/r/menu-context.json",
     "https://ui.kitze.io/r/kitze-ui-context.json"
   ],
   "dependencies": [
-    "use-long-press"
+    "use-long-press",
+    "lucide-react"
   ],
   "files": [
     {

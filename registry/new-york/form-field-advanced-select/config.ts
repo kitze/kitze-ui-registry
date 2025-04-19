@@ -8,12 +8,7 @@ const config: ComponentConfig = {
     "A form field component that integrates the AdvancedSelect with form handling capabilities",
 
   dependencies: {
-    npm: [
-      "react-hook-form",
-      "class-variance-authority",
-      "cmdk",
-      "lucide-react",
-    ],
+    npm: ["react-hook-form"],
     linked: ["form-field-wrapper", "advanced-select"],
   },
 

@@ -8,7 +8,7 @@ const config: ComponentConfig = {
     "A customizable button component with various styles, sizes, and features like loading state and icon support",
 
   dependencies: {
-    npm: ["class-variance-authority"],
+    npm: ["tailwind-variants"],
     linked: ["conditional-tooltip", "spinner"],
     hooks: ["useLinkableComponent"],
   },

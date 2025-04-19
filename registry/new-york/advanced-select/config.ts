@@ -8,7 +8,7 @@ const config: ComponentConfig = {
     "A multi-select component with search capabilities, multiple selection as badges, and animations",
 
   dependencies: {
-    npm: ["class-variance-authority", "cmdk", "lucide-react"],
+    npm: ["lucide-react", "framer-motion"],
     shad: ["popover", "command", "separator", "badge", "button"],
   },
 

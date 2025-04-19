@@ -6,11 +6,15 @@
   "description": "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile",
   "registryDependencies": [
     "dropdown-menu",
-    "https://ui.kitze.io/r/simple-tooltip.json",
+    "context-menu",
     "https://ui.kitze.io/r/bottom-drawer.json",
     "https://ui.kitze.io/r/kitze-ui-context.json",
     "https://ui.kitze.io/r/menu-context.json",
-    "https://ui.kitze.io/r/ui-alert.json"
+    "https://ui.kitze.io/r/ui-alert.json",
+    "https://ui.kitze.io/r/help-info-circle.json"
+  ],
+  "dependencies": [
+    "lucide-react"
   ],
   "files": [
     {

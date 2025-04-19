@@ -12,9 +12,8 @@
     "button"
   ],
   "dependencies": [
-    "class-variance-authority",
-    "cmdk",
-    "lucide-react"
+    "lucide-react",
+    "framer-motion"
   ],
   "files": [
     {

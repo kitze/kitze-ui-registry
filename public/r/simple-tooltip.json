@@ -5,7 +5,13 @@
   "title": "Simple Tooltip",
   "description": "A simplified tooltip component built on top of Radix UI tooltip",
   "registryDependencies": [
-    "tooltip"
+    "tooltip",
+    "popover",
+    "https://ui.kitze.io/r/kitze-ui-context.json",
+    "https://ui.kitze.io/r/bottom-drawer.json"
+  ],
+  "dependencies": [
+    "@radix-ui/react-tooltip"
   ],
   "files": [
     {

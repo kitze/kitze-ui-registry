@@ -4,9 +4,6 @@
   "type": "registry:component",
   "title": "Kitze UI Context",
   "description": "Provides UI context like mobile detection for Kitze UI components.",
-  "registryDependencies": [
-    "https://ui.kitze.io/r/ui-alert.json"
-  ],
   "files": [
     {
       "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",

@@ -8,18 +8,10 @@ const config: ComponentConfig = {
 
   // NPM dependencies
   dependencies: {
-    npm: [
-      "next",
-      "react",
-      "react-dom",
-      "tailwindcss",
-      "clsx",
-      "tailwind-merge",
-      "@radix-ui/react-dialog",
-    ],
+    npm: ["@radix-ui/react-dialog", "lucide-react"],
     shad: ["dialog"],
     hooks: ["useControlledOpen"],
-    linked: ["bottom-drawer", "custom-button"],
+    linked: ["bottom-drawer", "custom-button", "kitze-ui-context"],
   },
   files: [
     {

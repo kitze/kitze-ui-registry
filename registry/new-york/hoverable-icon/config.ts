@@ -7,7 +7,7 @@ const config: ComponentConfig = {
   description:
     "A linkable icon component with tooltip support, hover effects, and color customization",
   dependencies: {
-    npm: ["lucide-react"],
+    npm: ["lucide-react", "next/link"],
     linked: ["conditional-tooltip"],
     hooks: ["useLinkableComponent"],
   },

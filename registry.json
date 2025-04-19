@@ -25,6 +25,9 @@
       "type": "registry:component",
       "title": "UI Alert",
       "description": "A collection of alert components with confirm and delete variations",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/ui-alert/Alert.tsx",
@@ -99,6 +102,11 @@
           "path": "registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
           "type": "registry:component",
           "target": "components/ThemeSwitchMinimalNextThemes.tsx"
+        },
+        {
+          "path": "registry/hooks/useMounted.ts",
+          "type": "registry:hook",
+          "target": "hooks/useMounted.ts"
         }
       ]
     },
@@ -120,18 +128,31 @@
       ]
     },
     {
-      "name": "tab-panels",
+      "name": "suspensed",
       "type": "registry:component",
-      "title": "Tab Panels",
-      "description": "A component to display content in tabs using a segmented control.",
+      "title": "Suspensed",
+      "description": "A wrapper component for React Suspense with force option",
+      "files": [
+        {
+          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "type": "registry:component",
+          "target": "components/Suspensed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
       "dependencies": [
-        "framer-motion"
+        "@radix-ui/react-tooltip"
       ],
       "files": [
         {
-          "path": "registry/new-york/tab-panels/TabPanels.tsx",
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component",
-          "target": "components/TabPanels.tsx"
+          "target": "components/SimpleTooltip.tsx"
         }
       ]
     },
@@ -152,15 +173,37 @@
       ]
     },
     {
-      "name": "suspensed",
+      "name": "tab-panels",
       "type": "registry:component",
-      "title": "Suspensed",
-      "description": "A wrapper component for React Suspense with force option",
+      "title": "Tab Panels",
+      "description": "A component to display content in tabs using a segmented control.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/new-york/suspensed/Suspensed.tsx",
+          "path": "registry/new-york/tab-panels/TabPanels.tsx",
           "type": "registry:component",
-          "target": "components/Suspensed.tsx"
+          "target": "components/TabPanels.tsx"
+        }
+      ]
+    },
+    {
+      "name": "simple-popover",
+      "type": "registry:component",
+      "title": "Simple Popover",
+      "description": "A simple popover component that displays content when triggered.",
+      "files": [
+        {
+          "path": "registry/new-york/simple-popover/index.tsx",
+          "type": "registry:component",
+          "target": "components/index.tsx"
+        },
+        {
+          "path": "registry/hooks/useControlledOpen.ts",
+          "type": "registry:hook",
+          "target": "hooks/useControlledOpen.ts"
         }
       ]
     },
@@ -182,19 +225,11 @@
           "path": "registry/new-york/simple-select/SimpleSelectBottomDrawerMenu.tsx",
           "type": "registry:component",
           "target": "components/SimpleSelectBottomDrawerMenu.tsx"
-        }
-      ]
-    },
-    {
-      "name": "simple-tooltip",
-      "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "files": [
+        },
         {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
-          "type": "registry:component",
-          "target": "components/SimpleTooltip.tsx"
+          "path": "registry/hooks/useControlledOpen.ts",
+          "type": "registry:hook",
+          "target": "hooks/useControlledOpen.ts"
         }
       ]
     },
@@ -203,6 +238,9 @@
       "type": "registry:component",
       "title": "Simple Dropdown Menu",
       "description": "A simplified dropdown menu component with click triggering and common components, including a responsive version for mobile",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/simple-dropdown-menu/SimpleDropdownMenu.tsx",
@@ -262,13 +300,8 @@
       "title": "Simple Dialog",
       "description": "A simple dialog component using Radix UI.",
       "dependencies": [
-        "next",
-        "react",
-        "react-dom",
-        "tailwindcss",
-        "clsx",
-        "tailwind-merge",
-        "@radix-ui/react-dialog"
+        "@radix-ui/react-dialog",
+        "lucide-react"
       ],
       "files": [
         {
@@ -289,7 +322,8 @@
       "title": "Simple Context Menu",
       "description": "A simple context menu component that wraps content with right-click menu functionality",
       "dependencies": [
-        "use-long-press"
+        "use-long-press",
+        "lucide-react"
       ],
       "files": [
         {
@@ -324,19 +358,6 @@
           "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component",
           "target": "components/SimpleAccordion.tsx"
-        }
-      ]
-    },
-    {
-      "name": "simple-popover",
-      "type": "registry:component",
-      "title": "Simple Popover",
-      "description": "A simple popover component that displays content when triggered.",
-      "files": [
-        {
-          "path": "registry/new-york/simple-popover/index.tsx",
-          "type": "registry:component",
-          "target": "components/index.tsx"
         }
       ]
     },
@@ -378,6 +399,9 @@
       "type": "registry:component",
       "title": "Page Header",
       "description": "A responsive page header component with mobile drawer support",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/new-york/page-header/PageHeader.tsx",
@@ -418,6 +442,20 @@
       ]
     },
     {
+      "name": "kbd-shortcuts-list",
+      "type": "registry:component",
+      "title": "Keyboard Shortcuts List",
+      "description": "A component for displaying a list of keyboard shortcuts with labels",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/kbd-shortcuts-list/KbdShortcutsList.tsx",
+          "type": "registry:component",
+          "target": "components/KbdShortcutsList.tsx"
+        }
+      ]
+    },
+    {
       "name": "kbd-shortcuts",
       "type": "registry:component",
       "title": "Keyboard Shortcuts",
@@ -428,6 +466,19 @@
           "path": "registry/new-york/kbd-shortcuts/KbdShortcuts.tsx",
           "type": "registry:component",
           "target": "components/KbdShortcuts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
+      "files": [
+        {
+          "path": "registry/new-york/input/Input.tsx",
+          "type": "registry:component",
+          "target": "components/Input.tsx"
         }
       ]
     },
@@ -451,7 +502,8 @@
       "title": "Hoverable Icon",
       "description": "A linkable icon component with tooltip support, hover effects, and color customization",
       "dependencies": [
-        "lucide-react"
+        "lucide-react",
+        "next/link"
       ],
       "files": [
         {
@@ -463,34 +515,6 @@
           "path": "registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook",
           "target": "hooks/useLinkableComponent.ts"
-        }
-      ]
-    },
-    {
-      "name": "input",
-      "type": "registry:component",
-      "title": "Input",
-      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/input/Input.tsx",
-          "type": "registry:component",
-          "target": "components/Input.tsx"
-        }
-      ]
-    },
-    {
-      "name": "kbd-shortcuts-list",
-      "type": "registry:component",
-      "title": "Keyboard Shortcuts List",
-      "description": "A component for displaying a list of keyboard shortcuts with labels",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/kbd-shortcuts-list/KbdShortcutsList.tsx",
-          "type": "registry:component",
-          "target": "components/KbdShortcutsList.tsx"
         }
       ]
     },
@@ -525,31 +549,36 @@
       ]
     },
     {
-      "name": "full-page-spinner",
-      "type": "registry:component",
-      "title": "Full Page Spinner",
-      "description": "A spinner component that takes full page size and centers itself in the viewport",
-      "files": [
-        {
-          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
-          "type": "registry:component",
-          "target": "components/FullPageSpinner.tsx"
-        }
-      ]
-    },
-    {
       "name": "form-field-wrapper",
       "type": "registry:component",
       "title": "Form Field Wrapper",
       "description": "A wrapper component for react-hook-form fields providing consistent label, description, and error message handling.",
       "dependencies": [
-        "react-hook-form"
+        "react-hook-form",
+        "@hookform/resolvers/zod",
+        "zod"
       ],
       "files": [
         {
           "path": "registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
           "type": "registry:component",
           "target": "components/FormFieldWrapper.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-field-textarea",
+      "type": "registry:component",
+      "title": "Form Field Textarea",
+      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
+          "type": "registry:component",
+          "target": "components/FormFieldTextarea.tsx"
         }
       ]
     },
@@ -623,10 +652,7 @@
       "title": "Form Field Advanced Select",
       "description": "A form field component that integrates the AdvancedSelect with form handling capabilities",
       "dependencies": [
-        "react-hook-form",
-        "class-variance-authority",
-        "cmdk",
-        "lucide-react"
+        "react-hook-form"
       ],
       "files": [
         {
@@ -637,39 +663,15 @@
       ]
     },
     {
-      "name": "form-field-textarea",
+      "name": "fill-height-spinner",
       "type": "registry:component",
-      "title": "Form Field Textarea",
-      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
-      "dependencies": [
-        "react-hook-form"
-      ],
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
       "files": [
         {
-          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
           "type": "registry:component",
-          "target": "components/FormFieldTextarea.tsx"
-        }
-      ]
-    },
-    {
-      "name": "custom-button",
-      "type": "registry:component",
-      "title": "Custom Button",
-      "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
-      "dependencies": [
-        "class-variance-authority"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/custom-button/CustomButton.tsx",
-          "type": "registry:component",
-          "target": "components/CustomButton.tsx"
-        },
-        {
-          "path": "registry/hooks/useLinkableComponent.ts",
-          "type": "registry:hook",
-          "target": "hooks/useLinkableComponent.ts"
+          "target": "components/FillHeightSpinner.tsx"
         }
       ]
     },
@@ -687,10 +689,47 @@
       ]
     },
     {
+      "name": "custom-button",
+      "type": "registry:component",
+      "title": "Custom Button",
+      "description": "A customizable button component with various styles, sizes, and features like loading state and icon support",
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/custom-button/CustomButton.tsx",
+          "type": "registry:component",
+          "target": "components/CustomButton.tsx"
+        },
+        {
+          "path": "registry/hooks/useLinkableComponent.ts",
+          "type": "registry:hook",
+          "target": "hooks/useLinkableComponent.ts"
+        }
+      ]
+    },
+    {
+      "name": "conditional-wrap",
+      "type": "registry:component",
+      "title": "Conditional Wrap",
+      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
+          "type": "registry:component",
+          "target": "components/ConditionalWrap.tsx"
+        }
+      ]
+    },
+    {
       "name": "custom-badge",
       "type": "registry:component",
       "title": "Custom Badge",
       "description": "A customizable badge component with color and style options.",
+      "dependencies": [
+        "tailwind-variants"
+      ],
       "files": [
         {
           "path": "registry/new-york/custom-badge/CustomBadge.tsx",
@@ -719,7 +758,8 @@
       "description": "A mobile-friendly bottom drawer component built on top of Vaul, including a menu variant.",
       "dependencies": [
         "vaul",
-        "framer-motion"
+        "framer-motion",
+        "lucide-react"
       ],
       "files": [
         {
@@ -755,46 +795,32 @@
       ]
     },
     {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component",
-          "target": "components/FillHeightSpinner.tsx"
-        }
-      ]
-    },
-    {
-      "name": "conditional-wrap",
-      "type": "registry:component",
-      "title": "Conditional Wrap",
-      "description": "A utility component that conditionally wraps its children with a wrapper component. Useful for conditional wrappers like tooltips, links, popovers, drag handlers, etc.",
-      "files": [
-        {
-          "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
-          "type": "registry:component",
-          "target": "components/ConditionalWrap.tsx"
-        }
-      ]
-    },
-    {
       "name": "advanced-select",
       "type": "registry:component",
       "title": "Advanced Select",
       "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
       "dependencies": [
-        "class-variance-authority",
-        "cmdk",
-        "lucide-react"
+        "lucide-react",
+        "framer-motion"
       ],
       "files": [
         {
           "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
           "type": "registry:component",
           "target": "components/AdvancedSelect.tsx"
+        }
+      ]
+    },
+    {
+      "name": "full-page-spinner",
+      "type": "registry:component",
+      "title": "Full Page Spinner",
+      "description": "A spinner component that takes full page size and centers itself in the viewport",
+      "files": [
+        {
+          "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+          "type": "registry:component",
+          "target": "components/FullPageSpinner.tsx"
         }
       ]
     }
