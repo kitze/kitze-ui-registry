@@ -119,11 +119,11 @@ function getTargetDirectory(fileType: string): string | undefined {
   switch (fileType) {
     case "registry:component":
     case "registry:ui": // Assuming UI components also go into 'components'
-      return "@/components";
+      return "components";
     case "registry:hook":
-      return "@/hooks";
+      return "hooks";
     case "registry:lib":
-      return "@/lib";
+      return "lib";
     default:
       return undefined; // No specific target for other types
   }
