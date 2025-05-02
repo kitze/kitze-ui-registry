@@ -12,13 +12,13 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/search-bar/SearchBar.tsx",
       "type": "registry:component",
       "content": "import React, { useRef, useEffect, memo } from \"react\";\nimport { Search, X } from \"lucide-react\";\n\nexport interface SearchBarProps {\n  value: string;\n  onChange: (value: string) => void;\n  placeholder?: string;\n  onClose?: () => void;\n  onForceClose?: () => void;\n  autoFocus?: boolean;\n}\n\nexport const SearchBar = memo(\n  ({\n    value,\n    onChange,\n    placeholder = \"Search...\",\n    onClose,\n    onForceClose,\n    autoFocus = false,\n  }: SearchBarProps) => {\n    const inputRef = useRef<HTMLInputElement>(null);\n\n    useEffect(() => {\n      if (autoFocus && inputRef.current) {\n        inputRef.current.focus();\n      }\n    }, [autoFocus]);\n\n    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n      onChange(e.target.value);\n    };\n\n    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {\n      if (e.key === \"Escape\") {\n        e.preventDefault();\n        if (onForceClose) {\n          onForceClose();\n        }\n      }\n    };\n\n    const handleClear = () => {\n      onChange(\"\");\n      if (inputRef.current) {\n        inputRef.current.focus();\n      }\n    };\n\n    return (\n      <div className=\"relative w-full\">\n        <div className=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-muted-foreground\">\n          <Search className=\"w-4 h-4\" />\n        </div>\n        <input\n          ref={inputRef}\n          type=\"text\"\n          value={value}\n          onChange={handleChange}\n          onKeyDown={handleKeyDown}\n          placeholder={placeholder}\n          onBlur={() => onClose && onClose()}\n          className=\"w-full pl-10 pr-10 py-2 text-sm bg-background border border-input rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring\"\n          aria-label=\"Search\"\n        />\n        {value && (\n          <button\n            type=\"button\"\n            onClick={handleClear}\n            className=\"absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground hover:text-foreground transition-colors\"\n            aria-label=\"Clear search\"\n          >\n            <X className=\"w-4 h-4\" />\n          </button>\n        )}\n      </div>\n    );\n  }\n);\n",
-      "target": "@components/SearchBar.tsx"
+      "target": "@/components/SearchBar.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "@lib/types.ts"
+      "target": "@/lib/types.ts"
     }
   ]
 }

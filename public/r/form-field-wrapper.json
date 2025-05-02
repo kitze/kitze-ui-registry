@@ -20,13 +20,13 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
       "type": "registry:component",
       "content": "import React from \"react\";\nimport {\n  useFormContext,\n  FieldValues,\n  FieldPath,\n  ControllerRenderProps,\n} from \"react-hook-form\";\nimport {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/components/ui/form\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface FormFieldWrapperProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> {\n  name: TName;\n  label?: React.ReactNode;\n  renderLabel?: () => React.ReactNode;\n  description?: React.ReactNode;\n  className?: string;\n  required?: boolean;\n  defaultValue?: any; // Consider making this more specific if needed\n  children: (\n    field: ControllerRenderProps<TFieldValues, TName>\n  ) => React.ReactNode;\n}\n\nexport function FormFieldWrapper<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  name,\n  label,\n  renderLabel,\n  description,\n  className,\n  required,\n  defaultValue,\n  children,\n}: FormFieldWrapperProps<TFieldValues, TName>) {\n  const form = useFormContext<TFieldValues>();\n\n  return (\n    <FormField\n      control={form.control}\n      name={name}\n      defaultValue={defaultValue}\n      render={({ field }) => (\n        <FormItem className={cn(\"flex flex-col gap-0\", className)}>\n          {renderLabel ? (\n            renderLabel()\n          ) : label ? (\n            <FormLabel>\n              {label}\n              {required && <span className=\"text-destructive ml-1\">*</span>}\n            </FormLabel>\n          ) : null}\n          <FormControl>{children(field)}</FormControl>\n          {description && <FormDescription>{description}</FormDescription>}\n          <FormMessage />\n        </FormItem>\n      )}\n    />\n  );\n}\n",
-      "target": "@components/FormFieldWrapper.tsx"
+      "target": "@/components/FormFieldWrapper.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "@lib/types.ts"
+      "target": "@/lib/types.ts"
     }
   ]
 }

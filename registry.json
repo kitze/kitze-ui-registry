@@ -16,7 +16,7 @@
         {
           "path": "registry/new-york/with-search-bar/WithSearchBar.tsx",
           "type": "registry:component",
-          "target": "@components/WithSearchBar.tsx"
+          "target": "@/components/WithSearchBar.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -36,22 +36,22 @@
         {
           "path": "registry/new-york/ui-alert/Alert.tsx",
           "type": "registry:component",
-          "target": "@components/Alert.tsx"
+          "target": "@/components/Alert.tsx"
         },
         {
           "path": "registry/new-york/ui-alert/ConfirmAlert.tsx",
           "type": "registry:component",
-          "target": "@components/ConfirmAlert.tsx"
+          "target": "@/components/ConfirmAlert.tsx"
         },
         {
           "path": "registry/new-york/ui-alert/ConfirmAlertDelete.tsx",
           "type": "registry:component",
-          "target": "@components/ConfirmAlertDelete.tsx"
+          "target": "@/components/ConfirmAlertDelete.tsx"
         },
         {
           "path": "registry/new-york/ui-alert/AlertContext.tsx",
           "type": "registry:component",
-          "target": "@components/AlertContext.tsx"
+          "target": "@/components/AlertContext.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -71,12 +71,12 @@
         {
           "path": "registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes.tsx",
           "type": "registry:component",
-          "target": "@components/ThemeSwitchNextThemes.tsx"
+          "target": "@/components/ThemeSwitchNextThemes.tsx"
         },
         {
           "path": "registry/hooks/useMounted.ts",
           "type": "registry:hook",
-          "target": "@hooks/useMounted.ts"
+          "target": "@/hooks/useMounted.ts"
         },
         {
           "path": "lib/types.ts",
@@ -97,7 +97,7 @@
         {
           "path": "registry/new-york/theme-switch-slider/ThemeSwitchSlider.tsx",
           "type": "registry:component",
-          "target": "@components/ThemeSwitchSlider.tsx"
+          "target": "@/components/ThemeSwitchSlider.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -117,12 +117,12 @@
         {
           "path": "registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
           "type": "registry:component",
-          "target": "@components/ThemeSwitchMinimalNextThemes.tsx"
+          "target": "@/components/ThemeSwitchMinimalNextThemes.tsx"
         },
         {
           "path": "registry/hooks/useMounted.ts",
           "type": "registry:hook",
-          "target": "@hooks/useMounted.ts"
+          "target": "@/hooks/useMounted.ts"
         },
         {
           "path": "lib/types.ts",
@@ -143,7 +143,7 @@
         {
           "path": "registry/new-york/theme-switch-minimal/ThemeSwitchMinimal.tsx",
           "type": "registry:component",
-          "target": "@components/ThemeSwitchMinimal.tsx"
+          "target": "@/components/ThemeSwitchMinimal.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -164,7 +164,7 @@
         {
           "path": "registry/new-york/tab-panels/TabPanels.tsx",
           "type": "registry:component",
-          "target": "@components/TabPanels.tsx"
+          "target": "@/components/TabPanels.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -181,7 +181,7 @@
         {
           "path": "registry/new-york/suspensed/Suspensed.tsx",
           "type": "registry:component",
-          "target": "@components/Suspensed.tsx"
+          "target": "@/components/Suspensed.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -201,37 +201,7 @@
         {
           "path": "registry/new-york/spinner/Spinner.tsx",
           "type": "registry:component",
-          "target": "@components/Spinner.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "simple-select",
-      "type": "registry:component",
-      "title": "Simple Select",
-      "description": "A simplified select component that accepts an array of options with value, label, and search functionality",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-select/SimpleSelect.tsx",
-          "type": "registry:component",
-          "target": "@components/SimpleSelect.tsx"
-        },
-        {
-          "path": "registry/new-york/simple-select/SimpleSelectBottomDrawerMenu.tsx",
-          "type": "registry:component",
-          "target": "@components/SimpleSelectBottomDrawerMenu.tsx"
-        },
-        {
-          "path": "registry/hooks/useControlledOpen.ts",
-          "type": "registry:hook",
-          "target": "@hooks/useControlledOpen.ts"
+          "target": "@/components/Spinner.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -251,7 +221,7 @@
         {
           "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component",
-          "target": "@components/SimpleTooltip.tsx"
+          "target": "@/components/SimpleTooltip.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -268,12 +238,42 @@
         {
           "path": "registry/new-york/simple-popover/index.tsx",
           "type": "registry:component",
-          "target": "@components/index.tsx"
+          "target": "@/components/index.tsx"
         },
         {
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
-          "target": "@hooks/useControlledOpen.ts"
+          "target": "@/hooks/useControlledOpen.ts"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "simple-select",
+      "type": "registry:component",
+      "title": "Simple Select",
+      "description": "A simplified select component that accepts an array of options with value, label, and search functionality",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-select/SimpleSelect.tsx",
+          "type": "registry:component",
+          "target": "@/components/SimpleSelect.tsx"
+        },
+        {
+          "path": "registry/new-york/simple-select/SimpleSelectBottomDrawerMenu.tsx",
+          "type": "registry:component",
+          "target": "@/components/SimpleSelectBottomDrawerMenu.tsx"
+        },
+        {
+          "path": "registry/hooks/useControlledOpen.ts",
+          "type": "registry:hook",
+          "target": "@/hooks/useControlledOpen.ts"
         },
         {
           "path": "lib/types.ts",
@@ -293,52 +293,52 @@
         {
           "path": "registry/new-york/simple-dropdown-menu/SimpleDropdownMenu.tsx",
           "type": "registry:component",
-          "target": "@components/SimpleDropdownMenu.tsx"
+          "target": "@/components/SimpleDropdownMenu.tsx"
         },
         {
           "path": "registry/new-york/simple-dropdown-menu/ResponsiveDropdownMenu.tsx",
           "type": "registry:component",
-          "target": "@components/ResponsiveDropdownMenu.tsx"
+          "target": "@/components/ResponsiveDropdownMenu.tsx"
         },
         {
           "path": "registry/new-york/simple-dropdown-menu/CommonMenuItem.tsx",
           "type": "registry:component",
-          "target": "@components/CommonMenuItem.tsx"
+          "target": "@/components/CommonMenuItem.tsx"
         },
         {
           "path": "registry/new-york/simple-dropdown-menu/CommonMenuItemEdit.tsx",
           "type": "registry:component",
-          "target": "@components/CommonMenuItemEdit.tsx"
+          "target": "@/components/CommonMenuItemEdit.tsx"
         },
         {
           "path": "registry/new-york/simple-dropdown-menu/CommonMenuItemDelete.tsx",
           "type": "registry:component",
-          "target": "@components/CommonMenuItemDelete.tsx"
+          "target": "@/components/CommonMenuItemDelete.tsx"
         },
         {
           "path": "registry/new-york/simple-dropdown-menu/CommonMenuLabel.tsx",
           "type": "registry:component",
-          "target": "@components/CommonMenuLabel.tsx"
+          "target": "@/components/CommonMenuLabel.tsx"
         },
         {
           "path": "registry/new-york/simple-dropdown-menu/CommonMenuSeparator.tsx",
           "type": "registry:component",
-          "target": "@components/CommonMenuSeparator.tsx"
+          "target": "@/components/CommonMenuSeparator.tsx"
         },
         {
           "path": "registry/new-york/simple-dropdown-menu/CommonMenuGroup.tsx",
           "type": "registry:component",
-          "target": "@components/CommonMenuGroup.tsx"
+          "target": "@/components/CommonMenuGroup.tsx"
         },
         {
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
-          "target": "@hooks/useControlledOpen.ts"
+          "target": "@/hooks/useControlledOpen.ts"
         },
         {
           "path": "registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook",
-          "target": "@hooks/useLinkableComponent.ts"
+          "target": "@/hooks/useLinkableComponent.ts"
         },
         {
           "path": "lib/types.ts",
@@ -359,12 +359,29 @@
         {
           "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
           "type": "registry:component",
-          "target": "@components/SimpleDialog.tsx"
+          "target": "@/components/SimpleDialog.tsx"
         },
         {
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
-          "target": "@hooks/useControlledOpen.ts"
+          "target": "@/hooks/useControlledOpen.ts"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "simple-accordion",
+      "type": "registry:component",
+      "title": "Simple Accordion",
+      "description": "A simple accordion component",
+      "files": [
+        {
+          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
+          "type": "registry:component",
+          "target": "@/components/SimpleAccordion.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -385,22 +402,22 @@
         {
           "path": "registry/new-york/simple-context-menu/SimpleContextMenu.tsx",
           "type": "registry:component",
-          "target": "@components/SimpleContextMenu.tsx"
+          "target": "@/components/SimpleContextMenu.tsx"
         },
         {
           "path": "registry/new-york/simple-context-menu/ResponsiveContextMenu.tsx",
           "type": "registry:component",
-          "target": "@components/ResponsiveContextMenu.tsx"
+          "target": "@/components/ResponsiveContextMenu.tsx"
         },
         {
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
-          "target": "@hooks/useControlledOpen.ts"
+          "target": "@/hooks/useControlledOpen.ts"
         },
         {
           "path": "registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook",
-          "target": "@hooks/useLinkableComponent.ts"
+          "target": "@/hooks/useLinkableComponent.ts"
         },
         {
           "path": "lib/types.ts",
@@ -421,7 +438,7 @@
         {
           "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
           "type": "registry:component",
-          "target": "@components/SegmentedControl.tsx"
+          "target": "@/components/SegmentedControl.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -441,7 +458,7 @@
         {
           "path": "registry/new-york/search-bar/SearchBar.tsx",
           "type": "registry:component",
-          "target": "@components/SearchBar.tsx"
+          "target": "@/components/SearchBar.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -459,7 +476,7 @@
         {
           "path": "registry/new-york/responsive-select-bottom-drawer-menu/ResponsiveSelectBottomDrawerMenu.tsx",
           "type": "registry:component",
-          "target": "@components/ResponsiveSelectBottomDrawerMenu.tsx"
+          "target": "@/components/ResponsiveSelectBottomDrawerMenu.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -479,29 +496,12 @@
         {
           "path": "registry/new-york/page-header/PageHeader.tsx",
           "type": "registry:component",
-          "target": "@components/PageHeader.tsx"
+          "target": "@/components/PageHeader.tsx"
         },
         {
           "path": "registry/hooks/useScrolledPast.ts",
           "type": "registry:hook",
-          "target": "@hooks/useScrolledPast.ts"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "simple-accordion",
-      "type": "registry:component",
-      "title": "Simple Accordion",
-      "description": "A simple accordion component",
-      "files": [
-        {
-          "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
-          "type": "registry:component",
-          "target": "@components/SimpleAccordion.tsx"
+          "target": "@/hooks/useScrolledPast.ts"
         },
         {
           "path": "lib/types.ts",
@@ -518,7 +518,7 @@
         {
           "path": "registry/new-york/menu-context/MenuContext.tsx",
           "type": "registry:component",
-          "target": "@components/MenuContext.tsx"
+          "target": "@/components/MenuContext.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -535,7 +535,7 @@
         {
           "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
           "type": "registry:component",
-          "target": "@components/KitzeUIContext.tsx"
+          "target": "@/components/KitzeUIContext.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -553,7 +553,7 @@
         {
           "path": "registry/new-york/kbd-shortcuts-list/KbdShortcutsList.tsx",
           "type": "registry:component",
-          "target": "@components/KbdShortcutsList.tsx"
+          "target": "@/components/KbdShortcutsList.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -571,25 +571,7 @@
         {
           "path": "registry/new-york/kbd-shortcuts/KbdShortcuts.tsx",
           "type": "registry:component",
-          "target": "@components/KbdShortcuts.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "kbd",
-      "type": "registry:component",
-      "title": "Keyboard Shortcut",
-      "description": "A keyboard shortcut display component for showing key combinations",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/kbd/Kbd.tsx",
-          "type": "registry:component",
-          "target": "@components/Kbd.tsx"
+          "target": "@/components/KbdShortcuts.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -606,7 +588,51 @@
         {
           "path": "registry/new-york/input/Input.tsx",
           "type": "registry:component",
-          "target": "@components/Input.tsx"
+          "target": "@/components/Input.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "hoverable-icon",
+      "type": "registry:component",
+      "title": "Hoverable Icon",
+      "description": "A linkable icon component with tooltip support, hover effects, and color customization",
+      "dependencies": [
+        "lucide-react",
+        "next/link"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/hoverable-icon/HoverableIcon.tsx",
+          "type": "registry:component",
+          "target": "@/components/HoverableIcon.tsx"
+        },
+        {
+          "path": "registry/hooks/useLinkableComponent.ts",
+          "type": "registry:hook",
+          "target": "@/hooks/useLinkableComponent.ts"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:component",
+      "title": "Gradient Text",
+      "description": "A text component with animated gradient effects",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/gradient-text/GradientText.tsx",
+          "type": "registry:component",
+          "target": "@/components/GradientText.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -626,25 +652,7 @@
         {
           "path": "registry/new-york/help-info-circle/HelpInfoCircle.tsx",
           "type": "registry:component",
-          "target": "@components/HelpInfoCircle.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "gradient-text",
-      "type": "registry:component",
-      "title": "Gradient Text",
-      "description": "A text component with animated gradient effects",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/gradient-text/GradientText.tsx",
-          "type": "registry:component",
-          "target": "@components/GradientText.tsx"
+          "target": "@/components/HelpInfoCircle.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -661,7 +669,7 @@
         {
           "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component",
-          "target": "@components/FullPageSpinner.tsx"
+          "target": "@/components/FullPageSpinner.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -683,27 +691,7 @@
         {
           "path": "registry/new-york/form-field-wrapper/FormFieldWrapper.tsx",
           "type": "registry:component",
-          "target": "@components/FormFieldWrapper.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "form-field-textarea",
-      "type": "registry:component",
-      "title": "Form Field Textarea",
-      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
-          "type": "registry:component",
-          "target": "@components/FormFieldTextarea.tsx"
+          "target": "@/components/FormFieldWrapper.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -723,7 +711,27 @@
         {
           "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
           "type": "registry:component",
-          "target": "@components/FormFieldSelect.tsx"
+          "target": "@/components/FormFieldSelect.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "form-field-textarea",
+      "type": "registry:component",
+      "title": "Form Field Textarea",
+      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
+          "type": "registry:component",
+          "target": "@/components/FormFieldTextarea.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -743,7 +751,7 @@
         {
           "path": "registry/new-york/form-field-segmented-control/FormFieldSegmentedControl.tsx",
           "type": "registry:component",
-          "target": "@components/FormFieldSegmentedControl.tsx"
+          "target": "@/components/FormFieldSegmentedControl.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -763,7 +771,7 @@
         {
           "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
           "type": "registry:component",
-          "target": "@components/FormFieldInput.tsx"
+          "target": "@/components/FormFieldInput.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -783,70 +791,7 @@
         {
           "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
           "type": "registry:component",
-          "target": "@components/FormFieldCheckbox.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "hoverable-icon",
-      "type": "registry:component",
-      "title": "Hoverable Icon",
-      "description": "A linkable icon component with tooltip support, hover effects, and color customization",
-      "dependencies": [
-        "lucide-react",
-        "next/link"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/hoverable-icon/HoverableIcon.tsx",
-          "type": "registry:component",
-          "target": "@components/HoverableIcon.tsx"
-        },
-        {
-          "path": "registry/hooks/useLinkableComponent.ts",
-          "type": "registry:hook",
-          "target": "@hooks/useLinkableComponent.ts"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "form-debug",
-      "type": "registry:component",
-      "title": "Form Debug",
-      "description": "A component to display react-hook-form state for debugging purposes.",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-debug/FormDebug.tsx",
-          "type": "registry:component",
-          "target": "@components/FormDebug.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component",
-          "target": "@components/FillHeightSpinner.tsx"
+          "target": "@/components/FormFieldCheckbox.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -866,7 +811,7 @@
         {
           "path": "registry/new-york/form-field-advanced-select/FormFieldAdvancedSelect.tsx",
           "type": "registry:component",
-          "target": "@components/FormFieldAdvancedSelect.tsx"
+          "target": "@/components/FormFieldAdvancedSelect.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -875,23 +820,70 @@
       ]
     },
     {
-      "name": "custom-badge",
+      "name": "form-debug",
       "type": "registry:component",
-      "title": "Custom Badge",
-      "description": "A customizable badge component with color and style options.",
+      "title": "Form Debug",
+      "description": "A component to display react-hook-form state for debugging purposes.",
       "dependencies": [
-        "tailwind-variants"
+        "react-hook-form"
       ],
       "files": [
         {
-          "path": "registry/new-york/custom-badge/CustomBadge.tsx",
+          "path": "registry/new-york/form-debug/FormDebug.tsx",
           "type": "registry:component",
-          "target": "@components/CustomBadge.tsx"
+          "target": "@/components/FormDebug.tsx"
         },
         {
-          "path": "lib/process-color.ts",
-          "type": "registry:lib",
-          "target": "@lib/process-color.ts"
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:component",
+      "title": "Keyboard Shortcut",
+      "description": "A keyboard shortcut display component for showing key combinations",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/kbd/Kbd.tsx",
+          "type": "registry:component",
+          "target": "@/components/Kbd.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component",
+          "target": "@/components/FillHeightSpinner.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "dialog-manager",
+      "type": "registry:component",
+      "title": "Dialog Manager",
+      "description": "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application.",
+      "files": [
+        {
+          "path": "registry/new-york/dialog-manager/DialogManager.tsx",
+          "type": "registry:component",
+          "target": "@/components/DialogManager.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -911,17 +903,17 @@
         {
           "path": "registry/new-york/custom-button/CustomButton.tsx",
           "type": "registry:component",
-          "target": "@components/CustomButton.tsx"
+          "target": "@/components/CustomButton.tsx"
         },
         {
           "path": "lib/process-color.ts",
           "type": "registry:lib",
-          "target": "@lib/process-color.ts"
+          "target": "@/lib/process-color.ts"
         },
         {
           "path": "registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook",
-          "target": "@hooks/useLinkableComponent.ts"
+          "target": "@/hooks/useLinkableComponent.ts"
         },
         {
           "path": "lib/types.ts",
@@ -938,24 +930,7 @@
         {
           "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
           "type": "registry:component",
-          "target": "@components/ConditionalWrap.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "dialog-manager",
-      "type": "registry:component",
-      "title": "Dialog Manager",
-      "description": "A context-based dialog management system that allows for opening, closing, and managing multiple dialogs in your React application.",
-      "files": [
-        {
-          "path": "registry/new-york/dialog-manager/DialogManager.tsx",
-          "type": "registry:component",
-          "target": "@components/DialogManager.tsx"
+          "target": "@/components/ConditionalWrap.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -972,7 +947,28 @@
         {
           "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component",
-          "target": "@components/ConditionalTooltip.tsx"
+          "target": "@/components/ConditionalTooltip.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "advanced-select",
+      "type": "registry:component",
+      "title": "Advanced Select",
+      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
+          "type": "registry:component",
+          "target": "@/components/AdvancedSelect.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -994,32 +990,32 @@
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawer.tsx",
           "type": "registry:component",
-          "target": "@components/BottomDrawer.tsx"
+          "target": "@/components/BottomDrawer.tsx"
         },
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawerMenu.tsx",
           "type": "registry:component",
-          "target": "@components/BottomDrawerMenu.tsx"
+          "target": "@/components/BottomDrawerMenu.tsx"
         },
         {
           "path": "registry/new-york/bottom-drawer/DrawerContext.tsx",
           "type": "registry:component",
-          "target": "@components/DrawerContext.tsx"
+          "target": "@/components/DrawerContext.tsx"
         },
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawerMenuItem.tsx",
           "type": "registry:component",
-          "target": "@components/BottomDrawerMenuItem.tsx"
+          "target": "@/components/BottomDrawerMenuItem.tsx"
         },
         {
           "path": "registry/new-york/bottom-drawer/BottomDrawerMenuComponents.tsx",
           "type": "registry:component",
-          "target": "@components/BottomDrawerMenuComponents.tsx"
+          "target": "@/components/BottomDrawerMenuComponents.tsx"
         },
         {
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
-          "target": "@hooks/useControlledOpen.ts"
+          "target": "@/hooks/useControlledOpen.ts"
         },
         {
           "path": "lib/types.ts",
@@ -1028,19 +1024,23 @@
       ]
     },
     {
-      "name": "advanced-select",
+      "name": "custom-badge",
       "type": "registry:component",
-      "title": "Advanced Select",
-      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
+      "title": "Custom Badge",
+      "description": "A customizable badge component with color and style options.",
       "dependencies": [
-        "lucide-react",
-        "framer-motion"
+        "tailwind-variants"
       ],
       "files": [
         {
-          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
+          "path": "registry/new-york/custom-badge/CustomBadge.tsx",
           "type": "registry:component",
-          "target": "@components/AdvancedSelect.tsx"
+          "target": "@/components/CustomBadge.tsx"
+        },
+        {
+          "path": "lib/process-color.ts",
+          "type": "registry:lib",
+          "target": "@/lib/process-color.ts"
         },
         {
           "path": "lib/types.ts",

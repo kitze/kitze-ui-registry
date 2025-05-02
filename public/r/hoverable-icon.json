@@ -16,19 +16,19 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/hoverable-icon/HoverableIcon.tsx",
       "type": "registry:component",
       "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Link from \"next/link\";\nimport { LucideIcon } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { Size } from \"@/lib/types\";\nimport { ReactFC } from \"@/lib/types\";\nimport { ConditionalTooltip } from \"@/registry/new-york/conditional-tooltip/ConditionalTooltip\";\nimport { useLinkableComponent } from \"@/registry/hooks/useLinkableComponent\";\n\nexport interface HoverableIconClassNames {\n  root?: string;\n  icon?: string;\n  tooltip?: string;\n}\n\nexport const iconSizes: Record<Size, number> = {\n  xs: 14,\n  sm: 16,\n  md: 20,\n  lg: 24,\n  xl: 28,\n};\n\nexport interface HoverableIconProps {\n  Icon: LucideIcon;\n  href?: string;\n  external?: boolean;\n  size?: Size | number;\n  defaultColor?: string;\n  tooltip?: string;\n  classNames?: HoverableIconClassNames;\n}\n\nexport const HoverableIcon: ReactFC<HoverableIconProps> = ({\n  Icon,\n  href,\n  external = true,\n  size = \"md\",\n  defaultColor,\n  tooltip,\n  classNames = {},\n}) => {\n  const { Component, linkProps } = useLinkableComponent({\n    href,\n    external,\n  });\n\n  // Determine icon size - either from predefined sizes or custom number\n  const iconSize = typeof size === \"string\" ? iconSizes[size] : size;\n\n  // Setup base className for the element\n  const elementClassName = cn(\n    defaultColor,\n    \"opacity-80 hover:opacity-100 transition-opacity cursor-pointer\",\n    classNames.root\n  );\n\n  // Setup attributes based on component type\n  const elementAttributes: any = {\n    className: elementClassName,\n    ...linkProps,\n  };\n\n  // Add href only if it's an anchor or Link\n  if (href && (Component === \"a\" || Component === Link)) {\n    elementAttributes.href = href;\n  }\n\n  const iconElement = (\n    <Component {...elementAttributes}>\n      <Icon size={iconSize} className={cn(classNames.icon)} />\n    </Component>\n  );\n\n  return (\n    <ConditionalTooltip\n      condition={!!tooltip}\n      content={tooltip}\n      classNames={{ tooltip: classNames.tooltip }}\n    >\n      {iconElement}\n    </ConditionalTooltip>\n  );\n};\n",
-      "target": "@components/HoverableIcon.tsx"
+      "target": "@/components/HoverableIcon.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "@lib/types.ts"
+      "target": "@/lib/types.ts"
     },
     {
       "path": "registry/hooks/useLinkableComponent.ts",
       "type": "registry:hook",
       "content": "import Link from \"next/link\";\n\nexport interface LinkableProps {\n  href?: string;\n  external?: boolean;\n  target?: string;\n  rel?: string;\n}\n\nexport function useLinkableComponent<T extends LinkableProps>(props: T) {\n  const { href, external, ...rest } = props;\n\n  const linkProps = {\n    ...rest,\n    ...(external && {\n      target: \"_blank\",\n      rel: \"noopener noreferrer\",\n    }),\n  };\n\n  const Component = href ? (external ? \"a\" : Link) : \"div\";\n\n  return {\n    Component,\n    href,\n    linkProps,\n  };\n}\n",
-      "target": "@hooks/useLinkableComponent.ts"
+      "target": "@/hooks/useLinkableComponent.ts"
     }
   ]
 }

@@ -16,19 +16,19 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/theme-switch-minimal-next-themes/ThemeSwitchMinimalNextThemes.tsx",
       "type": "registry:component",
       "content": "import { useTheme } from \"next-themes\";\nimport { ReactFC } from \"@/lib/types\";\nimport { useMounted } from \"@/registry/hooks/useMounted\";\nimport {\n  ThemeSwitchMinimal,\n  ThemeSwitchMinimalClassNames,\n} from \"@/registry/new-york/theme-switch-minimal/ThemeSwitchMinimal\";\nimport { CustomButtonProps } from \"@/registry/new-york/custom-button/CustomButton\";\n\nexport interface ThemeSwitchMinimalNextThemesProps {\n  className?: string;\n  classNames?: ThemeSwitchMinimalClassNames;\n  buttonProps?: Partial<CustomButtonProps>;\n}\n\nexport const ThemeSwitchMinimalNextThemes: ReactFC<\n  ThemeSwitchMinimalNextThemesProps\n> = ({ className, classNames, buttonProps }) => {\n  const { theme, setTheme } = useTheme();\n  const mounted = useMounted();\n\n  if (!mounted) {\n    return null;\n  }\n\n  return (\n    <ThemeSwitchMinimal\n      theme={theme || \"light\"}\n      setTheme={setTheme}\n      className={className}\n      classNames={classNames}\n      buttonProps={buttonProps}\n    />\n  );\n};\n",
-      "target": "@components/ThemeSwitchMinimalNextThemes.tsx"
+      "target": "@/components/ThemeSwitchMinimalNextThemes.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "@lib/types.ts"
+      "target": "@/lib/types.ts"
     },
     {
       "path": "registry/hooks/useMounted.ts",
       "type": "registry:hook",
       "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nexport const useMounted = () => {\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  return mounted;\n};\n",
-      "target": "@hooks/useMounted.ts"
+      "target": "@/hooks/useMounted.ts"
     }
   ]
 }
