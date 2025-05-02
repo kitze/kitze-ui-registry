@@ -14,13 +14,13 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/kbd-shortcuts-list/KbdShortcutsList.tsx",
       "type": "registry:component",
       "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ReactFC } from \"@/lib/types\";\nimport { KbdShortcuts } from \"@/registry/new-york/kbd-shortcuts/KbdShortcuts\";\nimport { KbdClassNames } from \"@/registry/new-york/kbd/Kbd\";\n\nexport interface ShortcutItem {\n  label: string;\n  shortcuts: string[];\n  separator?: string | null;\n}\n\nexport interface KbdShortcutsListClassNames extends KbdClassNames {\n  list?: string;\n  item?: string;\n  label?: string;\n}\n\nexport interface KbdShortcutsListProps {\n  shortcuts: ShortcutItem[];\n  classNames?: KbdShortcutsListClassNames;\n}\n\nexport const KbdShortcutsList: ReactFC<KbdShortcutsListProps> = ({\n  shortcuts,\n  classNames = {},\n}) => {\n  return (\n    <div className={cn(\"space-y-3\", classNames.list)}>\n      {shortcuts.map((item, index) => (\n        <div\n          key={`${item.label}-${index}`}\n          className={cn(\n            \"flex items-center justify-between px-3 py-1.5 rounded-md transition-colors hover:bg-muted/60 dark:hover:bg-muted/25\",\n            classNames.item\n          )}\n        >\n          <span className={cn(\"text-sm\", classNames.label)}>{item.label}</span>\n          <KbdShortcuts\n            shortcuts={item.shortcuts}\n            separator={item.separator}\n            classNames={{\n              root: classNames.root,\n              key: classNames.key,\n              separator: classNames.separator,\n            }}\n          />\n        </div>\n      ))}\n    </div>\n  );\n};\n",
-      "target": "components/KbdShortcutsList.tsx"
+      "target": "@components/KbdShortcutsList.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "lib/types.ts"
+      "target": "@lib/types.ts"
     }
   ]
 }

@@ -12,13 +12,13 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/simple-accordion/SimpleAccordion.tsx",
       "type": "registry:component",
       "content": "import * as React from \"react\";\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface AccordionItemProps {\n  title: React.ReactNode;\n  content: React.ReactNode;\n}\n\nexport interface AccordionClassNames {\n  root?: string;\n  item?: string;\n  button?: string;\n  title?: string;\n  icon?: string;\n  panel?: string;\n  content?: string;\n}\n\nexport interface AccordionProps {\n  items: AccordionItemProps[];\n  classNames?: AccordionClassNames;\n}\n\nexport function SimpleAccordion({ items, classNames }: AccordionProps) {\n  return (\n    <Accordion type=\"single\" className={cn(\"w-full\", classNames?.root)}>\n      {items.map((item, index) => (\n        <AccordionItem\n          key={index}\n          value={`item-${index}`}\n          className={cn(\"border-b\", classNames?.item)}\n        >\n          <AccordionTrigger\n            className={cn(\n              \"flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180\",\n              classNames?.button\n            )}\n          >\n            <span className={classNames?.title}>{item.title}</span>\n          </AccordionTrigger>\n          <AccordionContent\n            className={cn(\n              \"overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\",\n              classNames?.panel\n            )}\n          >\n            <div className={cn(\"pb-4 pt-0\", classNames?.content)}>\n              {item.content}\n            </div>\n          </AccordionContent>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  );\n}\n",
-      "target": "components/SimpleAccordion.tsx"
+      "target": "@components/SimpleAccordion.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "lib/types.ts"
+      "target": "@lib/types.ts"
     }
   ]
 }

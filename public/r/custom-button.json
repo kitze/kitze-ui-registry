@@ -8,7 +8,9 @@
     "https://ui.kitze.io/r/conditional-tooltip.json",
     "https://ui.kitze.io/r/spinner.json"
   ],
-  "dependencies": ["tailwind-variants"],
+  "dependencies": [
+    "tailwind-variants"
+  ],
   "files": [
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/custom-button/CustomButton.tsx",

@@ -12,13 +12,13 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
       "type": "registry:component",
       "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/types\";\nimport { SimpleTooltip } from \"@/registry/new-york/simple-tooltip/SimpleTooltip\";\n\ninterface ConditionalTooltipClassNames {\n  wrapper?: string;\n  tooltip?: string;\n  content?: string;\n}\n\ninterface ConditionalTooltipProps {\n  condition?: boolean;\n  content?: string;\n  children: React.ReactNode;\n  classNames?: ConditionalTooltipClassNames;\n}\n\nexport const ConditionalTooltip: ReactFC<ConditionalTooltipProps> = ({\n  condition,\n  content,\n  children,\n  classNames = {},\n}) => {\n  if (!condition || !content) {\n    return children;\n  }\n\n  return (\n    <SimpleTooltip\n      content={content}\n      className={classNames.wrapper}\n      tooltipClassName={classNames.tooltip}\n    >\n      {children}\n    </SimpleTooltip>\n  );\n};\n",
-      "target": "components/ConditionalTooltip.tsx"
+      "target": "@components/ConditionalTooltip.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "lib/types.ts"
+      "target": "@lib/types.ts"
     }
   ]
 }

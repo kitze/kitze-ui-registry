@@ -9,13 +9,13 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/conditional-wrap/ConditionalWrap.tsx",
       "type": "registry:component",
       "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/types\";\n\nexport const ConditionalWrap: ReactFC<{\n  condition?: boolean;\n  wrap: (c: React.ReactNode) => React.ReactElement;\n  elseWrap?: (c: React.ReactNode) => React.ReactElement;\n}> = ({ condition, children, wrap, elseWrap }) =>\n  !!condition ? wrap(children) : elseWrap ? elseWrap(children) : children;\n",
-      "target": "components/ConditionalWrap.tsx"
+      "target": "@components/ConditionalWrap.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "lib/types.ts"
+      "target": "@lib/types.ts"
     }
   ]
 }

@@ -12,13 +12,13 @@
       "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
       "type": "registry:component",
       "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/types\";\nimport { Spinner, SpinnerProps } from \"@/registry/new-york/spinner/Spinner\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface FillHeightSpinnerProps extends SpinnerProps {\n  /**\n   * Optional className for the wrapper div\n   */\n  wrapperClassName?: string;\n}\n\nexport const FillHeightSpinner: ReactFC<FillHeightSpinnerProps> = ({\n  size = \"xl\",\n  wrapperClassName,\n  ...props\n}) => {\n  return (\n    <div\n      className={cn(\n        \"flex-1 flex w-full items-center justify-center\",\n        wrapperClassName\n      )}\n    >\n      <Spinner size={size} {...props} />\n    </div>\n  );\n};\n",
-      "target": "components/FillHeightSpinner.tsx"
+      "target": "@components/FillHeightSpinner.tsx"
     },
     {
       "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
       "type": "registry:lib",
       "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
-      "target": "lib/types.ts"
+      "target": "@lib/types.ts"
     }
   ]
 }
