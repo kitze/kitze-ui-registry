@@ -240,26 +240,6 @@
       ]
     },
     {
-      "name": "simple-tooltip",
-      "type": "registry:component",
-      "title": "Simple Tooltip",
-      "description": "A simplified tooltip component built on top of Radix UI tooltip",
-      "dependencies": [
-        "@radix-ui/react-tooltip"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
-          "type": "registry:component",
-          "target": "components/SimpleTooltip.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
       "name": "simple-popover",
       "type": "registry:component",
       "title": "Simple Popover",
@@ -274,6 +254,26 @@
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
           "target": "hooks/useControlledOpen.ts"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "simple-tooltip",
+      "type": "registry:component",
+      "title": "Simple Tooltip",
+      "description": "A simplified tooltip component built on top of Radix UI tooltip",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
+          "type": "registry:component",
+          "target": "components/SimpleTooltip.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -383,32 +383,6 @@
       ]
     },
     {
-      "name": "simple-dialog",
-      "type": "registry:component",
-      "title": "Simple Dialog",
-      "description": "A simple dialog component using Radix UI.",
-      "dependencies": [
-        "@radix-ui/react-dialog",
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
-          "type": "registry:component",
-          "target": "components/SimpleDialog.tsx"
-        },
-        {
-          "path": "registry/hooks/useControlledOpen.ts",
-          "type": "registry:hook",
-          "target": "hooks/useControlledOpen.ts"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
       "name": "simple-accordion",
       "type": "registry:component",
       "title": "Simple Accordion",
@@ -418,6 +392,27 @@
           "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component",
           "target": "components/SimpleAccordion.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:component",
+      "title": "Segmented Control",
+      "description": "A simple, accessible segmented control component with size variants",
+      "dependencies": [
+        "lucide-react",
+        "tailwind-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
+          "type": "registry:component",
+          "target": "components/SegmentedControl.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -446,19 +441,24 @@
       ]
     },
     {
-      "name": "segmented-control",
+      "name": "simple-dialog",
       "type": "registry:component",
-      "title": "Segmented Control",
-      "description": "A simple, accessible segmented control component with size variants",
+      "title": "Simple Dialog",
+      "description": "A simple dialog component using Radix UI.",
       "dependencies": [
-        "lucide-react",
-        "tailwind-variants"
+        "@radix-ui/react-dialog",
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
+          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
           "type": "registry:component",
-          "target": "components/SegmentedControl.tsx"
+          "target": "components/SimpleDialog.tsx"
+        },
+        {
+          "path": "registry/hooks/useControlledOpen.ts",
+          "type": "registry:hook",
+          "target": "hooks/useControlledOpen.ts"
         },
         {
           "path": "lib/types.ts",
@@ -760,6 +760,26 @@
       ]
     },
     {
+      "name": "form-field-input",
+      "type": "registry:component",
+      "title": "Form Field Input",
+      "description": "An input component integrated with react-hook-form using FormFieldWrapper.",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
+          "type": "registry:component",
+          "target": "components/FormFieldInput.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "form-field-checkbox",
       "type": "registry:component",
       "title": "Form Field Checkbox",
@@ -834,26 +854,6 @@
       ]
     },
     {
-      "name": "custom-badge",
-      "type": "registry:component",
-      "title": "Custom Badge",
-      "description": "A customizable badge component with color and style options.",
-      "dependencies": [
-        "tailwind-variants"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/custom-badge/CustomBadge.tsx",
-          "type": "registry:component",
-          "target": "components/CustomBadge.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
       "name": "custom-button",
       "type": "registry:component",
       "title": "Custom Button",
@@ -876,6 +876,31 @@
           "path": "registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook",
           "target": "hooks/useLinkableComponent.ts"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "custom-badge",
+      "type": "registry:component",
+      "title": "Custom Badge",
+      "description": "A customizable badge component with color and style options.",
+      "dependencies": [
+        "tailwind-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/custom-badge/CustomBadge.tsx",
+          "type": "registry:component",
+          "target": "components/CustomBadge.tsx"
+        },
+        {
+          "path": "lib/process-color.ts",
+          "type": "registry:lib",
+          "target": "lib/process-color.ts"
         },
         {
           "path": "lib/types.ts",
@@ -910,6 +935,27 @@
           "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
           "type": "registry:component",
           "target": "components/ConditionalTooltip.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "advanced-select",
+      "type": "registry:component",
+      "title": "Advanced Select",
+      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
+          "type": "registry:component",
+          "target": "components/AdvancedSelect.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -957,47 +1003,6 @@
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
           "target": "hooks/useControlledOpen.ts"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "advanced-select",
-      "type": "registry:component",
-      "title": "Advanced Select",
-      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
-      "dependencies": [
-        "lucide-react",
-        "framer-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
-          "type": "registry:component",
-          "target": "components/AdvancedSelect.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "form-field-input",
-      "type": "registry:component",
-      "title": "Form Field Input",
-      "description": "An input component integrated with react-hook-form using FormFieldWrapper.",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-field-input/FormFieldInput.tsx",
-          "type": "registry:component",
-          "target": "components/FormFieldInput.tsx"
         },
         {
           "path": "lib/types.ts",

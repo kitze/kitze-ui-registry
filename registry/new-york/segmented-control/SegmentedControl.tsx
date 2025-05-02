@@ -8,7 +8,7 @@ import {
   SimpleSelect,
   SelectMobileViewType,
 } from "@/registry/new-york/simple-select/SimpleSelect";
-import { SelectOption } from "@/lib/select-option";
+import { SelectOption } from "@/lib/types";
 import { LucideIcon } from "lucide-react";
 
 // Define MobileViewType for SegmentedControl

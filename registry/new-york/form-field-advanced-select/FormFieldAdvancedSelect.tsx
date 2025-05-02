@@ -4,11 +4,8 @@ import {
   FormFieldWrapper,
   FormFieldWrapperProps,
 } from "@/registry/new-york/form-field-wrapper/FormFieldWrapper";
-import {
-  AdvancedSelect,
-  AdvancedSelectProps,
-} from "@/registry/new-york/advanced-select/AdvancedSelect";
-import { SelectOption } from "@/lib/select-option";
+import { AdvancedSelect } from "@/registry/new-york/advanced-select/AdvancedSelect";
+import { SelectOption } from "@/lib/types";
 
 export interface FormFieldAdvancedSelectProps<
   TFieldValues extends FieldValues = FieldValues,
