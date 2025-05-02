@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 
 export function Sponsors() {
   return (
@@ -12,9 +13,11 @@ export function Sponsors() {
           className="group border rounded-lg p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 bg-gradient-to-br from-white/50 to-white/10 dark:from-slate-800/50 dark:to-slate-900/70 backdrop-blur-sm hover:border-primary/50 cursor-pointer no-underline"
         >
           <div className="flex flex-col items-center mb-4">
-            <img
+            <Image
               src="/logos/sizzy.png"
-              alt="Sizzy"
+              alt="Sizzy Logo"
+              width={64}
+              height={64}
               className="h-16 mb-4 object-contain"
             />
             <h4 className="text-xl font-semibold group-hover:text-primary transition-colors">
@@ -35,9 +38,11 @@ export function Sponsors() {
           className="group border rounded-lg p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 bg-gradient-to-br from-white/50 to-white/10 dark:from-slate-800/50 dark:to-slate-900/70 backdrop-blur-sm hover:border-primary/50 cursor-pointer no-underline"
         >
           <div className="flex flex-col items-center mb-4">
-            <img
+            <Image
               src="/logos/benji.png"
-              alt="Benji"
+              alt="Benji Logo"
+              width={64}
+              height={64}
               className="h-16 mb-4 object-contain"
             />
             <h4 className="text-xl font-semibold group-hover:text-primary transition-colors">
@@ -58,9 +63,11 @@ export function Sponsors() {
           className="group border rounded-lg p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 bg-gradient-to-br from-white/50 to-white/10 dark:from-slate-800/50 dark:to-slate-900/70 backdrop-blur-sm hover:border-primary/50 cursor-pointer no-underline"
         >
           <div className="flex flex-col items-center mb-4">
-            <img
+            <Image
               src="/logos/zerotoshipped.webp"
-              alt="Zero to Shipped"
+              alt="Zero to Shipped Logo"
+              width={64}
+              height={64}
               className="h-16 mb-4 object-contain"
             />
             <h4 className="text-xl font-semibold group-hover:text-primary transition-colors">

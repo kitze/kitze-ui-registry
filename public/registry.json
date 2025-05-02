@@ -190,6 +190,26 @@
       ]
     },
     {
+      "name": "spinner",
+      "type": "registry:component",
+      "title": "Spinner",
+      "description": "A customizable loading spinner component with different variants and sizes",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/spinner/Spinner.tsx",
+          "type": "registry:component",
+          "target": "components/Spinner.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "simple-tooltip",
       "type": "registry:component",
       "title": "Simple Tooltip",
@@ -202,6 +222,36 @@
           "path": "registry/new-york/simple-tooltip/SimpleTooltip.tsx",
           "type": "registry:component",
           "target": "components/SimpleTooltip.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "simple-select",
+      "type": "registry:component",
+      "title": "Simple Select",
+      "description": "A simplified select component that accepts an array of options with value, label, and search functionality",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/simple-select/SimpleSelect.tsx",
+          "type": "registry:component",
+          "target": "components/SimpleSelect.tsx"
+        },
+        {
+          "path": "registry/new-york/simple-select/SimpleSelectBottomDrawerMenu.tsx",
+          "type": "registry:component",
+          "target": "components/SimpleSelectBottomDrawerMenu.tsx"
+        },
+        {
+          "path": "registry/hooks/useControlledOpen.ts",
+          "type": "registry:hook",
+          "target": "hooks/useControlledOpen.ts"
         },
         {
           "path": "lib/types.ts",
@@ -297,24 +347,19 @@
       ]
     },
     {
-      "name": "simple-dialog",
+      "name": "segmented-control",
       "type": "registry:component",
-      "title": "Simple Dialog",
-      "description": "A simple dialog component using Radix UI.",
+      "title": "Segmented Control",
+      "description": "A simple, accessible segmented control component with size variants",
       "dependencies": [
-        "@radix-ui/react-dialog",
-        "lucide-react"
+        "lucide-react",
+        "tailwind-variants"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
+          "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
           "type": "registry:component",
-          "target": "components/SimpleDialog.tsx"
-        },
-        {
-          "path": "registry/hooks/useControlledOpen.ts",
-          "type": "registry:hook",
-          "target": "hooks/useControlledOpen.ts"
+          "target": "components/SegmentedControl.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -332,6 +377,69 @@
           "path": "registry/new-york/simple-accordion/SimpleAccordion.tsx",
           "type": "registry:component",
           "target": "components/SimpleAccordion.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "search-bar",
+      "type": "registry:component",
+      "title": "Search Bar",
+      "description": "A reusable search input component with clear functionality",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/search-bar/SearchBar.tsx",
+          "type": "registry:component",
+          "target": "components/SearchBar.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "responsive-select-bottom-drawer-menu",
+      "type": "registry:component",
+      "title": "Responsive Select Bottom Drawer Menu",
+      "description": "A responsive select menu displayed in a bottom drawer, with search functionality.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/responsive-select-bottom-drawer-menu/ResponsiveSelectBottomDrawerMenu.tsx",
+          "type": "registry:component",
+          "target": "components/ResponsiveSelectBottomDrawerMenu.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "page-header",
+      "type": "registry:component",
+      "title": "Page Header",
+      "description": "A responsive page header component with mobile drawer support",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/page-header/PageHeader.tsx",
+          "type": "registry:component",
+          "target": "components/PageHeader.tsx"
+        },
+        {
+          "path": "registry/hooks/useScrolledPast.ts",
+          "type": "registry:hook",
+          "target": "hooks/useScrolledPast.ts"
         },
         {
           "path": "lib/types.ts",
@@ -376,149 +484,24 @@
       ]
     },
     {
-      "name": "simple-select",
+      "name": "simple-dialog",
       "type": "registry:component",
-      "title": "Simple Select",
-      "description": "A simplified select component that accepts an array of options with value, label, and search functionality",
+      "title": "Simple Dialog",
+      "description": "A simple dialog component using Radix UI.",
       "dependencies": [
+        "@radix-ui/react-dialog",
         "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/new-york/simple-select/SimpleSelect.tsx",
+          "path": "registry/new-york/simple-dialog/SimpleDialog.tsx",
           "type": "registry:component",
-          "target": "components/SimpleSelect.tsx"
-        },
-        {
-          "path": "registry/new-york/simple-select/SimpleSelectBottomDrawerMenu.tsx",
-          "type": "registry:component",
-          "target": "components/SimpleSelectBottomDrawerMenu.tsx"
+          "target": "components/SimpleDialog.tsx"
         },
         {
           "path": "registry/hooks/useControlledOpen.ts",
           "type": "registry:hook",
           "target": "hooks/useControlledOpen.ts"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "spinner",
-      "type": "registry:component",
-      "title": "Spinner",
-      "description": "A customizable loading spinner component with different variants and sizes",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/spinner/Spinner.tsx",
-          "type": "registry:component",
-          "target": "components/Spinner.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "segmented-control",
-      "type": "registry:component",
-      "title": "Segmented Control",
-      "description": "A simple, accessible segmented control component with size variants",
-      "dependencies": [
-        "lucide-react",
-        "tailwind-variants"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/segmented-control/SegmentedControl.tsx",
-          "type": "registry:component",
-          "target": "components/SegmentedControl.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "search-bar",
-      "type": "registry:component",
-      "title": "Search Bar",
-      "description": "A reusable search input component with clear functionality",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/search-bar/SearchBar.tsx",
-          "type": "registry:component",
-          "target": "components/SearchBar.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "page-header",
-      "type": "registry:component",
-      "title": "Page Header",
-      "description": "A responsive page header component with mobile drawer support",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/page-header/PageHeader.tsx",
-          "type": "registry:component",
-          "target": "components/PageHeader.tsx"
-        },
-        {
-          "path": "registry/hooks/useScrolledPast.ts",
-          "type": "registry:hook",
-          "target": "hooks/useScrolledPast.ts"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "kitze-ui-context",
-      "type": "registry:component",
-      "title": "Kitze UI Context",
-      "description": "Provides UI context like mobile detection for Kitze UI components.",
-      "files": [
-        {
-          "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
-          "type": "registry:component",
-          "target": "components/KitzeUIContext.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "kbd-shortcuts",
-      "type": "registry:component",
-      "title": "Keyboard Shortcuts",
-      "description": "A component for displaying keyboard shortcuts with customizable separators",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/kbd-shortcuts/KbdShortcuts.tsx",
-          "type": "registry:component",
-          "target": "components/KbdShortcuts.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -536,6 +519,23 @@
           "path": "registry/new-york/menu-context/MenuContext.tsx",
           "type": "registry:component",
           "target": "components/MenuContext.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "kitze-ui-context",
+      "type": "registry:component",
+      "title": "Kitze UI Context",
+      "description": "Provides UI context like mobile detection for Kitze UI components.",
+      "files": [
+        {
+          "path": "registry/new-york/kitze-ui-context/KitzeUIContext.tsx",
+          "type": "registry:component",
+          "target": "components/KitzeUIContext.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -562,6 +562,24 @@
       ]
     },
     {
+      "name": "kbd-shortcuts",
+      "type": "registry:component",
+      "title": "Keyboard Shortcuts",
+      "description": "A component for displaying keyboard shortcuts with customizable separators",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/kbd-shortcuts/KbdShortcuts.tsx",
+          "type": "registry:component",
+          "target": "components/KbdShortcuts.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "kbd",
       "type": "registry:component",
       "title": "Keyboard Shortcut",
@@ -580,16 +598,15 @@
       ]
     },
     {
-      "name": "gradient-text",
+      "name": "input",
       "type": "registry:component",
-      "title": "Gradient Text",
-      "description": "A text component with animated gradient effects",
-      "dependencies": [],
+      "title": "Input",
+      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
       "files": [
         {
-          "path": "registry/new-york/gradient-text/GradientText.tsx",
+          "path": "registry/new-york/input/Input.tsx",
           "type": "registry:component",
-          "target": "components/GradientText.tsx"
+          "target": "components/Input.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -624,35 +641,16 @@
       ]
     },
     {
-      "name": "help-info-circle",
+      "name": "gradient-text",
       "type": "registry:component",
-      "title": "Help Info Circle",
-      "description": "A help icon that displays information in a tooltip on desktop and a drawer on mobile",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "title": "Gradient Text",
+      "description": "A text component with animated gradient effects",
+      "dependencies": [],
       "files": [
         {
-          "path": "registry/new-york/help-info-circle/HelpInfoCircle.tsx",
+          "path": "registry/new-york/gradient-text/GradientText.tsx",
           "type": "registry:component",
-          "target": "components/HelpInfoCircle.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "input",
-      "type": "registry:component",
-      "title": "Input",
-      "description": "A customizable input component with support for left/right icons, loading state, and custom styling",
-      "files": [
-        {
-          "path": "registry/new-york/input/Input.tsx",
-          "type": "registry:component",
-          "target": "components/Input.tsx"
+          "target": "components/GradientText.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -670,26 +668,6 @@
           "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
           "type": "registry:component",
           "target": "components/FullPageSpinner.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "form-field-segmented-control",
-      "type": "registry:component",
-      "title": "Form Field Segmented Control",
-      "description": "A form field component that combines FormFieldWrapper with SegmentedControl for easy form integration",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-field-segmented-control/FormFieldSegmentedControl.tsx",
-          "type": "registry:component",
-          "target": "components/FormFieldSegmentedControl.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -720,18 +698,58 @@
       ]
     },
     {
-      "name": "form-field-select",
+      "name": "form-field-textarea",
       "type": "registry:component",
-      "title": "Form Field Select",
-      "description": "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration",
+      "title": "Form Field Textarea",
+      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
       "dependencies": [
         "react-hook-form"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
+          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
           "type": "registry:component",
-          "target": "components/FormFieldSelect.tsx"
+          "target": "components/FormFieldTextarea.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "help-info-circle",
+      "type": "registry:component",
+      "title": "Help Info Circle",
+      "description": "A help icon that displays information in a tooltip on desktop and a drawer on mobile",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/help-info-circle/HelpInfoCircle.tsx",
+          "type": "registry:component",
+          "target": "components/HelpInfoCircle.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "form-field-segmented-control",
+      "type": "registry:component",
+      "title": "Form Field Segmented Control",
+      "description": "A form field component that combines FormFieldWrapper with SegmentedControl for easy form integration",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-segmented-control/FormFieldSegmentedControl.tsx",
+          "type": "registry:component",
+          "target": "components/FormFieldSegmentedControl.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -760,55 +778,18 @@
       ]
     },
     {
-      "name": "form-field-textarea",
+      "name": "form-debug",
       "type": "registry:component",
-      "title": "Form Field Textarea",
-      "description": "A textarea component integrated with react-hook-form using FormFieldWrapper.",
+      "title": "Form Debug",
+      "description": "A component to display react-hook-form state for debugging purposes.",
       "dependencies": [
         "react-hook-form"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
+          "path": "registry/new-york/form-debug/FormDebug.tsx",
           "type": "registry:component",
-          "target": "components/FormFieldTextarea.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "form-field-checkbox",
-      "type": "registry:component",
-      "title": "Form Field Checkbox",
-      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
-      "dependencies": [
-        "react-hook-form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
-          "type": "registry:component",
-          "target": "components/FormFieldCheckbox.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "fill-height-spinner",
-      "type": "registry:component",
-      "title": "Fill Height Spinner",
-      "description": "A spinner component that fills and centers in its container height",
-      "files": [
-        {
-          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
-          "type": "registry:component",
-          "target": "components/FillHeightSpinner.tsx"
+          "target": "components/FormDebug.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -837,18 +818,35 @@
       ]
     },
     {
-      "name": "form-debug",
+      "name": "form-field-select",
       "type": "registry:component",
-      "title": "Form Debug",
-      "description": "A component to display react-hook-form state for debugging purposes.",
+      "title": "Form Field Select",
+      "description": "A form field component that combines FormFieldWrapper with SimpleSelect for easy form integration",
       "dependencies": [
         "react-hook-form"
       ],
       "files": [
         {
-          "path": "registry/new-york/form-debug/FormDebug.tsx",
+          "path": "registry/new-york/form-field-select/FormFieldSelect.tsx",
           "type": "registry:component",
-          "target": "components/FormDebug.tsx"
+          "target": "components/FormFieldSelect.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "fill-height-spinner",
+      "type": "registry:component",
+      "title": "Fill Height Spinner",
+      "description": "A spinner component that fills and centers in its container height",
+      "files": [
+        {
+          "path": "registry/new-york/fill-height-spinner/FillHeightSpinner.tsx",
+          "type": "registry:component",
+          "target": "components/FillHeightSpinner.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -866,6 +864,26 @@
           "path": "registry/new-york/dialog-manager/DialogManager.tsx",
           "type": "registry:component",
           "target": "components/DialogManager.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "form-field-checkbox",
+      "type": "registry:component",
+      "title": "Form Field Checkbox",
+      "description": "A checkbox component integrated with react-hook-form using FormFieldWrapper.",
+      "dependencies": [
+        "react-hook-form"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/form-field-checkbox/FormFieldCheckbox.tsx",
+          "type": "registry:component",
+          "target": "components/FormFieldCheckbox.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -899,23 +917,6 @@
       ]
     },
     {
-      "name": "conditional-tooltip",
-      "type": "registry:component",
-      "title": "Conditional Tooltip",
-      "description": "A tooltip component that conditionally renders based on a condition",
-      "files": [
-        {
-          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
-          "type": "registry:component",
-          "target": "components/ConditionalTooltip.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
       "name": "custom-button",
       "type": "registry:component",
       "title": "Custom Button",
@@ -938,6 +939,27 @@
           "path": "registry/hooks/useLinkableComponent.ts",
           "type": "registry:hook",
           "target": "hooks/useLinkableComponent.ts"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "advanced-select",
+      "type": "registry:component",
+      "title": "Advanced Select",
+      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
+          "type": "registry:component",
+          "target": "components/AdvancedSelect.tsx"
         },
         {
           "path": "lib/types.ts",
@@ -993,27 +1015,6 @@
       ]
     },
     {
-      "name": "advanced-select",
-      "type": "registry:component",
-      "title": "Advanced Select",
-      "description": "A multi-select component with search capabilities, multiple selection as badges, and animations",
-      "dependencies": [
-        "lucide-react",
-        "framer-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york/advanced-select/AdvancedSelect.tsx",
-          "type": "registry:component",
-          "target": "components/AdvancedSelect.tsx"
-        },
-        {
-          "path": "lib/types.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
       "name": "conditional-wrap",
       "type": "registry:component",
       "title": "Conditional Wrap",
@@ -1023,6 +1024,23 @@
           "path": "registry/new-york/conditional-wrap/ConditionalWrap.tsx",
           "type": "registry:component",
           "target": "components/ConditionalWrap.tsx"
+        },
+        {
+          "path": "lib/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "conditional-tooltip",
+      "type": "registry:component",
+      "title": "Conditional Tooltip",
+      "description": "A tooltip component that conditionally renders based on a condition",
+      "files": [
+        {
+          "path": "registry/new-york/conditional-tooltip/ConditionalTooltip.tsx",
+          "type": "registry:component",
+          "target": "components/ConditionalTooltip.tsx"
         },
         {
           "path": "lib/types.ts",

@@ -20,6 +20,7 @@ export const iconSizes: Record<Size, number> = {
   sm: 16,
   md: 20,
   lg: 24,
+  xl: 28,
 };
 
 export interface HoverableIconProps {

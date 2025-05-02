@@ -34,16 +34,17 @@ export function PreviewComponent({
 }: PreviewComponentProps) {
   const [viewMode, setViewMode] = useState<"desktop" | "mobile">("desktop");
   const meta = componentMeta[name];
-  if (!meta) {
-    console.error(`Component ${name} not found`);
-    return null;
-  }
   const installCommand = `npx shadcn@latest add ${getRegistryUrl(name)}`;
 
   const handleCopy = React.useCallback(() => {
     navigator.clipboard.writeText(installCommand);
     toast.success("Copied to clipboard!");
   }, [installCommand]);
+
+  if (!meta) {
+    console.error(`Component ${name} not found`);
+    return null;
+  }
 
   const title = <h2 className="text-lg font-semibold">{meta.title}</h2>;
   const isMobileView = viewMode === "mobile";

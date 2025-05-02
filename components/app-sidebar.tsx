@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { ThemeSwitchNextThemes } from "@/registry/new-york/theme-switch-slider-next-themes/ThemeSwitchNextThemes";
-import { Twitter, Github, LucideGithub } from "lucide-react";
+import { LucideGithub } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { SearchBar } from "@/registry/new-york/search-bar/SearchBar";
 import {

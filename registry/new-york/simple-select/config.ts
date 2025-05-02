@@ -10,7 +10,7 @@ const config: ComponentConfig = {
   dependencies: {
     shad: ["button", "command", "popover"],
     npm: ["lucide-react"],
-    linked: ["kitze-ui-context", "responsive-select"],
+    linked: ["kitze-ui-context", "responsive-select-bottom-drawer-menu"],
     hooks: ["useControlledOpen"],
   },
 
