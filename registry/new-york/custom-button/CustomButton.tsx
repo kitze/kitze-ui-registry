@@ -65,6 +65,7 @@ export const buttonVariants = tv({
       sm: "text-sm",
       md: "text-sm",
       lg: "text-base",
+      xl: "text-lg",
     },
     shape: {
       default: "rounded-md",

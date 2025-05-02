@@ -8,8 +8,7 @@
     "form",
     "button",
     "card",
-    "https://ui.kitze.io/r/form-field-input.json",
-    "https://ui.kitze.io/r/form-debug.json"
+    "https://ui.kitze.io/r/form-field-input.json"
   ],
   "dependencies": [
     "react-hook-form",

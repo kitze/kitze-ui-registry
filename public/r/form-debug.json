@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-debug",
+  "type": "registry:component",
+  "title": "Form Debug",
+  "description": "A component to display react-hook-form state for debugging purposes.",
+  "dependencies": [
+    "react-hook-form"
+  ],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/form-debug/FormDebug.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { UseFormReturn } from \"react-hook-form\";\nimport { cn } from \"@/lib/utils\";\n\ninterface FormDebugProps<T extends Record<string, any>> {\n  form: UseFormReturn<T>;\n  className?: string;\n  /**\n   * Show only when NODE_ENV is development or when forced\n   */\n  showInProduction?: boolean;\n}\n\nexport function FormDebug<T extends Record<string, any>>({\n  form,\n  className,\n  showInProduction = false,\n}: FormDebugProps<T>) {\n  // Don't render in production unless forced\n  if (process.env.NODE_ENV === \"production\" && !showInProduction) {\n    return null;\n  }\n\n  const { formState, watch } = form;\n  const values = watch();\n  const { errors, isValid, isDirty, isSubmitting, isSubmitted } = formState;\n\n  return (\n    <div\n      className={cn(\n        \"rounded-lg fixed bottom-4 left-4 w-[350px] border border-dashed p-4 bg-muted/40 text-xs font-mono vertical\",\n        className\n      )}\n    >\n      <div className=\"mb-2 flex items-center justify-between\">\n        <h3 className=\"font-semibold\">Form Debug</h3>\n        <div className=\"flex items-center gap-2\">\n          <span title=\"Is Valid\" className=\"flex items-center gap-1\">\n            Valid: {isValid ? \"✅\" : \"❌\"}\n          </span>\n          <span title=\"Is Dirty\" className=\"flex items-center gap-1\">\n            Changed: {isDirty ? \"✅\" : \"❌\"}\n          </span>\n          <span title=\"Is Submitting\" className=\"flex items-center gap-1\">\n            Submitting: {isSubmitting ? \"⏳\" : \"⏸️\"}\n          </span>\n          <span title=\"Is Submitted\" className=\"flex items-center gap-1\">\n            Submitted: {isSubmitted ? \"✅\" : \"❌\"}\n          </span>\n        </div>\n      </div>\n\n      <div className=\"vertical grid-cols-2 gap-4\">\n        <div>\n          <h4 className=\"font-semibold mb-1\">Values</h4>\n          <pre className=\"rounded bg-muted p-2 overflow-auto max-h-96\">\n            {JSON.stringify(values, null, 2)}\n          </pre>\n        </div>\n        <div>\n          <h4 className=\"font-semibold mb-1\">Errors</h4>\n          <pre className=\"rounded bg-muted p-2 overflow-auto max-h-96\">\n            {Object.keys(errors).length\n              ? JSON.stringify(errors, null, 2)\n              : \"No errors 🎉\"}\n          </pre>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "target": "components/FormDebug.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: any;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}

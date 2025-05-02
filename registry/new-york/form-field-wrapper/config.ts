@@ -10,7 +10,7 @@ const config: ComponentConfig = {
   dependencies: {
     npm: ["react-hook-form", "@hookform/resolvers/zod", "zod"],
     shad: ["form", "button", "card"],
-    linked: ["form-field-input", "form-debug"],
+    linked: ["form-field-input"],
   },
 
   files: [
