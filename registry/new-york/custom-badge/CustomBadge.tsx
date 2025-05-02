@@ -4,6 +4,9 @@ import { cn } from "@/lib/utils";
 import { ReactFC } from "@/lib/types";
 import { processColor } from "@/lib/process-color";
 
+const DEFAULT_LIGHT_COLOR = "bg-zinc-900"; // Example default light color
+const DEFAULT_DARK_COLOR = "bg-zinc-100"; // Example default dark color
+
 const badge = tv({
   base: "flex items-center justify-center gap-1.5 rounded-md font-semibold transition-colors",
   variants: {
@@ -63,7 +66,7 @@ export const CustomBadge: ReactFC<CustomBadgeProps> = ({
   variant,
   size = "sm",
   color,
-  darkColor = color,
+  darkColor,
   classNames = {},
   icon: Icon,
   iconSize,
@@ -74,14 +77,28 @@ export const CustomBadge: ReactFC<CustomBadgeProps> = ({
   children,
   ...props
 }) => {
-  const finalColor = processColor(color);
-  const finalDarkColor = processColor(darkColor);
+  let finalColorValue: string;
+  let finalDarkColorValue: string;
+
+  if (color) {
+    // User provided a color
+    finalColorValue = color;
+    finalDarkColorValue = darkColor ?? color;
+  } else {
+    // User provided no color, use defaults
+    finalColorValue = DEFAULT_LIGHT_COLOR;
+    finalDarkColorValue = darkColor ?? DEFAULT_DARK_COLOR;
+  }
+
+  const finalColor = processColor(finalColorValue);
+  const finalDarkColor = processColor(finalDarkColorValue);
+
   const defaultIconSize = iconSizeMap[size];
   const finalIconSize = iconSize ?? defaultIconSize;
 
   const style = {
     "--badge-color": `var(--color-${finalColor})`,
-    "--badge-dark-color": `var(--color-${finalDarkColor ?? finalColor})`,
+    "--badge-dark-color": `var(--color-${finalDarkColor})`,
   } as React.CSSProperties;
 
   const renderIcon = (

@@ -8,6 +8,9 @@ import { Spinner } from "@/registry/new-york/spinner/Spinner";
 import { tv } from "tailwind-variants";
 import { processColor } from "@/lib/process-color";
 
+const DEFAULT_LIGHT_COLOR = "bg-zinc-900"; // Example default light color
+const DEFAULT_DARK_COLOR = "bg-zinc-100"; // Example default dark color
+
 type SizeStyle = {
   iconSize?: number;
 };
@@ -51,14 +54,14 @@ export const buttonVariants = tv({
   variants: {
     variant: {
       filled:
-        "bg-[var(--button-bg)] text-[var(--button-filled-text)] hover:opacity-90",
+        "bg-[var(--button-color)] text-white dark:bg-[var(--button-dark-color)] dark:text-black hover:opacity-90",
       light:
-        "bg-[var(--button-bg)]/10 text-[var(--button-bg)] hover:bg-[var(--button-bg)]/20",
+        "bg-[var(--button-color)]/10 text-[var(--button-color)] dark:bg-[var(--button-dark-color)]/10 dark:text-[var(--button-dark-color)] hover:bg-[var(--button-color)]/20 dark:hover:bg-[var(--button-dark-color)]/20",
       outline:
-        "border border-[var(--button-bg)]/50 text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/10",
+        "border border-[var(--button-color)]/50 text-[var(--button-color)] bg-transparent dark:border-[var(--button-dark-color)]/50 dark:text-[var(--button-dark-color)] hover:bg-[var(--button-color)]/10 dark:hover:bg-[var(--button-dark-color)]/10",
       ghost:
-        "text-[var(--button-bg)] bg-transparent hover:bg-[var(--button-bg)]/10",
-      link: "text-[var(--button-bg)] underline-offset-4 hover:underline",
+        "text-[var(--button-color)] bg-transparent dark:text-[var(--button-dark-color)] hover:bg-[var(--button-color)]/10 dark:hover:bg-[var(--button-dark-color)]/10",
+      link: "text-[var(--button-color)] dark:text-[var(--button-dark-color)] underline-offset-4 hover:underline",
     },
     size: {
       xs: "text-xs",
@@ -154,6 +157,7 @@ export interface CustomButtonProps
   size?: Size;
   variant?: CustomButtonVariant;
   color?: string;
+  darkColor?: string;
   circle?: boolean;
   icon?: React.ElementType;
   iconSize?: number;
@@ -177,19 +181,13 @@ type ColorValue = {
   text: string;
 };
 
-type ColorMap = {
-  destructive: ColorValue;
-  primary: ColorValue;
-  secondary: ColorValue;
-  [key: string]: ColorValue;
-};
-
 export const CustomButton: ReactFC<CustomButtonProps> = ({
   className,
   variant = "filled",
   size = "md",
   circle = false,
-  color = "secondary",
+  color,
+  darkColor,
   style,
   icon: Icon,
   iconSize,
@@ -213,27 +211,21 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
     linkProps,
   } = useLinkableComponent({ href, external, ...props });
 
-  const finalColor = processColor(color);
+  let finalColorValue: string;
+  let finalDarkColorValue: string;
 
-  const colorMap: ColorMap = {
-    destructive: {
-      bg: "var(--color-destructive)",
-      text: "var(--color-destructive-foreground)",
-    },
-    primary: {
-      bg: "var(--color-primary)",
-      text: "var(--color-primary-foreground)",
-    },
-    secondary: {
-      bg: "var(--color-secondary)",
-      text: "var(--color-secondary-foreground)",
-    },
-  };
+  if (color) {
+    // User provided a color
+    finalColorValue = color; // color is guaranteed string here due to the if check
+    finalDarkColorValue = darkColor ?? color; // Use darkColor if provided, else fallback to the provided color
+  } else {
+    // User provided no color, use defaults
+    finalColorValue = DEFAULT_LIGHT_COLOR;
+    finalDarkColorValue = darkColor ?? DEFAULT_DARK_COLOR; // Use darkColor if provided, else fallback to default dark
+  }
 
-  const buttonColors = colorMap[finalColor ?? ""] ?? {
-    bg: `var(--color-${finalColor})`,
-    text: "var(--color-default-foreground)",
-  };
+  const finalColor = processColor(finalColorValue);
+  const finalDarkColor = processColor(finalDarkColorValue);
 
   //if size is not found in sizeStyles, throw an error
   if (!sizeStyles[size]) {
@@ -282,10 +274,8 @@ export const CustomButton: ReactFC<CustomButtonProps> = ({
       class: className,
     }),
     style: {
-      "--button-bg": buttonColors.bg,
-      "--button-text": buttonColors.text,
-      "--button-filled-text":
-        finalColor && finalColor in colorMap ? buttonColors.text : "white",
+      "--button-color": `var(--color-${finalColor})`,
+      "--button-dark-color": `var(--color-${finalDarkColor})`,
       ...style,
     } as React.CSSProperties,
     ...linkProps,

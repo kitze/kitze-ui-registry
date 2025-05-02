@@ -61,7 +61,6 @@ export function PreviewComponent({
               tooltip={installCommand}
               icon={Copy}
               variant="ghost"
-              className="h-8 w-8"
               onClick={handleCopy}
             />
           </SimpleTooltip>
