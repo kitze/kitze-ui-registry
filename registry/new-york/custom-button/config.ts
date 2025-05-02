@@ -18,6 +18,10 @@ const config: ComponentConfig = {
       path: "CustomButton.tsx",
       type: "registry:component",
     },
+    {
+      path: "../../../lib/process-color.ts",
+      type: "registry:lib",
+    },
   ],
 };
 

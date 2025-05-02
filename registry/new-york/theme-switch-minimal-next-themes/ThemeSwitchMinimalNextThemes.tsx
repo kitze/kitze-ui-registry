@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { useMounted } from "@/registry/hooks/useMounted";
 import {
   ThemeSwitchMinimal,

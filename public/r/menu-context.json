@@ -6,10 +6,16 @@
   "description": "Context provider to determine the type of menu (dropdown, context, bottom-drawer) and provide a close function.",
   "files": [
     {
-      "path": "registry/new-york/menu-context/MenuContext.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/menu-context/MenuContext.tsx",
       "type": "registry:component",
       "content": "import React, { createContext, useContext } from \"react\";\n\ntype MenuType = \"dropdown\" | \"context\" | \"bottom-drawer\";\n\ninterface MenuContextValue {\n  menuType: MenuType;\n  closeMenu?: () => void;\n}\n\nconst MenuContext = createContext<MenuContextValue | undefined>(undefined);\n\nexport const MenuProvider = ({\n  children,\n  menuType,\n  closeMenu,\n}: {\n  children: React.ReactNode;\n  menuType: MenuType;\n  closeMenu?: () => void;\n}) => {\n  return (\n    <MenuContext.Provider value={{ menuType, closeMenu }}>\n      {children}\n    </MenuContext.Provider>\n  );\n};\n\nexport const useMenuContext = (): MenuContextValue => {\n  const context = useContext(MenuContext);\n  if (!context) {\n    throw new Error(\"Menu components must be used within a MenuProvider\");\n  }\n  return context;\n};\n",
       "target": "components/MenuContext.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\n",
+      "target": "lib/types.ts"
     }
   ]
 }

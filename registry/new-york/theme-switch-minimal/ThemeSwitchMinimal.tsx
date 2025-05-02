@@ -1,4 +1,4 @@
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import {
   CustomButton,
   CustomButtonProps,

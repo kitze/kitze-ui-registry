@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ReactFC, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { Drawer } from "vaul";
 import { DrawerContext } from "@/registry/new-york/bottom-drawer/DrawerContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";

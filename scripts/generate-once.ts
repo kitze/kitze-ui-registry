@@ -357,6 +357,11 @@ async function generateRegistry() {
     const configs: ComponentConfig[] = []; // This will store the schema-compliant configs for registry.json
     const ourComponents = await getOurComponentNames();
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://ui.kitze.io";
+    const sharedTypesPath = "lib/types.ts"; // Define the path to the shared types file
+    const absoluteSharedTypesPath = path.resolve(
+      process.cwd(),
+      sharedTypesPath
+    ); // Absolute path for reading
 
     for (const configFile of configFiles) {
       try {
@@ -467,15 +472,43 @@ async function generateRegistry() {
             }
           }
         });
-        const allFilesForRegistry = Array.from(uniqueFilesMap.values());
+        let allFilesForRegistry = Array.from(uniqueFilesMap.values());
+
+        // ---- Add shared types file unconditionally for registry.json ----
+        if (!uniqueFilesMap.has(sharedTypesPath)) {
+          // Check using the workspace-relative path
+          console.log(
+            `ℹ️ Adding shared ${sharedTypesPath} for registry.json entry ${config.name}`
+          );
+          uniqueFilesMap.set(sharedTypesPath, {
+            path: sharedTypesPath, // Use workspace-relative path for registry.json
+            type: "registry:lib",
+          });
+        } else {
+          console.warn(
+            `⚠️ Shared types path ${sharedTypesPath} somehow already present in files for ${config.name}, ensuring type is registry:lib.`
+          );
+          const existingEntry = uniqueFilesMap.get(sharedTypesPath)!;
+          uniqueFilesMap.set(sharedTypesPath, {
+            ...existingEntry,
+            type: "registry:lib",
+          });
+        }
+        // --------------------------------------------------------------
+
+        // Assign to the existing variable instead of redeclaring
+        allFilesForRegistry = Array.from(uniqueFilesMap.values());
 
         // Add target field to files based on their type
         const filesWithTarget = allFilesForRegistry.map((file) => {
-          const targetDir = getTargetDirectory(file.type);
           const filename = path.basename(file.path);
-          const targetPath = targetDir
-            ? path.join(targetDir, filename)
-            : undefined;
+          const targetDir = getTargetDirectory(file.type);
+          // Special case: shared types file should not have a target
+          const isSharedTypes = file.path === sharedTypesPath;
+          const targetPath =
+            targetDir && !isSharedTypes
+              ? path.join(targetDir, filename)
+              : undefined;
           return targetPath ? { ...file, target: targetPath } : file;
         });
 
@@ -588,23 +621,56 @@ async function generateRegistry() {
     for (const configFile of configFiles) {
       const loadedConfig = await loadConfig(configFile);
       if (loadedConfig) {
-        // Reprocess file paths relative to config file location if necessary
         const componentDir = path.dirname(configFile);
-        loadedConfig.files = loadedConfig.files.map((file) => ({
-          ...file,
-          path:
-            typeof file.path === "string" && file.path.startsWith("registry/")
-              ? file.path
-              : path.join(
-                  componentDir,
-                  typeof file.path === "string" ? file.path : ""
-                ),
-        }));
+        loadedConfig.files = Array.isArray(loadedConfig.files)
+          ? loadedConfig.files
+          : [];
+
+        // Map existing files to absolute paths for processing
+        const absolutePathFiles = loadedConfig.files.map((file) => {
+          const filePath = typeof file.path === "string" ? file.path : "";
+          const absolutePath = filePath.startsWith("registry/") // Keep registry paths as is initially
+            ? path.resolve(process.cwd(), filePath) // Resolve registry paths from cwd
+            : path.resolve(componentDir, filePath); // Resolve others relative to component dir
+          return { ...file, path: absolutePath };
+        });
+
+        // ---- Add shared types file unconditionally for individual files ----
+        // Check if the shared types file (using absolute path) is already listed
+        const sharedTypesAlreadyExists = absolutePathFiles.some(
+          (f) => f.path === absoluteSharedTypesPath
+        );
+        if (!sharedTypesAlreadyExists) {
+          console.log(
+            `ℹ️ Adding shared ${sharedTypesPath} for individual file processing for ${loadedConfig.name}`
+          );
+          absolutePathFiles.push({
+            path: absoluteSharedTypesPath,
+            type: "registry:lib",
+          });
+        } else {
+          // If it exists, ensure its type is registry:lib
+          console.warn(
+            `⚠️ Shared types path ${sharedTypesPath} already present in files for ${loadedConfig.name}, ensuring type is registry:lib.`
+          );
+          const existingIndex = absolutePathFiles.findIndex(
+            (f) => f.path === absoluteSharedTypesPath
+          );
+          if (existingIndex !== -1) {
+            absolutePathFiles[existingIndex] = {
+              ...absolutePathFiles[existingIndex],
+              type: "registry:lib",
+            };
+          }
+        }
+        // -----------------------------------------------------------------
+
+        loadedConfig.files = absolutePathFiles;
         configsForIndividualFiles.push(loadedConfig);
       }
     }
 
-    await generateComponentFiles(configsForIndividualFiles);
+    await generateComponentFiles(configsForIndividualFiles); // Pass configs with absolute paths
 
     console.log("✅ registry.json generated.");
   } catch (error) {

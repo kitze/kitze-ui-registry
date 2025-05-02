@@ -1,9 +1,12 @@
 import * as React from "react";
-import { cn, ReactFC, Size, processColor } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { Size } from "@/lib/types";
+import { ReactFC } from "@/lib/types";
 import { useLinkableComponent } from "@/registry/hooks/useLinkableComponent";
 import { ConditionalTooltip } from "@/registry/new-york/conditional-tooltip/ConditionalTooltip";
 import { Spinner } from "@/registry/new-york/spinner/Spinner";
 import { tv } from "tailwind-variants";
+import { processColor } from "@/lib/process-color";
 
 type SizeStyle = {
   iconSize?: number;
@@ -22,6 +25,9 @@ export const sizeStyles: Record<Size, SizeStyle> = {
   lg: {
     iconSize: 20,
   },
+  xl: {
+    iconSize: 24,
+  },
 };
 
 export const spinnerSizeMap: Record<Size, number> = {
@@ -29,6 +35,7 @@ export const spinnerSizeMap: Record<Size, number> = {
   sm: 16,
   md: 16,
   lg: 20,
+  xl: 24,
 };
 
 export const defaultIconSizes: Record<Size, number> = {
@@ -36,6 +43,7 @@ export const defaultIconSizes: Record<Size, number> = {
   sm: 16,
   md: 16,
   lg: 20,
+  xl: 24,
 };
 
 export const buttonVariants = tv({

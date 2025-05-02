@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import {
   DropdownMenu,
   DropdownMenuContent,

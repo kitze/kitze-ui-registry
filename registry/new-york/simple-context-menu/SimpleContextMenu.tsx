@@ -1,5 +1,6 @@
 import React from "react";
-import { cn, ReactFC } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import {
   ContextMenu,
   ContextMenuContent,

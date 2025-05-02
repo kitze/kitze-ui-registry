@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { BottomDrawer } from "./BottomDrawer";
 import { MenuProvider } from "@/registry/new-york/menu-context/MenuContext";
 import { useControlledOpen } from "@/registry/hooks/useControlledOpen";

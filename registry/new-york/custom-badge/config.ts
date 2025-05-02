@@ -13,6 +13,10 @@ const config: ComponentConfig = {
       path: "registry/new-york/custom-badge/CustomBadge.tsx",
       type: "registry:component",
     },
+    {
+      path: "../../../lib/process-color.ts",
+      type: "registry:lib",
+    },
   ],
 };
 

@@ -4,7 +4,7 @@ import {
   SimpleTooltip,
   TooltipMobileViewType,
 } from "@/registry/new-york/simple-tooltip/SimpleTooltip";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export interface HelpInfoCircleProps {

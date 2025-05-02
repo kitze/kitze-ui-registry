@@ -7,7 +7,8 @@ import { SimpleTooltip } from "@/registry/new-york/simple-tooltip/SimpleTooltip"
 import { ComponentName, componentMeta } from "@/lib/component-types";
 import { Copy, Monitor, Smartphone } from "lucide-react";
 import { toast } from "sonner";
-import { cn, getRegistryUrl } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { getRegistryUrl } from "@/lib/lib-utils";
 import { CustomButton } from "@/registry/new-york/custom-button/CustomButton";
 import {
   SegmentedControl,

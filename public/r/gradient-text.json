@@ -7,10 +7,16 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/new-york/gradient-text/GradientText.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/gradient-text/GradientText.tsx",
       "type": "registry:component",
       "content": "\"use client\";\n\nimport React, { ReactNode } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface GradientTextProps {\n  /**\n   * The content to display with gradient effect\n   */\n  children: ReactNode;\n  /**\n   * The size of the text\n   * @default \"text-2xl\"\n   */\n  size?: string;\n  /**\n   * The font weight of the text\n   * @default \"font-bold\"\n   */\n  weight?: string;\n  /**\n   * The duration of the animation in seconds\n   * @default 6\n   */\n  duration?: number;\n  /**\n   * Additional class names to apply to the component, including gradient colors\n   * Example: \"from-red-600 via-blue-500 to-green-400\"\n   */\n  className?: string;\n}\n\nexport function GradientText({\n  children,\n  size = \"text-2xl\",\n  weight = \"font-bold\",\n  duration = 6,\n  className,\n}: GradientTextProps) {\n  // Only apply custom duration if it's different from the default\n  const hasCustomDuration = duration !== 6;\n\n  return (\n    <span\n      className={cn(\n        size,\n        weight,\n        \"text-transparent bg-clip-text\",\n        \"bg-300%\",\n        !hasCustomDuration && \"animate-gradient\",\n        className\n      )}\n      style={\n        hasCustomDuration\n          ? {\n              animation: `animatedgradient ${duration}s ease infinite alternate`,\n            }\n          : undefined\n      }\n    >\n      {children}\n    </span>\n  );\n}\n",
       "target": "components/GradientText.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\n",
+      "target": "lib/types.ts"
     }
   ]
 }

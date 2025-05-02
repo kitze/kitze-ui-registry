@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { CommonMenuItem, CommonMenuItemProps } from "./CommonMenuItem";
 import { Trash } from "lucide-react";
 import { useConfirmAlertDelete } from "@/registry/new-york/ui-alert/AlertContext";

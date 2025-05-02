@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { cn, ReactFC } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { LucideMoon } from "lucide-react";
 import { useEffect, useState } from "react";
 

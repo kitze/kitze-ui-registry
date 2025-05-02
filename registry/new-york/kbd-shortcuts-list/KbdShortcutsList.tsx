@@ -1,5 +1,6 @@
 import * as React from "react";
-import { ReactFC, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { KbdShortcuts } from "@/registry/new-york/kbd-shortcuts/KbdShortcuts";
 import { KbdClassNames } from "@/registry/new-york/kbd/Kbd";
 
