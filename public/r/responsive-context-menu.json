@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-context-menu",
+  "type": "registry:component",
+  "title": "Responsive Context Menu",
+  "description": "A responsive context menu component that adapts to mobile devices with long press and bottom drawer",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/simple-context-menu.json",
+    "https://ui.kitze.io/r/bottom-drawer.json",
+    "https://ui.kitze.io/r/kitze-ui-context.json"
+  ],
+  "dependencies": [
+    "use-long-press"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/responsive-context-menu/ResponsiveContextMenu.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { useKitzeUI } from \"@/registry/new-york/kitze-ui-context/KitzeUIContext\";\nimport { BottomDrawerMenu } from \"@/registry/new-york/bottom-drawer/BottomDrawerMenu\";\nimport {\n  SimpleContextMenu,\n  SimpleContextMenuProps,\n} from \"@/registry/new-york/simple-context-menu/SimpleContextMenu\";\nimport { useControlledOpen } from \"@/registry/hooks/useControlledOpen\";\nimport { useLongPress } from \"use-long-press\";\n\nexport type ContextMenuMobileViewType = \"keep\" | \"bottom-drawer\";\n\nexport interface ResponsiveContextMenuProps\n  extends Omit<SimpleContextMenuProps, \"classNames\"> {\n  mobileView?: ContextMenuMobileViewType;\n  drawerTitle?: string;\n  open?: boolean;\n  classNames?: SimpleContextMenuProps[\"classNames\"] & {\n    drawerContent?: string;\n  };\n}\n\nexport const ResponsiveContextMenu: ReactFC<ResponsiveContextMenuProps> = ({\n  mobileView = \"keep\",\n  drawerTitle,\n  classNames = {},\n  children,\n  content,\n  closeOnClick = true,\n  open,\n  onOpenChange,\n  ...props\n}) => {\n  const { isMobile } = useKitzeUI();\n  const { isOpen, setIsOpen, close } = useControlledOpen({\n    open,\n    onOpenChange,\n  });\n\n  // Extract drawer-specific classNames\n  const { drawerContent, ...simpleContextClassNames } = classNames;\n\n  // Function to close the menu when clicking on menu items\n  const closeMenu = () => {\n    if (closeOnClick) {\n      close();\n    }\n  };\n\n  // Long press binding for mobile drawer trigger\n  const bind = useLongPress(\n    () => {\n      // Only open drawer if mobileView is set and we're on mobile\n      if (isMobile && mobileView === \"bottom-drawer\") {\n        setIsOpen(true);\n      }\n    },\n    {\n      // Only detect long press on mobile when drawer is the intended view\n      filterEvents: () => isMobile && mobileView === \"bottom-drawer\",\n      cancelOnMovement: false,\n      threshold: 500,\n      captureEvent: true, // Prevent default context menu on mobile long press\n    }\n  );\n\n  // If mobile and using bottom-drawer, render long press + BottomDrawerMenu\n  if (isMobile && mobileView === \"bottom-drawer\") {\n    return (\n      <>\n        {/* Bind long press to the children wrapper */}\n        <div className=\"select-none\" {...bind()}>\n          {children}\n        </div>\n        {/* Drawer renders separately and is controlled by isOpen state */}\n        <BottomDrawerMenu\n          open={isOpen}\n          onOpenChange={setIsOpen}\n          title={drawerTitle}\n          closeOnClick={closeOnClick}\n          content={content}\n        >\n          {/* Trigger is handled by the long press bind, no visual trigger needed here */}\n          {null}\n        </BottomDrawerMenu>\n      </>\n    );\n  }\n\n  // Otherwise, render SimpleContextMenu\n  return (\n    <SimpleContextMenu\n      onOpenChange={onOpenChange}\n      content={content}\n      closeOnClick={closeOnClick}\n      classNames={simpleContextClassNames}\n      {...props}\n    >\n      {/* We need a div wrapper for long press prevention even if not using drawer */}\n      <div className=\"select-none\" {...bind()}>\n        {children}\n      </div>\n    </SimpleContextMenu>\n  );\n};\n",
+      "target": "components/ui/ResponsiveContextMenu.tsx"
+    },
+    {
+      "path": "registry/hooks/useControlledOpen.ts",
+      "type": "registry:hook",
+      "content": "import { useState, useEffect } from \"react\";\n\ninterface UseControlledOpenProps {\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n}\n\ninterface UseControlledOpenResult {\n  isOpen: boolean;\n  setIsOpen: (open: boolean) => void;\n  close: () => void;\n}\n\nexport const useControlledOpen = ({\n  open,\n  onOpenChange,\n}: UseControlledOpenProps): UseControlledOpenResult => {\n  const [internalOpen, setInternalOpen] = useState(false);\n\n  // Determine if the component is controlled or uncontrolled\n  const isControlled = open !== undefined;\n  const isOpen = isControlled ? open : internalOpen;\n\n  const setIsOpen = (newOpen: boolean) => {\n    if (!isControlled) {\n      setInternalOpen(newOpen);\n    }\n    if (onOpenChange) {\n      onOpenChange(newOpen);\n    }\n  };\n\n  const close = () => setIsOpen(false);\n\n  // Sync internal state with controlled prop\n  useEffect(() => {\n    if (isControlled) {\n      setInternalOpen(open);\n    }\n  }, [isControlled, open]);\n\n  return { isOpen, setIsOpen, close };\n};\n",
+      "target": "hooks/useControlledOpen.ts"
+    }
+  ]
+}

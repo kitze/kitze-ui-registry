@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-dropdown-menu",
+  "type": "registry:component",
+  "title": "Responsive Dropdown Menu",
+  "description": "A responsive dropdown menu component that adapts to mobile devices with bottom drawer fallback",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/simple-dropdown-menu.json",
+    "https://ui.kitze.io/r/bottom-drawer.json",
+    "https://ui.kitze.io/r/kitze-ui-context.json"
+  ],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/new-york/responsive-dropdown-menu/ResponsiveDropdownMenu.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { useKitzeUI } from \"@/registry/new-york/kitze-ui-context/KitzeUIContext\";\nimport { BottomDrawerMenu } from \"@/registry/new-york/bottom-drawer/BottomDrawerMenu\";\nimport {\n  SimpleDropdownMenu,\n  SimpleDropdownMenuProps,\n} from \"@/registry/new-york/simple-dropdown-menu/SimpleDropdownMenu\";\n\nexport type DropdownMobileViewType = \"keep\" | \"bottom-drawer\";\n\nexport interface ResponsiveDropdownMenuProps\n  extends Omit<SimpleDropdownMenuProps, \"classNames\"> {\n  mobileView?: DropdownMobileViewType;\n  drawerTitle?: string;\n  classNames?: SimpleDropdownMenuProps[\"classNames\"] & {\n    drawerContent?: string;\n  };\n}\n\nexport const ResponsiveDropdownMenu: ReactFC<ResponsiveDropdownMenuProps> = ({\n  mobileView = \"keep\",\n  drawerTitle,\n  classNames = {},\n  children,\n  content,\n  closeOnClick = true,\n  open,\n  onOpenChange,\n  ...props\n}) => {\n  const { isMobile } = useKitzeUI();\n\n  // Extract drawer-specific classNames\n  const { drawerContent, ...simpleDropdownClassNames } = classNames;\n\n  // If mobile and using bottom-drawer, render BottomDrawerMenu\n  if (isMobile && mobileView === \"bottom-drawer\") {\n    return (\n      <BottomDrawerMenu\n        title={drawerTitle}\n        open={open}\n        onOpenChange={onOpenChange}\n        content={content}\n        closeOnClick={closeOnClick}\n      >\n        {children}\n      </BottomDrawerMenu>\n    );\n  }\n\n  // Otherwise, render SimpleDropdownMenu\n  return (\n    <SimpleDropdownMenu\n      open={open}\n      onOpenChange={onOpenChange}\n      content={content}\n      closeOnClick={closeOnClick}\n      classNames={simpleDropdownClassNames}\n      {...props}\n    >\n      {children}\n    </SimpleDropdownMenu>\n  );\n};\n",
+      "target": "components/ui/ResponsiveDropdownMenu.tsx"
+    }
+  ]
+}
