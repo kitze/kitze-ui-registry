@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { useKitzeUI } from "@/registry/new-york/kitze-ui-context/KitzeUIContext";
 import { BottomDrawerMenu } from "@/registry/new-york/bottom-drawer/BottomDrawerMenu";
 import {
