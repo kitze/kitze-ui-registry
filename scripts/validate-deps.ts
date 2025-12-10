@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import { Dirent } from "fs";
 import path from "path";
 import * as parser from "@babel/parser";
 import traverse, { NodePath } from "@babel/traverse";
@@ -314,8 +315,8 @@ async function main() {
 
     const entries = await fs.readdir(registryPath, { withFileTypes: true });
     const componentDirs = entries
-      .filter((dirent: fs.Dirent) => dirent.isDirectory())
-      .map((dirent: fs.Dirent) => path.join(registryPath, dirent.name));
+      .filter((dirent: Dirent) => dirent.isDirectory())
+      .map((dirent: Dirent) => path.join(registryPath, dirent.name));
 
     console.log(`Found ${componentDirs.length} component directories.`);
 

@@ -13,10 +13,16 @@
   ],
   "files": [
     {
-      "path": "registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/form-field-textarea/FormFieldTextarea.tsx",
       "type": "registry:component",
       "content": "import React from \"react\";\nimport { Textarea } from \"@/components/ui/textarea\";\nimport {\n  FormFieldWrapper,\n  FormFieldWrapperProps,\n} from \"@/registry/new-york/form-field-wrapper/FormFieldWrapper\";\nimport { FieldValues, FieldPath } from \"react-hook-form\";\n\nexport interface FormFieldTextareaProps<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n> extends Omit<FormFieldWrapperProps<TFieldValues, TName>, \"children\"> {\n  placeholder?: string;\n  rows?: number;\n}\n\nexport function FormFieldTextarea<\n  TFieldValues extends FieldValues = FieldValues,\n  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>\n>({\n  placeholder,\n  rows,\n  ...wrapperProps\n}: FormFieldTextareaProps<TFieldValues, TName>) {\n  return (\n    <FormFieldWrapper<TFieldValues, TName> {...wrapperProps}>\n      {(field) => <Textarea placeholder={placeholder} rows={rows} {...field} />}\n    </FormFieldWrapper>\n  );\n}\n",
       "target": "components/FormFieldTextarea.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }

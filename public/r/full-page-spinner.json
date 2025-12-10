@@ -9,10 +9,16 @@
   ],
   "files": [
     {
-      "path": "registry/new-york/full-page-spinner/FullPageSpinner.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/full-page-spinner/FullPageSpinner.tsx",
       "type": "registry:component",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { Spinner, SpinnerProps } from \"@/registry/new-york/spinner/Spinner\";\n\nexport interface FullPageSpinnerProps extends SpinnerProps {}\n\nexport const FullPageSpinner: ReactFC<FullPageSpinnerProps> = ({\n  size = \"xl\",\n  ...props\n}) => {\n  return (\n    <div className=\"min-h-screen min-w-screen flex items-center justify-center\">\n      <Spinner size={size} {...props} />\n    </div>\n  );\n};\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ReactFC } from \"@/lib/types\";\nimport { Spinner, SpinnerProps } from \"@/registry/new-york/spinner/Spinner\";\n\nexport interface FullPageSpinnerProps extends SpinnerProps {}\n\nexport const FullPageSpinner: ReactFC<FullPageSpinnerProps> = ({\n  size = \"xl\",\n  ...props\n}) => {\n  return (\n    <div className=\"min-h-screen min-w-screen flex items-center justify-center\">\n      <Spinner size={size} {...props} />\n    </div>\n  );\n};\n",
       "target": "components/FullPageSpinner.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }

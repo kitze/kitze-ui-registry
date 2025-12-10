@@ -12,10 +12,16 @@
   ],
   "files": [
     {
-      "path": "registry/new-york/help-info-circle/HelpInfoCircle.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/help-info-circle/HelpInfoCircle.tsx",
       "type": "registry:component",
-      "content": "import React from \"react\";\nimport { HelpCircle } from \"lucide-react\";\nimport {\n  SimpleTooltip,\n  TooltipMobileViewType,\n} from \"@/registry/new-york/simple-tooltip/SimpleTooltip\";\nimport { ReactFC } from \"@/lib/utils\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface HelpInfoCircleProps {\n  content: React.ReactNode;\n  className?: string;\n  iconClassName?: string;\n  tooltipClassName?: string;\n  drawerTitle?: string;\n  mobileView?: TooltipMobileViewType;\n}\n\nexport const HelpInfoCircle: ReactFC<HelpInfoCircleProps> = ({\n  content,\n  className,\n  iconClassName,\n  tooltipClassName,\n  drawerTitle = \"Help Information\",\n  mobileView = \"bottom-drawer\",\n}) => {\n  return (\n    <SimpleTooltip\n      content={content}\n      tooltipClassName={tooltipClassName}\n      drawerTitle={drawerTitle}\n      className={className}\n      mobileView={mobileView}\n    >\n      <span className={cn(\"inline-flex cursor-pointer\")}>\n        <HelpCircle\n          className={cn(\n            \"h-4 w-4 text-muted-foreground hover:text-foreground transition-colors\",\n            iconClassName\n          )}\n        />\n      </span>\n    </SimpleTooltip>\n  );\n};\n",
+      "content": "import React from \"react\";\nimport { HelpCircle } from \"lucide-react\";\nimport {\n  SimpleTooltip,\n  TooltipMobileViewType,\n} from \"@/registry/new-york/simple-tooltip/SimpleTooltip\";\nimport { ReactFC } from \"@/lib/types\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface HelpInfoCircleProps {\n  content: React.ReactNode;\n  className?: string;\n  iconClassName?: string;\n  tooltipClassName?: string;\n  drawerTitle?: string;\n  mobileView?: TooltipMobileViewType;\n}\n\nexport const HelpInfoCircle: ReactFC<HelpInfoCircleProps> = ({\n  content,\n  className,\n  iconClassName,\n  tooltipClassName,\n  drawerTitle = \"Help Information\",\n  mobileView = \"bottom-drawer\",\n}) => {\n  return (\n    <SimpleTooltip\n      content={content}\n      tooltipClassName={tooltipClassName}\n      drawerTitle={drawerTitle}\n      className={className}\n      mobileView={mobileView}\n    >\n      <span className={cn(\"inline-flex cursor-pointer\")}>\n        <HelpCircle\n          className={cn(\n            \"h-4 w-4 text-muted-foreground hover:text-foreground transition-colors\",\n            iconClassName\n          )}\n        />\n      </span>\n    </SimpleTooltip>\n  );\n};\n",
       "target": "components/HelpInfoCircle.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }

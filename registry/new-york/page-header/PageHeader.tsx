@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { LucideMenu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrolledPast } from "@/registry/hooks/useScrolledPast";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { CustomButton } from "@/registry/new-york/custom-button/CustomButton";
 import { BottomDrawer } from "@/registry/new-york/bottom-drawer/BottomDrawer";
 

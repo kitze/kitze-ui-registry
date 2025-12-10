@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { CommonMenuItem, CommonMenuItemProps } from "./CommonMenuItem";
 import { Edit } from "lucide-react";
 

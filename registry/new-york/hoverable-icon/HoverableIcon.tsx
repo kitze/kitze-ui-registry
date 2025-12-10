@@ -4,7 +4,8 @@ import * as React from "react";
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ReactFC, Size } from "@/lib/utils";
+import { Size } from "@/lib/types";
+import { ReactFC } from "@/lib/types";
 import { ConditionalTooltip } from "@/registry/new-york/conditional-tooltip/ConditionalTooltip";
 import { useLinkableComponent } from "@/registry/hooks/useLinkableComponent";
 
@@ -19,6 +20,7 @@ export const iconSizes: Record<Size, number> = {
   sm: 16,
   md: 20,
   lg: 24,
+  xl: 28,
 };
 
 export interface HoverableIconProps {

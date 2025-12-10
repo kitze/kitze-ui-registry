@@ -11,15 +11,10 @@ import {
 
 type SectionIconProps = {
   icon: LucideIcon;
-  className?: string;
   gradient: string;
 };
 
-const SectionIcon = ({
-  icon: Icon,
-  className = "",
-  gradient,
-}: SectionIconProps) => {
+const SectionIcon = ({ icon: Icon, gradient }: SectionIconProps) => {
   return (
     <div className={`mb-4 inline-flex p-3 rounded-lg ${gradient}`}>
       <Icon className="h-6 w-6 text-white" />

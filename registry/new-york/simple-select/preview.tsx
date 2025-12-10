@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { SimpleSelect } from "./SimpleSelect";
-import { SelectOption } from "@/lib/select-option";
+import { SelectOption } from "@/lib/types";
 import { Apple, Drama, Facebook, Instagram } from "lucide-react";
 
 const options: SelectOption[] = [

@@ -1,5 +1,6 @@
 import React from "react";
-import { ReactFC, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { LucideIcon } from "lucide-react";
 import { HelpInfoCircle } from "@/registry/new-york/help-info-circle/HelpInfoCircle";
 import { useMenuContext } from "../menu-context/MenuContext";

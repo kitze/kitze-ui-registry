@@ -6,10 +6,16 @@
   "description": "A wrapper component for React Suspense with force option",
   "files": [
     {
-      "path": "registry/new-york/suspensed/Suspensed.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/suspensed/Suspensed.tsx",
       "type": "registry:component",
       "content": "import { ReactNode, Suspense } from \"react\";\n\ninterface SuspensedProps {\n  children: ReactNode;\n  fallback?: ReactNode;\n  force?: boolean;\n}\n\nexport const Suspensed = ({\n  children,\n  fallback = null,\n  force = false,\n}: SuspensedProps) => {\n  if (force) {\n    return fallback;\n  }\n  return <Suspense fallback={fallback}>{children}</Suspense>;\n};\n",
       "target": "components/Suspensed.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }

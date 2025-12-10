@@ -70,7 +70,8 @@ export default function ComponentPage() {
         <div className="flex flex-col items-center justify-center py-20">
           <h2 className="text-2xl font-bold mb-2">Component Not Found</h2>
           <p className="text-muted-foreground mb-4">
-            The component "{nameParam}" doesn't exist in our registry.
+            The component &quot;{nameParam}&quot; doesn&apos;t exist in our
+            registry.
           </p>
           <Link href="/" className="text-primary underline">
             Return to homepage

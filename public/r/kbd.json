@@ -7,10 +7,16 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/new-york/kbd/Kbd.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/kbd/Kbd.tsx",
       "type": "registry:component",
-      "content": "import * as React from \"react\";\nimport { ReactFC, cn } from \"@/lib/utils\";\n\nexport interface KbdClassNames {\n  root?: string;\n  key?: string;\n  separator?: string;\n}\n\nexport interface KbdProps {\n  keys: string[];\n  classNames?: KbdClassNames;\n}\n\nexport const Kbd: ReactFC<KbdProps> = ({ keys, classNames = {} }) => {\n  return (\n    <div className={cn(\"flex items-center gap-1\", classNames.root)}>\n      {keys.map((key: string, index: number) => (\n        <React.Fragment key={key}>\n          <kbd\n            className={cn(\n              \"pointer-events-none inline-flex h-5 select-none items-center rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground\",\n              classNames.key\n            )}\n          >\n            {key}\n          </kbd>\n          {index !== keys.length - 1 && (\n            <span\n              className={cn(\n                \"text-xs text-muted-foreground\",\n                classNames.separator\n              )}\n            >\n              +\n            </span>\n          )}\n        </React.Fragment>\n      ))}\n    </div>\n  );\n};\n",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ReactFC } from \"@/lib/types\";\n\nexport interface KbdClassNames {\n  root?: string;\n  key?: string;\n  separator?: string;\n}\n\nexport interface KbdProps {\n  keys: string[];\n  classNames?: KbdClassNames;\n}\n\nexport const Kbd: ReactFC<KbdProps> = ({ keys, classNames = {} }) => {\n  return (\n    <div className={cn(\"flex items-center gap-1\", classNames.root)}>\n      {keys.map((key: string, index: number) => (\n        <React.Fragment key={key}>\n          <kbd\n            className={cn(\n              \"pointer-events-none inline-flex h-5 select-none items-center rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground\",\n              classNames.key\n            )}\n          >\n            {key}\n          </kbd>\n          {index !== keys.length - 1 && (\n            <span\n              className={cn(\n                \"text-xs text-muted-foreground\",\n                classNames.separator\n              )}\n            >\n              +\n            </span>\n          )}\n        </React.Fragment>\n      ))}\n    </div>\n  );\n};\n",
       "target": "components/Kbd.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }

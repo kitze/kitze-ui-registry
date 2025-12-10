@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 
 export const ConditionalWrap: ReactFC<{
   condition?: boolean;

@@ -1,5 +1,5 @@
 "use client";
-import { ReactFC } from "@/lib/utils";
+import { ReactFC } from "@/lib/types";
 import { createContext, useContext } from "react";
 
 interface KitzeUIContextType {

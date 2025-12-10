@@ -3,7 +3,7 @@
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { FormFieldAdvancedSelect } from "./FormFieldAdvancedSelect";
-import { SelectOption } from "@/lib/select-option";
+import { SelectOption } from "@/lib/types";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {

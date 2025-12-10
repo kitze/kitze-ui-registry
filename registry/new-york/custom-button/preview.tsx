@@ -19,17 +19,8 @@ import { ComponentPropVariant } from "../../../components/ui/ComponentPropVarian
 export default function CustomButtonPreview() {
   return (
     <div className="flex flex-col gap-8">
-      <h3>Standard buttons</h3>
-      <ComponentPropVariant
-        component={CustomButton}
-        variants={{
-          prop: "color",
-          values: ["primary", "secondary", "destructive"],
-        }}
-        className="flex flex-wrap gap-4 *:w-auto *:min-w-[120px]"
-      />
-
       <h3>Custom buttons</h3>
+      <CustomButton>test</CustomButton>
       <ComponentPropVariant
         component={CustomButton}
         componentProps={{
