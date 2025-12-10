@@ -7,10 +7,16 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/new-york/labeled-checkbox/LabeledCheckbox.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/labeled-checkbox/LabeledCheckbox.tsx",
       "type": "registry:component",
       "content": "import React from \"react\";\nimport { Checkbox } from \"@/components/ui/checkbox\"; // Assuming this is the shadcn/ui checkbox\nimport { cn } from \"@/lib/utils\";\n\nexport interface LabeledCheckboxProps {\n  id?: string;\n  label: React.ReactNode;\n  classNames?: {\n    root?: string;\n    checkbox?: string;\n    label?: string;\n  };\n  checked?: boolean;\n  onCheckedChange?: (checked: boolean) => void;\n  disabled?: boolean;\n  invert?: boolean; // To control label/checkbox order, default: checkbox then label\n  // Add any other props from shadcn Checkbox that should be exposed\n  // e.g. name, value, required, etc. (Refer to shadcn/ui Checkbox API)\n  name?: string;\n  value?: string;\n  required?: boolean;\n}\n\nexport const LabeledCheckbox: React.FC<LabeledCheckboxProps> = ({\n  id,\n  label,\n  classNames = {},\n  checked,\n  onCheckedChange,\n  disabled,\n  invert = false, // Default: checkbox first, then label\n  ...checkboxProps // Captures other native Checkbox props\n}) => {\n  const checkboxId = id || `labeled-checkbox-${React.useId()}`;\n\n  // To make the entire component clickable to toggle state\n  const handleRootClick = () => {\n    if (!disabled && onCheckedChange) {\n      onCheckedChange(!checked);\n    }\n  };\n\n  const stopPropagation = (e: React.MouseEvent) => {\n    e.stopPropagation();\n  };\n\n  const checkboxElement = (\n    <div onClick={stopPropagation}>\n      {\" \"}\n      {/* Stop propagation to prevent double toggle from root click */}\n      <Checkbox\n        id={checkboxId}\n        checked={checked}\n        onCheckedChange={onCheckedChange}\n        disabled={disabled}\n        className={cn(classNames.checkbox)}\n        {...checkboxProps}\n      />\n    </div>\n  );\n\n  const labelElement = (\n    <label\n      htmlFor={checkboxId}\n      className={cn(\n        \"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n        classNames.label\n      )}\n      onClick={stopPropagation} // Stop propagation to prevent double toggle from root click\n    >\n      {label}\n    </label>\n  );\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center space-x-2\",\n        classNames.root,\n        { \"cursor-pointer\": !disabled } // Make root div look clickable\n      )}\n      onClick={handleRootClick} // Make root div clickable\n    >\n      {invert ? (\n        <>\n          {labelElement}\n          {checkboxElement}\n        </>\n      ) : (\n        <>\n          {checkboxElement}\n          {labelElement}\n        </>\n      )}\n    </div>\n  );\n};\n",
-      "target": "components/ui/LabeledCheckbox.tsx"
+      "target": "components/LabeledCheckbox.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }

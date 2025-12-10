@@ -7,10 +7,16 @@
   "dependencies": [],
   "files": [
     {
-      "path": "registry/new-york/labeled-switch/LabeledSwitch.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/labeled-switch/LabeledSwitch.tsx",
       "type": "registry:component",
       "content": "import React from \"react\";\nimport { Switch } from \"@/components/ui/switch\";\nimport { cn } from \"@/lib/utils\"; // Assuming you might want cn for styling\n\nexport interface LabeledSwitchProps {\n  id?: string;\n  label: React.ReactNode;\n  className?: string; // For the wrapper div\n  // Add any other props you expect SwitchPrimitive.Root to take, e.g., checked, onCheckedChange, disabled, etc.\n  checked?: boolean;\n  onCheckedChange?: (checked: boolean) => void;\n  disabled?: boolean;\n  // You might want to expose other SwitchPrimitive.Root props as needed\n}\n\nexport const LabeledSwitch: React.FC<LabeledSwitchProps> = ({\n  id,\n  label,\n  className,\n  checked,\n  onCheckedChange,\n  disabled,\n  ...switchProps // Captures any other native Switch props passed in\n}) => {\n  const switchId = id || `labeled-switch-${React.useId()}`;\n\n  return (\n    <div className={cn(\"flex items-center space-x-2\", className)}>\n      <Switch\n        id={switchId}\n        checked={checked}\n        onCheckedChange={onCheckedChange}\n        disabled={disabled}\n        {...switchProps}\n      />\n      <label\n        htmlFor={switchId}\n        className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n      >\n        {label}\n      </label>\n    </div>\n  );\n};\n",
-      "target": "components/ui/LabeledSwitch.tsx"
+      "target": "components/LabeledSwitch.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }

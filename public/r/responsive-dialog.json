@@ -3,28 +3,26 @@
   "name": "responsive-dialog",
   "type": "registry:component",
   "title": "Responsive Dialog",
-  "description": "This dialog will display as a drawer on mobile devices and a regular dialog on desktop. Try resizing your browser to see the different appearances.",
+  "description": "A responsive dialog component that adapts to mobile devices with bottom drawer fallback",
   "registryDependencies": [
-    "dialog",
-    "https://ui.kitze.io/r/bottom-drawer.json",
     "https://ui.kitze.io/r/simple-dialog.json",
+    "https://ui.kitze.io/r/bottom-drawer.json",
+    "https://ui.kitze.io/r/custom-button.json",
     "https://ui.kitze.io/r/kitze-ui-context.json"
   ],
-  "dependencies": [
-    "next",
-    "react",
-    "react-dom",
-    "tailwindcss",
-    "clsx",
-    "tailwind-merge",
-    "@radix-ui/react-dialog",
-    "vaul"
-  ],
+  "dependencies": [],
   "files": [
     {
-      "path": "registry/new-york/responsive-dialog/ResponsiveDialog.tsx",
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/responsive-dialog/ResponsiveDialog.tsx",
       "type": "registry:component",
-      "content": "/* File not found: registry/new-york/responsive-dialog/ResponsiveDialog.tsx */"
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { useKitzeUI } from \"@/registry/new-york/kitze-ui-context/KitzeUIContext\";\nimport { BottomDrawer } from \"@/registry/new-york/bottom-drawer/BottomDrawer\";\nimport {\n  SimpleDialog,\n  SimpleDialogProps,\n} from \"@/registry/new-york/simple-dialog/SimpleDialog\";\nimport { CustomButton } from \"@/registry/new-york/custom-button/CustomButton\";\n\nexport type DialogMobileViewType = \"keep\" | \"bottom-drawer\";\n\nexport interface ResponsiveDialogProps\n  extends Omit<SimpleDialogProps, \"classNames\"> {\n  mobileView?: DialogMobileViewType;\n  drawerTitle?: string;\n  classNames?: SimpleDialogProps[\"classNames\"] & {\n    drawerRoot?: string;\n    drawerContent?: string;\n    drawerHeader?: string;\n    drawerFooter?: string;\n  };\n}\n\nexport const ResponsiveDialog = ({\n  mobileView = \"keep\",\n  drawerTitle,\n  classNames = {},\n  trigger = \"Open\",\n  title,\n  children,\n  open,\n  onOpenChange,\n  showCancel = true,\n  onCancel,\n  onSubmit,\n  submitText = \"Submit\",\n  cancelText = \"Cancel\",\n  ...props\n}: ResponsiveDialogProps) => {\n  const { isMobile } = useKitzeUI();\n\n  // Extract drawer-specific classNames\n  const {\n    drawerRoot,\n    drawerContent,\n    drawerHeader,\n    drawerFooter,\n    ...simpleDialogClassNames\n  } = classNames;\n\n  // If mobile and using bottom-drawer, render BottomDrawer\n  if (isMobile && mobileView === \"bottom-drawer\") {\n    const footerContent = (onSubmit || showCancel) && (\n      <div className={cn(\"flex justify-end gap-2 pt-4\")}>\n        {showCancel && (\n          <CustomButton\n            variant=\"outline\"\n            onClick={onCancel}\n            className={classNames.cancelButton}\n          >\n            {cancelText}\n          </CustomButton>\n        )}\n        {onSubmit && (\n          <CustomButton onClick={onSubmit} className={classNames.submitButton}>\n            {submitText}\n          </CustomButton>\n        )}\n      </div>\n    );\n\n    return (\n      <BottomDrawer\n        open={open}\n        onOpenChange={onOpenChange}\n        trigger={trigger}\n        title={drawerTitle || title}\n        classNames={{\n          content: drawerContent,\n          headerWrapper: drawerHeader,\n        }}\n      >\n        <div className={classNames.body}>{children}</div>\n        {footerContent && (\n          <div className={cn(drawerFooter, \"px-6 pt-4 pb-6 md:pb-2\")}>\n            {footerContent}\n          </div>\n        )}\n      </BottomDrawer>\n    );\n  }\n\n  // Otherwise, render SimpleDialog\n  return (\n    <SimpleDialog\n      trigger={trigger}\n      title={title}\n      open={open}\n      onOpenChange={onOpenChange}\n      showCancel={showCancel}\n      onCancel={onCancel}\n      onSubmit={onSubmit}\n      submitText={submitText}\n      cancelText={cancelText}\n      classNames={simpleDialogClassNames}\n      {...props}\n    >\n      {children}\n    </SimpleDialog>\n  );\n};\n",
+      "target": "components/ResponsiveDialog.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
     }
   ]
 }
