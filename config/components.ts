@@ -154,6 +154,7 @@ export const components: ComponentDefinition[] = [
   { id: "made-by-kitze", groupId: "landing" },
   { id: "footer-column-kitze-apps", groupId: "landing" },
   { id: "footer-column-connect", groupId: "landing" },
+  { id: "footer-bottom", groupId: "landing" },
 ];
 
 // Function to filter components based on search query
