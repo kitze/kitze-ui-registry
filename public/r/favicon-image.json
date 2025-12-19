@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "favicon-image",
+  "type": "registry:component",
+  "title": "Favicon Image",
+  "description": "A component for generating favicons with gradient backgrounds, rounded corners, and centered icons",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/favicon-image/FaviconImage.tsx",
+      "type": "registry:component",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { ReactNode } from \"react\";\n\nexport interface FaviconImageProps {\n  /**\n   * The icon to display (should be a Lucide icon or similar)\n   */\n  icon: ReactNode;\n  /**\n   * Gradient classes for the background (e.g., \"from-blue-500 to-cyan-500\")\n   */\n  gradient: string;\n  /**\n   * Size in pixels (will be rendered as a square)\n   * @default 512\n   */\n  size?: number;\n  /**\n   * Border radius as percentage of size\n   * @default 20\n   */\n  borderRadiusPercent?: number;\n  /**\n   * Icon size as percentage of container\n   * @default 60\n   */\n  iconSizePercent?: number;\n  /**\n   * Additional className for the container\n   */\n  className?: string;\n}\n\nexport function FaviconImage({\n  icon,\n  gradient,\n  size = 512,\n  borderRadiusPercent = 20,\n  iconSizePercent = 60,\n  className,\n}: FaviconImageProps) {\n  const borderRadius = (size * borderRadiusPercent) / 100;\n  const iconSize = (size * iconSizePercent) / 100;\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center justify-center bg-gradient-to-br\",\n        gradient,\n        className\n      )}\n      style={{\n        width: size,\n        height: size,\n        borderRadius,\n      }}\n    >\n      <div\n        className=\"text-white\"\n        style={{\n          width: iconSize,\n          height: iconSize,\n        }}\n      >\n        {icon}\n      </div>\n    </div>\n  );\n}\n",
+      "target": "components/FaviconImage.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}

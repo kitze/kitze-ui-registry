@@ -1,5 +1,6 @@
 "use client";
 
+import { Sparkles } from "lucide-react";
 import { MetaImage } from "./MetaImage";
 
 export function Preview() {
@@ -10,6 +11,7 @@ export function Preview() {
         tagline="Your amazing app tagline here."
         description="Short description of what your app does."
         descriptionHighlight="And why it's awesome."
+        icon={<Sparkles className="h-full w-full text-purple-400" />}
         accentGradient="from-blue-500 via-purple-500 to-blue-500"
         gradientBlurs={[
           {
