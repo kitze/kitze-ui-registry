@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-bottom",
+  "type": "registry:ui",
+  "title": "Footer Bottom",
+  "description": "A reusable footer bottom section with copyright and 'built by' attribution.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/footer-bottom/FooterBottom.tsx",
+      "type": "registry:ui",
+      "target": "components/FooterBottom.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface FooterBottomProps {\n  /** Variant of the \"built by\" text */\n  variant?: \"full\" | \"minimal\";\n  /** Additional className */\n  className?: string;\n}\n\nexport const FooterBottom = ({\n  variant = \"full\",\n  className,\n}: FooterBottomProps) => {\n  return (\n    <div\n      className={cn(\n        \"mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4\",\n        className\n      )}\n    >\n      <div className=\"text-xs text-zinc-600\">\n        © {new Date().getFullYear()} Kitze. All rights reserved.\n      </div>\n      <div className=\"flex items-center gap-2 text-xs text-zinc-600\">\n        {variant === \"full\" ? (\n          <>\n            <span>\"Built\" by</span>\n            <a\n              href=\"https://x.com/thekitze\"\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n              className=\"text-zinc-400 hover:text-white transition-colors cursor-pointer\"\n            >\n              @thekitze\n            </a>\n            <span>with</span>\n            <span className=\"inline-flex gap-1\">\n              <span>😡</span>\n              <span>&</span>\n              <span>swearing at LLMs</span>\n            </span>\n          </>\n        ) : (\n          <>\n            <span>Made by</span>\n            <a\n              href=\"https://x.com/thekitze\"\n              target=\"_blank\"\n              rel=\"noopener noreferrer\"\n              className=\"text-zinc-400 hover:text-white transition-colors cursor-pointer\"\n            >\n              @thekitze\n            </a>\n          </>\n        )}\n      </div>\n    </div>\n  );\n};\n"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}

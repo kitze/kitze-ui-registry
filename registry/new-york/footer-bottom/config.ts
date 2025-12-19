@@ -1,6 +1,6 @@
 import { ComponentConfig } from "@/lib/component-config";
 
-export const config: ComponentConfig = {
+const config: ComponentConfig = {
   name: "footer-bottom",
   type: "registry:ui",
   title: "Footer Bottom",
@@ -16,3 +16,5 @@ export const config: ComponentConfig = {
   ],
   categories: ["landing-page"],
 };
+
+export default config;
