@@ -9,6 +9,7 @@ export function Preview() {
         <h3 className="text-sm font-medium text-white">Hero Variant</h3>
         <PolarCheckoutButton
           checkoutUrl="#"
+          productId="example-product-id"
           price="$19"
           productName="DMX"
           variant="hero"
@@ -20,6 +21,7 @@ export function Preview() {
         <div className="flex">
           <PolarCheckoutButton
             checkoutUrl="#"
+            productId="example-product-id"
             price="$29"
             variant="header"
           />
@@ -31,6 +33,7 @@ export function Preview() {
         <div className="max-w-xs">
           <PolarCheckoutButton
             checkoutUrl="#"
+            productId="example-product-id"
             price="$14"
             productName="Passlock"
             variant="pricing"
@@ -42,6 +45,7 @@ export function Preview() {
         <h3 className="text-sm font-medium text-white">Custom Text</h3>
         <PolarCheckoutButton
           checkoutUrl="#"
+          productId="example-product-id"
           price="$9"
           text="Start Free Trial"
           variant="hero"

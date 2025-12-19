@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils";
 import { AppleLogo } from "@/registry/new-york/apple-logo/AppleLogo";
 
 export interface PolarCheckoutButtonProps {
-  /** The checkout URL to redirect to */
+  /** The base checkout URL (without product param) */
   checkoutUrl: string;
+  /** The product ID (UUID) - required for checkout to work */
+  productId: string;
   /** The price to display (e.g., "$19", "$29") */
   price: string;
   /** The product name (e.g., "DMX", "Sotto") */
@@ -28,6 +30,7 @@ export interface PolarCheckoutButtonProps {
 
 export const PolarCheckoutButton = ({
   checkoutUrl,
+  productId,
   price,
   productName,
   variant = "hero",
@@ -41,7 +44,7 @@ export const PolarCheckoutButton = ({
 
   const handleClick = () => {
     setIsLoading(true);
-    window.location.href = checkoutUrl;
+    window.location.href = `${checkoutUrl}?product=${productId}`;
   };
 
   const getDefaultText = () => {
