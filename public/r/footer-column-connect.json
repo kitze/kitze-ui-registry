@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-column-connect",
+  "type": "registry:component",
+  "title": "Footer Column Connect",
+  "description": "A footer column component with connect/social links for Twitter, email support, and website",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/footer-column-connect/FooterColumnConnect.tsx",
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface ConnectLink {\n  label: string;\n  url: string;\n}\n\nconst defaultLinks: ConnectLink[] = [\n  { label: \"Twitter / X\", url: \"https://x.com/thekitze\" },\n  { label: \"Support\", url: \"mailto:hi@kitze.io\" },\n  { label: \"kitze.io\", url: \"https://kitze.io\" },\n];\n\nexport interface FooterColumnConnectProps {\n  /** Custom links list (overrides default) */\n  links?: ConnectLink[];\n  /** Ref parameter to append to URLs (only for http links) */\n  refParam?: string;\n  /** Custom title */\n  title?: string;\n  /** Additional className */\n  className?: string;\n}\n\nexport const FooterColumnConnect = ({\n  links = defaultLinks,\n  refParam,\n  title = \"Connect\",\n  className,\n}: FooterColumnConnectProps) => {\n  const getUrl = (url: string) => {\n    if (!refParam) return url;\n    // Don't add ref to mailto or non-http links\n    if (!url.startsWith(\"http\")) return url;\n    const separator = url.includes(\"?\") ? \"&\" : \"?\";\n    return `${url}${separator}ref=${refParam}`;\n  };\n\n  return (\n    <div className={cn(\"space-y-4\", className)}>\n      <h4 className=\"font-semibold text-sm text-white\">{title}</h4>\n      <div className=\"flex flex-col gap-3 text-sm text-zinc-500\">\n        {links.map((link) => (\n          <a\n            key={link.label}\n            href={getUrl(link.url)}\n            target={link.url.startsWith(\"http\") ? \"_blank\" : undefined}\n            rel={link.url.startsWith(\"http\") ? \"noopener noreferrer\" : undefined}\n            className=\"hover:text-white transition-colors cursor-pointer\"\n          >\n            {link.label}\n          </a>\n        ))}\n      </div>\n    </div>\n  );\n};\n",
+      "target": "components/FooterColumnConnect.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}

@@ -133,7 +133,7 @@ export const MadeByKitze = ({
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 text-zinc-500 hover:text-white hover:bg-white/5 rounded-lg transition-all"
+                  className="p-1.5 text-zinc-500 hover:text-white hover:bg-white/5 rounded-lg transition-all cursor-pointer"
                   aria-label={social.name}
                 >
                   <social.icon className="w-4 h-4" />
@@ -155,7 +155,7 @@ export const MadeByKitze = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group flex flex-col p-6 rounded-xl border border-white/5 bg-zinc-900/20 hover:bg-zinc-900/40 hover:border-white/10 transition-all duration-300"
+              className="group flex flex-col p-6 rounded-xl border border-white/5 bg-zinc-900/20 hover:bg-zinc-900/40 hover:border-white/10 transition-all duration-300 cursor-pointer"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-lg font-semibold text-zinc-200 group-hover:text-white transition-colors">

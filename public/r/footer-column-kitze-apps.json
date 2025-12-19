@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-column-kitze-apps",
+  "type": "registry:component",
+  "title": "Footer Column Kitze Apps",
+  "description": "A footer column component listing Kitze's apps with external links and optional ref parameter",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/footer-column-kitze-apps/FooterColumnKitzeApps.tsx",
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport { ExternalLink } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface KitzeAppLink {\n  name: string;\n  url: string;\n}\n\nconst defaultApps: KitzeAppLink[] = [\n  { name: \"Sizzy\", url: \"https://sizzy.co\" },\n  { name: \"Benji\", url: \"https://benji.so\" },\n  { name: \"Zero to Shipped\", url: \"https://zerotoshipped.com\" },\n  { name: \"DMX\", url: \"https://dmx.to\" },\n  { name: \"Sotto\", url: \"https://sotto.so\" },\n  { name: \"Passlock\", url: \"https://passlock.dev\" },\n  { name: \"Glink\", url: \"https://glink.to\" },\n];\n\nexport interface FooterColumnKitzeAppsProps {\n  /** App name to exclude from the list (typically the current app) */\n  excludeApp?: string;\n  /** Ref parameter to append to URLs */\n  refParam?: string;\n  /** Custom apps list (overrides default) */\n  apps?: KitzeAppLink[];\n  /** Custom title */\n  title?: string;\n  /** Additional className */\n  className?: string;\n}\n\nexport const FooterColumnKitzeApps = ({\n  excludeApp,\n  refParam,\n  apps = defaultApps,\n  title = \"More by Kitze\",\n  className,\n}: FooterColumnKitzeAppsProps) => {\n  const filteredApps = excludeApp\n    ? apps.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())\n    : apps;\n\n  const getUrl = (url: string) => {\n    if (!refParam) return url;\n    const separator = url.includes(\"?\") ? \"&\" : \"?\";\n    return `${url}${separator}ref=${refParam}`;\n  };\n\n  return (\n    <div className={cn(\"space-y-4\", className)}>\n      <h4 className=\"font-semibold text-sm text-white flex items-center gap-2\">\n        {title}\n        <span className=\"text-[10px] text-zinc-600 font-normal\">&#8599;</span>\n      </h4>\n      <div className=\"flex flex-col gap-3 text-sm text-zinc-500\">\n        {filteredApps.map((app) => (\n          <a\n            key={app.name}\n            href={getUrl(app.url)}\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n            className=\"hover:text-white transition-colors group flex items-center gap-1 cursor-pointer\"\n          >\n            {app.name}\n            <ExternalLink className=\"h-3 w-3 opacity-0 group-hover:opacity-50 transition-opacity\" />\n          </a>\n        ))}\n      </div>\n    </div>\n  );\n};\n",
+      "target": "components/FooterColumnKitzeApps.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}
