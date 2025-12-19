@@ -18,6 +18,11 @@ export type ComponentDefinition = {
 // Define component groups
 export const componentGroups: ComponentGroup[] = [
   {
+    id: "landing",
+    title: "Landing Page",
+    description: "Components for building product landing pages.",
+  },
+  {
     id: "components",
     title: "Components",
     description: "Standard UI components for building interfaces.",
@@ -72,6 +77,13 @@ export const componentGroups: ComponentGroup[] = [
 
 // Define all components in a flat list using the ComponentName type
 export const components: ComponentDefinition[] = [
+  // Landing Page Components
+  { id: "apple-logo", groupId: "landing" },
+  { id: "polar-checkout-button", groupId: "landing" },
+  { id: "scrolling-header", groupId: "landing" },
+  { id: "mac-window", groupId: "landing" },
+  { id: "made-by-kitze", groupId: "landing" },
+
   // Enhanced Components - keep only these three
   { id: "input", groupId: "enhanced" },
   { id: "advanced-select", groupId: "enhanced" },
