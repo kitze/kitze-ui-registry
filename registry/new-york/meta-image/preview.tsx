@@ -2,9 +2,9 @@
 
 import { MetaImage } from "./MetaImage";
 
-export default function MetaImagePreview() {
+export function Preview() {
   return (
-    <div className="scale-50 origin-top-left">
+    <div className="scale-[0.4] origin-top-left">
       <MetaImage
         title="AppName"
         tagline="Your amazing app tagline here."
