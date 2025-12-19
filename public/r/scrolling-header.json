@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scrolling-header",
+  "type": "registry:component",
+  "title": "Scrolling Header",
+  "description": "A sticky header component that appears after scrolling past a threshold, with smooth animations",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/scrolling-header/ScrollingHeader.tsx",
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport { motion, AnimatePresence, useScroll } from \"framer-motion\";\nimport { useState, useEffect, ReactNode } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ScrollingHeaderProps {\n  /** Logo element (image or icon) */\n  logo: ReactNode;\n  /** Product/app title */\n  title: string;\n  /** Scroll threshold in pixels before header appears */\n  scrollThreshold?: number;\n  /** Right side content (typically a buy button) */\n  children?: ReactNode;\n  /** Additional className for the container */\n  className?: string;\n  /** Additional className for the inner wrapper */\n  innerClassName?: string;\n  /** Hide title on mobile */\n  hideTitleOnMobile?: boolean;\n}\n\nexport const ScrollingHeader = ({\n  logo,\n  title,\n  scrollThreshold = 500,\n  children,\n  className,\n  innerClassName,\n  hideTitleOnMobile = true,\n}: ScrollingHeaderProps) => {\n  const { scrollY } = useScroll();\n  const [isVisible, setIsVisible] = useState(false);\n\n  useEffect(() => {\n    return scrollY.onChange((latest) => {\n      setIsVisible(latest > scrollThreshold);\n    });\n  }, [scrollY, scrollThreshold]);\n\n  return (\n    <AnimatePresence>\n      {isVisible && (\n        <motion.div\n          initial={{ y: -100, opacity: 0 }}\n          animate={{ y: 0, opacity: 1 }}\n          exit={{ y: -100, opacity: 0 }}\n          transition={{ duration: 0.3 }}\n          className={cn(\n            \"fixed top-0 left-0 right-0 z-50 flex justify-center p-4 pointer-events-none\",\n            className\n          )}\n        >\n          <div\n            className={cn(\n              \"pointer-events-auto flex items-center justify-between gap-4 rounded-full border border-white/10 bg-black/50 px-4 py-2 shadow-2xl backdrop-blur-xl w-full max-w-lg md:max-w-2xl\",\n              innerClassName\n            )}\n          >\n            <div className=\"flex items-center gap-3\">\n              {logo}\n              <span\n                className={cn(\n                  \"font-semibold text-white\",\n                  hideTitleOnMobile && \"hidden sm:block\"\n                )}\n              >\n                {title}\n              </span>\n            </div>\n\n            {children && (\n              <div className=\"flex items-center gap-3\">{children}</div>\n            )}\n          </div>\n        </motion.div>\n      )}\n    </AnimatePresence>\n  );\n};\n",
+      "target": "components/ScrollingHeader.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}

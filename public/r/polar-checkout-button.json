@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "polar-checkout-button",
+  "type": "registry:component",
+  "title": "Polar Checkout Button",
+  "description": "A checkout button component for Polar/payment redirects with loading state, Apple logo, and multiple variants",
+  "registryDependencies": [
+    "https://ui.kitze.io/r/apple-logo.json"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/polar-checkout-button/PolarCheckoutButton.tsx",
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport { useState, ReactNode } from \"react\";\nimport { Loader2 } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\nimport { AppleLogo } from \"@/registry/new-york/apple-logo/AppleLogo\";\n\nexport interface PolarCheckoutButtonProps {\n  /** The checkout URL to redirect to */\n  checkoutUrl: string;\n  /** The price to display (e.g., \"$19\", \"$29\") */\n  price: string;\n  /** The product name (e.g., \"DMX\", \"Sotto\") */\n  productName?: string;\n  /** Button variant */\n  variant?: \"hero\" | \"pricing\" | \"header\" | \"custom\";\n  /** Custom button text (overrides default) */\n  text?: string;\n  /** Hide the Apple logo icon */\n  hideIcon?: boolean;\n  /** Custom left icon/content */\n  children?: ReactNode;\n  /** Custom right icon */\n  rightIcon?: ReactNode;\n  /** Additional className */\n  className?: string;\n}\n\nexport const PolarCheckoutButton = ({\n  checkoutUrl,\n  price,\n  productName,\n  variant = \"hero\",\n  text,\n  hideIcon = false,\n  children,\n  rightIcon,\n  className,\n}: PolarCheckoutButtonProps) => {\n  const [isLoading, setIsLoading] = useState(false);\n\n  const handleClick = () => {\n    setIsLoading(true);\n    window.location.href = checkoutUrl;\n  };\n\n  const getDefaultText = () => {\n    if (productName) {\n      switch (variant) {\n        case \"header\":\n          return `Buy — ${price}`;\n        case \"pricing\":\n          return `Buy for macOS — ${price}`;\n        default:\n          return `Get ${productName} — ${price}`;\n      }\n    }\n    return `Buy Now — ${price}`;\n  };\n\n  const displayText = text || getDefaultText();\n\n  const getBaseStyles = () => {\n    switch (variant) {\n      case \"hero\":\n        return \"group relative inline-flex h-14 items-center justify-center rounded-full bg-white px-10 font-semibold text-black transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] before:absolute before:inset-0 before:rounded-full before:border-2 before:border-white/50 before:animate-pulse disabled:hover:scale-100 disabled:opacity-90\";\n      case \"header\":\n        return \"group flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-medium text-black transition-transform active:scale-95 disabled:opacity-90\";\n      case \"pricing\":\n        return \"group inline-flex items-center justify-center w-full lg:w-auto rounded-xl bg-white px-10 py-4 font-semibold text-black hover:bg-zinc-200 transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] disabled:hover:scale-100 disabled:hover:bg-white disabled:opacity-90\";\n      case \"custom\":\n        return \"\";\n      default:\n        return \"\";\n    }\n  };\n\n  const iconSize = variant === \"header\" ? \"h-3 w-3\" : \"h-5 w-5\";\n  const iconMargin = variant === \"header\" ? \"\" : \"mr-2\";\n  const shouldShowIcon = !hideIcon && variant !== \"custom\";\n\n  return (\n    <button\n      onClick={handleClick}\n      disabled={isLoading}\n      className={cn(getBaseStyles(), className)}\n    >\n      {isLoading ? (\n        <>\n          <Loader2 className={cn(\"animate-spin\", iconSize, iconMargin)} />\n          <span>Redirecting...</span>\n        </>\n      ) : (\n        <>\n          {shouldShowIcon ? (\n            <AppleLogo className={cn(iconSize, iconMargin)} />\n          ) : (\n            children\n          )}\n          <span>{displayText}</span>\n          {rightIcon}\n        </>\n      )}\n    </button>\n  );\n};\n",
+      "target": "components/PolarCheckoutButton.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}

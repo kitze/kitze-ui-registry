@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mac-window",
+  "type": "registry:component",
+  "title": "Mac Window",
+  "description": "A macOS-style window component with traffic light buttons and optional title bar",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/registry/new-york/mac-window/MacWindow.tsx",
+      "type": "registry:component",
+      "content": "import { ReactNode } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface MacWindowProps {\n  /** Window content */\n  children: ReactNode;\n  /** Optional window title displayed in the title bar */\n  title?: string;\n  /** Use dark theme (default) or light theme */\n  dark?: boolean;\n  /** Additional className for the container */\n  className?: string;\n  /** Show traffic light borders for more realistic look */\n  showTrafficLightBorders?: boolean;\n}\n\nexport const MacWindow = ({\n  children,\n  title,\n  dark = true,\n  className,\n  showTrafficLightBorders = true,\n}: MacWindowProps) => {\n  return (\n    <div\n      className={cn(\n        \"relative overflow-hidden rounded-xl border shadow-2xl\",\n        dark\n          ? \"bg-[#1c1c1e] border-white/10 shadow-black/50\"\n          : \"bg-white border-black/10 shadow-black/20\",\n        className\n      )}\n    >\n      {/* Title Bar */}\n      <div\n        className={cn(\n          \"relative flex h-10 items-center px-4 border-b\",\n          dark ? \"bg-[#2c2c2e] border-white/5\" : \"bg-[#f5f5f7] border-black/5\"\n        )}\n      >\n        {/* Traffic Lights */}\n        <div className=\"flex items-center gap-2 z-10\">\n          <div\n            className={cn(\n              \"h-3 w-3 rounded-full bg-[#ff5f57]\",\n              showTrafficLightBorders && \"border border-[#e0443e]\"\n            )}\n          />\n          <div\n            className={cn(\n              \"h-3 w-3 rounded-full bg-[#febc2e]\",\n              showTrafficLightBorders && \"border border-[#d89e24]\"\n            )}\n          />\n          <div\n            className={cn(\n              \"h-3 w-3 rounded-full bg-[#28c840]\",\n              showTrafficLightBorders && \"border border-[#1aab29]\"\n            )}\n          />\n        </div>\n\n        {/* Title */}\n        {title && (\n          <div\n            className={cn(\n              \"absolute inset-0 flex items-center justify-center text-xs font-medium opacity-60 pointer-events-none\",\n              dark ? \"text-white\" : \"text-black\"\n            )}\n          >\n            {title}\n          </div>\n        )}\n      </div>\n\n      {/* Content */}\n      <div className=\"relative h-full w-full\">{children}</div>\n    </div>\n  );\n};\n",
+      "target": "components/MacWindow.tsx"
+    },
+    {
+      "path": "/Users/kitze/webdev/kitze-ui-registry/lib/types.ts",
+      "type": "registry:lib",
+      "content": "import { PropsWithChildren } from \"react\";\nimport { LucideIcon } from \"lucide-react\";\n\nexport type ReactFC<T> = React.FC<PropsWithChildren & T>;\nexport type Size = \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\";\nexport interface SelectOption {\n  value: string;\n  label?: string;\n  emoji?: string;\n  icon?: LucideIcon;\n  closeOnClick?: boolean;\n  disabled?: boolean;\n}\n",
+      "target": "lib/types.ts"
+    }
+  ]
+}
