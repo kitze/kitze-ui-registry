@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Twitter, Youtube } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,19 @@ export interface KitzeApp {
   url: string;
   featured?: boolean;
 }
+
+interface ProjectApiResponse {
+  slug: string;
+  title: string;
+  subtitle: string;
+  summary: string;
+  status: string;
+  statusLabel: string;
+  externalUrl?: string;
+  category: string;
+}
+
+const PROJECTS_API_URL = "https://kitze.io/api/projects?featured=true";
 
 const defaultApps: KitzeApp[] = [
   {
@@ -69,6 +83,20 @@ const defaultApps: KitzeApp[] = [
     url: "https://joinrepo.com",
     featured: false,
   },
+  {
+    name: "Tubely",
+    tagline: "YouTube Studio for Mac",
+    description: "Manage multiple YouTube channels in one native app.",
+    url: "https://tubely.app",
+    featured: false,
+  },
+  {
+    name: "JustWrite",
+    tagline: "Distraction-free writing",
+    description: "A minimal writing app that helps you focus on what matters.",
+    url: "https://justwrite.ink",
+    featured: false,
+  },
 ];
 
 const socials = [
@@ -92,14 +120,40 @@ export interface MadeByKitzeProps {
 
 export const MadeByKitze = ({
   excludeApp,
-  apps = defaultApps,
+  apps,
   className,
-  profileImage = "https://pbs.twimg.com/profile_images/1996666082925346816/7Y3zm_Kx_400x400.jpg",
+  profileImage = "https://www.kitze.io/avatar.jpg",
   showViewAll = true,
 }: MadeByKitzeProps) => {
+  const [fetchedApps, setFetchedApps] = useState<KitzeApp[]>(defaultApps);
+
+  useEffect(() => {
+    // If custom apps provided, don't fetch
+    if (apps) return;
+
+    fetch(PROJECTS_API_URL)
+      .then((res) => res.json())
+      .then((data: ProjectApiResponse[]) => {
+        const mapped = data.map((p) => ({
+          name: p.title,
+          tagline: p.subtitle,
+          description: p.summary,
+          url: p.externalUrl || `https://kitze.io/projects/${p.slug}`,
+          featured: true,
+        }));
+        if (mapped.length > 0) {
+          setFetchedApps(mapped);
+        }
+      })
+      .catch(() => {
+        // Keep default apps on error
+      });
+  }, [apps]);
+
+  const appsToUse = apps || fetchedApps;
   const filteredApps = excludeApp
-    ? apps.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
-    : apps;
+    ? appsToUse.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
+    : appsToUse;
 
   return (
     <section className={cn("bg-black py-24 md:py-32 border-t border-white/5", className)}>
