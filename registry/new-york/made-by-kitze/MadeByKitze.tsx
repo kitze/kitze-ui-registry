@@ -24,7 +24,7 @@ interface ProjectApiResponse {
   category: string;
 }
 
-const PROJECTS_API_URL = "https://kitze.io/api/projects?featured=true";
+const PROJECTS_API_URL = "https://kitze.io/api/projects?apps=true";
 
 const defaultApps: KitzeApp[] = [
   {
@@ -35,13 +35,6 @@ const defaultApps: KitzeApp[] = [
     featured: true,
   },
   {
-    name: "Benji",
-    tagline: "Your life OS",
-    description: "The companion app that keeps every area of your world in sync.",
-    url: "https://benji.so",
-    featured: true,
-  },
-  {
     name: "Zero to Shipped",
     tagline: "Ship products, not side projects",
     description: "The ultimate Next.js boilerplate for building and launching real products.",
@@ -49,10 +42,38 @@ const defaultApps: KitzeApp[] = [
     featured: true,
   },
   {
+    name: "Benji",
+    tagline: "Your life OS",
+    description: "The companion app that keeps every area of your world in sync.",
+    url: "https://benji.so",
+    featured: true,
+  },
+  {
+    name: "Tubely",
+    tagline: "YouTube Studio for Mac",
+    description: "Manage multiple YouTube channels in one native app.",
+    url: "https://tubely.cc",
+    featured: false,
+  },
+  {
+    name: "JustWrite",
+    tagline: "Distraction-free writing",
+    description: "A minimal writing app that helps you focus on what matters.",
+    url: "https://justwrite.ink",
+    featured: false,
+  },
+  {
     name: "DMX",
     tagline: "Mindful Twitter/X",
     description: "The intentional X client for macOS. Reclaim your attention span.",
     url: "https://dmx.to",
+    featured: false,
+  },
+  {
+    name: "Passlock",
+    tagline: "Password manager with willpower",
+    description: "Lock passwords with time delays, word challenges, or hand the keys to someone you trust.",
+    url: "https://passlock.to",
     featured: false,
   },
   {
@@ -63,17 +84,10 @@ const defaultApps: KitzeApp[] = [
     featured: false,
   },
   {
-    name: "Passlock",
-    tagline: "Password manager with willpower",
-    description: "Lock passwords with time delays, word challenges, or hand the keys to someone you trust.",
-    url: "https://passlock.dev",
-    featured: false,
-  },
-  {
     name: "Glink",
     tagline: "Changelogs that slap",
     description: "Beautiful changelogs and roadmaps for your product.",
-    url: "https://glink.to",
+    url: "https://glink.so",
     featured: false,
   },
   {
@@ -84,17 +98,10 @@ const defaultApps: KitzeApp[] = [
     featured: false,
   },
   {
-    name: "Tubely",
-    tagline: "YouTube Studio for Mac",
-    description: "Manage multiple YouTube channels in one native app.",
-    url: "https://tubely.app",
-    featured: false,
-  },
-  {
-    name: "JustWrite",
-    tagline: "Distraction-free writing",
-    description: "A minimal writing app that helps you focus on what matters.",
-    url: "https://justwrite.ink",
+    name: "ReleaseFlow",
+    tagline: "Sparkle auto-updates made easy",
+    description: "Manage Sparkle appcast feeds and update hosting for macOS apps.",
+    url: "https://releaseflow.net",
     featured: false,
   },
 ];

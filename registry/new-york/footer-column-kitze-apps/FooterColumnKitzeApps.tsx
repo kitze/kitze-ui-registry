@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -8,16 +9,31 @@ export interface KitzeAppLink {
   url: string;
 }
 
+interface ProjectApiResponse {
+  slug: string;
+  title: string;
+  subtitle: string;
+  summary: string;
+  status: string;
+  statusLabel: string;
+  externalUrl?: string;
+  category: string;
+}
+
+const PROJECTS_API_URL = "https://kitze.io/api/projects?apps=true";
+
 const defaultApps: KitzeAppLink[] = [
   { name: "Sizzy", url: "https://sizzy.co" },
-  { name: "Benji", url: "https://benji.so" },
   { name: "Zero to Shipped", url: "https://zerotoshipped.com" },
-  { name: "DMX", url: "https://dmx.to" },
-  { name: "Sotto", url: "https://sotto.so" },
-  { name: "Tubely", url: "https://tubely.app" },
+  { name: "Benji", url: "https://benji.so" },
+  { name: "Tubely", url: "https://tubely.cc" },
   { name: "JustWrite", url: "https://justwrite.ink" },
-  { name: "Passlock", url: "https://passlock.dev" },
-  { name: "Glink", url: "https://glink.to" },
+  { name: "DMX", url: "https://dmx.to" },
+  { name: "Passlock", url: "https://passlock.to" },
+  { name: "Sotto", url: "https://sotto.so" },
+  { name: "Glink", url: "https://glink.so" },
+  { name: "JoinRepo", url: "https://joinrepo.com" },
+  { name: "ReleaseFlow", url: "https://releaseflow.net" },
 ];
 
 export interface FooterColumnKitzeAppsProps {
@@ -36,13 +52,38 @@ export interface FooterColumnKitzeAppsProps {
 export const FooterColumnKitzeApps = ({
   excludeApp,
   refParam,
-  apps = defaultApps,
+  apps,
   title = "More by Kitze",
   className,
 }: FooterColumnKitzeAppsProps) => {
+  const [fetchedApps, setFetchedApps] = useState<KitzeAppLink[]>(defaultApps);
+
+  useEffect(() => {
+    // If custom apps provided, don't fetch
+    if (apps) return;
+
+    fetch(PROJECTS_API_URL)
+      .then((res) => res.json())
+      .then((data: ProjectApiResponse[]) => {
+        const mapped = data
+          .filter((p) => p.externalUrl)
+          .map((p) => ({
+            name: p.title,
+            url: p.externalUrl!,
+          }));
+        if (mapped.length > 0) {
+          setFetchedApps(mapped);
+        }
+      })
+      .catch(() => {
+        // Keep default apps on error
+      });
+  }, [apps]);
+
+  const appsToUse = apps || fetchedApps;
   const filteredApps = excludeApp
-    ? apps.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
-    : apps;
+    ? appsToUse.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
+    : appsToUse;
 
   const getUrl = (url: string) => {
     if (!refParam) return url;
