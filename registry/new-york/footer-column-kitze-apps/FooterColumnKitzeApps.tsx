@@ -22,20 +22,6 @@ interface ProjectApiResponse {
 
 const PROJECTS_API_URL = "https://kitze.io/api/projects?apps=true";
 
-const defaultApps: KitzeAppLink[] = [
-  { name: "Sizzy", url: "https://sizzy.co" },
-  { name: "Zero to Shipped", url: "https://zerotoshipped.com" },
-  { name: "Benji", url: "https://benji.so" },
-  { name: "Tubely", url: "https://tubely.cc" },
-  { name: "JustWrite", url: "https://justwrite.ink" },
-  { name: "DMX", url: "https://dmx.to" },
-  { name: "Passlock", url: "https://passlock.to" },
-  { name: "Sotto", url: "https://sotto.so" },
-  { name: "Glink", url: "https://glink.so" },
-  { name: "JoinRepo", url: "https://joinrepo.com" },
-  { name: "ReleaseFlow", url: "https://releaseflow.net" },
-];
-
 export interface FooterColumnKitzeAppsProps {
   /** App name to exclude from the list (typically the current app) */
   excludeApp?: string;
@@ -56,7 +42,7 @@ export const FooterColumnKitzeApps = ({
   title = "More by Kitze",
   className,
 }: FooterColumnKitzeAppsProps) => {
-  const [fetchedApps, setFetchedApps] = useState<KitzeAppLink[]>(defaultApps);
+  const [fetchedApps, setFetchedApps] = useState<KitzeAppLink[]>([]);
 
   useEffect(() => {
     // If custom apps provided, don't fetch
@@ -71,12 +57,10 @@ export const FooterColumnKitzeApps = ({
             name: p.title,
             url: p.externalUrl!,
           }));
-        if (mapped.length > 0) {
-          setFetchedApps(mapped);
-        }
+        setFetchedApps(mapped);
       })
-      .catch(() => {
-        // Keep default apps on error
+      .catch((err) => {
+        console.error("Failed to fetch projects:", err);
       });
   }, [apps]);
 

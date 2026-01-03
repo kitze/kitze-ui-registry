@@ -26,86 +26,6 @@ interface ProjectApiResponse {
 
 const PROJECTS_API_URL = "https://kitze.io/api/projects?apps=true";
 
-const defaultApps: KitzeApp[] = [
-  {
-    name: "Sizzy",
-    tagline: "The browser for developers",
-    description: "Build responsive apps 5x faster with synchronized viewports.",
-    url: "https://sizzy.co",
-    featured: true,
-  },
-  {
-    name: "Zero to Shipped",
-    tagline: "Ship products, not side projects",
-    description: "The ultimate Next.js boilerplate for building and launching real products.",
-    url: "https://zerotoshipped.com",
-    featured: true,
-  },
-  {
-    name: "Benji",
-    tagline: "Your life OS",
-    description: "The companion app that keeps every area of your world in sync.",
-    url: "https://benji.so",
-    featured: true,
-  },
-  {
-    name: "Tubely",
-    tagline: "YouTube Studio for Mac",
-    description: "Manage multiple YouTube channels in one native app.",
-    url: "https://tubely.cc",
-    featured: false,
-  },
-  {
-    name: "JustWrite",
-    tagline: "Distraction-free writing",
-    description: "A minimal writing app that helps you focus on what matters.",
-    url: "https://justwrite.ink",
-    featured: false,
-  },
-  {
-    name: "DMX",
-    tagline: "Mindful Twitter/X",
-    description: "The intentional X client for macOS. Reclaim your attention span.",
-    url: "https://dmx.to",
-    featured: false,
-  },
-  {
-    name: "Passlock",
-    tagline: "Password manager with willpower",
-    description: "Lock passwords with time delays, word challenges, or hand the keys to someone you trust.",
-    url: "https://passlock.to",
-    featured: false,
-  },
-  {
-    name: "Sotto",
-    tagline: "Voice-to-text for macOS",
-    description: "Speak naturally. Type instantly. 100% local & private.",
-    url: "https://sotto.so",
-    featured: false,
-  },
-  {
-    name: "Glink",
-    tagline: "Changelogs that slap",
-    description: "Beautiful changelogs and roadmaps for your product.",
-    url: "https://glink.so",
-    featured: false,
-  },
-  {
-    name: "JoinRepo",
-    tagline: "GitHub access control",
-    description: "Monetize your GitHub repositories with ease.",
-    url: "https://joinrepo.com",
-    featured: false,
-  },
-  {
-    name: "ReleaseFlow",
-    tagline: "Sparkle auto-updates made easy",
-    description: "Manage Sparkle appcast feeds and update hosting for macOS apps.",
-    url: "https://releaseflow.net",
-    featured: false,
-  },
-];
-
 const socials = [
   { name: "Twitter", url: "https://x.com/thekitze", icon: Twitter },
   { name: "GitHub", url: "https://github.com/kitze", icon: Github },
@@ -132,7 +52,7 @@ export const MadeByKitze = ({
   profileImage = "https://www.kitze.io/avatar.jpg",
   showViewAll = true,
 }: MadeByKitzeProps) => {
-  const [fetchedApps, setFetchedApps] = useState<KitzeApp[]>(defaultApps);
+  const [fetchedApps, setFetchedApps] = useState<KitzeApp[]>([]);
 
   useEffect(() => {
     // If custom apps provided, don't fetch
@@ -148,12 +68,10 @@ export const MadeByKitze = ({
           url: p.externalUrl || `https://kitze.io/projects/${p.slug}`,
           featured: true,
         }));
-        if (mapped.length > 0) {
-          setFetchedApps(mapped);
-        }
+        setFetchedApps(mapped);
       })
-      .catch(() => {
-        // Keep default apps on error
+      .catch((err) => {
+        console.error("Failed to fetch projects:", err);
       });
   }, [apps]);
 
