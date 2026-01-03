@@ -20,7 +20,7 @@ interface ProjectApiResponse {
   category: string;
 }
 
-const PROJECTS_API_URL = "https://kitze.io/api/projects?apps=true";
+const PROJECTS_API_URL = "https://www.kitze.io/api/projects?apps=true";
 
 interface KitzeAppsContextType {
   apps: KitzeApp[];
