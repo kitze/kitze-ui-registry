@@ -1,33 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useKitzeApps } from "@/components/ui/KitzeAppsProvider";
 
 export interface KitzeAppLink {
   name: string;
   url: string;
 }
 
-interface ProjectApiResponse {
-  slug: string;
-  title: string;
-  subtitle: string;
-  summary: string;
-  status: string;
-  statusLabel: string;
-  externalUrl?: string;
-  category: string;
-}
-
-const PROJECTS_API_URL = "https://kitze.io/api/projects?apps=true";
-
 export interface FooterColumnKitzeAppsProps {
   /** App name to exclude from the list (typically the current app) */
   excludeApp?: string;
   /** Ref parameter to append to URLs */
   refParam?: string;
-  /** Custom apps list (overrides default) */
+  /** Custom apps list (overrides fetched) */
   apps?: KitzeAppLink[];
   /** Custom title */
   title?: string;
@@ -38,42 +25,26 @@ export interface FooterColumnKitzeAppsProps {
 export const FooterColumnKitzeApps = ({
   excludeApp,
   refParam,
-  apps,
+  apps: customApps,
   title = "More by Kitze",
   className,
 }: FooterColumnKitzeAppsProps) => {
-  const [fetchedApps, setFetchedApps] = useState<KitzeAppLink[]>([]);
+  const { apps: fetchedApps, isLoading } = useKitzeApps();
 
-  useEffect(() => {
-    // If custom apps provided, don't fetch
-    if (apps) return;
-
-    fetch(PROJECTS_API_URL)
-      .then((res) => res.json())
-      .then((data: ProjectApiResponse[]) => {
-        const mapped = data
-          .filter((p) => p.externalUrl)
-          .map((p) => ({
-            name: p.title,
-            url: p.externalUrl!,
-          }));
-        setFetchedApps(mapped);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch projects:", err);
-      });
-  }, [apps]);
-
-  const appsToUse = apps || fetchedApps;
+  const apps = customApps || fetchedApps.map((a) => ({ name: a.name, url: a.url }));
   const filteredApps = excludeApp
-    ? appsToUse.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
-    : appsToUse;
+    ? apps.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
+    : apps;
 
   const getUrl = (url: string) => {
     if (!refParam) return url;
     const separator = url.includes("?") ? "&" : "?";
     return `${url}${separator}ref=${refParam}`;
   };
+
+  if (isLoading && !customApps) {
+    return null;
+  }
 
   return (
     <div className={cn("space-y-4", className)}>

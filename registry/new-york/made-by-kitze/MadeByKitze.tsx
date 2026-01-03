@@ -1,30 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Twitter, Youtube } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-export interface KitzeApp {
-  name: string;
-  tagline: string;
-  description: string;
-  url: string;
-  featured?: boolean;
-}
-
-interface ProjectApiResponse {
-  slug: string;
-  title: string;
-  subtitle: string;
-  summary: string;
-  status: string;
-  statusLabel: string;
-  externalUrl?: string;
-  category: string;
-}
-
-const PROJECTS_API_URL = "https://kitze.io/api/projects?apps=true";
+import { useKitzeApps, KitzeApp } from "@/components/ui/KitzeAppsProvider";
 
 const socials = [
   { name: "Twitter", url: "https://x.com/thekitze", icon: Twitter },
@@ -35,7 +14,7 @@ const socials = [
 export interface MadeByKitzeProps {
   /** App name to exclude from the list (typically the current app) */
   excludeApp?: string;
-  /** Custom apps list (overrides default) */
+  /** Custom apps list (overrides fetched) */
   apps?: KitzeApp[];
   /** Additional className */
   className?: string;
@@ -47,38 +26,21 @@ export interface MadeByKitzeProps {
 
 export const MadeByKitze = ({
   excludeApp,
-  apps,
+  apps: customApps,
   className,
   profileImage = "https://www.kitze.io/avatar.jpg",
   showViewAll = true,
 }: MadeByKitzeProps) => {
-  const [fetchedApps, setFetchedApps] = useState<KitzeApp[]>([]);
+  const { apps: fetchedApps, isLoading } = useKitzeApps();
 
-  useEffect(() => {
-    // If custom apps provided, don't fetch
-    if (apps) return;
-
-    fetch(PROJECTS_API_URL)
-      .then((res) => res.json())
-      .then((data: ProjectApiResponse[]) => {
-        const mapped = data.map((p) => ({
-          name: p.title,
-          tagline: p.subtitle,
-          description: p.summary,
-          url: p.externalUrl || `https://kitze.io/projects/${p.slug}`,
-          featured: true,
-        }));
-        setFetchedApps(mapped);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch projects:", err);
-      });
-  }, [apps]);
-
-  const appsToUse = apps || fetchedApps;
+  const apps = customApps || fetchedApps;
   const filteredApps = excludeApp
-    ? appsToUse.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
-    : appsToUse;
+    ? apps.filter((app) => app.name.toLowerCase() !== excludeApp.toLowerCase())
+    : apps;
+
+  if (isLoading && !customApps) {
+    return null; // Or a skeleton loader
+  }
 
   return (
     <section className={cn("bg-black py-24 md:py-32 border-t border-white/5", className)}>
